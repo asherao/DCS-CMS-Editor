@@ -269,7 +269,6 @@ namespace DCSF18ALE47Programmer
         private void loadLua_F18C()
         {
             //find the lua file
-            //string F18CountermeasureFileString = @"G:\Games\DCS World OpenBeta\Mods\aircraft\FA-18C\Cockpit\Scripts\TEWS\device\CMDS_ALE47.lua";//hardcoded for now
             string F18CountermeasureFileString = loadLocation;
             //load the text into a string
             string F18CountermeasureFileStringText = File.ReadAllText(F18CountermeasureFileString);
@@ -297,7 +296,7 @@ namespace DCSF18ALE47Programmer
             string F18C_manual1cycleAmount = F18CountermeasureFileStringText.Substring(F18C_manual1cycleIndex + 40, F18C_manual1cycleIndexEnd - F18C_manual1cycleIndex);//40 is the length of the Index request
             //System.Windows.Forms.MessageBox.Show("First value Index of 'How' is " + F18C_manual1cycleAmount);
             //be carefull with cycle because it can either be 1 length or two length
-            //System.Windows.Forms.MessageBox.Show("Press \"OK\" to delete your entire harddrive");
+            //System.Windows.Forms.MessageBox.Show("Press \"OK\" to delete your entire harddrive. Just kidding.");
 
 
             //MANUAL 2 Values get
