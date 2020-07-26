@@ -29,8 +29,9 @@ using DCSF18ALE47Programmer.Properties;
  * 
  * TODO:
  * -Make video (maybe)
- * 
- * 
+ * -Add instructions on how to add more aircraft
+ *
+ *
  * Bugs:
  * -When the dots in the .lua are replaced by commas (eu standard?) the program bugs out (maybe)
  * 
