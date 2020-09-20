@@ -196,6 +196,61 @@
             this.button_openDcsPath = new System.Windows.Forms.Button();
             this.button_openBackupPath = new System.Windows.Forms.Button();
             this.button_recreateOrginalLua = new System.Windows.Forms.Button();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.groupBox_F16C_harm_table1 = new System.Windows.Forms.GroupBox();
+            this.groupBox_F16C_harm_table2 = new System.Windows.Forms.GroupBox();
+            this.groupBox_F16C_harm_table3 = new System.Windows.Forms.GroupBox();
+            this.comboBox_f16cHarm1 = new System.Windows.Forms.ComboBox();
+            this.comboBox_f16cHarm2 = new System.Windows.Forms.ComboBox();
+            this.comboBox_f16cHarm3 = new System.Windows.Forms.ComboBox();
+            this.comboBox_f16cHarm4 = new System.Windows.Forms.ComboBox();
+            this.comboBox_f16cHarm5 = new System.Windows.Forms.ComboBox();
+            this.comboBox_f16cHarm10 = new System.Windows.Forms.ComboBox();
+            this.comboBox_f16cHarm9 = new System.Windows.Forms.ComboBox();
+            this.comboBox_f16cHarm8 = new System.Windows.Forms.ComboBox();
+            this.comboBox_f16cHarm7 = new System.Windows.Forms.ComboBox();
+            this.comboBox_f16cHarm6 = new System.Windows.Forms.ComboBox();
+            this.comboBox_f16cHarm15 = new System.Windows.Forms.ComboBox();
+            this.comboBox_f16cHarm14 = new System.Windows.Forms.ComboBox();
+            this.comboBox_f16cHarm13 = new System.Windows.Forms.ComboBox();
+            this.comboBox_f16cHarm12 = new System.Windows.Forms.ComboBox();
+            this.comboBox_f16cHarm11 = new System.Windows.Forms.ComboBox();
+            this.label_F16CHarm_samName_table1 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_Table1_T2 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_selectedID_Table1_T1 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_Table1_T3 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_Table1_T4 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_Table1_T5 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_selectedID_Table1_T2 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_selectedID_Table1_T3 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_selectedID_Table1_T4 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_selectedID_Table1_T5 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_Table2_T1 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_selectedID_Table2_T1 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_selectedID_Table2_T2 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_selectedID_Table2_T3 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_selectedID_Table2_T4 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_selectedID_Table2_T5 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_Table2_T2 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_Table2_T4 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_Table2_T3 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_Table2_T5 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_selectedID_Table3_T2 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_Table3_T1 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_selectedID_Table3_T3 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_selectedID_Table3_T1 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_selectedID_Table3_T4 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_selectedID_Table3_T5 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_Table3_T2 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_Table3_T4 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_Table3_T3 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_Table3_T5 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_selectedID_Table1_Title = new System.Windows.Forms.Label();
+            this.label_F16CHarm_Table1_T1 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox_F18C_manualPresets.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_F18C_manual6Chaff)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_F18C_manual6Flare)).BeginInit();
@@ -311,6 +366,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_F16C_manual1Flare_BQ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_F16C_manual1Chaff_BI)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_F16C_manual1Chaff_BQ)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            this.groupBox_F16C_harm_table1.SuspendLayout();
+            this.groupBox_F16C_harm_table2.SuspendLayout();
+            this.groupBox_F16C_harm_table3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label_F18C_ManualPreset1
@@ -1161,6 +1220,7 @@
             // 
             this.tabControl_mainTab.Controls.Add(this.tabPage1);
             this.tabControl_mainTab.Controls.Add(this.tabPage2);
+            this.tabControl_mainTab.Controls.Add(this.tabPage3);
             this.tabControl_mainTab.Location = new System.Drawing.Point(10, 12);
             this.tabControl_mainTab.Name = "tabControl_mainTab";
             this.tabControl_mainTab.SelectedIndex = 0;
@@ -1181,7 +1241,7 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(445, 550);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "DCS FA-18C";
+            this.tabPage1.Text = "DCS FA-18C CMS";
             // 
             // tabPage2
             // 
@@ -1197,7 +1257,7 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(445, 550);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "DCS F-16C";
+            this.tabPage2.Text = "DCS F-16C CMS";
             // 
             // groupBox_F16C_autoPresets
             // 
@@ -2953,7 +3013,7 @@
             this.button_loadCM_Backup.Name = "button_loadCM_Backup";
             this.button_loadCM_Backup.Size = new System.Drawing.Size(176, 23);
             this.button_loadCM_Backup.TabIndex = 19;
-            this.button_loadCM_Backup.Text = "Load Backup Countermeasure lua";
+            this.button_loadCM_Backup.Text = "Load Backup lua";
             this.button_loadCM_Backup.UseVisualStyleBackColor = true;
             this.button_loadCM_Backup.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -2970,7 +3030,7 @@
             this.button_loadCM_DCS.Name = "button_loadCM_DCS";
             this.button_loadCM_DCS.Size = new System.Drawing.Size(176, 23);
             this.button_loadCM_DCS.TabIndex = 20;
-            this.button_loadCM_DCS.Text = "Load DCS Countermeasure lua";
+            this.button_loadCM_DCS.Text = "Load DCS lua";
             this.button_loadCM_DCS.UseVisualStyleBackColor = true;
             this.button_loadCM_DCS.Click += new System.EventHandler(this.button_loadCM_DCS_Click);
             // 
@@ -3058,6 +3118,578 @@
             this.button_recreateOrginalLua.Text = "Re-Create Original Lua";
             this.button_recreateOrginalLua.UseVisualStyleBackColor = true;
             this.button_recreateOrginalLua.Click += new System.EventHandler(this.button_recreateOrginalLua_Click);
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage3.Controls.Add(this.groupBox_F16C_harm_table3);
+            this.tabPage3.Controls.Add(this.groupBox_F16C_harm_table2);
+            this.tabPage3.Controls.Add(this.groupBox_F16C_harm_table1);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(445, 550);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "DCS F-16C HARM";
+            // 
+            // groupBox_F16C_harm_table1
+            // 
+            this.groupBox_F16C_harm_table1.Controls.Add(this.label_F16CHarm_Table1_T1);
+            this.groupBox_F16C_harm_table1.Controls.Add(this.label_F16CHarm_Table1_T5);
+            this.groupBox_F16C_harm_table1.Controls.Add(this.label_F16CHarm_Table1_T3);
+            this.groupBox_F16C_harm_table1.Controls.Add(this.label_F16CHarm_Table1_T4);
+            this.groupBox_F16C_harm_table1.Controls.Add(this.label_F16CHarm_selectedID_Table1_Title);
+            this.groupBox_F16C_harm_table1.Controls.Add(this.label_F16CHarm_selectedID_Table1_T1);
+            this.groupBox_F16C_harm_table1.Controls.Add(this.label_F16CHarm_Table1_T2);
+            this.groupBox_F16C_harm_table1.Controls.Add(this.label_F16CHarm_selectedID_Table1_T5);
+            this.groupBox_F16C_harm_table1.Controls.Add(this.label_F16CHarm_selectedID_Table1_T4);
+            this.groupBox_F16C_harm_table1.Controls.Add(this.label_F16CHarm_selectedID_Table1_T3);
+            this.groupBox_F16C_harm_table1.Controls.Add(this.label_F16CHarm_selectedID_Table1_T2);
+            this.groupBox_F16C_harm_table1.Controls.Add(this.comboBox_f16cHarm5);
+            this.groupBox_F16C_harm_table1.Controls.Add(this.label_F16CHarm_samName_table1);
+            this.groupBox_F16C_harm_table1.Controls.Add(this.comboBox_f16cHarm4);
+            this.groupBox_F16C_harm_table1.Controls.Add(this.comboBox_f16cHarm3);
+            this.groupBox_F16C_harm_table1.Controls.Add(this.comboBox_f16cHarm2);
+            this.groupBox_F16C_harm_table1.Controls.Add(this.comboBox_f16cHarm1);
+            this.groupBox_F16C_harm_table1.Location = new System.Drawing.Point(6, 20);
+            this.groupBox_F16C_harm_table1.Name = "groupBox_F16C_harm_table1";
+            this.groupBox_F16C_harm_table1.Size = new System.Drawing.Size(315, 170);
+            this.groupBox_F16C_harm_table1.TabIndex = 0;
+            this.groupBox_F16C_harm_table1.TabStop = false;
+            this.groupBox_F16C_harm_table1.Text = "Table 1";
+            // 
+            // groupBox_F16C_harm_table2
+            // 
+            this.groupBox_F16C_harm_table2.Controls.Add(this.label1);
+            this.groupBox_F16C_harm_table2.Controls.Add(this.label_F16CHarm_Table2_T5);
+            this.groupBox_F16C_harm_table2.Controls.Add(this.label2);
+            this.groupBox_F16C_harm_table2.Controls.Add(this.comboBox_f16cHarm10);
+            this.groupBox_F16C_harm_table2.Controls.Add(this.label_F16CHarm_Table2_T3);
+            this.groupBox_F16C_harm_table2.Controls.Add(this.comboBox_f16cHarm9);
+            this.groupBox_F16C_harm_table2.Controls.Add(this.label_F16CHarm_Table2_T4);
+            this.groupBox_F16C_harm_table2.Controls.Add(this.comboBox_f16cHarm8);
+            this.groupBox_F16C_harm_table2.Controls.Add(this.label_F16CHarm_Table2_T2);
+            this.groupBox_F16C_harm_table2.Controls.Add(this.comboBox_f16cHarm7);
+            this.groupBox_F16C_harm_table2.Controls.Add(this.label_F16CHarm_selectedID_Table2_T5);
+            this.groupBox_F16C_harm_table2.Controls.Add(this.comboBox_f16cHarm6);
+            this.groupBox_F16C_harm_table2.Controls.Add(this.label_F16CHarm_selectedID_Table2_T4);
+            this.groupBox_F16C_harm_table2.Controls.Add(this.label_F16CHarm_selectedID_Table2_T1);
+            this.groupBox_F16C_harm_table2.Controls.Add(this.label_F16CHarm_selectedID_Table2_T3);
+            this.groupBox_F16C_harm_table2.Controls.Add(this.label_F16CHarm_Table2_T1);
+            this.groupBox_F16C_harm_table2.Controls.Add(this.label_F16CHarm_selectedID_Table2_T2);
+            this.groupBox_F16C_harm_table2.Location = new System.Drawing.Point(6, 196);
+            this.groupBox_F16C_harm_table2.Name = "groupBox_F16C_harm_table2";
+            this.groupBox_F16C_harm_table2.Size = new System.Drawing.Size(315, 170);
+            this.groupBox_F16C_harm_table2.TabIndex = 1;
+            this.groupBox_F16C_harm_table2.TabStop = false;
+            this.groupBox_F16C_harm_table2.Text = "Table 2";
+            // 
+            // groupBox_F16C_harm_table3
+            // 
+            this.groupBox_F16C_harm_table3.Controls.Add(this.label3);
+            this.groupBox_F16C_harm_table3.Controls.Add(this.label_F16CHarm_Table3_T5);
+            this.groupBox_F16C_harm_table3.Controls.Add(this.label4);
+            this.groupBox_F16C_harm_table3.Controls.Add(this.comboBox_f16cHarm15);
+            this.groupBox_F16C_harm_table3.Controls.Add(this.comboBox_f16cHarm14);
+            this.groupBox_F16C_harm_table3.Controls.Add(this.label_F16CHarm_Table3_T3);
+            this.groupBox_F16C_harm_table3.Controls.Add(this.comboBox_f16cHarm13);
+            this.groupBox_F16C_harm_table3.Controls.Add(this.comboBox_f16cHarm12);
+            this.groupBox_F16C_harm_table3.Controls.Add(this.label_F16CHarm_Table3_T4);
+            this.groupBox_F16C_harm_table3.Controls.Add(this.comboBox_f16cHarm11);
+            this.groupBox_F16C_harm_table3.Controls.Add(this.label_F16CHarm_selectedID_Table3_T1);
+            this.groupBox_F16C_harm_table3.Controls.Add(this.label_F16CHarm_Table3_T2);
+            this.groupBox_F16C_harm_table3.Controls.Add(this.label_F16CHarm_selectedID_Table3_T2);
+            this.groupBox_F16C_harm_table3.Controls.Add(this.label_F16CHarm_Table3_T1);
+            this.groupBox_F16C_harm_table3.Controls.Add(this.label_F16CHarm_selectedID_Table3_T5);
+            this.groupBox_F16C_harm_table3.Controls.Add(this.label_F16CHarm_selectedID_Table3_T3);
+            this.groupBox_F16C_harm_table3.Controls.Add(this.label_F16CHarm_selectedID_Table3_T4);
+            this.groupBox_F16C_harm_table3.Location = new System.Drawing.Point(6, 372);
+            this.groupBox_F16C_harm_table3.Name = "groupBox_F16C_harm_table3";
+            this.groupBox_F16C_harm_table3.Size = new System.Drawing.Size(315, 170);
+            this.groupBox_F16C_harm_table3.TabIndex = 2;
+            this.groupBox_F16C_harm_table3.TabStop = false;
+            this.groupBox_F16C_harm_table3.Text = "Table 3";
+            // 
+            // comboBox_f16cHarm1
+            // 
+            this.comboBox_f16cHarm1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_f16cHarm1.FormattingEnabled = true;
+            this.comboBox_f16cHarm1.Location = new System.Drawing.Point(63, 32);
+            this.comboBox_f16cHarm1.Name = "comboBox_f16cHarm1";
+            this.comboBox_f16cHarm1.Size = new System.Drawing.Size(243, 21);
+            this.comboBox_f16cHarm1.TabIndex = 3;
+            this.comboBox_f16cHarm1.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm1_SelectedIndexChanged);
+            // 
+            // comboBox_f16cHarm2
+            // 
+            this.comboBox_f16cHarm2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_f16cHarm2.FormattingEnabled = true;
+            this.comboBox_f16cHarm2.Location = new System.Drawing.Point(63, 59);
+            this.comboBox_f16cHarm2.Name = "comboBox_f16cHarm2";
+            this.comboBox_f16cHarm2.Size = new System.Drawing.Size(243, 21);
+            this.comboBox_f16cHarm2.TabIndex = 4;
+            this.comboBox_f16cHarm2.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm2_SelectedIndexChanged);
+            // 
+            // comboBox_f16cHarm3
+            // 
+            this.comboBox_f16cHarm3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_f16cHarm3.FormattingEnabled = true;
+            this.comboBox_f16cHarm3.Location = new System.Drawing.Point(63, 86);
+            this.comboBox_f16cHarm3.Name = "comboBox_f16cHarm3";
+            this.comboBox_f16cHarm3.Size = new System.Drawing.Size(243, 21);
+            this.comboBox_f16cHarm3.TabIndex = 5;
+            this.comboBox_f16cHarm3.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm3_SelectedIndexChanged);
+            // 
+            // comboBox_f16cHarm4
+            // 
+            this.comboBox_f16cHarm4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_f16cHarm4.FormattingEnabled = true;
+            this.comboBox_f16cHarm4.Location = new System.Drawing.Point(63, 113);
+            this.comboBox_f16cHarm4.Name = "comboBox_f16cHarm4";
+            this.comboBox_f16cHarm4.Size = new System.Drawing.Size(243, 21);
+            this.comboBox_f16cHarm4.TabIndex = 6;
+            this.comboBox_f16cHarm4.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm4_SelectedIndexChanged);
+            // 
+            // comboBox_f16cHarm5
+            // 
+            this.comboBox_f16cHarm5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_f16cHarm5.FormattingEnabled = true;
+            this.comboBox_f16cHarm5.Location = new System.Drawing.Point(63, 140);
+            this.comboBox_f16cHarm5.Name = "comboBox_f16cHarm5";
+            this.comboBox_f16cHarm5.Size = new System.Drawing.Size(243, 21);
+            this.comboBox_f16cHarm5.TabIndex = 7;
+            this.comboBox_f16cHarm5.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm5_SelectedIndexChanged);
+            // 
+            // comboBox_f16cHarm10
+            // 
+            this.comboBox_f16cHarm10.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_f16cHarm10.FormattingEnabled = true;
+            this.comboBox_f16cHarm10.Location = new System.Drawing.Point(63, 140);
+            this.comboBox_f16cHarm10.Name = "comboBox_f16cHarm10";
+            this.comboBox_f16cHarm10.Size = new System.Drawing.Size(243, 21);
+            this.comboBox_f16cHarm10.TabIndex = 12;
+            this.comboBox_f16cHarm10.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm10_SelectedIndexChanged);
+            // 
+            // comboBox_f16cHarm9
+            // 
+            this.comboBox_f16cHarm9.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_f16cHarm9.FormattingEnabled = true;
+            this.comboBox_f16cHarm9.Location = new System.Drawing.Point(63, 113);
+            this.comboBox_f16cHarm9.Name = "comboBox_f16cHarm9";
+            this.comboBox_f16cHarm9.Size = new System.Drawing.Size(243, 21);
+            this.comboBox_f16cHarm9.TabIndex = 11;
+            this.comboBox_f16cHarm9.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm9_SelectedIndexChanged);
+            // 
+            // comboBox_f16cHarm8
+            // 
+            this.comboBox_f16cHarm8.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_f16cHarm8.FormattingEnabled = true;
+            this.comboBox_f16cHarm8.Location = new System.Drawing.Point(63, 86);
+            this.comboBox_f16cHarm8.Name = "comboBox_f16cHarm8";
+            this.comboBox_f16cHarm8.Size = new System.Drawing.Size(243, 21);
+            this.comboBox_f16cHarm8.TabIndex = 10;
+            this.comboBox_f16cHarm8.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm8_SelectedIndexChanged);
+            // 
+            // comboBox_f16cHarm7
+            // 
+            this.comboBox_f16cHarm7.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_f16cHarm7.FormattingEnabled = true;
+            this.comboBox_f16cHarm7.Location = new System.Drawing.Point(63, 59);
+            this.comboBox_f16cHarm7.Name = "comboBox_f16cHarm7";
+            this.comboBox_f16cHarm7.Size = new System.Drawing.Size(243, 21);
+            this.comboBox_f16cHarm7.TabIndex = 9;
+            this.comboBox_f16cHarm7.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm7_SelectedIndexChanged);
+            // 
+            // comboBox_f16cHarm6
+            // 
+            this.comboBox_f16cHarm6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_f16cHarm6.FormattingEnabled = true;
+            this.comboBox_f16cHarm6.Location = new System.Drawing.Point(63, 32);
+            this.comboBox_f16cHarm6.Name = "comboBox_f16cHarm6";
+            this.comboBox_f16cHarm6.Size = new System.Drawing.Size(243, 21);
+            this.comboBox_f16cHarm6.TabIndex = 8;
+            this.comboBox_f16cHarm6.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm6_SelectedIndexChanged);
+            // 
+            // comboBox_f16cHarm15
+            // 
+            this.comboBox_f16cHarm15.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_f16cHarm15.FormattingEnabled = true;
+            this.comboBox_f16cHarm15.Location = new System.Drawing.Point(63, 140);
+            this.comboBox_f16cHarm15.Name = "comboBox_f16cHarm15";
+            this.comboBox_f16cHarm15.Size = new System.Drawing.Size(243, 21);
+            this.comboBox_f16cHarm15.TabIndex = 17;
+            this.comboBox_f16cHarm15.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm15_SelectedIndexChanged);
+            // 
+            // comboBox_f16cHarm14
+            // 
+            this.comboBox_f16cHarm14.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_f16cHarm14.FormattingEnabled = true;
+            this.comboBox_f16cHarm14.Location = new System.Drawing.Point(63, 113);
+            this.comboBox_f16cHarm14.Name = "comboBox_f16cHarm14";
+            this.comboBox_f16cHarm14.Size = new System.Drawing.Size(243, 21);
+            this.comboBox_f16cHarm14.TabIndex = 16;
+            this.comboBox_f16cHarm14.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm14_SelectedIndexChanged);
+            // 
+            // comboBox_f16cHarm13
+            // 
+            this.comboBox_f16cHarm13.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_f16cHarm13.FormattingEnabled = true;
+            this.comboBox_f16cHarm13.Location = new System.Drawing.Point(63, 86);
+            this.comboBox_f16cHarm13.Name = "comboBox_f16cHarm13";
+            this.comboBox_f16cHarm13.Size = new System.Drawing.Size(243, 21);
+            this.comboBox_f16cHarm13.TabIndex = 15;
+            this.comboBox_f16cHarm13.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm13_SelectedIndexChanged);
+            // 
+            // comboBox_f16cHarm12
+            // 
+            this.comboBox_f16cHarm12.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_f16cHarm12.FormattingEnabled = true;
+            this.comboBox_f16cHarm12.Location = new System.Drawing.Point(63, 59);
+            this.comboBox_f16cHarm12.Name = "comboBox_f16cHarm12";
+            this.comboBox_f16cHarm12.Size = new System.Drawing.Size(243, 21);
+            this.comboBox_f16cHarm12.TabIndex = 14;
+            this.comboBox_f16cHarm12.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm12_SelectedIndexChanged);
+            // 
+            // comboBox_f16cHarm11
+            // 
+            this.comboBox_f16cHarm11.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_f16cHarm11.FormattingEnabled = true;
+            this.comboBox_f16cHarm11.Location = new System.Drawing.Point(63, 32);
+            this.comboBox_f16cHarm11.Name = "comboBox_f16cHarm11";
+            this.comboBox_f16cHarm11.Size = new System.Drawing.Size(243, 21);
+            this.comboBox_f16cHarm11.TabIndex = 13;
+            this.comboBox_f16cHarm11.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm11_SelectedIndexChanged);
+            // 
+            // label_F16CHarm_samName_table1
+            // 
+            this.label_F16CHarm_samName_table1.AutoSize = true;
+            this.label_F16CHarm_samName_table1.Location = new System.Drawing.Point(60, 16);
+            this.label_F16CHarm_samName_table1.Name = "label_F16CHarm_samName_table1";
+            this.label_F16CHarm_samName_table1.Size = new System.Drawing.Size(138, 13);
+            this.label_F16CHarm_samName_table1.TabIndex = 3;
+            this.label_F16CHarm_samName_table1.Text = "Surface-To-Air (SAM) Name";
+            this.label_F16CHarm_samName_table1.Click += new System.EventHandler(this.label_F16CHarm_samName_table1_Click);
+            // 
+            // label_F16CHarm_Table1_T2
+            // 
+            this.label_F16CHarm_Table1_T2.AutoSize = true;
+            this.label_F16CHarm_Table1_T2.Location = new System.Drawing.Point(6, 62);
+            this.label_F16CHarm_Table1_T2.Name = "label_F16CHarm_Table1_T2";
+            this.label_F16CHarm_Table1_T2.Size = new System.Drawing.Size(20, 13);
+            this.label_F16CHarm_Table1_T2.TabIndex = 3;
+            this.label_F16CHarm_Table1_T2.Text = "T2";
+            // 
+            // label_F16CHarm_selectedID_Table1_T1
+            // 
+            this.label_F16CHarm_selectedID_Table1_T1.AutoSize = true;
+            this.label_F16CHarm_selectedID_Table1_T1.Location = new System.Drawing.Point(32, 35);
+            this.label_F16CHarm_selectedID_Table1_T1.Name = "label_F16CHarm_selectedID_Table1_T1";
+            this.label_F16CHarm_selectedID_Table1_T1.Size = new System.Drawing.Size(25, 13);
+            this.label_F16CHarm_selectedID_Table1_T1.TabIndex = 4;
+            this.label_F16CHarm_selectedID_Table1_T1.Text = "000";
+            // 
+            // label_F16CHarm_Table1_T3
+            // 
+            this.label_F16CHarm_Table1_T3.AutoSize = true;
+            this.label_F16CHarm_Table1_T3.Location = new System.Drawing.Point(6, 89);
+            this.label_F16CHarm_Table1_T3.Name = "label_F16CHarm_Table1_T3";
+            this.label_F16CHarm_Table1_T3.Size = new System.Drawing.Size(20, 13);
+            this.label_F16CHarm_Table1_T3.TabIndex = 3;
+            this.label_F16CHarm_Table1_T3.Text = "T3";
+            // 
+            // label_F16CHarm_Table1_T4
+            // 
+            this.label_F16CHarm_Table1_T4.AutoSize = true;
+            this.label_F16CHarm_Table1_T4.Location = new System.Drawing.Point(6, 116);
+            this.label_F16CHarm_Table1_T4.Name = "label_F16CHarm_Table1_T4";
+            this.label_F16CHarm_Table1_T4.Size = new System.Drawing.Size(20, 13);
+            this.label_F16CHarm_Table1_T4.TabIndex = 3;
+            this.label_F16CHarm_Table1_T4.Text = "T4";
+            this.label_F16CHarm_Table1_T4.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // label_F16CHarm_Table1_T5
+            // 
+            this.label_F16CHarm_Table1_T5.AutoSize = true;
+            this.label_F16CHarm_Table1_T5.Location = new System.Drawing.Point(6, 143);
+            this.label_F16CHarm_Table1_T5.Name = "label_F16CHarm_Table1_T5";
+            this.label_F16CHarm_Table1_T5.Size = new System.Drawing.Size(20, 13);
+            this.label_F16CHarm_Table1_T5.TabIndex = 3;
+            this.label_F16CHarm_Table1_T5.Text = "T5";
+            this.label_F16CHarm_Table1_T5.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // label_F16CHarm_selectedID_Table1_T2
+            // 
+            this.label_F16CHarm_selectedID_Table1_T2.AutoSize = true;
+            this.label_F16CHarm_selectedID_Table1_T2.Location = new System.Drawing.Point(32, 62);
+            this.label_F16CHarm_selectedID_Table1_T2.Name = "label_F16CHarm_selectedID_Table1_T2";
+            this.label_F16CHarm_selectedID_Table1_T2.Size = new System.Drawing.Size(25, 13);
+            this.label_F16CHarm_selectedID_Table1_T2.TabIndex = 4;
+            this.label_F16CHarm_selectedID_Table1_T2.Text = "000";
+            // 
+            // label_F16CHarm_selectedID_Table1_T3
+            // 
+            this.label_F16CHarm_selectedID_Table1_T3.AutoSize = true;
+            this.label_F16CHarm_selectedID_Table1_T3.Location = new System.Drawing.Point(32, 89);
+            this.label_F16CHarm_selectedID_Table1_T3.Name = "label_F16CHarm_selectedID_Table1_T3";
+            this.label_F16CHarm_selectedID_Table1_T3.Size = new System.Drawing.Size(25, 13);
+            this.label_F16CHarm_selectedID_Table1_T3.TabIndex = 4;
+            this.label_F16CHarm_selectedID_Table1_T3.Text = "000";
+            // 
+            // label_F16CHarm_selectedID_Table1_T4
+            // 
+            this.label_F16CHarm_selectedID_Table1_T4.AutoSize = true;
+            this.label_F16CHarm_selectedID_Table1_T4.Location = new System.Drawing.Point(32, 116);
+            this.label_F16CHarm_selectedID_Table1_T4.Name = "label_F16CHarm_selectedID_Table1_T4";
+            this.label_F16CHarm_selectedID_Table1_T4.Size = new System.Drawing.Size(25, 13);
+            this.label_F16CHarm_selectedID_Table1_T4.TabIndex = 4;
+            this.label_F16CHarm_selectedID_Table1_T4.Text = "000";
+            // 
+            // label_F16CHarm_selectedID_Table1_T5
+            // 
+            this.label_F16CHarm_selectedID_Table1_T5.AutoSize = true;
+            this.label_F16CHarm_selectedID_Table1_T5.Location = new System.Drawing.Point(32, 143);
+            this.label_F16CHarm_selectedID_Table1_T5.Name = "label_F16CHarm_selectedID_Table1_T5";
+            this.label_F16CHarm_selectedID_Table1_T5.Size = new System.Drawing.Size(25, 13);
+            this.label_F16CHarm_selectedID_Table1_T5.TabIndex = 4;
+            this.label_F16CHarm_selectedID_Table1_T5.Text = "000";
+            // 
+            // label_F16CHarm_Table2_T1
+            // 
+            this.label_F16CHarm_Table2_T1.AutoSize = true;
+            this.label_F16CHarm_Table2_T1.Location = new System.Drawing.Point(6, 35);
+            this.label_F16CHarm_Table2_T1.Name = "label_F16CHarm_Table2_T1";
+            this.label_F16CHarm_Table2_T1.Size = new System.Drawing.Size(20, 13);
+            this.label_F16CHarm_Table2_T1.TabIndex = 3;
+            this.label_F16CHarm_Table2_T1.Text = "T1";
+            // 
+            // label_F16CHarm_selectedID_Table2_T1
+            // 
+            this.label_F16CHarm_selectedID_Table2_T1.AutoSize = true;
+            this.label_F16CHarm_selectedID_Table2_T1.Location = new System.Drawing.Point(32, 35);
+            this.label_F16CHarm_selectedID_Table2_T1.Name = "label_F16CHarm_selectedID_Table2_T1";
+            this.label_F16CHarm_selectedID_Table2_T1.Size = new System.Drawing.Size(25, 13);
+            this.label_F16CHarm_selectedID_Table2_T1.TabIndex = 4;
+            this.label_F16CHarm_selectedID_Table2_T1.Text = "000";
+            // 
+            // label_F16CHarm_selectedID_Table2_T2
+            // 
+            this.label_F16CHarm_selectedID_Table2_T2.AutoSize = true;
+            this.label_F16CHarm_selectedID_Table2_T2.Location = new System.Drawing.Point(32, 62);
+            this.label_F16CHarm_selectedID_Table2_T2.Name = "label_F16CHarm_selectedID_Table2_T2";
+            this.label_F16CHarm_selectedID_Table2_T2.Size = new System.Drawing.Size(25, 13);
+            this.label_F16CHarm_selectedID_Table2_T2.TabIndex = 4;
+            this.label_F16CHarm_selectedID_Table2_T2.Text = "000";
+            // 
+            // label_F16CHarm_selectedID_Table2_T3
+            // 
+            this.label_F16CHarm_selectedID_Table2_T3.AutoSize = true;
+            this.label_F16CHarm_selectedID_Table2_T3.Location = new System.Drawing.Point(32, 89);
+            this.label_F16CHarm_selectedID_Table2_T3.Name = "label_F16CHarm_selectedID_Table2_T3";
+            this.label_F16CHarm_selectedID_Table2_T3.Size = new System.Drawing.Size(25, 13);
+            this.label_F16CHarm_selectedID_Table2_T3.TabIndex = 4;
+            this.label_F16CHarm_selectedID_Table2_T3.Text = "000";
+            // 
+            // label_F16CHarm_selectedID_Table2_T4
+            // 
+            this.label_F16CHarm_selectedID_Table2_T4.AutoSize = true;
+            this.label_F16CHarm_selectedID_Table2_T4.Location = new System.Drawing.Point(32, 116);
+            this.label_F16CHarm_selectedID_Table2_T4.Name = "label_F16CHarm_selectedID_Table2_T4";
+            this.label_F16CHarm_selectedID_Table2_T4.Size = new System.Drawing.Size(25, 13);
+            this.label_F16CHarm_selectedID_Table2_T4.TabIndex = 4;
+            this.label_F16CHarm_selectedID_Table2_T4.Text = "000";
+            // 
+            // label_F16CHarm_selectedID_Table2_T5
+            // 
+            this.label_F16CHarm_selectedID_Table2_T5.AutoSize = true;
+            this.label_F16CHarm_selectedID_Table2_T5.Location = new System.Drawing.Point(32, 143);
+            this.label_F16CHarm_selectedID_Table2_T5.Name = "label_F16CHarm_selectedID_Table2_T5";
+            this.label_F16CHarm_selectedID_Table2_T5.Size = new System.Drawing.Size(25, 13);
+            this.label_F16CHarm_selectedID_Table2_T5.TabIndex = 4;
+            this.label_F16CHarm_selectedID_Table2_T5.Text = "000";
+            // 
+            // label_F16CHarm_Table2_T2
+            // 
+            this.label_F16CHarm_Table2_T2.AutoSize = true;
+            this.label_F16CHarm_Table2_T2.Location = new System.Drawing.Point(6, 62);
+            this.label_F16CHarm_Table2_T2.Name = "label_F16CHarm_Table2_T2";
+            this.label_F16CHarm_Table2_T2.Size = new System.Drawing.Size(20, 13);
+            this.label_F16CHarm_Table2_T2.TabIndex = 3;
+            this.label_F16CHarm_Table2_T2.Text = "T2";
+            // 
+            // label_F16CHarm_Table2_T4
+            // 
+            this.label_F16CHarm_Table2_T4.AutoSize = true;
+            this.label_F16CHarm_Table2_T4.Location = new System.Drawing.Point(6, 116);
+            this.label_F16CHarm_Table2_T4.Name = "label_F16CHarm_Table2_T4";
+            this.label_F16CHarm_Table2_T4.Size = new System.Drawing.Size(20, 13);
+            this.label_F16CHarm_Table2_T4.TabIndex = 3;
+            this.label_F16CHarm_Table2_T4.Text = "T4";
+            this.label_F16CHarm_Table2_T4.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // label_F16CHarm_Table2_T3
+            // 
+            this.label_F16CHarm_Table2_T3.AutoSize = true;
+            this.label_F16CHarm_Table2_T3.Location = new System.Drawing.Point(6, 89);
+            this.label_F16CHarm_Table2_T3.Name = "label_F16CHarm_Table2_T3";
+            this.label_F16CHarm_Table2_T3.Size = new System.Drawing.Size(20, 13);
+            this.label_F16CHarm_Table2_T3.TabIndex = 3;
+            this.label_F16CHarm_Table2_T3.Text = "T3";
+            // 
+            // label_F16CHarm_Table2_T5
+            // 
+            this.label_F16CHarm_Table2_T5.AutoSize = true;
+            this.label_F16CHarm_Table2_T5.Location = new System.Drawing.Point(6, 143);
+            this.label_F16CHarm_Table2_T5.Name = "label_F16CHarm_Table2_T5";
+            this.label_F16CHarm_Table2_T5.Size = new System.Drawing.Size(20, 13);
+            this.label_F16CHarm_Table2_T5.TabIndex = 3;
+            this.label_F16CHarm_Table2_T5.Text = "T5";
+            this.label_F16CHarm_Table2_T5.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // label_F16CHarm_selectedID_Table3_T2
+            // 
+            this.label_F16CHarm_selectedID_Table3_T2.AutoSize = true;
+            this.label_F16CHarm_selectedID_Table3_T2.Location = new System.Drawing.Point(32, 62);
+            this.label_F16CHarm_selectedID_Table3_T2.Name = "label_F16CHarm_selectedID_Table3_T2";
+            this.label_F16CHarm_selectedID_Table3_T2.Size = new System.Drawing.Size(25, 13);
+            this.label_F16CHarm_selectedID_Table3_T2.TabIndex = 4;
+            this.label_F16CHarm_selectedID_Table3_T2.Text = "000";
+            // 
+            // label_F16CHarm_Table3_T1
+            // 
+            this.label_F16CHarm_Table3_T1.AutoSize = true;
+            this.label_F16CHarm_Table3_T1.Location = new System.Drawing.Point(6, 35);
+            this.label_F16CHarm_Table3_T1.Name = "label_F16CHarm_Table3_T1";
+            this.label_F16CHarm_Table3_T1.Size = new System.Drawing.Size(20, 13);
+            this.label_F16CHarm_Table3_T1.TabIndex = 3;
+            this.label_F16CHarm_Table3_T1.Text = "T1";
+            // 
+            // label_F16CHarm_selectedID_Table3_T3
+            // 
+            this.label_F16CHarm_selectedID_Table3_T3.AutoSize = true;
+            this.label_F16CHarm_selectedID_Table3_T3.Location = new System.Drawing.Point(32, 89);
+            this.label_F16CHarm_selectedID_Table3_T3.Name = "label_F16CHarm_selectedID_Table3_T3";
+            this.label_F16CHarm_selectedID_Table3_T3.Size = new System.Drawing.Size(25, 13);
+            this.label_F16CHarm_selectedID_Table3_T3.TabIndex = 4;
+            this.label_F16CHarm_selectedID_Table3_T3.Text = "000";
+            // 
+            // label_F16CHarm_selectedID_Table3_T1
+            // 
+            this.label_F16CHarm_selectedID_Table3_T1.AutoSize = true;
+            this.label_F16CHarm_selectedID_Table3_T1.Location = new System.Drawing.Point(32, 35);
+            this.label_F16CHarm_selectedID_Table3_T1.Name = "label_F16CHarm_selectedID_Table3_T1";
+            this.label_F16CHarm_selectedID_Table3_T1.Size = new System.Drawing.Size(25, 13);
+            this.label_F16CHarm_selectedID_Table3_T1.TabIndex = 4;
+            this.label_F16CHarm_selectedID_Table3_T1.Text = "000";
+            // 
+            // label_F16CHarm_selectedID_Table3_T4
+            // 
+            this.label_F16CHarm_selectedID_Table3_T4.AutoSize = true;
+            this.label_F16CHarm_selectedID_Table3_T4.Location = new System.Drawing.Point(32, 116);
+            this.label_F16CHarm_selectedID_Table3_T4.Name = "label_F16CHarm_selectedID_Table3_T4";
+            this.label_F16CHarm_selectedID_Table3_T4.Size = new System.Drawing.Size(25, 13);
+            this.label_F16CHarm_selectedID_Table3_T4.TabIndex = 4;
+            this.label_F16CHarm_selectedID_Table3_T4.Text = "000";
+            // 
+            // label_F16CHarm_selectedID_Table3_T5
+            // 
+            this.label_F16CHarm_selectedID_Table3_T5.AutoSize = true;
+            this.label_F16CHarm_selectedID_Table3_T5.Location = new System.Drawing.Point(32, 143);
+            this.label_F16CHarm_selectedID_Table3_T5.Name = "label_F16CHarm_selectedID_Table3_T5";
+            this.label_F16CHarm_selectedID_Table3_T5.Size = new System.Drawing.Size(25, 13);
+            this.label_F16CHarm_selectedID_Table3_T5.TabIndex = 4;
+            this.label_F16CHarm_selectedID_Table3_T5.Text = "000";
+            // 
+            // label_F16CHarm_Table3_T2
+            // 
+            this.label_F16CHarm_Table3_T2.AutoSize = true;
+            this.label_F16CHarm_Table3_T2.Location = new System.Drawing.Point(6, 62);
+            this.label_F16CHarm_Table3_T2.Name = "label_F16CHarm_Table3_T2";
+            this.label_F16CHarm_Table3_T2.Size = new System.Drawing.Size(20, 13);
+            this.label_F16CHarm_Table3_T2.TabIndex = 3;
+            this.label_F16CHarm_Table3_T2.Text = "T2";
+            // 
+            // label_F16CHarm_Table3_T4
+            // 
+            this.label_F16CHarm_Table3_T4.AutoSize = true;
+            this.label_F16CHarm_Table3_T4.Location = new System.Drawing.Point(6, 116);
+            this.label_F16CHarm_Table3_T4.Name = "label_F16CHarm_Table3_T4";
+            this.label_F16CHarm_Table3_T4.Size = new System.Drawing.Size(20, 13);
+            this.label_F16CHarm_Table3_T4.TabIndex = 3;
+            this.label_F16CHarm_Table3_T4.Text = "T4";
+            this.label_F16CHarm_Table3_T4.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // label_F16CHarm_Table3_T3
+            // 
+            this.label_F16CHarm_Table3_T3.AutoSize = true;
+            this.label_F16CHarm_Table3_T3.Location = new System.Drawing.Point(6, 89);
+            this.label_F16CHarm_Table3_T3.Name = "label_F16CHarm_Table3_T3";
+            this.label_F16CHarm_Table3_T3.Size = new System.Drawing.Size(20, 13);
+            this.label_F16CHarm_Table3_T3.TabIndex = 3;
+            this.label_F16CHarm_Table3_T3.Text = "T3";
+            // 
+            // label_F16CHarm_Table3_T5
+            // 
+            this.label_F16CHarm_Table3_T5.AutoSize = true;
+            this.label_F16CHarm_Table3_T5.Location = new System.Drawing.Point(6, 143);
+            this.label_F16CHarm_Table3_T5.Name = "label_F16CHarm_Table3_T5";
+            this.label_F16CHarm_Table3_T5.Size = new System.Drawing.Size(20, 13);
+            this.label_F16CHarm_Table3_T5.TabIndex = 3;
+            this.label_F16CHarm_Table3_T5.Text = "T5";
+            this.label_F16CHarm_Table3_T5.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // label_F16CHarm_selectedID_Table1_Title
+            // 
+            this.label_F16CHarm_selectedID_Table1_Title.AutoSize = true;
+            this.label_F16CHarm_selectedID_Table1_Title.Location = new System.Drawing.Point(32, 16);
+            this.label_F16CHarm_selectedID_Table1_Title.Name = "label_F16CHarm_selectedID_Table1_Title";
+            this.label_F16CHarm_selectedID_Table1_Title.Size = new System.Drawing.Size(18, 13);
+            this.label_F16CHarm_selectedID_Table1_Title.TabIndex = 4;
+            this.label_F16CHarm_selectedID_Table1_Title.Text = "ID";
+            // 
+            // label_F16CHarm_Table1_T1
+            // 
+            this.label_F16CHarm_Table1_T1.AutoSize = true;
+            this.label_F16CHarm_Table1_T1.Location = new System.Drawing.Point(6, 35);
+            this.label_F16CHarm_Table1_T1.Name = "label_F16CHarm_Table1_T1";
+            this.label_F16CHarm_Table1_T1.Size = new System.Drawing.Size(20, 13);
+            this.label_F16CHarm_Table1_T1.TabIndex = 8;
+            this.label_F16CHarm_Table1_T1.Text = "T1";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(32, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(18, 13);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "ID";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(60, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(138, 13);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Surface-To-Air (SAM) Name";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(32, 16);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(18, 13);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "ID";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(60, 16);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(138, 13);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Surface-To-Air (SAM) Name";
             // 
             // Form1
             // 
@@ -3204,6 +3836,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_F16C_manual1Flare_BQ)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_F16C_manual1Chaff_BI)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_F16C_manual1Chaff_BQ)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.groupBox_F16C_harm_table1.ResumeLayout(false);
+            this.groupBox_F16C_harm_table1.PerformLayout();
+            this.groupBox_F16C_harm_table2.ResumeLayout(false);
+            this.groupBox_F16C_harm_table2.PerformLayout();
+            this.groupBox_F16C_harm_table3.ResumeLayout(false);
+            this.groupBox_F16C_harm_table3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3378,6 +4017,61 @@
         private System.Windows.Forms.NumericUpDown numericUpDown_F18C_manualCurrentSamChaff;
         private System.Windows.Forms.NumericUpDown numericUpDown_F18C_manualCurrentSamFlare;
         private System.Windows.Forms.Button button_recreateOrginalLua;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.GroupBox groupBox_F16C_harm_table1;
+        private System.Windows.Forms.GroupBox groupBox_F16C_harm_table3;
+        private System.Windows.Forms.GroupBox groupBox_F16C_harm_table2;
+        private System.Windows.Forms.ComboBox comboBox_f16cHarm5;
+        private System.Windows.Forms.ComboBox comboBox_f16cHarm4;
+        private System.Windows.Forms.ComboBox comboBox_f16cHarm3;
+        private System.Windows.Forms.ComboBox comboBox_f16cHarm2;
+        private System.Windows.Forms.ComboBox comboBox_f16cHarm1;
+        private System.Windows.Forms.ComboBox comboBox_f16cHarm15;
+        private System.Windows.Forms.ComboBox comboBox_f16cHarm14;
+        private System.Windows.Forms.ComboBox comboBox_f16cHarm13;
+        private System.Windows.Forms.ComboBox comboBox_f16cHarm12;
+        private System.Windows.Forms.ComboBox comboBox_f16cHarm11;
+        private System.Windows.Forms.ComboBox comboBox_f16cHarm10;
+        private System.Windows.Forms.ComboBox comboBox_f16cHarm9;
+        private System.Windows.Forms.ComboBox comboBox_f16cHarm8;
+        private System.Windows.Forms.ComboBox comboBox_f16cHarm7;
+        private System.Windows.Forms.ComboBox comboBox_f16cHarm6;
+        private System.Windows.Forms.Label label_F16CHarm_Table1_T5;
+        private System.Windows.Forms.Label label_F16CHarm_Table1_T3;
+        private System.Windows.Forms.Label label_F16CHarm_Table1_T4;
+        private System.Windows.Forms.Label label_F16CHarm_Table1_T2;
+        private System.Windows.Forms.Label label_F16CHarm_selectedID_Table1_T1;
+        private System.Windows.Forms.Label label_F16CHarm_samName_table1;
+        private System.Windows.Forms.Label label_F16CHarm_Table3_T5;
+        private System.Windows.Forms.Label label_F16CHarm_Table3_T3;
+        private System.Windows.Forms.Label label_F16CHarm_Table3_T4;
+        private System.Windows.Forms.Label label_F16CHarm_selectedID_Table3_T1;
+        private System.Windows.Forms.Label label_F16CHarm_Table3_T2;
+        private System.Windows.Forms.Label label_F16CHarm_selectedID_Table3_T2;
+        private System.Windows.Forms.Label label_F16CHarm_Table3_T1;
+        private System.Windows.Forms.Label label_F16CHarm_selectedID_Table3_T5;
+        private System.Windows.Forms.Label label_F16CHarm_selectedID_Table3_T3;
+        private System.Windows.Forms.Label label_F16CHarm_selectedID_Table3_T4;
+        private System.Windows.Forms.Label label_F16CHarm_Table2_T5;
+        private System.Windows.Forms.Label label_F16CHarm_Table2_T3;
+        private System.Windows.Forms.Label label_F16CHarm_Table2_T4;
+        private System.Windows.Forms.Label label_F16CHarm_Table2_T2;
+        private System.Windows.Forms.Label label_F16CHarm_selectedID_Table2_T5;
+        private System.Windows.Forms.Label label_F16CHarm_selectedID_Table2_T4;
+        private System.Windows.Forms.Label label_F16CHarm_selectedID_Table2_T1;
+        private System.Windows.Forms.Label label_F16CHarm_selectedID_Table2_T3;
+        private System.Windows.Forms.Label label_F16CHarm_Table2_T1;
+        private System.Windows.Forms.Label label_F16CHarm_selectedID_Table2_T2;
+        private System.Windows.Forms.Label label_F16CHarm_selectedID_Table1_T5;
+        private System.Windows.Forms.Label label_F16CHarm_selectedID_Table1_T4;
+        private System.Windows.Forms.Label label_F16CHarm_selectedID_Table1_T3;
+        private System.Windows.Forms.Label label_F16CHarm_selectedID_Table1_T2;
+        private System.Windows.Forms.Label label_F16CHarm_Table1_T1;
+        private System.Windows.Forms.Label label_F16CHarm_selectedID_Table1_Title;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
 

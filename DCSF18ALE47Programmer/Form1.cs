@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,17 +24,15 @@ using DCSF18ALE47Programmer.Properties;
  * Tasks Competed:
  * -Made general GUI
  * -Did some other stuff
- * -F18 import and export
- * -F16 import and export
+ * -F18 CMS import and export
+ * -F16 CMS import and export
  * 
  * 
  * TODO:
  * -Make video (maybe)
  * -Add instructions on how to add more aircraft
- *
- *
- * Bugs:
- * -When the dots in the .lua are replaced by commas (eu standard?) the program bugs out (maybe)
+ * -Add F16 Harm Import and Export
+ * -Consider adding support for A-10C II
  * 
  * 
  * Countermeasure Lua locations for DCS aircraft and other helpful paths
@@ -61,7 +60,13 @@ using DCSF18ALE47Programmer.Properties;
  * -Adjusted GUI
  * -About 2700 lines of code
  * 
+ * v3
+ * TODO: Add F16c HARM maker. Have to wait for the release of the feature
+ * -About 3610 lines of code
  * 
+ * 
+ * Bugs:
+ * None, at the moment...
  * Research:
  * https://stackoverflow.com/questions/17483563/c-sharp-reset-textbox-to-default-value
  */
@@ -78,6 +83,8 @@ namespace DCSF18ALE47Programmer
         {
             InitializeComponent();
 
+            //init the harm combo boxes
+            initF16cHarmComboBoxes();
             //sets the cultire to Englush United States so that the decimals are exported as "." instead of ","
             //https://docs.microsoft.com/en-us/dotnet/api/system.globalization.cultureinfo.currentculture?view=netcore-3.1
             //https://docs.microsoft.com/en-us/dotnet/api/system.globalization.cultureinfo?view=netcore-3.1
@@ -2233,7 +2240,221 @@ namespace DCSF18ALE47Programmer
                     MessageBox.Show("Please select your DCS.exe Location");
                 }
             }
-         }
+            else if (tabControl_mainTab.SelectedTab == tabPage3)
+            {
+                //MessageBox.Show("You were on tab 3");
+                MessageBox.Show("Export of F-16C Harm Tables is not currently supported.");
+                //must wait till you know what the lua looks like
+
+                /*
+                string[] luaExportString = {"local gettext = require(\"i_18n\")",
+                "_ = gettext.translate",
+                "",
+                "local count = 0",
+                "local function counter()",
+                "	count = count + 1",
+                "	return count",
+                "end",
+                "",
+                "ProgramNames =",
+                "{",
+                "	MAN_1 = counter(),",
+                "	MAN_2 = counter(),",
+                "	MAN_3 = counter(),",
+                "	MAN_4 = counter(),",
+                "	MAN_5 = counter(),",
+                "	MAN_6 = counter(),",
+                "	AUTO_1 = counter(),",
+                "	AUTO_2 = counter(),",
+                "	AUTO_3 = counter(),",
+                "	AUTO_4 = counter(),",
+                "	AUTO_5 = counter(),",
+                "	AUTO_6 = counter(),",
+                "}",
+                "",
+                "programs = {}",
+                "",
+                "-- Default manual presets",
+                "-- MAN 1",
+                "programs[ProgramNames.MAN_1] = {",
+                "	chaff = {",
+                "		burstQty 	= " + numericUpDown_F16C_manual1Chaff_BQ.Value + ",",
+                "		burstIntv	= " + numericUpDown_F16C_manual1Chaff_BI.Value + ",",
+                "		salvoQty	= " + numericUpDown_F16C_manual1Chaff_SQ.Value + ",",
+                "		salvoIntv	= " + numericUpDown_F16C_manual1Chaff_SI.Value + ",",
+                "	},",
+                "	flare = {",
+                "		burstQty	= " + numericUpDown_F16C_manual1Flare_BQ.Value + ",",
+                "		burstIntv	= " + numericUpDown_F16C_manual1Flare_BI.Value + ",",
+                "		salvoQty	= " + numericUpDown_F16C_manual1Flare_SQ.Value + ",",
+                "		salvoIntv	= " + numericUpDown_F16C_manual1Flare_SI.Value + ",",
+                "	},",
+                "}",
+                "",
+                "-- MAN 2",
+                "programs[ProgramNames.MAN_2] = {",
+                "	chaff = {",
+                "		burstQty 	= " + numericUpDown_F16C_manual2Chaff_BQ.Value + ",",
+                "		burstIntv	= " + numericUpDown_F16C_manual2Chaff_BI.Value + ",",
+                "		salvoQty	= " + numericUpDown_F16C_manual2Chaff_SQ.Value + ",",
+                "		salvoIntv	= " + numericUpDown_F16C_manual2Chaff_SI.Value + ",",
+                "	},",
+                "	flare = {",
+                "		burstQty	= " + numericUpDown_F16C_manual2Flare_BQ.Value + ",",
+                "		burstIntv	= " + numericUpDown_F16C_manual2Flare_BI.Value + ",",
+                "		salvoQty	= " + numericUpDown_F16C_manual2Flare_SQ.Value + ",",
+                "		salvoIntv	= " + numericUpDown_F16C_manual2Flare_SI.Value + ",",
+                "	},",
+                "}",
+                "",
+                "-- MAN 3",
+                "programs[ProgramNames.MAN_3] = {",
+                "	chaff = {",
+                "		burstQty 	= " + numericUpDown_F16C_manual3Chaff_BQ.Value + ",",
+                "		burstIntv	= " + numericUpDown_F16C_manual3Chaff_BI.Value + ",",
+                "		salvoQty	= " + numericUpDown_F16C_manual3Chaff_SQ.Value + ",",
+                "		salvoIntv	= " + numericUpDown_F16C_manual3Chaff_SI.Value + ",",
+                "	},",
+                "	flare = {",
+                "		burstQty	= " + numericUpDown_F16C_manual3Flare_BQ.Value + ",",
+                "		burstIntv	= " + numericUpDown_F16C_manual3Flare_BI.Value + ",",
+                "		salvoQty	= " + numericUpDown_F16C_manual3Flare_SQ.Value + ",",
+                "		salvoIntv	= " + numericUpDown_F16C_manual3Flare_SI.Value + ",",
+                "	},",
+                "}",
+                "",
+                "-- MAN 4",
+                "programs[ProgramNames.MAN_4] = {",
+                "	chaff = {",
+                "		burstQty 	= " + numericUpDown_F16C_manual4Chaff_BQ.Value + ",",
+                "		burstIntv	= " + numericUpDown_F16C_manual4Chaff_BI.Value + ",",
+                "		salvoQty	= " + numericUpDown_F16C_manual4Chaff_SQ.Value + ",",
+                "		salvoIntv	= " + numericUpDown_F16C_manual4Chaff_SI.Value + ",",
+                "	},",
+                "	flare = {",
+                "		burstQty	= " + numericUpDown_F16C_manual4Flare_BQ.Value + ",",
+                "		burstIntv	= " + numericUpDown_F16C_manual4Flare_BI.Value + ",",
+                "		salvoQty	= " + numericUpDown_F16C_manual4Flare_SQ.Value + ",",
+                "		salvoIntv	= " + numericUpDown_F16C_manual4Flare_SI.Value + ",",
+                "	},",
+                "}",
+                "",
+                "-- MAN 5 - Wall Dispense button, Panic",
+                "programs[ProgramNames.MAN_5] = {",
+                "	chaff = {",
+                "		burstQty 	= " + numericUpDown_F16C_manual5Chaff_BQ.Value + ",",
+                "		burstIntv	= " + numericUpDown_F16C_manual5Chaff_BI.Value + ",",
+                "		salvoQty	= " + numericUpDown_F16C_manual5Chaff_SQ.Value + ",",
+                "		salvoIntv	= " + numericUpDown_F16C_manual5Chaff_SI.Value + ",",
+                "	},",
+                "	flare = {",
+                "		burstQty	= " + numericUpDown_F16C_manual5Flare_BQ.Value + ",",
+                "		burstIntv	= " + numericUpDown_F16C_manual5Flare_BI.Value + ",",
+                "		salvoQty	= " + numericUpDown_F16C_manual5Flare_SQ.Value + ",",
+                "		salvoIntv	= " + numericUpDown_F16C_manual5Flare_SI.Value + ",",
+                "	},",
+                "}",
+                "",
+                "-- MAN 6 - BYPASS mode",
+                "programs[ProgramNames.MAN_6] = {",
+                "	chaff = {",
+                "		burstQty 	= " + numericUpDown_F16C_manual6Chaff_BQ.Value + ",",
+                "		burstIntv	= " + numericUpDown_F16C_manual6Chaff_BI.Value + ",",
+                "		salvoQty	= " + numericUpDown_F16C_manual6Chaff_SQ.Value + ",",
+                "		salvoIntv	= " + numericUpDown_F16C_manual6Chaff_SI.Value + ",",
+                "	},",
+                "	flare = {",
+                "		burstQty	= " + numericUpDown_F16C_manual6Flare_BQ.Value + ",",
+                "		burstIntv	= " + numericUpDown_F16C_manual6Flare_BI.Value + ",",
+                "		salvoQty	= " + numericUpDown_F16C_manual6Flare_SQ.Value + ",",
+                "		salvoIntv	= " + numericUpDown_F16C_manual6Flare_SI.Value + ",",
+                "	},",
+                "}",
+                "",
+                "-- Auto presets",
+                "-- Old generation radar SAM",
+                "programs[ProgramNames.AUTO_1] = {",
+                "	chaff = {",
+                "		burstQty 	= " + numericUpDown_F16C_oldSamChaff_BQ.Value + ",",
+                "		burstIntv	= " + numericUpDown_F16C_oldSamChaff_BI.Value + ",",
+                "		salvoQty	= " + numericUpDown_F16C_oldSamChaff_SQ.Value + ",",
+                "		salvoIntv	= " + numericUpDown_F16C_oldSamChaff_SI.Value + ",",
+                "	},",
+                "	flare = {",
+                "		burstQty	= " + numericUpDown_F16C_oldSamFlare_BQ.Value + ",",
+                "		burstIntv	= " + numericUpDown_F16C_oldSamFlare_BI.Value + ",",
+                "		salvoQty	= " + numericUpDown_F16C_oldSamFlare_SQ.Value + ",",
+                "		salvoIntv	= " + numericUpDown_F16C_oldSamFlare_SI.Value + ",",
+                "	},",
+                "}",
+                "",
+                "-- Current generation radar SAM",
+                "programs[ProgramNames.AUTO_2] = {",
+                "	chaff = {",
+                "		burstQty 	= " + numericUpDown_F16C_currentSamChaff_BQ.Value + ",",
+                "		burstIntv	= " + numericUpDown_F16C_currentSamChaff_BI.Value + ",",
+                "		salvoQty	= " + numericUpDown_F16C_currentSamChaff_SQ.Value + ",",
+                "		salvoIntv	= " + numericUpDown_F16C_currentSamChaff_SI.Value + ",",
+                "	},",
+                "	flare = {",
+                "		burstQty	= " + numericUpDown_F16C_currentSamFlare_BQ.Value + ",",
+                "		burstIntv	= " + numericUpDown_F16C_currentSamFlare_BI.Value + ",",
+                "		salvoQty	= " + numericUpDown_F16C_currentSamFlare_SQ.Value + ",",
+                "		salvoIntv	= " + numericUpDown_F16C_currentSamFlare_SI.Value + ",",
+                "	},",
+                "}",
+                "",
+                "-- IR SAM",
+                "programs[ProgramNames.AUTO_3] = {",
+                "	chaff = {",
+                "		burstQty 	= " + numericUpDown_F16C_irSamChaff_BQ.Value + ",",
+                "		burstIntv	= " + numericUpDown_F16C_irSamChaff_BI.Value + ",",
+                "		salvoQty	= " + numericUpDown_F16C_irSamChaff_SQ.Value + ",",
+                "		salvoIntv	= " + numericUpDown_F16C_irSamChaff_SI.Value + ",",
+                "	},",
+                "	flare = {",
+                "		burstQty	= " + numericUpDown_F16C_irSamFlare_BQ.Value + ",",
+                "		burstIntv	= " + numericUpDown_F16C_irSamFlare_BI.Value + ",",
+                "		salvoQty	= " + numericUpDown_F16C_irSamFlare_SQ.Value + ",",
+                "		salvoIntv	= " + numericUpDown_F16C_irSamFlare_SI.Value + ",",
+                "	},",
+                "}",
+                "",
+                "AN_ALE_47_FAILURE_TOTAL = 0",
+                "AN_ALE_47_FAILURE_CONTAINER	= 1",
+                "",
+                "Damage = {	{Failure = AN_ALE_47_FAILURE_TOTAL, Failure_name = \"AN_ALE_47_FAILURE_TOTAL\", Failure_editor_name = _(\"AN/ALE-47 total failure\"),  Element = 10, Integrity_Treshold = 0.5, work_time_to_fail_probability = 0.5, work_time_to_fail = 3600*300},",
+                "			{Failure = AN_ALE_47_FAILURE_CONTAINER, Failure_name = \"AN_ALE_47_FAILURE_CONTAINER\", Failure_editor_name = _(\"AN/ALE-47 container failure\"),  Element = 23, Integrity_Treshold = 0.75, work_time_to_fail_probability = 0.5, work_time_to_fail = 3600*300},",
+                "}",
+                "",
+                "need_to_be_closed = true -- lua_state  will be closed in post_initialize()",
+                "--Exported via Bailey's CMS Editor on " + System.DateTime.Now};
+
+                if (isExportEnabled == true)
+                {
+                    System.IO.Directory.CreateDirectory(cmdsLua_F16C_FolderPath);
+                    System.IO.File.WriteAllLines(cmdsLua_F16C_fullPath, luaExportString);
+
+                    //https://stackoverflow.com/questions/5920882/file-move-does-not-work-file-already-exists
+                    System.IO.Directory.CreateDirectory(exportPathBackup_F16C);
+                    if (File.Exists(exportPathBackup_F16C + "\\CMDS_ALE47.lua"))
+                    {
+                        File.Delete(exportPathBackup_F16C + "\\CMDS_ALE47.lua");
+                    }
+                    System.IO.File.WriteAllLines(exportPathBackup_F16C + "\\CMDS_ALE47.txt", luaExportString);
+                    File.Move(exportPathBackup_F16C + "\\CMDS_ALE47.txt", Path.ChangeExtension(exportPathBackup_F16C + "\\CMDS_ALE47.txt", ".lua"));
+
+
+                    MessageBox.Show("Your F-16C CMDS file was exported to \r\n" + cmdsLua_F16C_fullPath + "\r\n\r\n"
+                        + "Your F-16C CMDS backup file was exported to \r\n" + exportPathBackup_F16C + "\\CMDS_ALE47.lua");
+                }
+                else
+                {
+                    MessageBox.Show("Please select your DCS.exe Location");
+                }
+                */
+            }
+        }
 
 
         public void F18C_makeDefaultLua()
@@ -2546,6 +2767,205 @@ namespace DCSF18ALE47Programmer
             }
         }
 
+        public void F16C_makeDefaultHarmLua()
+        {
+            MessageBox.Show("Re-Creation of F-16C Harm Tables is not currently supported.");
+            //change the below to harm specific stuff.
+            /*
+            string[] luaExportString = {"local gettext = require(\"i_18n\")",
+                "_ = gettext.translate",
+                "",
+                "local count = 0",
+                "local function counter()",
+                "	count = count + 1",
+                "	return count",
+                "end",
+                "",
+                "ProgramNames =",
+                "{",
+                "	MAN_1 = counter(),",
+                "	MAN_2 = counter(),",
+                "	MAN_3 = counter(),",
+                "	MAN_4 = counter(),",
+                "	MAN_5 = counter(),",
+                "	MAN_6 = counter(),",
+                "	AUTO_1 = counter(),",
+                "	AUTO_2 = counter(),",
+                "	AUTO_3 = counter(),",
+                "	AUTO_4 = counter(),",
+                "	AUTO_5 = counter(),",
+                "	AUTO_6 = counter(),",
+                "}",
+                "",
+                "programs = {}",
+                "",
+                "-- Default manual presets",
+                "-- MAN 1",
+                "programs[ProgramNames.MAN_1] = {",
+                "	chaff = {",
+                "		burstQty 	= 1,",
+                "		burstIntv	= 0.02,",
+                "		salvoQty	= 10,",
+                "		salvoIntv	= 1.0,",
+                "	},",
+                "	flare = {",
+                "		burstQty	= 1,",
+                "		burstIntv	= 0.02,",
+                "		salvoQty	= 10,",
+                "		salvoIntv	= 1.0,",
+                "	},",
+                "}",
+                "",
+                "-- MAN 2",
+                "programs[ProgramNames.MAN_2] = {",
+                "	chaff = {",
+                "		burstQty 	= 1,",
+                "		burstIntv	= 0.02,",
+                "		salvoQty	= 10,",
+                "		salvoIntv	= 0.5,",
+                "	},",
+                "	flare = {",
+                "		burstQty	= 1,",
+                "		burstIntv	= 0.02,",
+                "		salvoQty	= 10,",
+                "		salvoIntv	= 0.5,",
+                "	},",
+                "}",
+                "",
+                "-- MAN 3",
+                "programs[ProgramNames.MAN_3] = {",
+                "	chaff = {",
+                "		burstQty 	= 2,",
+                "		burstIntv	= 0.1,",
+                "		salvoQty	= 5,",
+                "		salvoIntv	= 1.0,",
+                "	},",
+                "	flare = {",
+                "		burstQty	= 2,",
+                "		burstIntv	= 0.1,",
+                "		salvoQty	= 5,",
+                "		salvoIntv	= 1.0,",
+                "	},",
+                "}",
+                "",
+                "-- MAN 4",
+                "programs[ProgramNames.MAN_4] = {",
+                "	chaff = {",
+                "		burstQty 	= 2,",
+                "		burstIntv	= 0.1,",
+                "		salvoQty	= 5,",
+                "		salvoIntv	= 0.5,",
+                "	},",
+                "	flare = {",
+                "		burstQty	= 2,",
+                "		burstIntv	= 0.1,",
+                "		salvoQty	= 5,",
+                "		salvoIntv	= 0.5,",
+                "	},",
+                "}",
+                "",
+                "-- MAN 5 - Wall Dispense button, Panic",
+                "programs[ProgramNames.MAN_5] = {",
+                "	chaff = {",
+                "		burstQty 	= 2,",
+                "		burstIntv	= 0.05,",
+                "		salvoQty	= 20,",
+                "		salvoIntv	= 0.75,",
+                "	},",
+                "	flare = {",
+                "		burstQty	= 2,",
+                "		burstIntv	= 0.05,",
+                "		salvoQty	= 20,",
+                "		salvoIntv	= 0.75,",
+                "	},",
+                "}",
+                "",
+                "-- MAN 6 - BYPASS mode",
+                "programs[ProgramNames.MAN_6] = {",
+                "	chaff = {",
+                "		burstQty 	= 1,",
+                "		burstIntv	= 0.02,",
+                "		salvoQty	= 1,",
+                "		salvoIntv	= 0.5,",
+                "	},",
+                "	flare = {",
+                "		burstQty	= 1,",
+                "		burstIntv	= 0.02,",
+                "		salvoQty	= 1,",
+                "		salvoIntv	= 0.5,",
+                "	},",
+                "}",
+                "",
+                "-- Auto presets",
+                "-- Old generation radar SAM",
+                "programs[ProgramNames.AUTO_1] = {",
+                "	chaff = {",
+                "		burstQty 	= 1,",
+                "		burstIntv	= 0.02,",
+                "		salvoQty	= 1,",
+                "		salvoIntv	= 0.5,",
+                "	},",
+                "	flare = {",
+                "		burstQty	= 1,",
+                "		burstIntv	= 0.02,",
+                "		salvoQty	= 1,",
+                "		salvoIntv	= 0.5,",
+                "	},",
+                "}",
+                "",
+                "-- Current generation radar SAM",
+                "programs[ProgramNames.AUTO_2] = {",
+                "	chaff = {",
+                "		burstQty 	= 1,",
+                "		burstIntv	= 0.02,",
+                "		salvoQty	= 1,",
+                "		salvoIntv	= 0.5,",
+                "	},",
+                "	flare = {",
+                "		burstQty	= 1,",
+                "		burstIntv	= 0.02,",
+                "		salvoQty	= 1,",
+                "		salvoIntv	= 0.5,",
+                "	},",
+                "}",
+                "",
+                "-- IR SAM",
+                "programs[ProgramNames.AUTO_3] = {",
+                "	chaff = {",
+                "		burstQty 	= 1,",
+                "		burstIntv	= 0.02,",
+                "		salvoQty	= 1,",
+                "		salvoIntv	= 0.5,",
+                "	},",
+                "	flare = {",
+                "		burstQty	= 1,",
+                "		burstIntv	= 0.02,",
+                "		salvoQty	= 1,",
+                "		salvoIntv	= 0.5,",
+                "	},",
+                "}",
+                "",
+                "AN_ALE_47_FAILURE_TOTAL = 0",
+                "AN_ALE_47_FAILURE_CONTAINER	= 1",
+                "",
+                "Damage = {	{Failure = AN_ALE_47_FAILURE_TOTAL, Failure_name = \"AN_ALE_47_FAILURE_TOTAL\", Failure_editor_name = _(\"AN/ALE-47 total failure\"),  Element = 10, Integrity_Treshold = 0.5, work_time_to_fail_probability = 0.5, work_time_to_fail = 3600*300},",
+                "			{Failure = AN_ALE_47_FAILURE_CONTAINER, Failure_name = \"AN_ALE_47_FAILURE_CONTAINER\", Failure_editor_name = _(\"AN/ALE-47 container failure\"),  Element = 23, Integrity_Treshold = 0.75, work_time_to_fail_probability = 0.5, work_time_to_fail = 3600*300},",
+                "}",
+                "",
+                "need_to_be_closed = true -- lua_state  will be closed in post_initialize()",
+                "--Exported via Bailey's CMS Editor on " + System.DateTime.Now};
+
+            if (isExportEnabled == true)
+            {
+                System.IO.Directory.CreateDirectory(cmdsLua_F16C_FolderPath);
+                System.IO.File.WriteAllLines(cmdsLua_F16C_fullPath, luaExportString);
+                //https://stackoverflow.com/questions/5920882/file-move-does-not-work-file-already-exists
+            }
+            else
+            {
+                MessageBox.Show("Please select your DCS.exe Location");
+            }*/
+        }
 
         public void loadAllCmsAfterUserSelectedExe()//loads the countermeasure files that the user has and the program supports
         {
@@ -2626,8 +3046,8 @@ namespace DCSF18ALE47Programmer
             "Thank you to Arctic Fox for the idea and collaboration." +
             "\r\n" + "\r\n" +
             "~Bailey" + "\r\n" +
-            "24JUL2020" + "\r\n" +
-            "v2.0", "DCS CMS Editor by Bailey READMEE");
+            "September 2020" + "\r\n" +
+            "v3.0", "DCS CMS Editor by Bailey READMEE");
         }
 
        
@@ -2720,41 +3140,471 @@ namespace DCSF18ALE47Programmer
 
         private void button_recreateOrginalLua_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to clear and reset the DCS CMDS Lua for this aircraft? This cannot be undone.", "Are you sure?", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+            if (tabControl_mainTab.SelectedTab == tabPage1)//this is the f18 cms tab
             {
-                //do something
-                if (tabControl_mainTab.SelectedTab == tabPage1)//this is the f18 tab
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to clear and reset the F-18C CMS Lua? This cannot be undone.", "Are you sure?", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    //insert method here
                     if (cmdsLua_F18C_FolderPath == null)
                     {
-                       MessageBox.Show("DCS.exe has not been set. Please select your DCS.exe location or try a different aircraft.");
+                        MessageBox.Show("DCS.exe has not been set. Please select your DCS.exe location or try a different aircraft.");
                     }
                     else
                     {
                         F18C_makeDefaultLua();
                         MessageBox.Show("Your F-18C CMDS file was exported to \r\n" + cmdsLua_F18C_fullPath + ".");
                     }
+
                 }
-                else if(tabControl_mainTab.SelectedTab == tabPage2)//this is the f16 tab
-                {
-                    //insert method here
-                    if (cmdsLua_F16C_FolderPath == null)
-                    {
-                        MessageBox.Show("DCS.exe has not been set. Please select your DCS.exe location or try a different aircraft.");
-                    }
-                    else
-                    {
-                        F16C_makeDefaultLua();
-                        MessageBox.Show("Your F-16C CMDS file was exported to \r\n" + cmdsLua_F16C_fullPath + ".");
-                    }
+                else if (dialogResult == DialogResult.No)
+                { 
+                    //do nothing
                 }
             }
-            else if (dialogResult == DialogResult.No)
+
+
+            else if (tabControl_mainTab.SelectedTab == tabPage2)//this is the f16 cms tab
             {
-                //do something else
+                    DialogResult dialogResult = MessageBox.Show("Are you sure you want to clear and reset the F-16C CMS Lua? This cannot be undone.", "Are you sure?", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        if (cmdsLua_F16C_FolderPath == null)
+                        {
+                            MessageBox.Show("DCS.exe has not been set. Please select your DCS.exe location or try a different aircraft.");
+                        }
+                        else
+                        {
+                            F16C_makeDefaultLua();
+                            MessageBox.Show("Your F-16C CMDS file was exported to \r\n" + cmdsLua_F16C_fullPath + ".");
+                        }
+                    }
+                    else if (dialogResult == DialogResult.No)
+                    { 
+                        //do nothing
+                    }
             }
+                else if (tabControl_mainTab.SelectedTab == tabPage3)//this is the f16 harm tab
+                {
+                    DialogResult dialogResult = MessageBox.Show("Are you sure you want to clear and reset the F-16C HARM Lua? This cannot be undone.", "Are you sure?", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        if (cmdsLua_F16C_FolderPath == null)
+                        {
+                            MessageBox.Show("DCS.exe has not been set. Please select your DCS.exe location or try a different aircraft.");
+                        }
+                        else
+                        {
+                            F16C_makeDefaultHarmLua();
+                            //enable the below when the feature is supported.
+                            //MessageBox.Show("Your F-16C HARM file was exported to \r\n" + cmdsLua_F16C_fullPath + ".");//this should be the harm path
+                        }
+                    }
+                    else if (dialogResult == DialogResult.No)
+                    {
+                        //do nothing
+                    }
+                }
+        }
+
+        private void initF16cHarmComboBoxes()
+        {
+            //https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.listcontrol.displaymember?view=netcore-3.1
+            //i have no idea how this works
+
+            //make the array of SAMs. Add new sams here.
+            ArrayList arrayOfSamsForF16cHarm2 = new ArrayList();
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("Empty", "000"));//0
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("SA-2_TR (SNR-75V; ID 126)", "126"));//1
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("SA-3_SR (S125_SR_P_19; ID 122)", "122"));//2
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("SA-3_TR (S125_TR_SNR; ID 123)", "123"));//3
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("SA-6 (Kub_STR_9S91; ID 108)", "108"));//4
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("SA-8 (Osa_9A33; ID 117)", "117"));//5
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("SA-10_SR (S300PS_SR_5N66M; ID 103)", "103"));//6
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("SA-10_SR (S300PS_SR_64H6E; ID 104)", "104"));//7
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("SA-10_TR (S300PS_TR_30N6; ID 110)", "110"));//8
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("SA-11_SR (Buk_SR_9S18M1; ID 107)", "107"));//9
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("SA-11_TR (Buk_LN_9A310M1; ID 115)", "115"));//10
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("SA-13 (Strela_9A35M3; ID 118)", "118"));//11
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("SA-15 (Tor_9A331; ID 119)", "119"));//12
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("SA-19 (Tunguska_2S6; ID 120)", "120"));//13
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("ZSU-23-4 (ZSU_23_4_Shilka; ID 121)", "121"));//14
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("Dog Ear Radar (Dog Ear; ID 109)", "109"));//15
+
+            //making each combo box do something (shrug)
+            //https://stackoverflow.com/questions/20024907/multiple-combobox-controls-from-the-same-dataset
+            comboBox_f16cHarm1.DataSource = arrayOfSamsForF16cHarm2;
+            comboBox_f16cHarm1.BindingContext = new BindingContext();
+            comboBox_f16cHarm1.DisplayMember = "LongName";
+            comboBox_f16cHarm1.ValueMember = "ShortName";
+
+            comboBox_f16cHarm2.DataSource = arrayOfSamsForF16cHarm2;
+            comboBox_f16cHarm2.BindingContext = new BindingContext();
+            comboBox_f16cHarm2.DisplayMember = "LongName";
+            comboBox_f16cHarm2.ValueMember = "ShortName";
+
+            comboBox_f16cHarm3.DataSource = arrayOfSamsForF16cHarm2;
+            comboBox_f16cHarm3.BindingContext = new BindingContext();
+            comboBox_f16cHarm3.DisplayMember = "LongName";
+            comboBox_f16cHarm3.ValueMember = "ShortName";
+
+            comboBox_f16cHarm4.DataSource = arrayOfSamsForF16cHarm2;
+            comboBox_f16cHarm4.BindingContext = new BindingContext();
+            comboBox_f16cHarm4.DisplayMember = "LongName";
+            comboBox_f16cHarm4.ValueMember = "ShortName";
+
+            comboBox_f16cHarm5.DataSource = arrayOfSamsForF16cHarm2;
+            comboBox_f16cHarm5.BindingContext = new BindingContext();
+            comboBox_f16cHarm5.DisplayMember = "LongName";
+            comboBox_f16cHarm5.ValueMember = "ShortName";
+
+            comboBox_f16cHarm6.DataSource = arrayOfSamsForF16cHarm2;
+            comboBox_f16cHarm6.BindingContext = new BindingContext();
+            comboBox_f16cHarm6.DisplayMember = "LongName";
+            comboBox_f16cHarm6.ValueMember = "ShortName";
+
+            comboBox_f16cHarm7.DataSource = arrayOfSamsForF16cHarm2;
+            comboBox_f16cHarm7.BindingContext = new BindingContext();
+            comboBox_f16cHarm7.DisplayMember = "LongName";
+            comboBox_f16cHarm7.ValueMember = "ShortName";
+
+            comboBox_f16cHarm8.DataSource = arrayOfSamsForF16cHarm2;
+            comboBox_f16cHarm8.BindingContext = new BindingContext();
+            comboBox_f16cHarm8.DisplayMember = "LongName";
+            comboBox_f16cHarm8.ValueMember = "ShortName";
+
+            comboBox_f16cHarm9.DataSource = arrayOfSamsForF16cHarm2;
+            comboBox_f16cHarm9.BindingContext = new BindingContext();
+            comboBox_f16cHarm9.DisplayMember = "LongName";
+            comboBox_f16cHarm9.ValueMember = "ShortName";
+
+            comboBox_f16cHarm10.DataSource = arrayOfSamsForF16cHarm2;
+            comboBox_f16cHarm10.BindingContext = new BindingContext();
+            comboBox_f16cHarm10.DisplayMember = "LongName";
+            comboBox_f16cHarm10.ValueMember = "ShortName";
+
+            comboBox_f16cHarm11.DataSource = arrayOfSamsForF16cHarm2;
+            comboBox_f16cHarm11.BindingContext = new BindingContext();
+            comboBox_f16cHarm11.DisplayMember = "LongName";
+            comboBox_f16cHarm11.ValueMember = "ShortName";
+
+            comboBox_f16cHarm12.DataSource = arrayOfSamsForF16cHarm2;
+            comboBox_f16cHarm12.BindingContext = new BindingContext();
+            comboBox_f16cHarm12.DisplayMember = "LongName";
+            comboBox_f16cHarm12.ValueMember = "ShortName";
+
+            comboBox_f16cHarm13.DataSource = arrayOfSamsForF16cHarm2;
+            comboBox_f16cHarm13.BindingContext = new BindingContext();
+            comboBox_f16cHarm13.DisplayMember = "LongName";
+            comboBox_f16cHarm13.ValueMember = "ShortName";
+
+            comboBox_f16cHarm14.DataSource = arrayOfSamsForF16cHarm2;
+            comboBox_f16cHarm14.BindingContext = new BindingContext();
+            comboBox_f16cHarm14.DisplayMember = "LongName";
+            comboBox_f16cHarm14.ValueMember = "ShortName";
+
+            comboBox_f16cHarm15.DataSource = arrayOfSamsForF16cHarm2;
+            comboBox_f16cHarm15.BindingContext = new BindingContext();
+            comboBox_f16cHarm15.DisplayMember = "LongName";
+            comboBox_f16cHarm15.ValueMember = "ShortName";
+
+            //indexes for the defaults as of 20sep2020
+            //8,7,6,10,9
+            //13,12,5,14,15
+            //3,2,4,1,11
+
+            //setting the default selected values for the text boxes
+            comboBox_f16cHarm1.SelectedIndex = 8;
+            comboBox_f16cHarm2.SelectedIndex = 7;
+            comboBox_f16cHarm3.SelectedIndex = 4;
+            comboBox_f16cHarm4.SelectedIndex = 10;
+            comboBox_f16cHarm5.SelectedIndex = 9;
+
+            comboBox_f16cHarm6.SelectedIndex = 13;
+            comboBox_f16cHarm7.SelectedIndex = 12;
+            comboBox_f16cHarm8.SelectedIndex = 5;
+            comboBox_f16cHarm9.SelectedIndex = 14;
+            comboBox_f16cHarm10.SelectedIndex = 15;
+
+            comboBox_f16cHarm11.SelectedIndex = 3;
+            comboBox_f16cHarm12.SelectedIndex = 2;
+            comboBox_f16cHarm13.SelectedIndex = 4;
+            comboBox_f16cHarm14.SelectedIndex = 1;
+            comboBox_f16cHarm15.SelectedIndex = 11;
+
+            updateHarmIdLabels();//update the label called ID
+
+        }
+
+        public class samForF16Harm
+            //https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.listcontrol.displaymember?view=netcore-3.1
+            //i have no idea how this works
+        {
+            private string myShortName;
+            private string myLongName;
+
+            public samForF16Harm(string strLongName, string strShortName)
+            {
+
+                this.myShortName = strShortName;
+                this.myLongName = strLongName;
+            }
+
+            public string ShortName
+            {
+                get
+                {
+                    return myShortName;
+                }
+            }
+
+            public string LongName
+            {
+
+                get
+                {
+                    return myLongName;
+                }
+            }
+        }
+
+        private void updateHarmIdLabels()
+        {
+            //https://stackoverflow.com/questions/15982929/how-to-get-valuemember-value-from-combobox-c-sharp-winforms
+            //displays the ID in a text label
+            //TODO: Rename the 'comboBox_f16cHarm1' to 'comboBox_f16CHarm_table1_1'
+            //apply the above convention to all harm combo boxes
+
+            //this method is not directly in use on lead becuase the combobox changes from null to the defaults and 
+            //causes and error because the string requested below starts as null
+            label_F16CHarm_selectedID_Table1_T1.Text = comboBox_f16cHarm1.SelectedValue.ToString();
+            label_F16CHarm_selectedID_Table1_T2.Text = comboBox_f16cHarm2.SelectedValue.ToString();
+            label_F16CHarm_selectedID_Table1_T3.Text = comboBox_f16cHarm3.SelectedValue.ToString();
+            label_F16CHarm_selectedID_Table1_T4.Text = comboBox_f16cHarm4.SelectedValue.ToString();
+            label_F16CHarm_selectedID_Table1_T5.Text = comboBox_f16cHarm5.SelectedValue.ToString();
+
+            label_F16CHarm_selectedID_Table2_T1.Text = comboBox_f16cHarm6.SelectedValue.ToString();
+            label_F16CHarm_selectedID_Table2_T2.Text = comboBox_f16cHarm7.SelectedValue.ToString();
+            label_F16CHarm_selectedID_Table2_T3.Text = comboBox_f16cHarm8.SelectedValue.ToString();
+            label_F16CHarm_selectedID_Table2_T4.Text = comboBox_f16cHarm9.SelectedValue.ToString();
+            label_F16CHarm_selectedID_Table2_T5.Text = comboBox_f16cHarm10.SelectedValue.ToString();
+
+            label_F16CHarm_selectedID_Table3_T1.Text = comboBox_f16cHarm11.SelectedValue.ToString();
+            label_F16CHarm_selectedID_Table3_T2.Text = comboBox_f16cHarm12.SelectedValue.ToString();
+            label_F16CHarm_selectedID_Table3_T3.Text = comboBox_f16cHarm13.SelectedValue.ToString();
+            label_F16CHarm_selectedID_Table3_T4.Text = comboBox_f16cHarm14.SelectedValue.ToString();
+            label_F16CHarm_selectedID_Table3_T5.Text = comboBox_f16cHarm15.SelectedValue.ToString();
+        }
+
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox_f16cHarm1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox_f16cHarm1.SelectedValue.ToString() == null)//if tje box in null, dont do anything
+            {
+                return;
+            }
+            else//if the comboBox has something selected, change the ID number label
+            {
+                //updateHarmIdLabels();
+                label_F16CHarm_selectedID_Table1_T1.Text = comboBox_f16cHarm1.SelectedValue.ToString();
+            }
+           
+        }
+
+        private void comboBox_f16cHarm2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox_f16cHarm2.SelectedValue.ToString() == null)
+            {
+                return;
+            }
+            else
+            {
+                //updateHarmIdLabels();
+                label_F16CHarm_selectedID_Table1_T2.Text = comboBox_f16cHarm2.SelectedValue.ToString();
+            }
+        }
+
+        private void comboBox_f16cHarm3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox_f16cHarm3.SelectedValue.ToString() == null)
+            {
+                return;
+            }
+            else
+            {
+                //updateHarmIdLabels();
+                label_F16CHarm_selectedID_Table1_T3.Text = comboBox_f16cHarm3.SelectedValue.ToString();
+            }
+        }
+
+        private void comboBox_f16cHarm4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox_f16cHarm4.SelectedValue.ToString() == null)
+            {
+                return;
+            }
+            else
+            {
+                //updateHarmIdLabels();
+                label_F16CHarm_selectedID_Table1_T4.Text = comboBox_f16cHarm4.SelectedValue.ToString();
+            }
+        }
+
+        private void comboBox_f16cHarm5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox_f16cHarm5.SelectedValue.ToString() == null)
+            {
+                return;
+            }
+            else
+            {
+                //updateHarmIdLabels();
+                label_F16CHarm_selectedID_Table1_T5.Text = comboBox_f16cHarm5.SelectedValue.ToString();
+            }
+        }
+
+        private void comboBox_f16cHarm6_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox_f16cHarm6.SelectedValue.ToString() == null)
+            {
+                return;
+            }
+            else
+            {
+                //updateHarmIdLabels();
+                label_F16CHarm_selectedID_Table2_T1.Text = comboBox_f16cHarm6.SelectedValue.ToString();
+            }
+        }
+
+        private void comboBox_f16cHarm7_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox_f16cHarm7.SelectedValue.ToString() == null)
+            {
+                return;
+            }
+            else
+            {
+                //updateHarmIdLabels();
+                label_F16CHarm_selectedID_Table2_T2.Text = comboBox_f16cHarm7.SelectedValue.ToString();
+            }
+        }
+
+        private void comboBox_f16cHarm8_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox_f16cHarm8.SelectedValue.ToString() == null)
+            {
+                return;
+            }
+            else
+            {
+                //updateHarmIdLabels();
+                label_F16CHarm_selectedID_Table2_T3.Text = comboBox_f16cHarm8.SelectedValue.ToString();
+            }
+        }
+
+        private void comboBox_f16cHarm9_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox_f16cHarm9.SelectedValue.ToString() == null)
+            {
+                return;
+            }
+            else
+            {
+                //updateHarmIdLabels();
+                label_F16CHarm_selectedID_Table2_T4.Text = comboBox_f16cHarm9.SelectedValue.ToString();
+            }
+        }
+
+        private void comboBox_f16cHarm10_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox_f16cHarm10.SelectedValue.ToString() == null)
+            {
+                return;
+            }
+            else
+            {
+                //updateHarmIdLabels();
+                label_F16CHarm_selectedID_Table2_T5.Text = comboBox_f16cHarm10.SelectedValue.ToString();
+            }
+        }
+
+        private void comboBox_f16cHarm11_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox_f16cHarm11.SelectedValue.ToString() == null)
+            {
+                return;
+            }
+            else
+            {
+                //updateHarmIdLabels();
+                label_F16CHarm_selectedID_Table3_T1.Text = comboBox_f16cHarm11.SelectedValue.ToString();
+            }
+        }
+
+        private void comboBox_f16cHarm12_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox_f16cHarm12.SelectedValue.ToString() == null)
+            {
+                return;
+            }
+            else
+            {
+                //updateHarmIdLabels();
+                label_F16CHarm_selectedID_Table3_T2.Text = comboBox_f16cHarm12.SelectedValue.ToString();
+            }
+        }
+
+        private void comboBox_f16cHarm13_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox_f16cHarm13.SelectedValue.ToString() == null)
+            {
+                return;
+            }
+            else
+            {
+                //updateHarmIdLabels();
+                label_F16CHarm_selectedID_Table3_T3.Text = comboBox_f16cHarm13.SelectedValue.ToString();
+            }
+        }
+
+        private void comboBox_f16cHarm14_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox_f16cHarm14.SelectedValue.ToString() == null)
+            {
+                return;
+            }
+            else
+            {
+                //updateHarmIdLabels();
+                label_F16CHarm_selectedID_Table3_T4.Text = comboBox_f16cHarm14.SelectedValue.ToString();
+            }
+        }
+
+        private void comboBox_f16cHarm15_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox_f16cHarm15.SelectedValue.ToString() == null)
+            {
+                return;
+            }
+            else
+            {
+                //updateHarmIdLabels();
+                label_F16CHarm_selectedID_Table3_T5.Text = comboBox_f16cHarm15.SelectedValue.ToString();
+            }
+        }
+
+        private void label_F16CHarm_samName_table1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
