@@ -17,7 +17,7 @@ using DCSF18ALE47Programmer.Properties;
 
 /* Hello and welcome to the DCS CMS Editor (Countermeasures Editor) (name not yet finalized)
  * This utility will be able to load, modify, and export various countermeasure programs for
- * DCS aircraft like the F/A-18C and F-16C (hopefully). This program are for prople who
+ * DCS aircraft like the F/A-18C, F-16C, and A-10C. This program are for people who
  * can't wait for the ED DCS implementation of the DTC features that you can find on the JF-17.
  * 
  * 
@@ -26,7 +26,7 @@ using DCSF18ALE47Programmer.Properties;
  * -Did some other stuff
  * -F18 CMS import and export
  * -F16 CMS import and export
- * 
+ * -A10C CMS import and export
  * 
  * TODO:
  * -Make video (maybe)
@@ -61,8 +61,13 @@ using DCSF18ALE47Programmer.Properties;
  * -About 2700 lines of code
  * 
  * v3
- * TODO: Add F16c HARM maker. Have to wait for the release of the feature
- * -About 3610 lines of code
+ * -Added DCS A-10C
+ * -Added Preliminary F-16C HARM Table Export support. Please visit the 'Enable Editing Of Default DED HARM Tables Via A Lua File' thread on the ED forums to ask ED's help to implement the feature. https://forums.eagle.ru/showthread.php?t=286963
+ * -About 5408 lines of code
+ * 
+ * v4
+ * Add F16c HARM maker. Have to wait for the release of the feature
+ * Add A-10C II Tank Killer support. Have to wait for the release of the feature
  * 
  * 
  * Bugs:
@@ -82,6 +87,11 @@ namespace DCSF18ALE47Programmer
         public Form1()
         {
             InitializeComponent();
+
+            //numericUpDown_A10C_programA_chaff.Controls[0].Hide();//this should hide the numeric updown arrows on spawn. nevermind, this method does weird stuff
+            //numericUpDown_A10C_programA_chaff.Controls[0].Visible = false;//this should hide the numeric updown arrows on spawn. nevermind, this method does weird stuff
+            //numericUpDown_A10C_programA_chaff.Controls.RemoveAt(0);//this should hide the numeric updown arrows on spawn. nevermind, this method does weird stuff
+
 
             //init the harm combo boxes
             initF16cHarmComboBoxes();
@@ -112,9 +122,11 @@ namespace DCSF18ALE47Programmer
 
                 //prints the location of the DCS path from the backup file and the location of the current backup file
                 cmdsLua_F18C_fullPath = dcs_topFolderPath + @"\Mods\aircraft\FA-18C\Cockpit\Scripts\TEWS\device\CMDS_ALE47.lua";
-                cmdsLua_F16C_fullPath = dcs_topFolderPath + @"\Mods\aircraft\F-16C\Cockpit\Scripts\EWS\CMDS\device\CMDS_ALE47.lua";
                 cmdsLua_F18C_FolderPath = dcs_topFolderPath + @"\Mods\aircraft\FA-18C\Cockpit\Scripts\TEWS\device";
+                cmdsLua_F16C_fullPath = dcs_topFolderPath + @"\Mods\aircraft\F-16C\Cockpit\Scripts\EWS\CMDS\device\CMDS_ALE47.lua";
                 cmdsLua_F16C_FolderPath = dcs_topFolderPath + @"\Mods\aircraft\F-16C\Cockpit\Scripts\EWS\CMDS\device";
+                cmdsLua_A10C_fullPath = dcs_topFolderPath + @"\Mods\aircraft\A-10C\Cockpit\Scripts\AN_ALE40V\device\AN_ALE40V_params.lua";
+                cmdsLua_A10C_FolderPath = dcs_topFolderPath + @"\Mods\aircraft\A-10C\Cockpit\Scripts\AN_ALE40V\device";
 
 
                 textBox_DcsPath.Text = dcs_topFolderPath;
@@ -123,25 +135,32 @@ namespace DCSF18ALE47Programmer
                 exportPathBackup = (appPath + "\\DCS-CMS-Editor-Backup");
                 exportPathBackup_F18C = (exportPathBackup + "\\F18C Backup");
                 exportPathBackup_F16C = (exportPathBackup + "\\F16C Backup");
+                exportPathBackup_A10C = (exportPathBackup + "\\A10C Backup");
 
                 //also, load the dcs CMS settings as default
                 //loadCM_DCS_Click();
             }
         }
 
+
+
         string selectedFileName;//this is case sensitive. this means that if there is a different in capatialization in the file directory, it will fail and think its wrong
         string exportPathMain;
         string exportPathBackup;
         string exportPathBackup_F18C;
         string exportPathBackup_F16C;
+        string exportPathBackup_A10C;
         bool isExportEnabled;
         bool isExportPathSelected;
         string selectedPath_dcsExe;
+        string dcs_topFolderPath;
         string cmdsLua_F18C_fullPath;
         string cmdsLua_F16C_fullPath;
         string cmdsLua_F18C_FolderPath;
         string cmdsLua_F16C_FolderPath;
-        string dcs_topFolderPath;
+        string cmdsLua_A10C_fullPath;
+        
+        string cmdsLua_A10C_FolderPath;
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -170,6 +189,8 @@ namespace DCSF18ALE47Programmer
                     cmdsLua_F16C_fullPath = dcs_topFolderPath + @"\Mods\aircraft\F-16C\Cockpit\Scripts\EWS\CMDS\device\CMDS_ALE47.lua";
                     cmdsLua_F18C_FolderPath = dcs_topFolderPath + @"\Mods\aircraft\FA-18C\Cockpit\Scripts\TEWS\device";
                     cmdsLua_F16C_FolderPath = dcs_topFolderPath + @"\Mods\aircraft\F-16C\Cockpit\Scripts\EWS\CMDS\device";
+                    cmdsLua_A10C_fullPath = dcs_topFolderPath + @"\Mods\aircraft\A-10C\Cockpit\Scripts\AN_ALE40V\device\AN_ALE40V_params.lua";
+                    cmdsLua_A10C_FolderPath = dcs_topFolderPath + @"\Mods\aircraft\A-10C\Cockpit\Scripts\AN_ALE40V\device";
 
                     textBox_DcsPath.Text = dcs_topFolderPath;
                     textBox_backupPath.Text = appPath + "\\DCS-CMS-Editor-Backup";
@@ -177,12 +198,15 @@ namespace DCSF18ALE47Programmer
                     exportPathBackup = (appPath + "\\DCS-CMS-Editor-Backup");
                     exportPathBackup_F18C = (exportPathBackup + "\\F18C Backup");
                     exportPathBackup_F16C = (exportPathBackup + "\\F16C Backup");
+                    exportPathBackup_A10C = (exportPathBackup + "\\F16C Backup");
 
                     MessageBox.Show("You selected " + selectedPath_dcsExe + "\r\n"
                        + "\r\n"
                        + "F-18C lua should be located here: " + cmdsLua_F18C_fullPath + "\r\n"
                        + "\r\n"
                        + "F-16C lua should be located here: " + cmdsLua_F16C_fullPath + "\r\n"
+                       + "\r\n"
+                       + "A-10C lua should be located here: " + cmdsLua_A10C_fullPath + "\r\n"
                        + "\r\n"
                        + "Export is enabled. Backup folder has been created.");
 
@@ -238,6 +262,7 @@ namespace DCSF18ALE47Programmer
 
         private void button4_Click(object sender, EventArgs e)//load from backup
         {
+            //MessageBox.Show(tabControl_mainTab.SelectedTab.Name.ToString());
             //LoadCountermeasure file button TODO: fix this to accomidate multiple aircraft luas.
             if(File.Exists(appPath + "\\DCS-CMS-Editor-Backup\\DCS-CMS-Editor-UserSettings.txt"))//if the user settings have been set continue
             {
@@ -253,12 +278,40 @@ namespace DCSF18ALE47Programmer
                         MessageBox.Show("Backup file not found. Please select your DCS.exe and export to generate a backup file.");
                     }
                     
-                }else if (tabControl_mainTab.SelectedTab == tabPage2)
+                }
+                else if (tabControl_mainTab.SelectedTab == tabPage2)
                 {
                     if (File.Exists(appPath + "\\DCS-CMS-Editor-Backup\\F16C Backup\\CMDS_ALE47.lua"))
                     {
                         loadLocation = (appPath + "\\DCS-CMS-Editor-Backup\\F16C Backup\\CMDS_ALE47.lua");
                         loadLua_F16C();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Backup file not found. Please select your DCS.exe and export to generate a backup file.");
+                    }
+                }
+                else if (tabControl_mainTab.SelectedTab == tabPage3)//f16c harm page
+                {
+                    harmForF16cIsNotAvailableMessage();
+                    /*
+                    if (File.Exists(appPath + "\\DCS-CMS-Editor-Backup\\F16C Backup\\CMDS_ALE47.lua"))
+                    {
+                        loadLocation = (appPath + "\\DCS-CMS-Editor-Backup\\F16C Backup\\CMDS_ALE47.lua");
+                        loadLua_F16C();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Backup file not found. Please select your DCS.exe and export to generate a backup file.");
+                    }
+                    */
+                }
+                else if (tabControl_mainTab.SelectedTab == tabPage4)//a10 cms page
+                {
+                    if (File.Exists(appPath + "\\DCS-CMS-Editor-Backup\\A10C Backup\\AN_ALE40V_params.lua"))
+                    {
+                        loadLocation = (appPath + "\\DCS-CMS-Editor-Backup\\A10C Backup\\AN_ALE40V_params.lua");
+                        loadLua_A10C_CMS();
                     }
                     else
                     {
@@ -1894,6 +1947,961 @@ namespace DCSF18ALE47Programmer
             catch (ArgumentOutOfRangeException) { numericUpDown_F16C_irSamFlare_SI.Value = numericUpDown_F16C_irSamFlare_SI.Minimum; }
         }
 
+        private void loadLua_A10C_CMS()
+        {
+            //find the lua file
+            string CountermeasureFileString_A10C = loadLocation;
+            //load the text into a string
+            string CountermeasureFileStringText_A10C = File.ReadAllText(CountermeasureFileString_A10C);
+            //https://www.techiedelight.com/read-entire-file-to-string-csharp/
+
+            //https://stackoverflow.com/questions/4776259/detecting-where-a-newline-is-located-in-a-string
+
+            //consider making a prompt for programs that were not imported.
+
+            string [] arrayOfLua_A10C_CMS = File.ReadAllLines(CountermeasureFileString_A10C);//put the file into an array https://stackoverflow.com/questions/31853731/read-a-preceding-line-of-a-text-file-if-current-line-contains-x
+            for (int i = 0; i < arrayOfLua_A10C_CMS.Length; i++)//for as many files as there are in the array
+            {
+                if (arrayOfLua_A10C_CMS[i].Contains("programs['N'] = {}"))//of you find the lead of a countermeasure program
+                {
+                    string programN_name = arrayOfLua_A10C_CMS[i - 1];//put the previous line in a string
+                    if (programN_name.Length > 1 && programN_name.Substring(0,2).ToString() == "--")//this prevents empty lines from being grabbed and makes sure that the line that is grabbed is a lua comment line
+                    {
+                        programN_name = programN_name.Substring(2);//cut off the first two letters wich sould be '--' https://stackoverflow.com/questions/3222125/fastest-way-to-remove-first-char-in-a-string
+                        textBox_programN.Text = programN_name;//put the result in the textbox
+                        break;//breaks out of the for loop and prevents else statement below from running
+                        //https://stackoverflow.com/questions/19524105/how-to-block-or-restrict-special-characters-from-textbox
+                    }
+                }
+                else//the program does not exist
+                {
+                    textBox_programN.Text = "Custom Program N";//enter a default name
+                }
+            }
+
+          
+            for (int i = 0; i < arrayOfLua_A10C_CMS.Length; i++)
+            {
+                if (arrayOfLua_A10C_CMS[i].Contains("programs['O'] = {}"))
+                {
+                    string programO_name = arrayOfLua_A10C_CMS[i - 1];
+                    //MessageBox.Show(programO_name.Substring(0, 2).ToString());
+                    if (programO_name.Length > 1 && programO_name.Substring(0, 2).ToString() == "--")
+                    {
+                        programO_name = programO_name.Substring(2);
+                        textBox_programO.Text = programO_name;
+                        break;
+                    }
+                }
+                else
+                {
+                    textBox_programO.Text = "Custom Program O";
+                }
+            }
+
+
+            for (int i = 0; i < arrayOfLua_A10C_CMS.Length; i++)
+            {
+                if (arrayOfLua_A10C_CMS[i].Contains("programs['P'] = {}"))
+                {
+                    string programP_name = arrayOfLua_A10C_CMS[i - 1];
+                    if (programP_name.Length > 1 && programP_name.Substring(0, 2).ToString() == "--")
+                    {
+                        programP_name = programP_name.Substring(2);
+                        textBox_programP.Text = programP_name;
+                        break;
+                    }
+                }
+                else
+                {
+                    textBox_programP.Text = "Custom Program P";
+                }
+            }
+
+
+
+            for (int i = 0; i < arrayOfLua_A10C_CMS.Length; i++)
+            {
+                if (arrayOfLua_A10C_CMS[i].Contains("programs['Q'] = {}"))
+                {
+                    string programQ_name = arrayOfLua_A10C_CMS[i - 1];
+                    if (programQ_name.Length > 1 && programQ_name.Substring(0, 2).ToString() == "--")
+                    {
+                        programQ_name = programQ_name.Substring(2);
+                        textBox_programQ.Text = programQ_name;
+                        break;
+                    }
+                }
+                else
+                {
+                    textBox_programQ.Text = "Custom Program Q";
+                }
+            }
+
+            for (int i = 0; i < arrayOfLua_A10C_CMS.Length; i++)
+            {
+                if (arrayOfLua_A10C_CMS[i].Contains("programs['R'] = {}"))
+                {
+                    string programR_name = arrayOfLua_A10C_CMS[i - 1];
+                    if (programR_name.Length > 1 && programR_name.Substring(0, 2).ToString() == "--")
+                    {
+                        programR_name = programR_name.Substring(2);
+                        textBox_programR.Text = programR_name;
+                        break;
+                    }
+                }
+                else
+                {
+                    textBox_programR.Text = "Custom Program R";
+                }
+            }
+
+            for (int i = 0; i < arrayOfLua_A10C_CMS.Length; i++)
+            {
+                if (arrayOfLua_A10C_CMS[i].Contains("programs['S'] = {}"))
+                {
+                    string programS_name = arrayOfLua_A10C_CMS[i - 1];
+                    if (programS_name.Length > 1 && programS_name.Substring(0, 2).ToString() == "--")
+                    {
+                        programS_name = programS_name.Substring(2);
+                        textBox_programS.Text = programS_name;
+                        break;
+                    }
+                }
+                else
+                {
+                    textBox_programS.Text = "Custom Program S";
+                }
+            }
+
+            for (int i = 0; i < arrayOfLua_A10C_CMS.Length; i++)
+            {
+                if (arrayOfLua_A10C_CMS[i].Contains("programs['T'] = {}"))
+                {
+                    string programT_name = arrayOfLua_A10C_CMS[i - 1];
+                    if (programT_name.Length > 1 && programT_name.Substring(0, 2).ToString() == "--")
+                    {
+                        programT_name = programT_name.Substring(2);
+                        textBox_programT.Text = programT_name;
+                        break;
+                    }
+                }
+                else
+                {
+                    textBox_programT.Text = "Custom Program T";
+                }
+            }
+
+            for (int i = 0; i < arrayOfLua_A10C_CMS.Length; i++)
+            {
+                if (arrayOfLua_A10C_CMS[i].Contains("programs['U'] = {}"))
+                {
+                    string programU_name = arrayOfLua_A10C_CMS[i - 1];
+                    if (programU_name.Length > 1 && programU_name.Substring(0, 2).ToString() == "--")
+                    {
+                        programU_name = programU_name.Substring(2);
+                        textBox_programU.Text = programU_name;
+                        break;
+                    }
+                }
+                else
+                {
+                    textBox_programU.Text = "Custom Program U";
+                }
+            }
+
+            for (int i = 0; i < arrayOfLua_A10C_CMS.Length; i++)
+            {
+                if (arrayOfLua_A10C_CMS[i].Contains("programs['V'] = {}"))
+                {
+                    string programV_name = arrayOfLua_A10C_CMS[i - 1];
+                    if (programV_name.Length > 1 && programV_name.Substring(0, 2).ToString() == "--")
+                    {
+                        programV_name = programV_name.Substring(2);
+                        textBox_programV.Text = programV_name;
+                        break;
+                    }
+                }
+                else
+                {
+                    textBox_programV.Text = "Custom Program V";
+                }
+            }
+
+            for (int i = 0; i < arrayOfLua_A10C_CMS.Length; i++)
+            {
+                if (arrayOfLua_A10C_CMS[i].Contains("programs['W'] = {}"))
+                {
+                    string programW_name = arrayOfLua_A10C_CMS[i - 1];
+                    if (programW_name.Length > 1 && programW_name.Substring(0, 2).ToString() == "--")
+                    {
+                        programW_name = programW_name.Substring(2);
+                        textBox_programW.Text = programW_name;
+                        break;
+                    }
+                }
+                else
+                {
+                    textBox_programW.Text = "Custom Program W";
+                }
+            }
+
+            for (int i = 0; i < arrayOfLua_A10C_CMS.Length; i++)
+            {
+                if (arrayOfLua_A10C_CMS[i].Contains("programs['X'] = {}"))
+                {
+                    string programX_name = arrayOfLua_A10C_CMS[i - 1];
+                    if (programX_name.Length > 1 && programX_name.Substring(0, 2).ToString() == "--")
+                    {
+                        programX_name = programX_name.Substring(2);
+                        textBox_programX.Text = programX_name;
+                        break;
+                    }
+                }
+                else
+                {
+                    textBox_programX.Text = "Custom Program X";
+                }
+            }
+
+            for (int i = 0; i < arrayOfLua_A10C_CMS.Length; i++)
+            {
+                if (arrayOfLua_A10C_CMS[i].Contains("programs['Y'] = {}"))
+                {
+                    string programY_name = arrayOfLua_A10C_CMS[i - 1];
+                    if (programY_name.Length > 1 && programY_name.Substring(0, 2).ToString() == "--")
+                    {
+                        programY_name = programY_name.Substring(2);
+                        textBox_programY.Text = programY_name;
+                        break;
+                    }
+                }
+                else
+                {
+                    textBox_programY.Text = "Custom Program Y";
+                }
+            }
+
+            for (int i = 0; i < arrayOfLua_A10C_CMS.Length; i++)
+            {
+                if (arrayOfLua_A10C_CMS[i].Contains("programs['Z'] = {}"))
+                {
+                    string programZ_name = arrayOfLua_A10C_CMS[i - 1];
+                    if (programZ_name.Length > 1 && programZ_name.Substring(0, 2).ToString() == "--")
+                    {
+                        programZ_name = programZ_name.Substring(2);
+                        textBox_programZ.Text = programZ_name;
+                        break;
+                    }
+                }
+                else
+                {
+                    textBox_programZ.Text = "Custom Program Z";
+                }
+            }
+            int A10C_programA_chaff_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['A'][\"chaff\"] =") + 24;
+            int A10C_programA_chaff_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programA_chaff_getIndexStart);
+            string A10C_programA_chaff_amount = CountermeasureFileStringText_A10C.Substring(A10C_programA_chaff_getIndexStart, A10C_programA_chaff_getIndexEnd - A10C_programA_chaff_getIndexStart);
+            try { numericUpDown_A10C_programA_chaff.Value = int.Parse(A10C_programA_chaff_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programA_chaff.Value = numericUpDown_A10C_programA_chaff.Minimum; }
+
+            int A10C_programA_flare_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['A'][\"flare\"] =") + 24;
+            int A10C_programA_flare_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programA_flare_getIndexStart);
+            string A10C_programA_flare_amount = CountermeasureFileStringText_A10C.Substring(A10C_programA_flare_getIndexStart, A10C_programA_flare_getIndexEnd - A10C_programA_flare_getIndexStart);
+            try { numericUpDown_A10C_programA_flare.Value = int.Parse(A10C_programA_flare_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programA_flare.Value = numericUpDown_A10C_programA_flare.Minimum; }
+
+            int A10C_programA_interval_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['A'][\"intv\"]  =") + 24;
+            int A10C_programA_interval_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programA_interval_getIndexStart);
+            string A10C_programA_interval_amount = CountermeasureFileStringText_A10C.Substring(A10C_programA_interval_getIndexStart, A10C_programA_interval_getIndexEnd - A10C_programA_interval_getIndexStart);
+            try { numericUpDown_A10C_programA_interval.Value = Decimal.Parse(A10C_programA_interval_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programA_interval.Value = numericUpDown_A10C_programA_interval.Minimum; }
+
+            int A10C_programA_cycle_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['A'][\"cycle\"] =") + 24;
+            int A10C_programA_cycle_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programA_cycle_getIndexStart);
+            string A10C_programA_cycle_amount = CountermeasureFileStringText_A10C.Substring(A10C_programA_cycle_getIndexStart, A10C_programA_cycle_getIndexEnd - A10C_programA_cycle_getIndexStart);
+            try { numericUpDown_A10C_programA_cycle.Value = int.Parse(A10C_programA_cycle_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programA_cycle.Value = numericUpDown_A10C_programA_cycle.Minimum; }
+
+
+
+
+            int A10C_programB_chaff_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['B'][\"chaff\"] =") + 24;
+            int A10C_programB_chaff_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programB_chaff_getIndexStart);
+            string A10C_programB_chaff_amount = CountermeasureFileStringText_A10C.Substring(A10C_programB_chaff_getIndexStart, A10C_programB_chaff_getIndexEnd - A10C_programB_chaff_getIndexStart);
+            try { numericUpDown_A10C_programB_chaff.Value = int.Parse(A10C_programB_chaff_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programB_chaff.Value = numericUpDown_A10C_programB_chaff.Minimum; }
+
+            int A10C_programB_flare_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['B'][\"flare\"] =") + 24;
+            int A10C_programB_flare_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programB_flare_getIndexStart);
+            string A10C_programB_flare_amount = CountermeasureFileStringText_A10C.Substring(A10C_programB_flare_getIndexStart, A10C_programB_flare_getIndexEnd - A10C_programB_flare_getIndexStart);
+            try { numericUpDown_A10C_programB_flare.Value = int.Parse(A10C_programB_flare_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programB_flare.Value = numericUpDown_A10C_programB_flare.Minimum; }
+
+            int A10C_programB_interval_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['B'][\"intv\"]  =") + 24;
+            int A10C_programB_interval_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programB_interval_getIndexStart);
+            string A10C_programB_interval_amount = CountermeasureFileStringText_A10C.Substring(A10C_programB_interval_getIndexStart, A10C_programB_interval_getIndexEnd - A10C_programB_interval_getIndexStart);
+            try { numericUpDown_A10C_programB_interval.Value = Decimal.Parse(A10C_programB_interval_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programB_interval.Value = numericUpDown_A10C_programB_interval.Minimum; }
+
+            int A10C_programB_cycle_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['B'][\"cycle\"] =") + 24;
+            int A10C_programB_cycle_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programB_cycle_getIndexStart);
+            string A10C_programB_cycle_amount = CountermeasureFileStringText_A10C.Substring(A10C_programB_cycle_getIndexStart, A10C_programB_cycle_getIndexEnd - A10C_programB_cycle_getIndexStart);
+            try { numericUpDown_A10C_programB_cycle.Value = int.Parse(A10C_programB_cycle_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programB_cycle.Value = numericUpDown_A10C_programB_cycle.Minimum; }
+
+
+
+
+            int A10C_programC_chaff_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['C'][\"chaff\"] =") + 24;
+            int A10C_programC_chaff_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programC_chaff_getIndexStart);
+            string A10C_programC_chaff_amount = CountermeasureFileStringText_A10C.Substring(A10C_programC_chaff_getIndexStart, A10C_programC_chaff_getIndexEnd - A10C_programC_chaff_getIndexStart);
+            try { numericUpDown_A10C_programC_chaff.Value = int.Parse(A10C_programC_chaff_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programC_chaff.Value = numericUpDown_A10C_programC_chaff.Minimum; }
+
+            int A10C_programC_flare_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['C'][\"flare\"] =") + 24;
+            int A10C_programC_flare_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programC_flare_getIndexStart);
+            string A10C_programC_flare_amount = CountermeasureFileStringText_A10C.Substring(A10C_programC_flare_getIndexStart, A10C_programC_flare_getIndexEnd - A10C_programC_flare_getIndexStart);
+            try { numericUpDown_A10C_programC_flare.Value = int.Parse(A10C_programC_flare_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programC_flare.Value = numericUpDown_A10C_programC_flare.Minimum; }
+
+            int A10C_programC_interval_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['C'][\"intv\"]  =") + 24;
+            int A10C_programC_interval_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programC_interval_getIndexStart);
+            string A10C_programC_interval_amount = CountermeasureFileStringText_A10C.Substring(A10C_programC_interval_getIndexStart, A10C_programC_interval_getIndexEnd - A10C_programC_interval_getIndexStart);
+            try { numericUpDown_A10C_programC_interval.Value = Decimal.Parse(A10C_programC_interval_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programC_interval.Value = numericUpDown_A10C_programC_interval.Minimum; }
+
+            int A10C_programC_cycle_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['C'][\"cycle\"] =") + 24;
+            int A10C_programC_cycle_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programC_cycle_getIndexStart);
+            string A10C_programC_cycle_amount = CountermeasureFileStringText_A10C.Substring(A10C_programC_cycle_getIndexStart, A10C_programC_cycle_getIndexEnd - A10C_programC_cycle_getIndexStart);
+            try { numericUpDown_A10C_programC_cycle.Value = int.Parse(A10C_programC_cycle_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programC_cycle.Value = numericUpDown_A10C_programC_cycle.Minimum; }
+
+
+
+
+            int A10C_programD_chaff_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['D'][\"chaff\"] =") + 24;
+            int A10C_programD_chaff_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programD_chaff_getIndexStart);
+            string A10C_programD_chaff_amount = CountermeasureFileStringText_A10C.Substring(A10C_programD_chaff_getIndexStart, A10C_programD_chaff_getIndexEnd - A10C_programD_chaff_getIndexStart);
+            try { numericUpDown_A10C_programD_chaff.Value = int.Parse(A10C_programD_chaff_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programD_chaff.Value = numericUpDown_A10C_programD_chaff.Minimum; }
+
+            int A10C_programD_flare_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['D'][\"flare\"] =") + 24;
+            int A10C_programD_flare_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programD_flare_getIndexStart);
+            string A10C_programD_flare_amount = CountermeasureFileStringText_A10C.Substring(A10C_programD_flare_getIndexStart, A10C_programD_flare_getIndexEnd - A10C_programD_flare_getIndexStart);
+            try { numericUpDown_A10C_programD_flare.Value = int.Parse(A10C_programD_flare_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programD_flare.Value = numericUpDown_A10C_programD_flare.Minimum; }
+
+            int A10C_programD_interval_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['D'][\"intv\"]  =") + 24;
+            int A10C_programD_interval_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programD_interval_getIndexStart);
+            string A10C_programD_interval_amount = CountermeasureFileStringText_A10C.Substring(A10C_programD_interval_getIndexStart, A10C_programD_interval_getIndexEnd - A10C_programD_interval_getIndexStart);
+            try { numericUpDown_A10C_programD_interval.Value = Decimal.Parse(A10C_programD_interval_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programD_interval.Value = numericUpDown_A10C_programD_interval.Minimum; }
+
+            int A10C_programD_cycle_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['D'][\"cycle\"] =") + 24;
+            int A10C_programD_cycle_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programD_cycle_getIndexStart);
+            string A10C_programD_cycle_amount = CountermeasureFileStringText_A10C.Substring(A10C_programD_cycle_getIndexStart, A10C_programD_cycle_getIndexEnd - A10C_programD_cycle_getIndexStart);
+            try { numericUpDown_A10C_programD_cycle.Value = int.Parse(A10C_programD_cycle_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programD_cycle.Value = numericUpDown_A10C_programD_cycle.Minimum; }
+
+
+
+            int A10C_programE_chaff_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['E'][\"chaff\"] =") + 24;
+            int A10C_programE_chaff_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programE_chaff_getIndexStart);
+            string A10C_programE_chaff_amount = CountermeasureFileStringText_A10C.Substring(A10C_programE_chaff_getIndexStart, A10C_programE_chaff_getIndexEnd - A10C_programE_chaff_getIndexStart);
+            try { numericUpDown_A10C_programE_chaff.Value = int.Parse(A10C_programE_chaff_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programE_chaff.Value = numericUpDown_A10C_programE_chaff.Minimum; }
+
+            int A10C_programE_flare_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['E'][\"flare\"] =") + 24;
+            int A10C_programE_flare_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programE_flare_getIndexStart);
+            string A10C_programE_flare_amount = CountermeasureFileStringText_A10C.Substring(A10C_programE_flare_getIndexStart, A10C_programE_flare_getIndexEnd - A10C_programE_flare_getIndexStart);
+            try { numericUpDown_A10C_programE_flare.Value = int.Parse(A10C_programE_flare_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programE_flare.Value = numericUpDown_A10C_programE_flare.Minimum; }
+
+            int A10C_programE_interval_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['E'][\"intv\"]  =") + 24;
+            int A10C_programE_interval_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programE_interval_getIndexStart);
+            string A10C_programE_interval_amount = CountermeasureFileStringText_A10C.Substring(A10C_programE_interval_getIndexStart, A10C_programE_interval_getIndexEnd - A10C_programE_interval_getIndexStart);
+            try { numericUpDown_A10C_programE_interval.Value = Decimal.Parse(A10C_programE_interval_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programE_interval.Value = numericUpDown_A10C_programE_interval.Minimum; }
+
+            int A10C_programE_cycle_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['E'][\"cycle\"] =") + 24;
+            int A10C_programE_cycle_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programE_cycle_getIndexStart);
+            string A10C_programE_cycle_amount = CountermeasureFileStringText_A10C.Substring(A10C_programE_cycle_getIndexStart, A10C_programE_cycle_getIndexEnd - A10C_programE_cycle_getIndexStart);
+            try { numericUpDown_A10C_programE_cycle.Value = int.Parse(A10C_programE_cycle_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programE_cycle.Value = numericUpDown_A10C_programE_cycle.Minimum; }
+
+
+
+            int A10C_programF_chaff_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['F'][\"chaff\"] =") + 24;
+            int A10C_programF_chaff_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programF_chaff_getIndexStart);
+            string A10C_programF_chaff_amount = CountermeasureFileStringText_A10C.Substring(A10C_programF_chaff_getIndexStart, A10C_programF_chaff_getIndexEnd - A10C_programF_chaff_getIndexStart);
+            try { numericUpDown_A10C_programF_chaff.Value = int.Parse(A10C_programF_chaff_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programF_chaff.Value = numericUpDown_A10C_programF_chaff.Minimum; }
+
+            int A10C_programF_flare_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['F'][\"flare\"] =") + 24;
+            int A10C_programF_flare_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programF_flare_getIndexStart);
+            string A10C_programF_flare_amount = CountermeasureFileStringText_A10C.Substring(A10C_programF_flare_getIndexStart, A10C_programF_flare_getIndexEnd - A10C_programF_flare_getIndexStart);
+            try { numericUpDown_A10C_programF_flare.Value = int.Parse(A10C_programF_flare_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programF_flare.Value = numericUpDown_A10C_programF_flare.Minimum; }
+
+            int A10C_programF_interval_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['F'][\"intv\"]  =") + 24;
+            int A10C_programF_interval_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programF_interval_getIndexStart);
+            string A10C_programF_interval_amount = CountermeasureFileStringText_A10C.Substring(A10C_programF_interval_getIndexStart, A10C_programF_interval_getIndexEnd - A10C_programF_interval_getIndexStart);
+            try { numericUpDown_A10C_programF_interval.Value = Decimal.Parse(A10C_programF_interval_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programF_interval.Value = numericUpDown_A10C_programF_interval.Minimum; }
+
+            int A10C_programF_cycle_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['F'][\"cycle\"] =") + 24;
+            int A10C_programF_cycle_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programF_cycle_getIndexStart);
+            string A10C_programF_cycle_amount = CountermeasureFileStringText_A10C.Substring(A10C_programF_cycle_getIndexStart, A10C_programF_cycle_getIndexEnd - A10C_programF_cycle_getIndexStart);
+            try { numericUpDown_A10C_programF_cycle.Value = int.Parse(A10C_programF_cycle_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programF_cycle.Value = numericUpDown_A10C_programF_cycle.Minimum; }
+
+
+
+            int A10C_programG_chaff_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['G'][\"chaff\"] =") + 24;
+            int A10C_programG_chaff_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programG_chaff_getIndexStart);
+            string A10C_programG_chaff_amount = CountermeasureFileStringText_A10C.Substring(A10C_programG_chaff_getIndexStart, A10C_programG_chaff_getIndexEnd - A10C_programG_chaff_getIndexStart);
+            try { numericUpDown_A10C_programG_chaff.Value = int.Parse(A10C_programG_chaff_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programG_chaff.Value = numericUpDown_A10C_programG_chaff.Minimum; }
+
+            int A10C_programG_flare_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['G'][\"flare\"] =") + 24;
+            int A10C_programG_flare_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programG_flare_getIndexStart);
+            string A10C_programG_flare_amount = CountermeasureFileStringText_A10C.Substring(A10C_programG_flare_getIndexStart, A10C_programG_flare_getIndexEnd - A10C_programG_flare_getIndexStart);
+            try { numericUpDown_A10C_programG_flare.Value = int.Parse(A10C_programG_flare_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programG_flare.Value = numericUpDown_A10C_programG_flare.Minimum; }
+
+            int A10C_programG_interval_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['G'][\"intv\"]  =") + 24;
+            int A10C_programG_interval_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programG_interval_getIndexStart);
+            string A10C_programG_interval_amount = CountermeasureFileStringText_A10C.Substring(A10C_programG_interval_getIndexStart, A10C_programG_interval_getIndexEnd - A10C_programG_interval_getIndexStart);
+            try { numericUpDown_A10C_programG_interval.Value = Decimal.Parse(A10C_programG_interval_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programG_interval.Value = numericUpDown_A10C_programG_interval.Minimum; }
+
+            int A10C_programG_cycle_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['G'][\"cycle\"] =") + 24;
+            int A10C_programG_cycle_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programG_cycle_getIndexStart);
+            string A10C_programG_cycle_amount = CountermeasureFileStringText_A10C.Substring(A10C_programG_cycle_getIndexStart, A10C_programG_cycle_getIndexEnd - A10C_programG_cycle_getIndexStart);
+            try { numericUpDown_A10C_programG_cycle.Value = int.Parse(A10C_programG_cycle_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programG_cycle.Value = numericUpDown_A10C_programG_cycle.Minimum; }
+
+
+
+            int A10C_programH_chaff_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['H'][\"chaff\"] =") + 24;
+            int A10C_programH_chaff_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programH_chaff_getIndexStart);
+            string A10C_programH_chaff_amount = CountermeasureFileStringText_A10C.Substring(A10C_programH_chaff_getIndexStart, A10C_programH_chaff_getIndexEnd - A10C_programH_chaff_getIndexStart);
+            try { numericUpDown_A10C_programH_chaff.Value = int.Parse(A10C_programH_chaff_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programH_chaff.Value = numericUpDown_A10C_programH_chaff.Minimum; }
+
+            int A10C_programH_flare_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['H'][\"flare\"] =") + 24;
+            int A10C_programH_flare_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programH_flare_getIndexStart);
+            string A10C_programH_flare_amount = CountermeasureFileStringText_A10C.Substring(A10C_programH_flare_getIndexStart, A10C_programH_flare_getIndexEnd - A10C_programH_flare_getIndexStart);
+            try { numericUpDown_A10C_programH_flare.Value = int.Parse(A10C_programH_flare_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programH_flare.Value = numericUpDown_A10C_programH_flare.Minimum; }
+
+            int A10C_programH_interval_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['H'][\"intv\"]  =") + 24;
+            int A10C_programH_interval_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programH_interval_getIndexStart);
+            string A10C_programH_interval_amount = CountermeasureFileStringText_A10C.Substring(A10C_programH_interval_getIndexStart, A10C_programH_interval_getIndexEnd - A10C_programH_interval_getIndexStart);
+            try { numericUpDown_A10C_programH_interval.Value = Decimal.Parse(A10C_programH_interval_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programH_interval.Value = numericUpDown_A10C_programH_interval.Minimum; }
+
+            int A10C_programH_cycle_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['H'][\"cycle\"] =") + 24;
+            int A10C_programH_cycle_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programH_cycle_getIndexStart);
+            string A10C_programH_cycle_amount = CountermeasureFileStringText_A10C.Substring(A10C_programH_cycle_getIndexStart, A10C_programH_cycle_getIndexEnd - A10C_programH_cycle_getIndexStart);
+            try { numericUpDown_A10C_programH_cycle.Value = int.Parse(A10C_programH_cycle_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programH_cycle.Value = numericUpDown_A10C_programH_cycle.Minimum; }
+
+
+
+            int A10C_programI_chaff_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['I'][\"chaff\"] =") + 24;
+            int A10C_programI_chaff_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programI_chaff_getIndexStart);
+            string A10C_programI_chaff_amount = CountermeasureFileStringText_A10C.Substring(A10C_programI_chaff_getIndexStart, A10C_programI_chaff_getIndexEnd - A10C_programI_chaff_getIndexStart);
+            try { numericUpDown_A10C_programI_chaff.Value = int.Parse(A10C_programI_chaff_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programI_chaff.Value = numericUpDown_A10C_programI_chaff.Minimum; }
+
+            int A10C_programI_flare_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['I'][\"flare\"] =") + 24;
+            int A10C_programI_flare_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programI_flare_getIndexStart);
+            string A10C_programI_flare_amount = CountermeasureFileStringText_A10C.Substring(A10C_programI_flare_getIndexStart, A10C_programI_flare_getIndexEnd - A10C_programI_flare_getIndexStart);
+            try { numericUpDown_A10C_programI_flare.Value = int.Parse(A10C_programI_flare_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programI_flare.Value = numericUpDown_A10C_programI_flare.Minimum; }
+
+            int A10C_programI_interval_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['I'][\"intv\"]  =") + 24;
+            int A10C_programI_interval_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programI_interval_getIndexStart);
+            string A10C_programI_interval_amount = CountermeasureFileStringText_A10C.Substring(A10C_programI_interval_getIndexStart, A10C_programI_interval_getIndexEnd - A10C_programI_interval_getIndexStart);
+            try { numericUpDown_A10C_programI_interval.Value = Decimal.Parse(A10C_programI_interval_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programI_interval.Value = numericUpDown_A10C_programI_interval.Minimum; }
+
+            int A10C_programI_cycle_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['I'][\"cycle\"] =") + 24;
+            int A10C_programI_cycle_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programI_cycle_getIndexStart);
+            string A10C_programI_cycle_amount = CountermeasureFileStringText_A10C.Substring(A10C_programI_cycle_getIndexStart, A10C_programI_cycle_getIndexEnd - A10C_programI_cycle_getIndexStart);
+            try { numericUpDown_A10C_programI_cycle.Value = int.Parse(A10C_programI_cycle_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programI_cycle.Value = numericUpDown_A10C_programI_cycle.Minimum; }
+
+
+
+            int A10C_programJ_chaff_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['J'][\"chaff\"] =") + 24;
+            int A10C_programJ_chaff_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programJ_chaff_getIndexStart);
+            string A10C_programJ_chaff_amount = CountermeasureFileStringText_A10C.Substring(A10C_programJ_chaff_getIndexStart, A10C_programJ_chaff_getIndexEnd - A10C_programJ_chaff_getIndexStart);
+            try { numericUpDown_A10C_programJ_chaff.Value = int.Parse(A10C_programJ_chaff_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programJ_chaff.Value = numericUpDown_A10C_programJ_chaff.Minimum; }
+
+            int A10C_programJ_flare_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['J'][\"flare\"] =") + 24;
+            int A10C_programJ_flare_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programJ_flare_getIndexStart);
+            string A10C_programJ_flare_amount = CountermeasureFileStringText_A10C.Substring(A10C_programJ_flare_getIndexStart, A10C_programJ_flare_getIndexEnd - A10C_programJ_flare_getIndexStart);
+            try { numericUpDown_A10C_programJ_flare.Value = int.Parse(A10C_programJ_flare_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programJ_flare.Value = numericUpDown_A10C_programJ_flare.Minimum; }
+
+            int A10C_programJ_interval_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['J'][\"intv\"]  =") + 24;
+            int A10C_programJ_interval_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programJ_interval_getIndexStart);
+            string A10C_programJ_interval_amount = CountermeasureFileStringText_A10C.Substring(A10C_programJ_interval_getIndexStart, A10C_programJ_interval_getIndexEnd - A10C_programJ_interval_getIndexStart);
+            try { numericUpDown_A10C_programJ_interval.Value = Decimal.Parse(A10C_programJ_interval_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programJ_interval.Value = numericUpDown_A10C_programJ_interval.Minimum; }
+
+            int A10C_programJ_cycle_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['J'][\"cycle\"] =") + 24;
+            int A10C_programJ_cycle_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programJ_cycle_getIndexStart);
+            string A10C_programJ_cycle_amount = CountermeasureFileStringText_A10C.Substring(A10C_programJ_cycle_getIndexStart, A10C_programJ_cycle_getIndexEnd - A10C_programJ_cycle_getIndexStart);
+            try { numericUpDown_A10C_programJ_cycle.Value = int.Parse(A10C_programJ_cycle_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programJ_cycle.Value = numericUpDown_A10C_programJ_cycle.Minimum; }
+
+
+
+            int A10C_programK_chaff_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['K'][\"chaff\"] =") + 24;
+            int A10C_programK_chaff_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programK_chaff_getIndexStart);
+            string A10C_programK_chaff_amount = CountermeasureFileStringText_A10C.Substring(A10C_programK_chaff_getIndexStart, A10C_programK_chaff_getIndexEnd - A10C_programK_chaff_getIndexStart);
+            try { numericUpDown_A10C_programK_chaff.Value = int.Parse(A10C_programK_chaff_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programK_chaff.Value = numericUpDown_A10C_programK_chaff.Minimum; }
+
+            int A10C_programK_flare_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['K'][\"flare\"] =") + 24;
+            int A10C_programK_flare_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programK_flare_getIndexStart);
+            string A10C_programK_flare_amount = CountermeasureFileStringText_A10C.Substring(A10C_programK_flare_getIndexStart, A10C_programK_flare_getIndexEnd - A10C_programK_flare_getIndexStart);
+            try { numericUpDown_A10C_programK_flare.Value = int.Parse(A10C_programK_flare_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programK_flare.Value = numericUpDown_A10C_programK_flare.Minimum; }
+
+            int A10C_programK_interval_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['K'][\"intv\"]  =") + 24;
+            int A10C_programK_interval_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programK_interval_getIndexStart);
+            string A10C_programK_interval_amount = CountermeasureFileStringText_A10C.Substring(A10C_programK_interval_getIndexStart, A10C_programK_interval_getIndexEnd - A10C_programK_interval_getIndexStart);
+            try { numericUpDown_A10C_programK_interval.Value = Decimal.Parse(A10C_programK_interval_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programK_interval.Value = numericUpDown_A10C_programK_interval.Minimum; }
+
+            int A10C_programK_cycle_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['K'][\"cycle\"] =") + 24;
+            int A10C_programK_cycle_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programK_cycle_getIndexStart);
+            string A10C_programK_cycle_amount = CountermeasureFileStringText_A10C.Substring(A10C_programK_cycle_getIndexStart, A10C_programK_cycle_getIndexEnd - A10C_programK_cycle_getIndexStart);
+            try { numericUpDown_A10C_programK_cycle.Value = int.Parse(A10C_programK_cycle_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programK_cycle.Value = numericUpDown_A10C_programK_cycle.Minimum; }
+
+
+
+            int A10C_programL_chaff_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['L'][\"chaff\"] =") + 24;
+            int A10C_programL_chaff_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programL_chaff_getIndexStart);
+            string A10C_programL_chaff_amount = CountermeasureFileStringText_A10C.Substring(A10C_programL_chaff_getIndexStart, A10C_programL_chaff_getIndexEnd - A10C_programL_chaff_getIndexStart);
+            try { numericUpDown_A10C_programL_chaff.Value = int.Parse(A10C_programL_chaff_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programL_chaff.Value = numericUpDown_A10C_programL_chaff.Minimum; }
+
+            int A10C_programL_flare_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['L'][\"flare\"] =") + 24;
+            int A10C_programL_flare_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programL_flare_getIndexStart);
+            string A10C_programL_flare_amount = CountermeasureFileStringText_A10C.Substring(A10C_programL_flare_getIndexStart, A10C_programL_flare_getIndexEnd - A10C_programL_flare_getIndexStart);
+            try { numericUpDown_A10C_programL_flare.Value = int.Parse(A10C_programL_flare_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programL_flare.Value = numericUpDown_A10C_programL_flare.Minimum; }
+
+            int A10C_programL_interval_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['L'][\"intv\"]  =") + 24;
+            int A10C_programL_interval_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programL_interval_getIndexStart);
+            string A10C_programL_interval_amount = CountermeasureFileStringText_A10C.Substring(A10C_programL_interval_getIndexStart, A10C_programL_interval_getIndexEnd - A10C_programL_interval_getIndexStart);
+            try { numericUpDown_A10C_programL_interval.Value = Decimal.Parse(A10C_programL_interval_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programL_interval.Value = numericUpDown_A10C_programL_interval.Minimum; }
+
+            int A10C_programL_cycle_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['L'][\"cycle\"] =") + 24;
+            int A10C_programL_cycle_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programL_cycle_getIndexStart);
+            string A10C_programL_cycle_amount = CountermeasureFileStringText_A10C.Substring(A10C_programL_cycle_getIndexStart, A10C_programL_cycle_getIndexEnd - A10C_programL_cycle_getIndexStart);
+            try { numericUpDown_A10C_programL_cycle.Value = int.Parse(A10C_programL_cycle_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programL_cycle.Value = numericUpDown_A10C_programL_cycle.Minimum; }
+
+
+
+            int A10C_programM_chaff_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['M'][\"chaff\"] =") + 24;
+            int A10C_programM_chaff_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programM_chaff_getIndexStart);
+            string A10C_programM_chaff_amount = CountermeasureFileStringText_A10C.Substring(A10C_programM_chaff_getIndexStart, A10C_programM_chaff_getIndexEnd - A10C_programM_chaff_getIndexStart);
+            try { numericUpDown_A10C_programM_chaff.Value = int.Parse(A10C_programM_chaff_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programM_chaff.Value = numericUpDown_A10C_programM_chaff.Minimum; }
+
+            int A10C_programM_flare_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['M'][\"flare\"] =") + 24;
+            int A10C_programM_flare_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programM_flare_getIndexStart);
+            string A10C_programM_flare_amount = CountermeasureFileStringText_A10C.Substring(A10C_programM_flare_getIndexStart, A10C_programM_flare_getIndexEnd - A10C_programM_flare_getIndexStart);
+            try { numericUpDown_A10C_programM_flare.Value = int.Parse(A10C_programM_flare_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programM_flare.Value = numericUpDown_A10C_programM_flare.Minimum; }
+
+            int A10C_programM_interval_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['M'][\"intv\"]  =") + 24;
+            int A10C_programM_interval_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programM_interval_getIndexStart);
+            string A10C_programM_interval_amount = CountermeasureFileStringText_A10C.Substring(A10C_programM_interval_getIndexStart, A10C_programM_interval_getIndexEnd - A10C_programM_interval_getIndexStart);
+            try { numericUpDown_A10C_programM_interval.Value = Decimal.Parse(A10C_programM_interval_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programM_interval.Value = numericUpDown_A10C_programM_interval.Minimum; }
+
+            int A10C_programM_cycle_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['M'][\"cycle\"] =") + 24;
+            int A10C_programM_cycle_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programM_cycle_getIndexStart);
+            string A10C_programM_cycle_amount = CountermeasureFileStringText_A10C.Substring(A10C_programM_cycle_getIndexStart, A10C_programM_cycle_getIndexEnd - A10C_programM_cycle_getIndexStart);
+            try { numericUpDown_A10C_programM_cycle.Value = int.Parse(A10C_programM_cycle_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programM_cycle.Value = numericUpDown_A10C_programM_cycle.Minimum; }
+
+
+            if (CountermeasureFileStringText_A10C.Contains("'N'"))//i fthe file does not contain the Program N, then it will skip the import, avoiding an error
+            {
+                //int A10C_programN_name_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['N'] = {}");
+                //int A10C_programN_name_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programN_name_getIndexStart);
+                //string A10C_programN_name_amount = CountermeasureFileStringText_A10C.Substring(A10C_programN_name_getIndexStart, A10C_programN_name_getIndexEnd - A10C_programN_name_getIndexStart);
+                //try { textBox_programN.Text = A10C_programN_name_amount; }
+                //catch (ArgumentOutOfRangeException) { textBox_programN.Text = "Custom Program N"; }
+
+
+                int A10C_programN_chaff_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['N'][\"chaff\"] =") + 24;
+                int A10C_programN_chaff_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programN_chaff_getIndexStart);
+                string A10C_programN_chaff_amount = CountermeasureFileStringText_A10C.Substring(A10C_programN_chaff_getIndexStart, A10C_programN_chaff_getIndexEnd - A10C_programN_chaff_getIndexStart);
+                try { numericUpDown_A10C_programN_chaff.Value = int.Parse(A10C_programN_chaff_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programN_chaff.Value = numericUpDown_A10C_programN_chaff.Minimum; }
+
+
+                int A10C_programN_flare_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['N'][\"flare\"] =") + 24;
+                int A10C_programN_flare_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programN_flare_getIndexStart);
+                string A10C_programN_flare_amount = CountermeasureFileStringText_A10C.Substring(A10C_programN_flare_getIndexStart, A10C_programN_flare_getIndexEnd - A10C_programN_flare_getIndexStart);
+                try { numericUpDown_A10C_programN_flare.Value = int.Parse(A10C_programN_flare_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programN_flare.Value = numericUpDown_A10C_programN_flare.Minimum; }
+
+                int A10C_programN_interval_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['N'][\"intv\"]  =") + 24;
+                int A10C_programN_interval_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programN_interval_getIndexStart);
+                string A10C_programN_interval_amount = CountermeasureFileStringText_A10C.Substring(A10C_programN_interval_getIndexStart, A10C_programN_interval_getIndexEnd - A10C_programN_interval_getIndexStart);
+                try { numericUpDown_A10C_programN_interval.Value = Decimal.Parse(A10C_programN_interval_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programN_interval.Value = numericUpDown_A10C_programN_interval.Minimum; }
+
+                int A10C_programN_cycle_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['N'][\"cycle\"] =") + 24;
+                int A10C_programN_cycle_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programN_cycle_getIndexStart);
+                string A10C_programN_cycle_amount = CountermeasureFileStringText_A10C.Substring(A10C_programN_cycle_getIndexStart, A10C_programN_cycle_getIndexEnd - A10C_programN_cycle_getIndexStart);
+                try { numericUpDown_A10C_programN_cycle.Value = int.Parse(A10C_programN_cycle_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programN_cycle.Value = numericUpDown_A10C_programN_cycle.Minimum; }
+            }
+
+            if (CountermeasureFileStringText_A10C.Contains("'O'"))
+            {
+                int A10C_programO_chaff_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['O'][\"chaff\"] =") + 24;
+                int A10C_programO_chaff_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programO_chaff_getIndexStart);
+                string A10C_programO_chaff_amount = CountermeasureFileStringText_A10C.Substring(A10C_programO_chaff_getIndexStart, A10C_programO_chaff_getIndexEnd - A10C_programO_chaff_getIndexStart);
+                try { numericUpDown_A10C_programO_chaff.Value = int.Parse(A10C_programO_chaff_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programO_chaff.Value = numericUpDown_A10C_programO_chaff.Minimum; }
+
+                int A10C_programO_flare_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['O'][\"flare\"] =") + 24;
+                int A10C_programO_flare_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programO_flare_getIndexStart);
+                string A10C_programO_flare_amount = CountermeasureFileStringText_A10C.Substring(A10C_programO_flare_getIndexStart, A10C_programO_flare_getIndexEnd - A10C_programO_flare_getIndexStart);
+                try { numericUpDown_A10C_programO_flare.Value = int.Parse(A10C_programO_flare_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programO_flare.Value = numericUpDown_A10C_programO_flare.Minimum; }
+
+                int A10C_programO_interval_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['O'][\"intv\"]  =") + 24;
+                int A10C_programO_interval_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programO_interval_getIndexStart);
+                string A10C_programO_interval_amount = CountermeasureFileStringText_A10C.Substring(A10C_programO_interval_getIndexStart, A10C_programO_interval_getIndexEnd - A10C_programO_interval_getIndexStart);
+                try { numericUpDown_A10C_programO_interval.Value = Decimal.Parse(A10C_programO_interval_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programO_interval.Value = numericUpDown_A10C_programO_interval.Minimum; }
+
+                int A10C_programO_cycle_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['O'][\"cycle\"] =") + 24;
+                int A10C_programO_cycle_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programO_cycle_getIndexStart);
+                string A10C_programO_cycle_amount = CountermeasureFileStringText_A10C.Substring(A10C_programO_cycle_getIndexStart, A10C_programO_cycle_getIndexEnd - A10C_programO_cycle_getIndexStart);
+                try { numericUpDown_A10C_programO_cycle.Value = int.Parse(A10C_programO_cycle_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programO_cycle.Value = numericUpDown_A10C_programO_cycle.Minimum; }
+            }
+
+            if (CountermeasureFileStringText_A10C.Contains("'P'"))
+            {
+                int A10C_programP_chaff_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['P'][\"chaff\"] =") + 24;
+                int A10C_programP_chaff_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programP_chaff_getIndexStart);
+                string A10C_programP_chaff_amount = CountermeasureFileStringText_A10C.Substring(A10C_programP_chaff_getIndexStart, A10C_programP_chaff_getIndexEnd - A10C_programP_chaff_getIndexStart);
+                try { numericUpDown_A10C_programP_chaff.Value = int.Parse(A10C_programP_chaff_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programP_chaff.Value = numericUpDown_A10C_programP_chaff.Minimum; }
+
+                int A10C_programP_flare_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['P'][\"flare\"] =") + 24;
+                int A10C_programP_flare_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programP_flare_getIndexStart);
+                string A10C_programP_flare_amount = CountermeasureFileStringText_A10C.Substring(A10C_programP_flare_getIndexStart, A10C_programP_flare_getIndexEnd - A10C_programP_flare_getIndexStart);
+                try { numericUpDown_A10C_programP_flare.Value = int.Parse(A10C_programP_flare_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programP_flare.Value = numericUpDown_A10C_programP_flare.Minimum; }
+
+                int A10C_programP_interval_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['P'][\"intv\"]  =") + 24;
+                int A10C_programP_interval_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programP_interval_getIndexStart);
+                string A10C_programP_interval_amount = CountermeasureFileStringText_A10C.Substring(A10C_programP_interval_getIndexStart, A10C_programP_interval_getIndexEnd - A10C_programP_interval_getIndexStart);
+                try { numericUpDown_A10C_programP_interval.Value = Decimal.Parse(A10C_programP_interval_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programP_interval.Value = numericUpDown_A10C_programP_interval.Minimum; }
+
+                int A10C_programP_cycle_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['P'][\"cycle\"] =") + 24;
+                int A10C_programP_cycle_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programP_cycle_getIndexStart);
+                string A10C_programP_cycle_amount = CountermeasureFileStringText_A10C.Substring(A10C_programP_cycle_getIndexStart, A10C_programP_cycle_getIndexEnd - A10C_programP_cycle_getIndexStart);
+                try { numericUpDown_A10C_programP_cycle.Value = int.Parse(A10C_programP_cycle_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programP_cycle.Value = numericUpDown_A10C_programP_cycle.Minimum; }
+            }
+
+            if (CountermeasureFileStringText_A10C.Contains("'Q'"))
+            {
+                int A10C_programQ_chaff_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['Q'][\"chaff\"] =") + 24;
+                int A10C_programQ_chaff_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programQ_chaff_getIndexStart);
+                string A10C_programQ_chaff_amount = CountermeasureFileStringText_A10C.Substring(A10C_programQ_chaff_getIndexStart, A10C_programQ_chaff_getIndexEnd - A10C_programQ_chaff_getIndexStart);
+                try { numericUpDown_A10C_programQ_chaff.Value = int.Parse(A10C_programQ_chaff_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programQ_chaff.Value = numericUpDown_A10C_programQ_chaff.Minimum; }
+
+                int A10C_programQ_flare_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['Q'][\"flare\"] =") + 24;
+                int A10C_programQ_flare_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programQ_flare_getIndexStart);
+                string A10C_programQ_flare_amount = CountermeasureFileStringText_A10C.Substring(A10C_programQ_flare_getIndexStart, A10C_programQ_flare_getIndexEnd - A10C_programQ_flare_getIndexStart);
+                try { numericUpDown_A10C_programQ_flare.Value = int.Parse(A10C_programQ_flare_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programQ_flare.Value = numericUpDown_A10C_programQ_flare.Minimum; }
+
+                int A10C_programQ_interval_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['Q'][\"intv\"]  =") + 24;
+                int A10C_programQ_interval_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programQ_interval_getIndexStart);
+                string A10C_programQ_interval_amount = CountermeasureFileStringText_A10C.Substring(A10C_programQ_interval_getIndexStart, A10C_programQ_interval_getIndexEnd - A10C_programQ_interval_getIndexStart);
+                try { numericUpDown_A10C_programQ_interval.Value = Decimal.Parse(A10C_programQ_interval_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programQ_interval.Value = numericUpDown_A10C_programQ_interval.Minimum; }
+
+                int A10C_programQ_cycle_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['Q'][\"cycle\"] =") + 24;
+                int A10C_programQ_cycle_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programQ_cycle_getIndexStart);
+                string A10C_programQ_cycle_amount = CountermeasureFileStringText_A10C.Substring(A10C_programQ_cycle_getIndexStart, A10C_programQ_cycle_getIndexEnd - A10C_programQ_cycle_getIndexStart);
+                try { numericUpDown_A10C_programQ_cycle.Value = int.Parse(A10C_programQ_cycle_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programQ_cycle.Value = numericUpDown_A10C_programQ_cycle.Minimum; }
+            }
+
+            if (CountermeasureFileStringText_A10C.Contains("'R'"))
+            {
+                int A10C_programR_chaff_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['R'][\"chaff\"] =") + 24;
+                int A10C_programR_chaff_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programR_chaff_getIndexStart);
+                string A10C_programR_chaff_amount = CountermeasureFileStringText_A10C.Substring(A10C_programR_chaff_getIndexStart, A10C_programR_chaff_getIndexEnd - A10C_programR_chaff_getIndexStart);
+                try { numericUpDown_A10C_programR_chaff.Value = int.Parse(A10C_programR_chaff_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programR_chaff.Value = numericUpDown_A10C_programR_chaff.Minimum; }
+
+                int A10C_programR_flare_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['R'][\"flare\"] =") + 24;
+                int A10C_programR_flare_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programR_flare_getIndexStart);
+                string A10C_programR_flare_amount = CountermeasureFileStringText_A10C.Substring(A10C_programR_flare_getIndexStart, A10C_programR_flare_getIndexEnd - A10C_programR_flare_getIndexStart);
+                try { numericUpDown_A10C_programR_flare.Value = int.Parse(A10C_programR_flare_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programR_flare.Value = numericUpDown_A10C_programR_flare.Minimum; }
+
+                int A10C_programR_interval_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['R'][\"intv\"]  =") + 24;
+                int A10C_programR_interval_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programR_interval_getIndexStart);
+                string A10C_programR_interval_amount = CountermeasureFileStringText_A10C.Substring(A10C_programR_interval_getIndexStart, A10C_programR_interval_getIndexEnd - A10C_programR_interval_getIndexStart);
+                try { numericUpDown_A10C_programR_interval.Value = Decimal.Parse(A10C_programR_interval_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programR_interval.Value = numericUpDown_A10C_programR_interval.Minimum; }
+
+                int A10C_programR_cycle_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['R'][\"cycle\"] =") + 24;
+                int A10C_programR_cycle_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programR_cycle_getIndexStart);
+                string A10C_programR_cycle_amount = CountermeasureFileStringText_A10C.Substring(A10C_programR_cycle_getIndexStart, A10C_programR_cycle_getIndexEnd - A10C_programR_cycle_getIndexStart);
+                try { numericUpDown_A10C_programR_cycle.Value = int.Parse(A10C_programR_cycle_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programR_cycle.Value = numericUpDown_A10C_programR_cycle.Minimum; }
+            }
+
+            if (CountermeasureFileStringText_A10C.Contains("'S'"))
+            {
+                int A10C_programS_chaff_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['S'][\"chaff\"] =") + 24;
+                int A10C_programS_chaff_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programS_chaff_getIndexStart);
+                string A10C_programS_chaff_amount = CountermeasureFileStringText_A10C.Substring(A10C_programS_chaff_getIndexStart, A10C_programS_chaff_getIndexEnd - A10C_programS_chaff_getIndexStart);
+                try { numericUpDown_A10C_programS_chaff.Value = int.Parse(A10C_programS_chaff_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programS_chaff.Value = numericUpDown_A10C_programS_chaff.Minimum; }
+
+                int A10C_programS_flare_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['S'][\"flare\"] =") + 24;
+                int A10C_programS_flare_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programS_flare_getIndexStart);
+                string A10C_programS_flare_amount = CountermeasureFileStringText_A10C.Substring(A10C_programS_flare_getIndexStart, A10C_programS_flare_getIndexEnd - A10C_programS_flare_getIndexStart);
+                try { numericUpDown_A10C_programS_flare.Value = int.Parse(A10C_programS_flare_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programS_flare.Value = numericUpDown_A10C_programS_flare.Minimum; }
+
+                int A10C_programS_interval_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['S'][\"intv\"]  =") + 24;
+                int A10C_programS_interval_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programS_interval_getIndexStart);
+                string A10C_programS_interval_amount = CountermeasureFileStringText_A10C.Substring(A10C_programS_interval_getIndexStart, A10C_programS_interval_getIndexEnd - A10C_programS_interval_getIndexStart);
+                try { numericUpDown_A10C_programS_interval.Value = Decimal.Parse(A10C_programS_interval_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programS_interval.Value = numericUpDown_A10C_programS_interval.Minimum; }
+
+                int A10C_programS_cycle_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['S'][\"cycle\"] =") + 24;
+                int A10C_programS_cycle_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programS_cycle_getIndexStart);
+                string A10C_programS_cycle_amount = CountermeasureFileStringText_A10C.Substring(A10C_programS_cycle_getIndexStart, A10C_programS_cycle_getIndexEnd - A10C_programS_cycle_getIndexStart);
+                try { numericUpDown_A10C_programS_cycle.Value = int.Parse(A10C_programS_cycle_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programS_cycle.Value = numericUpDown_A10C_programS_cycle.Minimum; }
+            }
+
+            if (CountermeasureFileStringText_A10C.Contains("'T'"))
+            {
+                int A10C_programT_chaff_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['T'][\"chaff\"] =") + 24;
+                int A10C_programT_chaff_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programT_chaff_getIndexStart);
+                string A10C_programT_chaff_amount = CountermeasureFileStringText_A10C.Substring(A10C_programT_chaff_getIndexStart, A10C_programT_chaff_getIndexEnd - A10C_programT_chaff_getIndexStart);
+                try { numericUpDown_A10C_programT_chaff.Value = int.Parse(A10C_programT_chaff_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programT_chaff.Value = numericUpDown_A10C_programT_chaff.Minimum; }
+
+                int A10C_programT_flare_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['T'][\"flare\"] =") + 24;
+                int A10C_programT_flare_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programT_flare_getIndexStart);
+                string A10C_programT_flare_amount = CountermeasureFileStringText_A10C.Substring(A10C_programT_flare_getIndexStart, A10C_programT_flare_getIndexEnd - A10C_programT_flare_getIndexStart);
+                try { numericUpDown_A10C_programT_flare.Value = int.Parse(A10C_programT_flare_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programT_flare.Value = numericUpDown_A10C_programT_flare.Minimum; }
+
+                int A10C_programT_interval_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['T'][\"intv\"]  =") + 24;
+                int A10C_programT_interval_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programT_interval_getIndexStart);
+                string A10C_programT_interval_amount = CountermeasureFileStringText_A10C.Substring(A10C_programT_interval_getIndexStart, A10C_programT_interval_getIndexEnd - A10C_programT_interval_getIndexStart);
+                try { numericUpDown_A10C_programT_interval.Value = Decimal.Parse(A10C_programT_interval_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programT_interval.Value = numericUpDown_A10C_programT_interval.Minimum; }
+
+                int A10C_programT_cycle_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['T'][\"cycle\"] =") + 24;
+                int A10C_programT_cycle_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programT_cycle_getIndexStart);
+                string A10C_programT_cycle_amount = CountermeasureFileStringText_A10C.Substring(A10C_programT_cycle_getIndexStart, A10C_programT_cycle_getIndexEnd - A10C_programT_cycle_getIndexStart);
+                try { numericUpDown_A10C_programT_cycle.Value = int.Parse(A10C_programT_cycle_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programT_cycle.Value = numericUpDown_A10C_programT_cycle.Minimum; }
+            }
+
+            if (CountermeasureFileStringText_A10C.Contains("'U'"))
+            {
+                int A10C_programU_chaff_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['U'][\"chaff\"] =") + 24;
+                int A10C_programU_chaff_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programU_chaff_getIndexStart);
+                string A10C_programU_chaff_amount = CountermeasureFileStringText_A10C.Substring(A10C_programU_chaff_getIndexStart, A10C_programU_chaff_getIndexEnd - A10C_programU_chaff_getIndexStart);
+                try { numericUpDown_A10C_programU_chaff.Value = int.Parse(A10C_programU_chaff_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programU_chaff.Value = numericUpDown_A10C_programU_chaff.Minimum; }
+
+                int A10C_programU_flare_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['U'][\"flare\"] =") + 24;
+                int A10C_programU_flare_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programU_flare_getIndexStart);
+                string A10C_programU_flare_amount = CountermeasureFileStringText_A10C.Substring(A10C_programU_flare_getIndexStart, A10C_programU_flare_getIndexEnd - A10C_programU_flare_getIndexStart);
+                try { numericUpDown_A10C_programU_flare.Value = int.Parse(A10C_programU_flare_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programU_flare.Value = numericUpDown_A10C_programU_flare.Minimum; }
+
+                int A10C_programU_interval_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['U'][\"intv\"]  =") + 24;
+                int A10C_programU_interval_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programU_interval_getIndexStart);
+                string A10C_programU_interval_amount = CountermeasureFileStringText_A10C.Substring(A10C_programU_interval_getIndexStart, A10C_programU_interval_getIndexEnd - A10C_programU_interval_getIndexStart);
+                try { numericUpDown_A10C_programU_interval.Value = Decimal.Parse(A10C_programU_interval_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programU_interval.Value = numericUpDown_A10C_programU_interval.Minimum; }
+
+                int A10C_programU_cycle_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['U'][\"cycle\"] =") + 24;
+                int A10C_programU_cycle_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programU_cycle_getIndexStart);
+                string A10C_programU_cycle_amount = CountermeasureFileStringText_A10C.Substring(A10C_programU_cycle_getIndexStart, A10C_programU_cycle_getIndexEnd - A10C_programU_cycle_getIndexStart);
+                try { numericUpDown_A10C_programU_cycle.Value = int.Parse(A10C_programU_cycle_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programU_cycle.Value = numericUpDown_A10C_programU_cycle.Minimum; }
+            }
+
+            if (CountermeasureFileStringText_A10C.Contains("'V'"))
+            {
+                int A10C_programV_chaff_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['V'][\"chaff\"] =") + 24;
+                int A10C_programV_chaff_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programV_chaff_getIndexStart);
+                string A10C_programV_chaff_amount = CountermeasureFileStringText_A10C.Substring(A10C_programV_chaff_getIndexStart, A10C_programV_chaff_getIndexEnd - A10C_programV_chaff_getIndexStart);
+                try { numericUpDown_A10C_programV_chaff.Value = int.Parse(A10C_programV_chaff_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programV_chaff.Value = numericUpDown_A10C_programV_chaff.Minimum; }
+
+                int A10C_programV_flare_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['V'][\"flare\"] =") + 24;
+                int A10C_programV_flare_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programV_flare_getIndexStart);
+                string A10C_programV_flare_amount = CountermeasureFileStringText_A10C.Substring(A10C_programV_flare_getIndexStart, A10C_programV_flare_getIndexEnd - A10C_programV_flare_getIndexStart);
+                try { numericUpDown_A10C_programV_flare.Value = int.Parse(A10C_programV_flare_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programV_flare.Value = numericUpDown_A10C_programV_flare.Minimum; }
+
+                int A10C_programV_interval_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['V'][\"intv\"]  =") + 24;
+                int A10C_programV_interval_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programV_interval_getIndexStart);
+                string A10C_programV_interval_amount = CountermeasureFileStringText_A10C.Substring(A10C_programV_interval_getIndexStart, A10C_programV_interval_getIndexEnd - A10C_programV_interval_getIndexStart);
+                try { numericUpDown_A10C_programV_interval.Value = Decimal.Parse(A10C_programV_interval_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programV_interval.Value = numericUpDown_A10C_programV_interval.Minimum; }
+
+                int A10C_programV_cycle_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['V'][\"cycle\"] =") + 24;
+                int A10C_programV_cycle_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programV_cycle_getIndexStart);
+                string A10C_programV_cycle_amount = CountermeasureFileStringText_A10C.Substring(A10C_programV_cycle_getIndexStart, A10C_programV_cycle_getIndexEnd - A10C_programV_cycle_getIndexStart);
+                try { numericUpDown_A10C_programV_cycle.Value = int.Parse(A10C_programV_cycle_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programV_cycle.Value = numericUpDown_A10C_programV_cycle.Minimum; }
+            }
+
+            if (CountermeasureFileStringText_A10C.Contains("'W'"))
+            {
+                int A10C_programW_chaff_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['W'][\"chaff\"] =") + 24;
+                int A10C_programW_chaff_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programW_chaff_getIndexStart);
+                string A10C_programW_chaff_amount = CountermeasureFileStringText_A10C.Substring(A10C_programW_chaff_getIndexStart, A10C_programW_chaff_getIndexEnd - A10C_programW_chaff_getIndexStart);
+                try { numericUpDown_A10C_programW_chaff.Value = int.Parse(A10C_programW_chaff_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programW_chaff.Value = numericUpDown_A10C_programW_chaff.Minimum; }
+
+                int A10C_programW_flare_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['W'][\"flare\"] =") + 24;
+                int A10C_programW_flare_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programW_flare_getIndexStart);
+                string A10C_programW_flare_amount = CountermeasureFileStringText_A10C.Substring(A10C_programW_flare_getIndexStart, A10C_programW_flare_getIndexEnd - A10C_programW_flare_getIndexStart);
+                try { numericUpDown_A10C_programW_flare.Value = int.Parse(A10C_programW_flare_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programW_flare.Value = numericUpDown_A10C_programW_flare.Minimum; }
+
+                int A10C_programW_interval_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['W'][\"intv\"]  =") + 24;
+                int A10C_programW_interval_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programW_interval_getIndexStart);
+                string A10C_programW_interval_amount = CountermeasureFileStringText_A10C.Substring(A10C_programW_interval_getIndexStart, A10C_programW_interval_getIndexEnd - A10C_programW_interval_getIndexStart);
+                try { numericUpDown_A10C_programW_interval.Value = Decimal.Parse(A10C_programW_interval_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programW_interval.Value = numericUpDown_A10C_programW_interval.Minimum; }
+
+                int A10C_programW_cycle_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['W'][\"cycle\"] =") + 24;
+                int A10C_programW_cycle_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programW_cycle_getIndexStart);
+                string A10C_programW_cycle_amount = CountermeasureFileStringText_A10C.Substring(A10C_programW_cycle_getIndexStart, A10C_programW_cycle_getIndexEnd - A10C_programW_cycle_getIndexStart);
+                try { numericUpDown_A10C_programW_cycle.Value = int.Parse(A10C_programW_cycle_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programW_cycle.Value = numericUpDown_A10C_programW_cycle.Minimum; }
+            }
+
+            if (CountermeasureFileStringText_A10C.Contains("'X'"))
+            {
+                int A10C_programX_chaff_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['X'][\"chaff\"] =") + 24;
+                int A10C_programX_chaff_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programX_chaff_getIndexStart);
+                string A10C_programX_chaff_amount = CountermeasureFileStringText_A10C.Substring(A10C_programX_chaff_getIndexStart, A10C_programX_chaff_getIndexEnd - A10C_programX_chaff_getIndexStart);
+                try { numericUpDown_A10C_programX_chaff.Value = int.Parse(A10C_programX_chaff_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programX_chaff.Value = numericUpDown_A10C_programX_chaff.Minimum; }
+
+                int A10C_programX_flare_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['X'][\"flare\"] =") + 24;
+                int A10C_programX_flare_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programX_flare_getIndexStart);
+                string A10C_programX_flare_amount = CountermeasureFileStringText_A10C.Substring(A10C_programX_flare_getIndexStart, A10C_programX_flare_getIndexEnd - A10C_programX_flare_getIndexStart);
+                try { numericUpDown_A10C_programX_flare.Value = int.Parse(A10C_programX_flare_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programX_flare.Value = numericUpDown_A10C_programX_flare.Minimum; }
+
+                int A10C_programX_interval_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['X'][\"intv\"]  =") + 24;
+                int A10C_programX_interval_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programX_interval_getIndexStart);
+                string A10C_programX_interval_amount = CountermeasureFileStringText_A10C.Substring(A10C_programX_interval_getIndexStart, A10C_programX_interval_getIndexEnd - A10C_programX_interval_getIndexStart);
+                try { numericUpDown_A10C_programX_interval.Value = Decimal.Parse(A10C_programX_interval_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programX_interval.Value = numericUpDown_A10C_programX_interval.Minimum; }
+
+                int A10C_programX_cycle_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['X'][\"cycle\"] =") + 24;
+                int A10C_programX_cycle_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programX_cycle_getIndexStart);
+                string A10C_programX_cycle_amount = CountermeasureFileStringText_A10C.Substring(A10C_programX_cycle_getIndexStart, A10C_programX_cycle_getIndexEnd - A10C_programX_cycle_getIndexStart);
+                try { numericUpDown_A10C_programX_cycle.Value = int.Parse(A10C_programX_cycle_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programX_cycle.Value = numericUpDown_A10C_programX_cycle.Minimum; }
+            }
+
+            if (CountermeasureFileStringText_A10C.Contains("'Y'"))
+            {
+                int A10C_programY_chaff_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['Y'][\"chaff\"] =") + 24;
+                int A10C_programY_chaff_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programY_chaff_getIndexStart);
+                string A10C_programY_chaff_amount = CountermeasureFileStringText_A10C.Substring(A10C_programY_chaff_getIndexStart, A10C_programY_chaff_getIndexEnd - A10C_programY_chaff_getIndexStart);
+                try { numericUpDown_A10C_programY_chaff.Value = int.Parse(A10C_programY_chaff_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programY_chaff.Value = numericUpDown_A10C_programY_chaff.Minimum; }
+
+                int A10C_programY_flare_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['Y'][\"flare\"] =") + 24;
+                int A10C_programY_flare_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programY_flare_getIndexStart);
+                string A10C_programY_flare_amount = CountermeasureFileStringText_A10C.Substring(A10C_programY_flare_getIndexStart, A10C_programY_flare_getIndexEnd - A10C_programY_flare_getIndexStart);
+                try { numericUpDown_A10C_programY_flare.Value = int.Parse(A10C_programY_flare_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programY_flare.Value = numericUpDown_A10C_programY_flare.Minimum; }
+
+                int A10C_programY_interval_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['Y'][\"intv\"]  =") + 24;
+                int A10C_programY_interval_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programY_interval_getIndexStart);
+                string A10C_programY_interval_amount = CountermeasureFileStringText_A10C.Substring(A10C_programY_interval_getIndexStart, A10C_programY_interval_getIndexEnd - A10C_programY_interval_getIndexStart);
+                try { numericUpDown_A10C_programY_interval.Value = Decimal.Parse(A10C_programY_interval_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programY_interval.Value = numericUpDown_A10C_programY_interval.Minimum; }
+
+                int A10C_programY_cycle_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['Y'][\"cycle\"] =") + 24;
+                int A10C_programY_cycle_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programY_cycle_getIndexStart);
+                string A10C_programY_cycle_amount = CountermeasureFileStringText_A10C.Substring(A10C_programY_cycle_getIndexStart, A10C_programY_cycle_getIndexEnd - A10C_programY_cycle_getIndexStart);
+                try { numericUpDown_A10C_programY_cycle.Value = int.Parse(A10C_programY_cycle_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programY_cycle.Value = numericUpDown_A10C_programY_cycle.Minimum; }
+            }
+
+            if (CountermeasureFileStringText_A10C.Contains("'Z'"))
+            {
+                int A10C_programZ_chaff_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['Z'][\"chaff\"] =") + 24;
+                int A10C_programZ_chaff_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programZ_chaff_getIndexStart);
+                string A10C_programZ_chaff_amount = CountermeasureFileStringText_A10C.Substring(A10C_programZ_chaff_getIndexStart, A10C_programZ_chaff_getIndexEnd - A10C_programZ_chaff_getIndexStart);
+                try { numericUpDown_A10C_programZ_chaff.Value = int.Parse(A10C_programZ_chaff_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programZ_chaff.Value = numericUpDown_A10C_programZ_chaff.Minimum; }
+
+                int A10C_programZ_flare_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['Z'][\"flare\"] =") + 24;
+                int A10C_programZ_flare_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programZ_flare_getIndexStart);
+                string A10C_programZ_flare_amount = CountermeasureFileStringText_A10C.Substring(A10C_programZ_flare_getIndexStart, A10C_programZ_flare_getIndexEnd - A10C_programZ_flare_getIndexStart);
+                try { numericUpDown_A10C_programZ_flare.Value = int.Parse(A10C_programZ_flare_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programZ_flare.Value = numericUpDown_A10C_programZ_flare.Minimum; }
+
+                int A10C_programZ_interval_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['Z'][\"intv\"]  =") + 24;
+                int A10C_programZ_interval_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programZ_interval_getIndexStart);
+                string A10C_programZ_interval_amount = CountermeasureFileStringText_A10C.Substring(A10C_programZ_interval_getIndexStart, A10C_programZ_interval_getIndexEnd - A10C_programZ_interval_getIndexStart);
+                try { numericUpDown_A10C_programZ_interval.Value = Decimal.Parse(A10C_programZ_interval_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programZ_interval.Value = numericUpDown_A10C_programZ_interval.Minimum; }
+
+                int A10C_programZ_cycle_getIndexStart = CountermeasureFileStringText_A10C.IndexOf("programs['Z'][\"cycle\"] =") + 24;
+                int A10C_programZ_cycle_getIndexEnd = CountermeasureFileStringText_A10C.IndexOf("\n", A10C_programZ_cycle_getIndexStart);
+                string A10C_programZ_cycle_amount = CountermeasureFileStringText_A10C.Substring(A10C_programZ_cycle_getIndexStart, A10C_programZ_cycle_getIndexEnd - A10C_programZ_cycle_getIndexStart);
+                try { numericUpDown_A10C_programZ_cycle.Value = int.Parse(A10C_programZ_cycle_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_A10C_programZ_cycle.Value = numericUpDown_A10C_programZ_cycle.Minimum; }
+            }
+
+            //MessageBox.Show("Index Start:" + A10C_programB_cycle_getIndexStart + " Index End:" + A10C_programB_cycle_getIndexEnd + " Result: |" + A10C_programB_cycle_amount + "|");
+
+        }
+
         private void printLua()
         {
 
@@ -1904,7 +2912,9 @@ namespace DCSF18ALE47Programmer
 
         }
 
-        private void button_export_Click(object sender, EventArgs e)
+        
+
+            private void button_export_Click(object sender, EventArgs e)
         {
             //determine which tab the user is on to export the correct .lua
             if (tabControl_mainTab.SelectedTab == tabPage1)
@@ -2243,7 +3253,7 @@ namespace DCSF18ALE47Programmer
             else if (tabControl_mainTab.SelectedTab == tabPage3)
             {
                 //MessageBox.Show("You were on tab 3");
-                MessageBox.Show("Export of F-16C Harm Tables is not currently supported.");
+                harmForF16cIsNotAvailableMessage();
                 //must wait till you know what the lua looks like
 
                 /*
@@ -2454,8 +3464,479 @@ namespace DCSF18ALE47Programmer
                 }
                 */
             }
+            else if (tabControl_mainTab.SelectedTab == tabPage4)
+            {
+                button_export_Click_A10C();
+
+                
+            }
         }
 
+        private void button_export_Click_A10C()//this contains the code for the formated lua that the program will spit out for DCS
+        {
+            //TODO: finish coding this part 
+            string[] luaExportString = {
+            "local gettext = require(\"i_18n\")",
+            "_ = gettext.translate",
+            "",
+            "programs = {}",
+            "",
+            "-- Old generation radar SAM",
+            "programs['A'] = {}",
+            "programs['A'][\"chaff\"] = " + numericUpDown_A10C_programA_chaff.Value ,
+            "programs['A'][\"flare\"] = " + numericUpDown_A10C_programA_flare.Value ,
+            "programs['A'][\"intv\"]  = " + numericUpDown_A10C_programA_interval.Value ,
+            "programs['A'][\"cycle\"] = " + numericUpDown_A10C_programA_cycle.Value ,
+            "",
+            "-- Current generation radar SAM",
+            "programs['B'] = {}",
+            "programs['B'][\"chaff\"] = " + numericUpDown_A10C_programB_chaff.Value ,
+            "programs['B'][\"flare\"] = " + numericUpDown_A10C_programB_flare.Value ,
+            "programs['B'][\"intv\"]  = " + numericUpDown_A10C_programB_interval.Value ,
+            "programs['B'][\"cycle\"] = " + numericUpDown_A10C_programB_cycle.Value ,
+            "",
+            "-- IR SAM",
+            "programs['C'] = {}",
+            "programs['C'][\"chaff\"] = " + numericUpDown_A10C_programC_chaff.Value ,
+            "programs['C'][\"flare\"] = " + numericUpDown_A10C_programC_flare.Value ,
+            "programs['C'][\"intv\"]  = " + numericUpDown_A10C_programC_interval.Value ,
+            "programs['C'][\"cycle\"] = " + numericUpDown_A10C_programC_cycle.Value ,
+            "",
+            "-- Default manual presets",
+            "-- Mix 1",
+            "programs['D'] = {}",
+            "programs['D'][\"chaff\"] = " + numericUpDown_A10C_programD_chaff.Value ,
+            "programs['D'][\"flare\"] = " + numericUpDown_A10C_programD_flare.Value ,
+            "programs['D'][\"intv\"]  = " + numericUpDown_A10C_programD_interval.Value ,
+            "programs['D'][\"cycle\"] = " + numericUpDown_A10C_programD_cycle.Value ,
+            "",
+            "-- Mix 2",
+            "programs['E'] = {}",
+            "programs['E'][\"chaff\"] = " + numericUpDown_A10C_programE_chaff.Value ,
+            "programs['E'][\"flare\"] = " + numericUpDown_A10C_programE_flare.Value ,
+            "programs['E'][\"intv\"]  = " + numericUpDown_A10C_programE_interval.Value ,
+            "programs['E'][\"cycle\"] = " + numericUpDown_A10C_programE_cycle.Value ,
+            "",
+            "-- Mix 3",
+            "programs['F'] = {}",
+            "programs['F'][\"chaff\"] = " + numericUpDown_A10C_programF_chaff.Value ,
+            "programs['F'][\"flare\"] = " + numericUpDown_A10C_programF_flare.Value ,
+            "programs['F'][\"intv\"]  = " + numericUpDown_A10C_programF_interval.Value ,
+            "programs['F'][\"cycle\"] = " + numericUpDown_A10C_programF_cycle.Value ,
+            "",
+            "-- Mix 4",
+            "programs['G'] = {}",
+            "programs['G'][\"chaff\"] = " + numericUpDown_A10C_programG_chaff.Value ,
+            "programs['G'][\"flare\"] = " + numericUpDown_A10C_programG_flare.Value ,
+            "programs['G'][\"intv\"]  = " + numericUpDown_A10C_programG_interval.Value ,
+            "programs['G'][\"cycle\"] = " + numericUpDown_A10C_programG_cycle.Value ,
+            "",
+            "-- Chaff single",
+            "programs['H'] = {}",
+            "programs['H'][\"chaff\"] = " + numericUpDown_A10C_programH_chaff.Value ,
+            "programs['H'][\"flare\"] = " + numericUpDown_A10C_programH_flare.Value ,
+            "programs['H'][\"intv\"]  = " + numericUpDown_A10C_programH_interval.Value ,
+            "programs['H'][\"cycle\"] = " + numericUpDown_A10C_programH_cycle.Value ,
+            "",
+            "-- Chaff pair",
+            "programs['I'] = {}",
+            "programs['I'][\"chaff\"] = " + numericUpDown_A10C_programI_chaff.Value ,
+            "programs['I'][\"flare\"] = " + numericUpDown_A10C_programI_flare.Value ,
+            "programs['I'][\"intv\"]  = " + numericUpDown_A10C_programI_interval.Value ,
+            "programs['I'][\"cycle\"] = " + numericUpDown_A10C_programI_cycle.Value ,
+            "",
+            "-- Flare single",
+            "programs['J'] = {}",
+            "programs['J'][\"chaff\"] = " + numericUpDown_A10C_programJ_chaff.Value ,
+            "programs['J'][\"flare\"] = " + numericUpDown_A10C_programJ_flare.Value ,
+            "programs['J'][\"intv\"]  = " + numericUpDown_A10C_programJ_interval.Value ,
+            "programs['J'][\"cycle\"] = " + numericUpDown_A10C_programJ_cycle.Value ,
+            "",
+            "-- Flare pair",
+            "programs['K'] = {}",
+            "programs['K'][\"chaff\"] = " + numericUpDown_A10C_programK_chaff.Value ,
+            "programs['K'][\"flare\"] = " + numericUpDown_A10C_programK_flare.Value ,
+            "programs['K'][\"intv\"]  = " + numericUpDown_A10C_programK_interval.Value ,
+            "programs['K'][\"cycle\"] = " + numericUpDown_A10C_programK_cycle.Value ,
+            "",
+            "-- Chaff pre-empt",
+            "programs['L'] = {}",
+            "programs['L'][\"chaff\"] = " + numericUpDown_A10C_programL_chaff.Value ,
+            "programs['L'][\"flare\"] = " + numericUpDown_A10C_programL_flare.Value ,
+            "programs['L'][\"intv\"]  = " + numericUpDown_A10C_programL_interval.Value ,
+            "programs['L'][\"cycle\"] = " + numericUpDown_A10C_programL_cycle.Value ,
+            "",
+            "-- Flare pre-empt",
+            "programs['M'] = {}",
+            "programs['M'][\"chaff\"] = " + numericUpDown_A10C_programM_chaff.Value ,
+            "programs['M'][\"flare\"] = " + numericUpDown_A10C_programM_flare.Value ,
+            "programs['M'][\"intv\"]  = " + numericUpDown_A10C_programM_interval.Value ,
+            "programs['M'][\"cycle\"] = " + numericUpDown_A10C_programM_cycle.Value ,
+            "",
+            "--" + textBox_programN.Text,
+            "programs['N'] = {}",
+            "programs['N'][\"chaff\"] = " + numericUpDown_A10C_programN_chaff.Value ,
+            "programs['N'][\"flare\"] = " + numericUpDown_A10C_programN_flare.Value ,
+            "programs['N'][\"intv\"]  = " + numericUpDown_A10C_programN_interval.Value ,
+            "programs['N'][\"cycle\"] = " + numericUpDown_A10C_programN_cycle.Value ,
+            "",
+            "--" + textBox_programO.Text,
+            "programs['O'] = {}",
+            "programs['O'][\"chaff\"] = " + numericUpDown_A10C_programO_chaff.Value ,
+            "programs['O'][\"flare\"] = " + numericUpDown_A10C_programO_flare.Value ,
+            "programs['O'][\"intv\"]  = " + numericUpDown_A10C_programO_interval.Value ,
+            "programs['O'][\"cycle\"] = " + numericUpDown_A10C_programO_cycle.Value ,
+            "",
+            "--" + textBox_programP.Text,
+            "programs['P'] = {}",
+            "programs['P'][\"chaff\"] = " + numericUpDown_A10C_programP_chaff.Value ,
+            "programs['P'][\"flare\"] = " + numericUpDown_A10C_programP_flare.Value ,
+            "programs['P'][\"intv\"]  = " + numericUpDown_A10C_programP_interval.Value ,
+            "programs['P'][\"cycle\"] = " + numericUpDown_A10C_programP_cycle.Value ,
+            "",
+            "--" + textBox_programQ.Text,
+            "programs['Q'] = {}",
+            "programs['Q'][\"chaff\"] = " + numericUpDown_A10C_programQ_chaff.Value ,
+            "programs['Q'][\"flare\"] = " + numericUpDown_A10C_programQ_flare.Value ,
+            "programs['Q'][\"intv\"]  = " + numericUpDown_A10C_programQ_interval.Value ,
+            "programs['Q'][\"cycle\"] = " + numericUpDown_A10C_programQ_cycle.Value ,
+            "",
+            "--" + textBox_programR.Text,
+            "programs['R'] = {}",
+            "programs['R'][\"chaff\"] = " + numericUpDown_A10C_programR_chaff.Value ,
+            "programs['R'][\"flare\"] = " + numericUpDown_A10C_programR_flare.Value ,
+            "programs['R'][\"intv\"]  = " + numericUpDown_A10C_programR_interval.Value ,
+            "programs['R'][\"cycle\"] = " + numericUpDown_A10C_programR_cycle.Value ,
+            "",
+            "--" + textBox_programS.Text,
+            "programs['S'] = {}",
+            "programs['S'][\"chaff\"] = " + numericUpDown_A10C_programS_chaff.Value ,
+            "programs['S'][\"flare\"] = " + numericUpDown_A10C_programS_flare.Value ,
+            "programs['S'][\"intv\"]  = " + numericUpDown_A10C_programS_interval.Value ,
+            "programs['S'][\"cycle\"] = " + numericUpDown_A10C_programS_cycle.Value ,
+            "",
+            "--" + textBox_programT.Text,
+            "programs['T'] = {}",
+            "programs['T'][\"chaff\"] = " + numericUpDown_A10C_programT_chaff.Value ,
+            "programs['T'][\"flare\"] = " + numericUpDown_A10C_programT_flare.Value ,
+            "programs['T'][\"intv\"]  = " + numericUpDown_A10C_programT_interval.Value ,
+            "programs['T'][\"cycle\"] = " + numericUpDown_A10C_programT_cycle.Value ,
+            "",
+            "--" + textBox_programU.Text,
+            "programs['U'] = {}",
+            "programs['U'][\"chaff\"] = " + numericUpDown_A10C_programU_chaff.Value ,
+            "programs['U'][\"flare\"] = " + numericUpDown_A10C_programU_flare.Value ,
+            "programs['U'][\"intv\"]  = " + numericUpDown_A10C_programU_interval.Value ,
+            "programs['U'][\"cycle\"] = " + numericUpDown_A10C_programU_cycle.Value ,
+            "",
+            "--" + textBox_programV.Text,
+            "programs['V'] = {}",
+            "programs['V'][\"chaff\"] = " + numericUpDown_A10C_programV_chaff.Value ,
+            "programs['V'][\"flare\"] = " + numericUpDown_A10C_programV_flare.Value ,
+            "programs['V'][\"intv\"]  = " + numericUpDown_A10C_programV_interval.Value ,
+            "programs['V'][\"cycle\"] = " + numericUpDown_A10C_programV_cycle.Value ,
+            "",
+            "--" + textBox_programW.Text,
+            "programs['W'] = {}",
+            "programs['W'][\"chaff\"] = " + numericUpDown_A10C_programW_chaff.Value ,
+            "programs['W'][\"flare\"] = " + numericUpDown_A10C_programW_flare.Value ,
+            "programs['W'][\"intv\"]  = " + numericUpDown_A10C_programW_interval.Value ,
+            "programs['W'][\"cycle\"] = " + numericUpDown_A10C_programW_cycle.Value ,
+            "",
+            "--" + textBox_programX.Text,
+            "programs['X'] = {}",
+            "programs['X'][\"chaff\"] = " + numericUpDown_A10C_programX_chaff.Value ,
+            "programs['X'][\"flare\"] = " + numericUpDown_A10C_programX_flare.Value ,
+            "programs['X'][\"intv\"]  = " + numericUpDown_A10C_programX_interval.Value ,
+            "programs['X'][\"cycle\"] = " + numericUpDown_A10C_programX_cycle.Value ,
+            "",
+            "--" + textBox_programY.Text,
+            "programs['Y'] = {}",
+            "programs['Y'][\"chaff\"] = " + numericUpDown_A10C_programY_chaff.Value ,
+            "programs['Y'][\"flare\"] = " + numericUpDown_A10C_programY_flare.Value ,
+            "programs['Y'][\"intv\"]  = " + numericUpDown_A10C_programY_interval.Value ,
+            "programs['Y'][\"cycle\"] = " + numericUpDown_A10C_programY_cycle.Value ,
+            "",
+            "--" + textBox_programZ.Text,
+            "programs['Z'] = {}",
+            "programs['Z'][\"chaff\"] = " + numericUpDown_A10C_programZ_chaff.Value ,
+            "programs['Z'][\"flare\"] = " + numericUpDown_A10C_programZ_flare.Value ,
+            "programs['Z'][\"intv\"]  = " + numericUpDown_A10C_programZ_interval.Value ,
+            "programs['Z'][\"cycle\"] = " + numericUpDown_A10C_programZ_cycle.Value ,
+            "",
+            "",
+            "ContainerChaffCapacity = 120",
+            "",
+            "ContainerFlareCapacity = 60",
+            "",
+            "NumberOfContiners      = 4",
+            "",
+            "AN_ALE_40V_FAILURE_TOTAL = 0",
+            "AN_ALE_40V_FAILURE_CONTAINER_LEFT_WING	= 1",
+            "AN_ALE_40V_FAILURE_CONTAINER_LEFT_GEAR	= 2",
+            "AN_ALE_40V_FAILURE_CONTAINER_RIGHT_GEAR	= 3",
+            "AN_ALE_40V_FAILURE_CONTAINER_RIGHT_WING	= 4",
+            "",
+            "Damage = {	{Failure = AN_ALE_40V_FAILURE_TOTAL, Failure_name = \"AN_ALE_40V_FAILURE_TOTAL\", Failure_editor_name = _(\"AN/ALE-40(V) total failure\"),  Element = 10, Integrity_Treshold = 0.5, work_time_to_fail_probability = 0.5, work_time_to_fail = 3600*300},",
+            "		{Failure = AN_ALE_40V_FAILURE_CONTAINER_LEFT_WING, Failure_name = \"AN_ALE_40V_FAILURE_CONTAINER_LEFT_WING\", Failure_editor_name = _(\"AN/ALE-40(V) left wing container failure\"),  Element = 23, Integrity_Treshold = 0.75, work_time_to_fail_probability = 0.5, work_time_to_fail = 3600*300},",
+            "		{Failure = AN_ALE_40V_FAILURE_CONTAINER_LEFT_GEAR, Failure_name = \"AN_ALE_40V_FAILURE_CONTAINER_LEFT_GEAR\", Failure_editor_name = _(\"AN/ALE-40(V) left gear container failure\"),  Element = 15, Integrity_Treshold = 0.75, work_time_to_fail_probability = 0.5, work_time_to_fail = 3600*300},",
+            "		{Failure = AN_ALE_40V_FAILURE_CONTAINER_RIGHT_GEAR, Failure_name = \"AN_ALE_40V_FAILURE_CONTAINER_RIGHT_GEAR\", Failure_editor_name = _(\"AN/ALE-40(V) right gear container failure\"),  Element = 16, Integrity_Treshold = 0.75, work_time_to_fail_probability = 0.5, work_time_to_fail = 3600*300},",
+            "		{Failure = AN_ALE_40V_FAILURE_CONTAINER_RIGHT_WING, Failure_name = \"AN_ALE_40V_FAILURE_CONTAINER_RIGHT_WING\", Failure_editor_name = _(\"AN/ALE-40(V) right wing container failure\"),  Element = 24, Integrity_Treshold = 0.75, work_time_to_fail_probability = 0.5, work_time_to_fail = 3600*300},",
+            "}",
+            "",
+            "need_to_be_closed = true -- lua_state  will be closed in post_initialize()",
+            "--Exported via Bailey's CMS Editor on " + System.DateTime.Now};
+
+            //the below rest of the function has not been coded TODO: Code this for the a10C
+            if (isExportEnabled == true)
+            {
+                System.IO.Directory.CreateDirectory(cmdsLua_A10C_FolderPath);
+                System.IO.File.WriteAllLines(cmdsLua_A10C_fullPath, luaExportString);
+
+                //https://stackoverflow.com/questions/5920882/file-move-does-not-work-file-already-exists
+                System.IO.Directory.CreateDirectory(exportPathBackup_A10C);
+                if (File.Exists(exportPathBackup_A10C + "\\AN_ALE40V_params.lua"))
+                {
+                    File.Delete(exportPathBackup_A10C + "\\AN_ALE40V_params.lua");
+                }
+                System.IO.File.WriteAllLines(exportPathBackup_A10C + "\\AN_ALE40V_params.lua", luaExportString);
+                File.Move(exportPathBackup_A10C + "\\AN_ALE40V_params.lua", Path.ChangeExtension(exportPathBackup_A10C + "\\AN_ALE40V_params.lua", ".lua"));
+
+
+                MessageBox.Show("Your A-10C CMDS file was exported to \r\n" + cmdsLua_A10C_fullPath + "\r\n\r\n"
+                    + "Your A-10C CMDS backup file was exported to \r\n" + exportPathBackup_A10C + "\\AN_ALE40V_params.lua");
+            }
+            else
+            {
+                MessageBox.Show("Please select your DCS.exe Location");
+            }
+        }
+
+        public void A10C_makeDefaultLua()
+        {
+            string[] luaExportString = {
+            "local gettext = require(\"i_18n\")",
+            "_ = gettext.translate",
+            "",
+            "programs = {}",
+            "",
+            "-- Old generation radar SAM",
+            "programs['A'] = {}",
+            "programs['A'][\"chaff\"] = 2",
+            "programs['A'][\"flare\"] = 0",
+            "programs['A'][\"intv\"]  = 1.0",
+            "programs['A'][\"cycle\"] = 10",
+            "",
+            "-- Current generation radar SAM",
+            "programs['B'] = {}",
+            "programs['B'][\"chaff\"] = 4",
+            "programs['B'][\"flare\"] = 0",
+            "programs['B'][\"intv\"]  = 0.5",
+            "programs['B'][\"cycle\"] = 10",
+            "",
+            "-- IR SAM",
+            "programs['C'] = {}",
+            "programs['C'][\"chaff\"] = 0",
+            "programs['C'][\"flare\"] = 4",
+            "programs['C'][\"intv\"]  = 0.2",
+            "programs['C'][\"cycle\"] = 5",
+            "",
+            "-- Default manual presets",
+            "-- Mix 1",
+            "programs['D'] = {}",
+            "programs['D'][\"chaff\"] = 2",
+            "programs['D'][\"flare\"] = 2",
+            "programs['D'][\"intv\"]  = 1.0",
+            "programs['D'][\"cycle\"] = 10",
+            "",
+            "-- Mix 2",
+            "programs['E'] = {}",
+            "programs['E'][\"chaff\"] = 2",
+            "programs['E'][\"flare\"] = 2",
+            "programs['E'][\"intv\"]  = 0.5",
+            "programs['E'][\"cycle\"] = 10",
+            "",
+            "-- Mix 3",
+            "programs['F'] = {}",
+            "programs['F'][\"chaff\"] = 4",
+            "programs['F'][\"flare\"] = 4",
+            "programs['F'][\"intv\"]  = 1.0",
+            "programs['F'][\"cycle\"] = 10",
+            "",
+            "-- Mix 4",
+            "programs['G'] = {}",
+            "programs['G'][\"chaff\"] = 4",
+            "programs['G'][\"flare\"] = 4",
+            "programs['G'][\"intv\"]  = 0.5",
+            "programs['G'][\"cycle\"] = 10",
+            "",
+            "-- Chaff single",
+            "programs['H'] = {}",
+            "programs['H'][\"chaff\"] = 1",
+            "programs['H'][\"flare\"] = 0",
+            "programs['H'][\"intv\"]  = 1.0",
+            "programs['H'][\"cycle\"] = 1",
+            "",
+            "-- Chaff pair",
+            "programs['I'] = {}",
+            "programs['I'][\"chaff\"] = 2",
+            "programs['I'][\"flare\"] = 0",
+            "programs['I'][\"intv\"]  = 1.0",
+            "programs['I'][\"cycle\"] = 1",
+            "",
+            "-- Flare single",
+            "programs['J'] = {}",
+            "programs['J'][\"chaff\"] = 0",
+            "programs['J'][\"flare\"] = 1",
+            "programs['J'][\"intv\"]  = 1.0",
+            "programs['J'][\"cycle\"] = 1",
+            "",
+            "-- Flare pair",
+            "programs['K'] = {}",
+            "programs['K'][\"chaff\"] = 0",
+            "programs['K'][\"flare\"] = 2",
+            "programs['K'][\"intv\"]  = 1.0",
+            "programs['K'][\"cycle\"] = 1",
+            "",
+            "-- Chaff pre-empt",
+            "programs['L'] = {}",
+            "programs['L'][\"chaff\"] = 1",
+            "programs['L'][\"flare\"] = 0",
+            "programs['L'][\"intv\"]  = 1.0",
+            "programs['L'][\"cycle\"] = 20",
+            "",
+            "-- Flare pre-empt",
+            "programs['M'] = {}",
+            "programs['M'][\"chaff\"] = 0",
+            "programs['M'][\"flare\"] = 1",
+            "programs['M'][\"intv\"]  = 1.0",
+            "programs['M'][\"cycle\"] = 20",
+            "",
+            "--Program N",
+            "programs['N'] = {}",
+            "programs['N'][\"chaff\"] = 0",
+            "programs['N'][\"flare\"] = 1",
+            "programs['N'][\"intv\"]  = 1.0",
+            "programs['N'][\"cycle\"] = 20",
+            "",
+            "--Program O",
+            "programs['O'] = {}",
+            "programs['O'][\"chaff\"] = 0",
+            "programs['O'][\"flare\"] = 1",
+            "programs['O'][\"intv\"]  = 1.0",
+            "programs['O'][\"cycle\"] = 20",
+            "",
+            "--Program P",
+            "programs['P'] = {}",
+            "programs['P'][\"chaff\"] = 0",
+            "programs['P'][\"flare\"] = 1",
+            "programs['P'][\"intv\"]  = 1.0",
+            "programs['P'][\"cycle\"] = 20",
+            "",
+            "--Program Q",
+            "programs['Q'] = {}",
+            "programs['Q'][\"chaff\"] = 0",
+            "programs['Q'][\"flare\"] = 1",
+            "programs['Q'][\"intv\"]  = 1.0",
+            "programs['Q'][\"cycle\"] = 20",
+            "",
+            "--Program R",
+            "programs['R'] = {}",
+            "programs['R'][\"chaff\"] = 0",
+            "programs['R'][\"flare\"] = 1",
+            "programs['R'][\"intv\"]  = 1.0",
+            "programs['R'][\"cycle\"] = 20",
+            "",
+            "--Program S",
+            "programs['S'] = {}",
+            "programs['S'][\"chaff\"] = 0",
+            "programs['S'][\"flare\"] = 1",
+            "programs['S'][\"intv\"]  = 1.0",
+            "programs['S'][\"cycle\"] = 20",
+            "",
+            "--Program T",
+            "programs['T'] = {}",
+            "programs['T'][\"chaff\"] = 0",
+            "programs['T'][\"flare\"] = 1",
+            "programs['T'][\"intv\"]  = 1.0",
+            "programs['T'][\"cycle\"] = 20",
+            "",
+            "--Program U",
+            "programs['U'] = {}",
+            "programs['U'][\"chaff\"] = 0",
+            "programs['U'][\"flare\"] = 1",
+            "programs['U'][\"intv\"]  = 1.0",
+            "programs['U'][\"cycle\"] = 20",
+            "",
+            "--Program V",
+            "programs['V'] = {}",
+            "programs['V'][\"chaff\"] = 0",
+            "programs['V'][\"flare\"] = 1",
+            "programs['V'][\"intv\"]  = 1.0",
+            "programs['V'][\"cycle\"] = 20",
+            "",
+            "--Program W",
+            "programs['W'] = {}",
+            "programs['W'][\"chaff\"] = 0",
+            "programs['W'][\"flare\"] = 1",
+            "programs['W'][\"intv\"]  = 1.0",
+            "programs['W'][\"cycle\"] = 20",
+            "",
+            "--Program X",
+            "programs['X'] = {}",
+            "programs['X'][\"chaff\"] = 0",
+            "programs['X'][\"flare\"] = 1",
+            "programs['X'][\"intv\"]  = 1.0",
+            "programs['X'][\"cycle\"] = 20",
+            "",
+            "--Program Y",
+            "programs['Y'] = {}",
+            "programs['Y'][\"chaff\"] = 0",
+            "programs['Y'][\"flare\"] = 1",
+            "programs['Y'][\"intv\"]  = 1.0",
+            "programs['Y'][\"cycle\"] = 20",
+            "",
+            "--Program Z",
+            "programs['Z'] = {}",
+            "programs['Z'][\"chaff\"] = 0",
+            "programs['Z'][\"flare\"] = 1",
+            "programs['Z'][\"intv\"]  = 1.0",
+            "programs['Z'][\"cycle\"] = 20",
+            "",
+            "",
+            "ContainerChaffCapacity = 120",
+            "",
+            "ContainerFlareCapacity = 60",
+            "",
+            "NumberOfContiners      = 4",
+            "",
+            "AN_ALE_40V_FAILURE_TOTAL = 0",
+            "AN_ALE_40V_FAILURE_CONTAINER_LEFT_WING	= 1",
+            "AN_ALE_40V_FAILURE_CONTAINER_LEFT_GEAR	= 2",
+            "AN_ALE_40V_FAILURE_CONTAINER_RIGHT_GEAR	= 3",
+            "AN_ALE_40V_FAILURE_CONTAINER_RIGHT_WING	= 4",
+            "",
+            "Damage = {	{Failure = AN_ALE_40V_FAILURE_TOTAL, Failure_name = \"AN_ALE_40V_FAILURE_TOTAL\", Failure_editor_name = _(\"AN/ALE-40(V) total failure\"),  Element = 10, Integrity_Treshold = 0.5, work_time_to_fail_probability = 0.5, work_time_to_fail = 3600*300},",
+            "		{Failure = AN_ALE_40V_FAILURE_CONTAINER_LEFT_WING, Failure_name = \"AN_ALE_40V_FAILURE_CONTAINER_LEFT_WING\", Failure_editor_name = _(\"AN/ALE-40(V) left wing container failure\"),  Element = 23, Integrity_Treshold = 0.75, work_time_to_fail_probability = 0.5, work_time_to_fail = 3600*300},",
+            "		{Failure = AN_ALE_40V_FAILURE_CONTAINER_LEFT_GEAR, Failure_name = \"AN_ALE_40V_FAILURE_CONTAINER_LEFT_GEAR\", Failure_editor_name = _(\"AN/ALE-40(V) left gear container failure\"),  Element = 15, Integrity_Treshold = 0.75, work_time_to_fail_probability = 0.5, work_time_to_fail = 3600*300},",
+            "		{Failure = AN_ALE_40V_FAILURE_CONTAINER_RIGHT_GEAR, Failure_name = \"AN_ALE_40V_FAILURE_CONTAINER_RIGHT_GEAR\", Failure_editor_name = _(\"AN/ALE-40(V) right gear container failure\"),  Element = 16, Integrity_Treshold = 0.75, work_time_to_fail_probability = 0.5, work_time_to_fail = 3600*300},",
+            "		{Failure = AN_ALE_40V_FAILURE_CONTAINER_RIGHT_WING, Failure_name = \"AN_ALE_40V_FAILURE_CONTAINER_RIGHT_WING\", Failure_editor_name = _(\"AN/ALE-40(V) right wing container failure\"),  Element = 24, Integrity_Treshold = 0.75, work_time_to_fail_probability = 0.5, work_time_to_fail = 3600*300},",
+            "}",
+            "",
+            "need_to_be_closed = true -- lua_state  will be closed in post_initialize()",
+            "--Exported via Bailey's CMS Editor on " + System.DateTime.Now};
+
+            if (isExportEnabled == true)
+            {
+                System.IO.Directory.CreateDirectory(cmdsLua_A10C_FolderPath);
+                System.IO.File.WriteAllLines(cmdsLua_A10C_fullPath, luaExportString);
+                //https://stackoverflow.com/questions/5920882/file-move-does-not-work-file-already-exists
+            }
+            else
+            {
+                MessageBox.Show("Please select your DCS.exe Location");
+            }
+        }
 
         public void F18C_makeDefaultLua()
         {
@@ -3009,7 +4490,18 @@ namespace DCSF18ALE47Programmer
                     loadLocation = cmdsLua_F16C_fullPath;
                     loadLua_F16C();
                 }
-                else{MessageBox.Show("DCS Countermeasure files not found. Please select your DCS.exe location or try a different aircraft.");}
+                else if (tabControl_mainTab.SelectedTab == tabPage3)//this is the f16 tab for harms
+                {
+                    //loadLocation = cmdsLua_F16C_fullPath;
+                    //loadLua_F16C();
+                    harmForF16cIsNotAvailableMessage();
+                }
+                else if (tabControl_mainTab.SelectedTab == tabPage4)//this is the a10 cms tab
+                {
+                    loadLocation = cmdsLua_A10C_fullPath;
+                    loadLua_A10C_CMS();
+                }
+                else {MessageBox.Show("DCS Countermeasure files not found. Please select your DCS.exe location or try a different aircraft.");}
             }
 
             else
@@ -3034,19 +4526,23 @@ namespace DCSF18ALE47Programmer
             "\r\n" + "\r\n" +
             "2.Select your aircraft at the top and modify the countermeasure values using the controls in the utility." +
             "\r\n" + "\r\n" +
-            "3.Click the ‘Export’ button. This will export a ‘CMDS_ALE47.lua’ to DCS, and it will export a copy to a backup folder that the utility creates. The backup can be used incase the DCS location lua is overwritten by a DCS update, for example." +
+            "3.Click the ‘Export’ button. This will export a Countermeasure .lua file to DCS, and it will export a copy to a backup folder that the utility creates. The backup can be used incase the DCS location lua is overwritten by a DCS update, for example." +
             "\r\n" + "\r\n" +
             "4.Load the DCS mission and have fun!" +
             "\r\n" + "\r\n" +
             "A lot of time has been spent making this utility. I do not do this for a living. I have Google, Visual Studio, and some time on my hands. There may be bugs. Please use the utility as intended. If you have any questions, comments, improvements, bugs, concerns, input, or just want to say thanks, please contact me via Discord: Bailey#6230" +
             "\r\n" + "\r\n" +
+            "Join us in the Discord Server! https://discord.gg/PbYgC5e" +
+            "\r\n" + "\r\n" +
+            "You can also look for help and tips for this utility on the Eagle Dynamics Forums here: 'DCS CMS Editor by Bailey' https://forums.eagle.ru/showthread.php?t=281284" +
+            "\r\n" + "\r\n" +
             "Please feel free to donate here: https://www.paypal.me/asherao." +
             "\r\n" + "All donations go to making more free Utilities for DCS, like this one!" +
             "\r\n" + "\r\n" +
-            "Thank you to Arctic Fox for the idea and collaboration." +
+            "Thank you to Arctic Fox for the idea and collaboration. Thank you to multiple people on Discord for sanity checks." +
             "\r\n" + "\r\n" +
             "~Bailey" + "\r\n" +
-            "September 2020" + "\r\n" +
+            "28 September 2020" + "\r\n" +
             "v3.0", "DCS CMS Editor by Bailey READMEE");
         }
 
@@ -3153,6 +4649,7 @@ namespace DCSF18ALE47Programmer
                     {
                         F18C_makeDefaultLua();
                         MessageBox.Show("Your F-18C CMDS file was exported to \r\n" + cmdsLua_F18C_fullPath + ".");
+                        loadCmsFromDcs();
                     }
 
                 }
@@ -3176,6 +4673,7 @@ namespace DCSF18ALE47Programmer
                         {
                             F16C_makeDefaultLua();
                             MessageBox.Show("Your F-16C CMDS file was exported to \r\n" + cmdsLua_F16C_fullPath + ".");
+                            loadCmsFromDcs();
                         }
                     }
                     else if (dialogResult == DialogResult.No)
@@ -3185,7 +4683,9 @@ namespace DCSF18ALE47Programmer
             }
                 else if (tabControl_mainTab.SelectedTab == tabPage3)//this is the f16 harm tab
                 {
-                    DialogResult dialogResult = MessageBox.Show("Are you sure you want to clear and reset the F-16C HARM Lua? This cannot be undone.", "Are you sure?", MessageBoxButtons.YesNo);
+                harmForF16cIsNotAvailableMessage();
+                /*
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to clear and reset the F-16C HARM Lua? This cannot be undone.", "Are you sure?", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
                         if (cmdsLua_F16C_FolderPath == null)
@@ -3197,13 +4697,36 @@ namespace DCSF18ALE47Programmer
                             F16C_makeDefaultHarmLua();
                             //enable the below when the feature is supported.
                             //MessageBox.Show("Your F-16C HARM file was exported to \r\n" + cmdsLua_F16C_fullPath + ".");//this should be the harm path
+                            loadCmsFromDcs();
                         }
                     }
                     else if (dialogResult == DialogResult.No)
                     {
                         //do nothing
                     }
+                */
+            }
+            else if (tabControl_mainTab.SelectedTab == tabPage4)//this is the a10c tab
+            {
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to clear and reset the A-10C CMS Lua? This cannot be undone.", "Are you sure?", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    if (cmdsLua_A10C_FolderPath == null)
+                    {
+                        MessageBox.Show("DCS.exe has not been set. Please select your DCS.exe location or try a different aircraft.");
+                    }
+                    else
+                    {
+                        A10C_makeDefaultLua();
+                        MessageBox.Show("Your A-10C CMDS file was exported to \r\n" + cmdsLua_A10C_fullPath + ".");
+                        loadCmsFromDcs();
+                    }
                 }
+                else if (dialogResult == DialogResult.No)
+                {
+                    //do nothing
+                }
+            }
         }
 
         private void initF16cHarmComboBoxes()
@@ -3211,9 +4734,14 @@ namespace DCSF18ALE47Programmer
             //https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.listcontrol.displaymember?view=netcore-3.1
             //i have no idea how this works
 
-            //make the array of SAMs. Add new sams here.
+            //make the array of SAMs. Add new sams here. Future Source: https://docs.google.com/spreadsheets/d/1p77yaLQJaUMbAIKJDKX5iMN5N5qm_Qqt_dJNyJjLQtw/edit#gid=0
             ArrayList arrayOfSamsForF16cHarm2 = new ArrayList();
+
+
+
             arrayOfSamsForF16cHarm2.Add(new samForF16Harm("Empty", "000"));//0
+
+            /*
             arrayOfSamsForF16cHarm2.Add(new samForF16Harm("SA-2_TR (SNR-75V; ID 126)", "126"));//1
             arrayOfSamsForF16cHarm2.Add(new samForF16Harm("SA-3_SR (S125_SR_P_19; ID 122)", "122"));//2
             arrayOfSamsForF16cHarm2.Add(new samForF16Harm("SA-3_TR (S125_TR_SNR; ID 123)", "123"));//3
@@ -3229,6 +4757,51 @@ namespace DCSF18ALE47Programmer
             arrayOfSamsForF16cHarm2.Add(new samForF16Harm("SA-19 (Tunguska_2S6; ID 120)", "120"));//13
             arrayOfSamsForF16cHarm2.Add(new samForF16Harm("ZSU-23-4 (ZSU_23_4_Shilka; ID 121)", "121"));//14
             arrayOfSamsForF16cHarm2.Add(new samForF16Harm("Dog Ear Radar (Dog Ear; ID 109)", "109"));//15
+            */
+
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("AAA Gepard - A - ID 207", "207"));
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("AAA Vulcan M163 - A - ID 208", "208"));
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("AAA ZSU-23-4 Shilka - A - ID 121", "121"));
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("CG 1164 Moskva - T2 - ID 303", "303"));
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("CGN 1144.2 Piotr Velikiy - HN - ID 313", "313"));
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("CP 9S80M1 Sborka - DE - ID 109", "109"));
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("CV 1143.5 Admiral Kuznetsov - SW - ID 301", "301"));
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("CV 1143.5 Admiral Kuznetsov(2017) - SW - ID 320", "320"));
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("CVN-70 Carl Vinson - SS - ID 402", "402"));
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("CVN-71 Theodore Roosevelt - SS - ID 403", "403"));
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("CVN-72 Abraham Lincoln - SS - ID 404", "404"));
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("CVN-73 George Washington - SS - ID 405", "405"));
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("CVN-74 John C. Stennis - SS - ID 406", "406"));
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("EWR 1L13 - S - ID 101", "101"));
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("EWR 55G6 - S - ID 102", "102"));
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("FF 1135M Rezky - TP - ID 309", "309"));
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("FFG 11540 Neustrashimy - TP - ID 319", "319"));
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("FFL 1124.4 Grisha - HP - ID 306", "306"));
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("FSG 1241.1MP Molniya - PS - ID 312", "312"));
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("LHA-1 Tarawa - 40 - ID 407", "407"));
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("Oliver Hazzard Perry class - 49 - ID 401", "401"));
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("Rapier FSA Blindfire Tracker - RP - ID 124", "124"));
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("Rapier FSA Launcher - RT - ID 125", "125"));
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("SAM Hawk CWAR AN/MPQ-55 - ID 206 HK", "206"));
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("SAM Hawk SR AN/MPQ-50 - HK - ID 203", "203"));
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("SAM Hawk TR AN/MPQ-46 - HK - ID 204", "204"));
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("SAM Patriot STR AN/MPQ-53 - P - ID 2", "202"));
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("SAM Roland ADS - RO - ID 201", "201"));
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("SAM Roland SR - RO - ID 205", "205"));
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("SAM SA-10 S-300PS SR 5N66M - CS - ID 103", "103"));
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("SAM SA-10 S-300PS SR 64H6E - BB - ID 104", "104"));
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("SAM SA-10 S-300PS TR 30N6 - 10 - ID 110", "110"));
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("SAM SA-11 Buk LN 9A310M1 - 11 - ID 115", "115"));
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("SAM SA-11 Buk SR 9S18M1 - SD - ID 107", "107"));
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("SAM SA-13 Strela-10M3 9A35M3 - 13 - ID 118", "118"));
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("SAM SA-15 Tor 9A331 - 15 - ID 119", "119"));
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("SAM SA-19 Tunguska 2S6 - 19 - ID 120", "120"));
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("SAM SA-2 TR SNR-75 Fan Song - 2 - ID 126", "126"));
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("SAM SA-3 S-125 TR SNR - 3 - ID 123", "123"));
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("SAM SA-6 Kub STR 1S91 - 6 - ID 108", "108"));
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("SAM SA-8 Osa 9A33 - 8 - ID 117", "117"));
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("SAM SR P-19 - S - ID 122", "122"));
+            arrayOfSamsForF16cHarm2.Add(new samForF16Harm("Ticonderoga class - AE - ID 315", "315"));
 
             //making each combo box do something (shrug)
             //https://stackoverflow.com/questions/20024907/multiple-combobox-controls-from-the-same-dataset
@@ -3603,6 +5176,235 @@ namespace DCSF18ALE47Programmer
         }
 
         private void label_F16CHarm_samName_table1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label26_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label47_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numericUpDown_A10C_programA_chaff_Enter(object sender, EventArgs e)
+        {
+            //MessageBox.Show("This is a message");
+            numericUpDown_A10C_programA_chaff.Controls[0].Show();//this should show the numeric updown arrows on focus
+        }
+
+        private void numericUpDown_A10C_programA_chaff_Leave(object sender, EventArgs e)
+        {
+            numericUpDown_A10C_programA_chaff.Controls[0].Hide();//this should hide the numeric updown arrows on unfocus
+        }
+
+        private void textBox_programN_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //https://stackoverflow.com/questions/19524105/how-to-block-or-restrict-special-characters-from-textbox
+            if (char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.Space || char.IsDigit(e.KeyChar))//enables the use of letters, backspace, space, and numbers https://www.codeproject.com/Questions/382891/Restrict-textbox-from-Special-Characters-and-Numbe 
+            {
+                // These characters may pass
+                e.Handled = false;
+            }
+            else
+            {
+                // Everything that is not a letter, nor a backspace nor a space nor a number will be blocked
+                e.Handled = true;
+            }
+        }
+
+        private void textBox_programO_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.Space || char.IsDigit(e.KeyChar))//enables the use of letters, backspace, space, and numbers https://www.codeproject.com/Questions/382891/Restrict-textbox-from-Special-Characters-and-Numbe 
+            {
+                // These characters may pass
+                e.Handled = false;
+            }
+            else
+            {
+                // Everything that is not a letter, nor a backspace nor a space nor a number will be blocked
+                e.Handled = true;
+            }
+        }
+
+        private void textBox_programP_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.Space || char.IsDigit(e.KeyChar))//enables the use of letters, backspace, space, and numbers https://www.codeproject.com/Questions/382891/Restrict-textbox-from-Special-Characters-and-Numbe 
+            {
+                // These characters may pass
+                e.Handled = false;
+            }
+            else
+            {
+                // Everything that is not a letter, nor a backspace nor a space nor a number will be blocked
+                e.Handled = true;
+            }
+        }
+
+        private void textBox_programQ_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.Space || char.IsDigit(e.KeyChar))//enables the use of letters, backspace, space, and numbers https://www.codeproject.com/Questions/382891/Restrict-textbox-from-Special-Characters-and-Numbe 
+            {
+                // These characters may pass
+                e.Handled = false;
+            }
+            else
+            {
+                // Everything that is not a letter, nor a backspace nor a space nor a number will be blocked
+                e.Handled = true;
+            }
+        }
+
+        private void textBox_programR_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.Space || char.IsDigit(e.KeyChar))//enables the use of letters, backspace, space, and numbers https://www.codeproject.com/Questions/382891/Restrict-textbox-from-Special-Characters-and-Numbe 
+            {
+                // These characters may pass
+                e.Handled = false;
+            }
+            else
+            {
+                // Everything that is not a letter, nor a backspace nor a space nor a number will be blocked
+                e.Handled = true;
+            }
+        }
+
+        private void textBox_programS_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.Space || char.IsDigit(e.KeyChar))//enables the use of letters, backspace, space, and numbers https://www.codeproject.com/Questions/382891/Restrict-textbox-from-Special-Characters-and-Numbe 
+            {
+                // These characters may pass
+                e.Handled = false;
+            }
+            else
+            {
+                // Everything that is not a letter, nor a backspace nor a space nor a number will be blocked
+                e.Handled = true;
+            }
+        }
+
+        private void textBox_programT_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void textBox_programT_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.Space || char.IsDigit(e.KeyChar))//enables the use of letters, backspace, space, and numbers https://www.codeproject.com/Questions/382891/Restrict-textbox-from-Special-Characters-and-Numbe 
+            {
+                // These characters may pass
+                e.Handled = false;
+            }
+            else
+            {
+                // Everything that is not a letter, nor a backspace nor a space nor a number will be blocked
+                e.Handled = true;
+            }
+        }
+
+        private void textBox_programU_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.Space || char.IsDigit(e.KeyChar))//enables the use of letters, backspace, space, and numbers https://www.codeproject.com/Questions/382891/Restrict-textbox-from-Special-Characters-and-Numbe 
+            {
+                // These characters may pass
+                e.Handled = false;
+            }
+            else
+            {
+                // Everything that is not a letter, nor a backspace nor a space nor a number will be blocked
+                e.Handled = true;
+            }
+        }
+
+        private void textBox_programV_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.Space || char.IsDigit(e.KeyChar))//enables the use of letters, backspace, space, and numbers https://www.codeproject.com/Questions/382891/Restrict-textbox-from-Special-Characters-and-Numbe 
+            {
+                // These characters may pass
+                e.Handled = false;
+            }
+            else
+            {
+                // Everything that is not a letter, nor a backspace nor a space nor a number will be blocked
+                e.Handled = true;
+            }
+        }
+
+        private void textBox_programW_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.Space || char.IsDigit(e.KeyChar))//enables the use of letters, backspace, space, and numbers https://www.codeproject.com/Questions/382891/Restrict-textbox-from-Special-Characters-and-Numbe 
+            {
+                // These characters may pass
+                e.Handled = false;
+            }
+            else
+            {
+                // Everything that is not a letter, nor a backspace nor a space nor a number will be blocked
+                e.Handled = true;
+            }
+        }
+
+        private void textBox_programX_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.Space || char.IsDigit(e.KeyChar))//enables the use of letters, backspace, space, and numbers https://www.codeproject.com/Questions/382891/Restrict-textbox-from-Special-Characters-and-Numbe 
+            {
+                // These characters may pass
+                e.Handled = false;
+            }
+            else
+            {
+                // Everything that is not a letter, nor a backspace nor a space nor a number will be blocked
+                e.Handled = true;
+            }
+        }
+
+        private void textBox_programY_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.Space || char.IsDigit(e.KeyChar))//enables the use of letters, backspace, space, and numbers https://www.codeproject.com/Questions/382891/Restrict-textbox-from-Special-Characters-and-Numbe 
+            {
+                // These characters may pass
+                e.Handled = false;
+            }
+            else
+            {
+                // Everything that is not a letter, nor a backspace nor a space nor a number will be blocked
+                e.Handled = true;
+            }
+        }
+
+        private void textBox_programZ_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.Space || char.IsDigit(e.KeyChar))//enables the use of letters, backspace, space, and numbers https://www.codeproject.com/Questions/382891/Restrict-textbox-from-Special-Characters-and-Numbe 
+            {
+                // These characters may pass
+                e.Handled = false;
+            }
+            else
+            {
+                // Everything that is not a letter, nor a backspace nor a space nor a number will be blocked
+                e.Handled = true;
+            }
+        }
+
+        private void harmForF16cIsNotAvailableMessage()
+        {
+            
+            DialogResult dialogResult = MessageBox.Show("This feature is not yet available. Would you like to visit the 'Enable Editing Of Default DED HARM Tables Via A Lua File' thread on the ED forums to ask ED's help to implement the feature? https://forums.eagle.ru/showthread.php?t=286963", "Feature Not Available", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                //https://stackoverflow.com/questions/502199/how-to-open-a-web-page-from-my-application
+                Process.Start("https://forums.eagle.ru/showthread.php?t=286963");
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                //do something else
+            }
+        }
+
+        private void numericUpDown_A10C_programS_cycle_ValueChanged(object sender, EventArgs e)
         {
 
         }

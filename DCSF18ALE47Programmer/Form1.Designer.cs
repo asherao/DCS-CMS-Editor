@@ -184,6 +184,233 @@
             this.label_F16C_SalvoQty = new System.Windows.Forms.Label();
             this.label_F16C_BurstIntv = new System.Windows.Forms.Label();
             this.label_F16C_BurstQty = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.groupBox_F16C_harm_table3 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_Table3_T5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.comboBox_f16cHarm15 = new System.Windows.Forms.ComboBox();
+            this.comboBox_f16cHarm14 = new System.Windows.Forms.ComboBox();
+            this.label_F16CHarm_Table3_T3 = new System.Windows.Forms.Label();
+            this.comboBox_f16cHarm13 = new System.Windows.Forms.ComboBox();
+            this.comboBox_f16cHarm12 = new System.Windows.Forms.ComboBox();
+            this.label_F16CHarm_Table3_T4 = new System.Windows.Forms.Label();
+            this.comboBox_f16cHarm11 = new System.Windows.Forms.ComboBox();
+            this.label_F16CHarm_selectedID_Table3_T1 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_Table3_T2 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_selectedID_Table3_T2 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_Table3_T1 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_selectedID_Table3_T5 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_selectedID_Table3_T3 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_selectedID_Table3_T4 = new System.Windows.Forms.Label();
+            this.groupBox_F16C_harm_table2 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_Table2_T5 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.comboBox_f16cHarm10 = new System.Windows.Forms.ComboBox();
+            this.label_F16CHarm_Table2_T3 = new System.Windows.Forms.Label();
+            this.comboBox_f16cHarm9 = new System.Windows.Forms.ComboBox();
+            this.label_F16CHarm_Table2_T4 = new System.Windows.Forms.Label();
+            this.comboBox_f16cHarm8 = new System.Windows.Forms.ComboBox();
+            this.label_F16CHarm_Table2_T2 = new System.Windows.Forms.Label();
+            this.comboBox_f16cHarm7 = new System.Windows.Forms.ComboBox();
+            this.label_F16CHarm_selectedID_Table2_T5 = new System.Windows.Forms.Label();
+            this.comboBox_f16cHarm6 = new System.Windows.Forms.ComboBox();
+            this.label_F16CHarm_selectedID_Table2_T4 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_selectedID_Table2_T1 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_selectedID_Table2_T3 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_Table2_T1 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_selectedID_Table2_T2 = new System.Windows.Forms.Label();
+            this.groupBox_F16C_harm_table1 = new System.Windows.Forms.GroupBox();
+            this.label_F16CHarm_Table1_T1 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_Table1_T5 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_Table1_T3 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_Table1_T4 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_selectedID_Table1_Title = new System.Windows.Forms.Label();
+            this.label_F16CHarm_selectedID_Table1_T1 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_Table1_T2 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_selectedID_Table1_T5 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_selectedID_Table1_T4 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_selectedID_Table1_T3 = new System.Windows.Forms.Label();
+            this.label_F16CHarm_selectedID_Table1_T2 = new System.Windows.Forms.Label();
+            this.comboBox_f16cHarm5 = new System.Windows.Forms.ComboBox();
+            this.label_F16CHarm_samName_table1 = new System.Windows.Forms.Label();
+            this.comboBox_f16cHarm4 = new System.Windows.Forms.ComboBox();
+            this.comboBox_f16cHarm3 = new System.Windows.Forms.ComboBox();
+            this.comboBox_f16cHarm2 = new System.Windows.Forms.ComboBox();
+            this.comboBox_f16cHarm1 = new System.Windows.Forms.ComboBox();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.tabControl_A10C = new System.Windows.Forms.TabControl();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.label5 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label_programsContinueOnNextTab = new System.Windows.Forms.Label();
+            this.textBox_programN = new System.Windows.Forms.TextBox();
+            this.numericUpDown_A10C_programN_chaff = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programN_flare = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programN_cycle = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programN_interval = new System.Windows.Forms.NumericUpDown();
+            this.label_programN = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label_programA_description = new System.Windows.Forms.Label();
+            this.numericUpDown_A10C_programM_chaff = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programM_flare = new System.Windows.Forms.NumericUpDown();
+            this.label41 = new System.Windows.Forms.Label();
+            this.numericUpDown_A10C_programM_cycle = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programM_interval = new System.Windows.Forms.NumericUpDown();
+            this.label_programM = new System.Windows.Forms.Label();
+            this.numericUpDown_A10C_programL_chaff = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programL_flare = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programK_chaff = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programK_flare = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programJ_chaff = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programJ_flare = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programI_chaff = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programI_flare = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programH_chaff = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programH_flare = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programG_chaff = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programG_flare = new System.Windows.Forms.NumericUpDown();
+            this.label33 = new System.Windows.Forms.Label();
+            this.numericUpDown_A10C_programL_cycle = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programL_interval = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programK_cycle = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programK_interval = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programJ_cycle = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programJ_interval = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programI_cycle = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programI_interval = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programH_cycle = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programH_interval = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programG_cycle = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programG_interval = new System.Windows.Forms.NumericUpDown();
+            this.label_programG = new System.Windows.Forms.Label();
+            this.label_programH = new System.Windows.Forms.Label();
+            this.label_programI = new System.Windows.Forms.Label();
+            this.label_programJ = new System.Windows.Forms.Label();
+            this.label_programK = new System.Windows.Forms.Label();
+            this.label_programL = new System.Windows.Forms.Label();
+            this.numericUpDown_A10C_programF_chaff = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programF_flare = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programE_chaff = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programE_flare = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programD_chaff = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programD_flare = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programC_chaff = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programC_flare = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programB_chaff = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programB_flare = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programA_chaff = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programA_flare = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programF_cycle = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programF_interval = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programE_cycle = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programE_interval = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programD_cycle = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programD_interval = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programC_cycle = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programC_interval = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programB_cycle = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programB_interval = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programA_cycle = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programA_interval = new System.Windows.Forms.NumericUpDown();
+            this.label_programA = new System.Windows.Forms.Label();
+            this.label_programB = new System.Windows.Forms.Label();
+            this.label_programC = new System.Windows.Forms.Label();
+            this.label_programD = new System.Windows.Forms.Label();
+            this.label_programE = new System.Windows.Forms.Label();
+            this.label_programF = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.label27 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.textBox_programO = new System.Windows.Forms.TextBox();
+            this.numericUpDown_A10C_programO_chaff = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programO_flare = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programO_cycle = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programO_interval = new System.Windows.Forms.NumericUpDown();
+            this.label_programO = new System.Windows.Forms.Label();
+            this.textBox_programZ = new System.Windows.Forms.TextBox();
+            this.numericUpDown_A10C_programZ_chaff = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programZ_flare = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programZ_cycle = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programZ_interval = new System.Windows.Forms.NumericUpDown();
+            this.label_programZ = new System.Windows.Forms.Label();
+            this.textBox_programY = new System.Windows.Forms.TextBox();
+            this.numericUpDown_A10C_programY_chaff = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programY_flare = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programY_cycle = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programY_interval = new System.Windows.Forms.NumericUpDown();
+            this.label_programY = new System.Windows.Forms.Label();
+            this.textBox_programX = new System.Windows.Forms.TextBox();
+            this.numericUpDown_A10C_programX_chaff = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programX_flare = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programX_cycle = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programX_interval = new System.Windows.Forms.NumericUpDown();
+            this.label_programX = new System.Windows.Forms.Label();
+            this.textBox_programW = new System.Windows.Forms.TextBox();
+            this.numericUpDown_A10C_programW_chaff = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programW_flare = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programW_cycle = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programW_interval = new System.Windows.Forms.NumericUpDown();
+            this.label_programW = new System.Windows.Forms.Label();
+            this.textBox_programV = new System.Windows.Forms.TextBox();
+            this.numericUpDown_A10C_programV_chaff = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programV_flare = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programV_cycle = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programV_interval = new System.Windows.Forms.NumericUpDown();
+            this.label_programV = new System.Windows.Forms.Label();
+            this.textBox_programU = new System.Windows.Forms.TextBox();
+            this.numericUpDown_A10C_programU_chaff = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programU_flare = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programU_cycle = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programU_interval = new System.Windows.Forms.NumericUpDown();
+            this.U = new System.Windows.Forms.Label();
+            this.textBox_programT = new System.Windows.Forms.TextBox();
+            this.numericUpDown_A10C_programT_chaff = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programT_flare = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programT_cycle = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programT_interval = new System.Windows.Forms.NumericUpDown();
+            this.label_programT = new System.Windows.Forms.Label();
+            this.textBox_programS = new System.Windows.Forms.TextBox();
+            this.numericUpDown_A10C_programS_chaff = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programS_flare = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programS_cycle = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programS_interval = new System.Windows.Forms.NumericUpDown();
+            this.label_programS = new System.Windows.Forms.Label();
+            this.textBox_programR = new System.Windows.Forms.TextBox();
+            this.numericUpDown_A10C_programR_chaff = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programR_flare = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programR_cycle = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programR_interval = new System.Windows.Forms.NumericUpDown();
+            this.label_programR = new System.Windows.Forms.Label();
+            this.textBox_programQ = new System.Windows.Forms.TextBox();
+            this.numericUpDown_A10C_programQ_chaff = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programQ_flare = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programQ_cycle = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programQ_interval = new System.Windows.Forms.NumericUpDown();
+            this.label_programQ = new System.Windows.Forms.Label();
+            this.textBox_programP = new System.Windows.Forms.TextBox();
+            this.numericUpDown_A10C_programP_chaff = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programP_flare = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programP_cycle = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_A10C_programP_interval = new System.Windows.Forms.NumericUpDown();
+            this.label_programP = new System.Windows.Forms.Label();
+            this.label64 = new System.Windows.Forms.Label();
+            this.label65 = new System.Windows.Forms.Label();
+            this.label66 = new System.Windows.Forms.Label();
             this.button_loadCM_Backup = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.button_loadCM_DCS = new System.Windows.Forms.Button();
@@ -196,61 +423,6 @@
             this.button_openDcsPath = new System.Windows.Forms.Button();
             this.button_openBackupPath = new System.Windows.Forms.Button();
             this.button_recreateOrginalLua = new System.Windows.Forms.Button();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.groupBox_F16C_harm_table1 = new System.Windows.Forms.GroupBox();
-            this.groupBox_F16C_harm_table2 = new System.Windows.Forms.GroupBox();
-            this.groupBox_F16C_harm_table3 = new System.Windows.Forms.GroupBox();
-            this.comboBox_f16cHarm1 = new System.Windows.Forms.ComboBox();
-            this.comboBox_f16cHarm2 = new System.Windows.Forms.ComboBox();
-            this.comboBox_f16cHarm3 = new System.Windows.Forms.ComboBox();
-            this.comboBox_f16cHarm4 = new System.Windows.Forms.ComboBox();
-            this.comboBox_f16cHarm5 = new System.Windows.Forms.ComboBox();
-            this.comboBox_f16cHarm10 = new System.Windows.Forms.ComboBox();
-            this.comboBox_f16cHarm9 = new System.Windows.Forms.ComboBox();
-            this.comboBox_f16cHarm8 = new System.Windows.Forms.ComboBox();
-            this.comboBox_f16cHarm7 = new System.Windows.Forms.ComboBox();
-            this.comboBox_f16cHarm6 = new System.Windows.Forms.ComboBox();
-            this.comboBox_f16cHarm15 = new System.Windows.Forms.ComboBox();
-            this.comboBox_f16cHarm14 = new System.Windows.Forms.ComboBox();
-            this.comboBox_f16cHarm13 = new System.Windows.Forms.ComboBox();
-            this.comboBox_f16cHarm12 = new System.Windows.Forms.ComboBox();
-            this.comboBox_f16cHarm11 = new System.Windows.Forms.ComboBox();
-            this.label_F16CHarm_samName_table1 = new System.Windows.Forms.Label();
-            this.label_F16CHarm_Table1_T2 = new System.Windows.Forms.Label();
-            this.label_F16CHarm_selectedID_Table1_T1 = new System.Windows.Forms.Label();
-            this.label_F16CHarm_Table1_T3 = new System.Windows.Forms.Label();
-            this.label_F16CHarm_Table1_T4 = new System.Windows.Forms.Label();
-            this.label_F16CHarm_Table1_T5 = new System.Windows.Forms.Label();
-            this.label_F16CHarm_selectedID_Table1_T2 = new System.Windows.Forms.Label();
-            this.label_F16CHarm_selectedID_Table1_T3 = new System.Windows.Forms.Label();
-            this.label_F16CHarm_selectedID_Table1_T4 = new System.Windows.Forms.Label();
-            this.label_F16CHarm_selectedID_Table1_T5 = new System.Windows.Forms.Label();
-            this.label_F16CHarm_Table2_T1 = new System.Windows.Forms.Label();
-            this.label_F16CHarm_selectedID_Table2_T1 = new System.Windows.Forms.Label();
-            this.label_F16CHarm_selectedID_Table2_T2 = new System.Windows.Forms.Label();
-            this.label_F16CHarm_selectedID_Table2_T3 = new System.Windows.Forms.Label();
-            this.label_F16CHarm_selectedID_Table2_T4 = new System.Windows.Forms.Label();
-            this.label_F16CHarm_selectedID_Table2_T5 = new System.Windows.Forms.Label();
-            this.label_F16CHarm_Table2_T2 = new System.Windows.Forms.Label();
-            this.label_F16CHarm_Table2_T4 = new System.Windows.Forms.Label();
-            this.label_F16CHarm_Table2_T3 = new System.Windows.Forms.Label();
-            this.label_F16CHarm_Table2_T5 = new System.Windows.Forms.Label();
-            this.label_F16CHarm_selectedID_Table3_T2 = new System.Windows.Forms.Label();
-            this.label_F16CHarm_Table3_T1 = new System.Windows.Forms.Label();
-            this.label_F16CHarm_selectedID_Table3_T3 = new System.Windows.Forms.Label();
-            this.label_F16CHarm_selectedID_Table3_T1 = new System.Windows.Forms.Label();
-            this.label_F16CHarm_selectedID_Table3_T4 = new System.Windows.Forms.Label();
-            this.label_F16CHarm_selectedID_Table3_T5 = new System.Windows.Forms.Label();
-            this.label_F16CHarm_Table3_T2 = new System.Windows.Forms.Label();
-            this.label_F16CHarm_Table3_T4 = new System.Windows.Forms.Label();
-            this.label_F16CHarm_Table3_T3 = new System.Windows.Forms.Label();
-            this.label_F16CHarm_Table3_T5 = new System.Windows.Forms.Label();
-            this.label_F16CHarm_selectedID_Table1_Title = new System.Windows.Forms.Label();
-            this.label_F16CHarm_Table1_T1 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.groupBox_F18C_manualPresets.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_F18C_manual6Chaff)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_F18C_manual6Flare)).BeginInit();
@@ -367,9 +539,119 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_F16C_manual1Chaff_BI)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_F16C_manual1Chaff_BQ)).BeginInit();
             this.tabPage3.SuspendLayout();
-            this.groupBox_F16C_harm_table1.SuspendLayout();
-            this.groupBox_F16C_harm_table2.SuspendLayout();
             this.groupBox_F16C_harm_table3.SuspendLayout();
+            this.groupBox_F16C_harm_table2.SuspendLayout();
+            this.groupBox_F16C_harm_table1.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            this.tabControl_A10C.SuspendLayout();
+            this.tabPage5.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programN_chaff)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programN_flare)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programN_cycle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programN_interval)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programM_chaff)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programM_flare)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programM_cycle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programM_interval)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programL_chaff)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programL_flare)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programK_chaff)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programK_flare)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programJ_chaff)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programJ_flare)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programI_chaff)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programI_flare)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programH_chaff)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programH_flare)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programG_chaff)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programG_flare)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programL_cycle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programL_interval)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programK_cycle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programK_interval)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programJ_cycle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programJ_interval)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programI_cycle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programI_interval)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programH_cycle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programH_interval)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programG_cycle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programG_interval)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programF_chaff)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programF_flare)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programE_chaff)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programE_flare)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programD_chaff)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programD_flare)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programC_chaff)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programC_flare)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programB_chaff)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programB_flare)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programA_chaff)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programA_flare)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programF_cycle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programF_interval)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programE_cycle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programE_interval)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programD_cycle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programD_interval)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programC_cycle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programC_interval)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programB_cycle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programB_interval)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programA_cycle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programA_interval)).BeginInit();
+            this.tabPage6.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programO_chaff)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programO_flare)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programO_cycle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programO_interval)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programZ_chaff)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programZ_flare)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programZ_cycle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programZ_interval)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programY_chaff)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programY_flare)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programY_cycle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programY_interval)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programX_chaff)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programX_flare)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programX_cycle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programX_interval)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programW_chaff)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programW_flare)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programW_cycle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programW_interval)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programV_chaff)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programV_flare)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programV_cycle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programV_interval)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programU_chaff)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programU_flare)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programU_cycle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programU_interval)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programT_chaff)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programT_flare)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programT_cycle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programT_interval)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programS_chaff)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programS_flare)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programS_cycle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programS_interval)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programR_chaff)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programR_flare)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programR_cycle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programR_interval)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programQ_chaff)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programQ_flare)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programQ_cycle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programQ_interval)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programP_chaff)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programP_flare)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programP_cycle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programP_interval)).BeginInit();
             this.SuspendLayout();
             // 
             // label_F18C_ManualPreset1
@@ -1221,6 +1503,7 @@
             this.tabControl_mainTab.Controls.Add(this.tabPage1);
             this.tabControl_mainTab.Controls.Add(this.tabPage2);
             this.tabControl_mainTab.Controls.Add(this.tabPage3);
+            this.tabControl_mainTab.Controls.Add(this.tabPage4);
             this.tabControl_mainTab.Location = new System.Drawing.Point(10, 12);
             this.tabControl_mainTab.Name = "tabControl_mainTab";
             this.tabControl_mainTab.SelectedIndex = 0;
@@ -3007,6 +3290,3312 @@
             this.label_F16C_BurstQty.TabIndex = 15;
             this.label_F16C_BurstQty.Text = "Burst Qty";
             // 
+            // tabPage3
+            // 
+            this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage3.Controls.Add(this.groupBox_F16C_harm_table3);
+            this.tabPage3.Controls.Add(this.groupBox_F16C_harm_table2);
+            this.tabPage3.Controls.Add(this.groupBox_F16C_harm_table1);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(445, 550);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "DCS F-16C HARM";
+            // 
+            // groupBox_F16C_harm_table3
+            // 
+            this.groupBox_F16C_harm_table3.Controls.Add(this.label3);
+            this.groupBox_F16C_harm_table3.Controls.Add(this.label_F16CHarm_Table3_T5);
+            this.groupBox_F16C_harm_table3.Controls.Add(this.label4);
+            this.groupBox_F16C_harm_table3.Controls.Add(this.comboBox_f16cHarm15);
+            this.groupBox_F16C_harm_table3.Controls.Add(this.comboBox_f16cHarm14);
+            this.groupBox_F16C_harm_table3.Controls.Add(this.label_F16CHarm_Table3_T3);
+            this.groupBox_F16C_harm_table3.Controls.Add(this.comboBox_f16cHarm13);
+            this.groupBox_F16C_harm_table3.Controls.Add(this.comboBox_f16cHarm12);
+            this.groupBox_F16C_harm_table3.Controls.Add(this.label_F16CHarm_Table3_T4);
+            this.groupBox_F16C_harm_table3.Controls.Add(this.comboBox_f16cHarm11);
+            this.groupBox_F16C_harm_table3.Controls.Add(this.label_F16CHarm_selectedID_Table3_T1);
+            this.groupBox_F16C_harm_table3.Controls.Add(this.label_F16CHarm_Table3_T2);
+            this.groupBox_F16C_harm_table3.Controls.Add(this.label_F16CHarm_selectedID_Table3_T2);
+            this.groupBox_F16C_harm_table3.Controls.Add(this.label_F16CHarm_Table3_T1);
+            this.groupBox_F16C_harm_table3.Controls.Add(this.label_F16CHarm_selectedID_Table3_T5);
+            this.groupBox_F16C_harm_table3.Controls.Add(this.label_F16CHarm_selectedID_Table3_T3);
+            this.groupBox_F16C_harm_table3.Controls.Add(this.label_F16CHarm_selectedID_Table3_T4);
+            this.groupBox_F16C_harm_table3.Location = new System.Drawing.Point(6, 372);
+            this.groupBox_F16C_harm_table3.Name = "groupBox_F16C_harm_table3";
+            this.groupBox_F16C_harm_table3.Size = new System.Drawing.Size(355, 170);
+            this.groupBox_F16C_harm_table3.TabIndex = 2;
+            this.groupBox_F16C_harm_table3.TabStop = false;
+            this.groupBox_F16C_harm_table3.Text = "Table 3";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(32, 16);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(18, 13);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "ID";
+            // 
+            // label_F16CHarm_Table3_T5
+            // 
+            this.label_F16CHarm_Table3_T5.AutoSize = true;
+            this.label_F16CHarm_Table3_T5.Location = new System.Drawing.Point(6, 143);
+            this.label_F16CHarm_Table3_T5.Name = "label_F16CHarm_Table3_T5";
+            this.label_F16CHarm_Table3_T5.Size = new System.Drawing.Size(20, 13);
+            this.label_F16CHarm_Table3_T5.TabIndex = 3;
+            this.label_F16CHarm_Table3_T5.Text = "T5";
+            this.label_F16CHarm_Table3_T5.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(60, 16);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(191, 13);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Display Name - RWR Symbol - DED ID";
+            // 
+            // comboBox_f16cHarm15
+            // 
+            this.comboBox_f16cHarm15.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_f16cHarm15.FormattingEnabled = true;
+            this.comboBox_f16cHarm15.Location = new System.Drawing.Point(63, 140);
+            this.comboBox_f16cHarm15.Name = "comboBox_f16cHarm15";
+            this.comboBox_f16cHarm15.Size = new System.Drawing.Size(286, 21);
+            this.comboBox_f16cHarm15.TabIndex = 17;
+            this.comboBox_f16cHarm15.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm15_SelectedIndexChanged);
+            // 
+            // comboBox_f16cHarm14
+            // 
+            this.comboBox_f16cHarm14.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_f16cHarm14.FormattingEnabled = true;
+            this.comboBox_f16cHarm14.Location = new System.Drawing.Point(63, 113);
+            this.comboBox_f16cHarm14.Name = "comboBox_f16cHarm14";
+            this.comboBox_f16cHarm14.Size = new System.Drawing.Size(286, 21);
+            this.comboBox_f16cHarm14.TabIndex = 16;
+            this.comboBox_f16cHarm14.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm14_SelectedIndexChanged);
+            // 
+            // label_F16CHarm_Table3_T3
+            // 
+            this.label_F16CHarm_Table3_T3.AutoSize = true;
+            this.label_F16CHarm_Table3_T3.Location = new System.Drawing.Point(6, 89);
+            this.label_F16CHarm_Table3_T3.Name = "label_F16CHarm_Table3_T3";
+            this.label_F16CHarm_Table3_T3.Size = new System.Drawing.Size(20, 13);
+            this.label_F16CHarm_Table3_T3.TabIndex = 3;
+            this.label_F16CHarm_Table3_T3.Text = "T3";
+            // 
+            // comboBox_f16cHarm13
+            // 
+            this.comboBox_f16cHarm13.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_f16cHarm13.FormattingEnabled = true;
+            this.comboBox_f16cHarm13.Location = new System.Drawing.Point(63, 86);
+            this.comboBox_f16cHarm13.Name = "comboBox_f16cHarm13";
+            this.comboBox_f16cHarm13.Size = new System.Drawing.Size(286, 21);
+            this.comboBox_f16cHarm13.TabIndex = 15;
+            this.comboBox_f16cHarm13.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm13_SelectedIndexChanged);
+            // 
+            // comboBox_f16cHarm12
+            // 
+            this.comboBox_f16cHarm12.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_f16cHarm12.FormattingEnabled = true;
+            this.comboBox_f16cHarm12.Location = new System.Drawing.Point(63, 59);
+            this.comboBox_f16cHarm12.Name = "comboBox_f16cHarm12";
+            this.comboBox_f16cHarm12.Size = new System.Drawing.Size(286, 21);
+            this.comboBox_f16cHarm12.TabIndex = 14;
+            this.comboBox_f16cHarm12.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm12_SelectedIndexChanged);
+            // 
+            // label_F16CHarm_Table3_T4
+            // 
+            this.label_F16CHarm_Table3_T4.AutoSize = true;
+            this.label_F16CHarm_Table3_T4.Location = new System.Drawing.Point(6, 116);
+            this.label_F16CHarm_Table3_T4.Name = "label_F16CHarm_Table3_T4";
+            this.label_F16CHarm_Table3_T4.Size = new System.Drawing.Size(20, 13);
+            this.label_F16CHarm_Table3_T4.TabIndex = 3;
+            this.label_F16CHarm_Table3_T4.Text = "T4";
+            this.label_F16CHarm_Table3_T4.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // comboBox_f16cHarm11
+            // 
+            this.comboBox_f16cHarm11.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_f16cHarm11.FormattingEnabled = true;
+            this.comboBox_f16cHarm11.Location = new System.Drawing.Point(63, 32);
+            this.comboBox_f16cHarm11.Name = "comboBox_f16cHarm11";
+            this.comboBox_f16cHarm11.Size = new System.Drawing.Size(286, 21);
+            this.comboBox_f16cHarm11.TabIndex = 13;
+            this.comboBox_f16cHarm11.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm11_SelectedIndexChanged);
+            // 
+            // label_F16CHarm_selectedID_Table3_T1
+            // 
+            this.label_F16CHarm_selectedID_Table3_T1.AutoSize = true;
+            this.label_F16CHarm_selectedID_Table3_T1.Location = new System.Drawing.Point(32, 35);
+            this.label_F16CHarm_selectedID_Table3_T1.Name = "label_F16CHarm_selectedID_Table3_T1";
+            this.label_F16CHarm_selectedID_Table3_T1.Size = new System.Drawing.Size(25, 13);
+            this.label_F16CHarm_selectedID_Table3_T1.TabIndex = 4;
+            this.label_F16CHarm_selectedID_Table3_T1.Text = "000";
+            // 
+            // label_F16CHarm_Table3_T2
+            // 
+            this.label_F16CHarm_Table3_T2.AutoSize = true;
+            this.label_F16CHarm_Table3_T2.Location = new System.Drawing.Point(6, 62);
+            this.label_F16CHarm_Table3_T2.Name = "label_F16CHarm_Table3_T2";
+            this.label_F16CHarm_Table3_T2.Size = new System.Drawing.Size(20, 13);
+            this.label_F16CHarm_Table3_T2.TabIndex = 3;
+            this.label_F16CHarm_Table3_T2.Text = "T2";
+            // 
+            // label_F16CHarm_selectedID_Table3_T2
+            // 
+            this.label_F16CHarm_selectedID_Table3_T2.AutoSize = true;
+            this.label_F16CHarm_selectedID_Table3_T2.Location = new System.Drawing.Point(32, 62);
+            this.label_F16CHarm_selectedID_Table3_T2.Name = "label_F16CHarm_selectedID_Table3_T2";
+            this.label_F16CHarm_selectedID_Table3_T2.Size = new System.Drawing.Size(25, 13);
+            this.label_F16CHarm_selectedID_Table3_T2.TabIndex = 4;
+            this.label_F16CHarm_selectedID_Table3_T2.Text = "000";
+            // 
+            // label_F16CHarm_Table3_T1
+            // 
+            this.label_F16CHarm_Table3_T1.AutoSize = true;
+            this.label_F16CHarm_Table3_T1.Location = new System.Drawing.Point(6, 35);
+            this.label_F16CHarm_Table3_T1.Name = "label_F16CHarm_Table3_T1";
+            this.label_F16CHarm_Table3_T1.Size = new System.Drawing.Size(20, 13);
+            this.label_F16CHarm_Table3_T1.TabIndex = 3;
+            this.label_F16CHarm_Table3_T1.Text = "T1";
+            // 
+            // label_F16CHarm_selectedID_Table3_T5
+            // 
+            this.label_F16CHarm_selectedID_Table3_T5.AutoSize = true;
+            this.label_F16CHarm_selectedID_Table3_T5.Location = new System.Drawing.Point(32, 143);
+            this.label_F16CHarm_selectedID_Table3_T5.Name = "label_F16CHarm_selectedID_Table3_T5";
+            this.label_F16CHarm_selectedID_Table3_T5.Size = new System.Drawing.Size(25, 13);
+            this.label_F16CHarm_selectedID_Table3_T5.TabIndex = 4;
+            this.label_F16CHarm_selectedID_Table3_T5.Text = "000";
+            // 
+            // label_F16CHarm_selectedID_Table3_T3
+            // 
+            this.label_F16CHarm_selectedID_Table3_T3.AutoSize = true;
+            this.label_F16CHarm_selectedID_Table3_T3.Location = new System.Drawing.Point(32, 89);
+            this.label_F16CHarm_selectedID_Table3_T3.Name = "label_F16CHarm_selectedID_Table3_T3";
+            this.label_F16CHarm_selectedID_Table3_T3.Size = new System.Drawing.Size(25, 13);
+            this.label_F16CHarm_selectedID_Table3_T3.TabIndex = 4;
+            this.label_F16CHarm_selectedID_Table3_T3.Text = "000";
+            // 
+            // label_F16CHarm_selectedID_Table3_T4
+            // 
+            this.label_F16CHarm_selectedID_Table3_T4.AutoSize = true;
+            this.label_F16CHarm_selectedID_Table3_T4.Location = new System.Drawing.Point(32, 116);
+            this.label_F16CHarm_selectedID_Table3_T4.Name = "label_F16CHarm_selectedID_Table3_T4";
+            this.label_F16CHarm_selectedID_Table3_T4.Size = new System.Drawing.Size(25, 13);
+            this.label_F16CHarm_selectedID_Table3_T4.TabIndex = 4;
+            this.label_F16CHarm_selectedID_Table3_T4.Text = "000";
+            // 
+            // groupBox_F16C_harm_table2
+            // 
+            this.groupBox_F16C_harm_table2.Controls.Add(this.label1);
+            this.groupBox_F16C_harm_table2.Controls.Add(this.label_F16CHarm_Table2_T5);
+            this.groupBox_F16C_harm_table2.Controls.Add(this.label2);
+            this.groupBox_F16C_harm_table2.Controls.Add(this.comboBox_f16cHarm10);
+            this.groupBox_F16C_harm_table2.Controls.Add(this.label_F16CHarm_Table2_T3);
+            this.groupBox_F16C_harm_table2.Controls.Add(this.comboBox_f16cHarm9);
+            this.groupBox_F16C_harm_table2.Controls.Add(this.label_F16CHarm_Table2_T4);
+            this.groupBox_F16C_harm_table2.Controls.Add(this.comboBox_f16cHarm8);
+            this.groupBox_F16C_harm_table2.Controls.Add(this.label_F16CHarm_Table2_T2);
+            this.groupBox_F16C_harm_table2.Controls.Add(this.comboBox_f16cHarm7);
+            this.groupBox_F16C_harm_table2.Controls.Add(this.label_F16CHarm_selectedID_Table2_T5);
+            this.groupBox_F16C_harm_table2.Controls.Add(this.comboBox_f16cHarm6);
+            this.groupBox_F16C_harm_table2.Controls.Add(this.label_F16CHarm_selectedID_Table2_T4);
+            this.groupBox_F16C_harm_table2.Controls.Add(this.label_F16CHarm_selectedID_Table2_T1);
+            this.groupBox_F16C_harm_table2.Controls.Add(this.label_F16CHarm_selectedID_Table2_T3);
+            this.groupBox_F16C_harm_table2.Controls.Add(this.label_F16CHarm_Table2_T1);
+            this.groupBox_F16C_harm_table2.Controls.Add(this.label_F16CHarm_selectedID_Table2_T2);
+            this.groupBox_F16C_harm_table2.Location = new System.Drawing.Point(6, 196);
+            this.groupBox_F16C_harm_table2.Name = "groupBox_F16C_harm_table2";
+            this.groupBox_F16C_harm_table2.Size = new System.Drawing.Size(355, 170);
+            this.groupBox_F16C_harm_table2.TabIndex = 1;
+            this.groupBox_F16C_harm_table2.TabStop = false;
+            this.groupBox_F16C_harm_table2.Text = "Table 2";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(32, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(18, 13);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "ID";
+            // 
+            // label_F16CHarm_Table2_T5
+            // 
+            this.label_F16CHarm_Table2_T5.AutoSize = true;
+            this.label_F16CHarm_Table2_T5.Location = new System.Drawing.Point(6, 143);
+            this.label_F16CHarm_Table2_T5.Name = "label_F16CHarm_Table2_T5";
+            this.label_F16CHarm_Table2_T5.Size = new System.Drawing.Size(20, 13);
+            this.label_F16CHarm_Table2_T5.TabIndex = 3;
+            this.label_F16CHarm_Table2_T5.Text = "T5";
+            this.label_F16CHarm_Table2_T5.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(60, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(191, 13);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Display Name - RWR Symbol - DED ID";
+            // 
+            // comboBox_f16cHarm10
+            // 
+            this.comboBox_f16cHarm10.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_f16cHarm10.FormattingEnabled = true;
+            this.comboBox_f16cHarm10.Location = new System.Drawing.Point(63, 140);
+            this.comboBox_f16cHarm10.Name = "comboBox_f16cHarm10";
+            this.comboBox_f16cHarm10.Size = new System.Drawing.Size(286, 21);
+            this.comboBox_f16cHarm10.TabIndex = 12;
+            this.comboBox_f16cHarm10.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm10_SelectedIndexChanged);
+            // 
+            // label_F16CHarm_Table2_T3
+            // 
+            this.label_F16CHarm_Table2_T3.AutoSize = true;
+            this.label_F16CHarm_Table2_T3.Location = new System.Drawing.Point(6, 89);
+            this.label_F16CHarm_Table2_T3.Name = "label_F16CHarm_Table2_T3";
+            this.label_F16CHarm_Table2_T3.Size = new System.Drawing.Size(20, 13);
+            this.label_F16CHarm_Table2_T3.TabIndex = 3;
+            this.label_F16CHarm_Table2_T3.Text = "T3";
+            // 
+            // comboBox_f16cHarm9
+            // 
+            this.comboBox_f16cHarm9.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_f16cHarm9.FormattingEnabled = true;
+            this.comboBox_f16cHarm9.Location = new System.Drawing.Point(63, 113);
+            this.comboBox_f16cHarm9.Name = "comboBox_f16cHarm9";
+            this.comboBox_f16cHarm9.Size = new System.Drawing.Size(286, 21);
+            this.comboBox_f16cHarm9.TabIndex = 11;
+            this.comboBox_f16cHarm9.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm9_SelectedIndexChanged);
+            // 
+            // label_F16CHarm_Table2_T4
+            // 
+            this.label_F16CHarm_Table2_T4.AutoSize = true;
+            this.label_F16CHarm_Table2_T4.Location = new System.Drawing.Point(6, 116);
+            this.label_F16CHarm_Table2_T4.Name = "label_F16CHarm_Table2_T4";
+            this.label_F16CHarm_Table2_T4.Size = new System.Drawing.Size(20, 13);
+            this.label_F16CHarm_Table2_T4.TabIndex = 3;
+            this.label_F16CHarm_Table2_T4.Text = "T4";
+            this.label_F16CHarm_Table2_T4.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // comboBox_f16cHarm8
+            // 
+            this.comboBox_f16cHarm8.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_f16cHarm8.FormattingEnabled = true;
+            this.comboBox_f16cHarm8.Location = new System.Drawing.Point(63, 86);
+            this.comboBox_f16cHarm8.Name = "comboBox_f16cHarm8";
+            this.comboBox_f16cHarm8.Size = new System.Drawing.Size(286, 21);
+            this.comboBox_f16cHarm8.TabIndex = 10;
+            this.comboBox_f16cHarm8.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm8_SelectedIndexChanged);
+            // 
+            // label_F16CHarm_Table2_T2
+            // 
+            this.label_F16CHarm_Table2_T2.AutoSize = true;
+            this.label_F16CHarm_Table2_T2.Location = new System.Drawing.Point(6, 62);
+            this.label_F16CHarm_Table2_T2.Name = "label_F16CHarm_Table2_T2";
+            this.label_F16CHarm_Table2_T2.Size = new System.Drawing.Size(20, 13);
+            this.label_F16CHarm_Table2_T2.TabIndex = 3;
+            this.label_F16CHarm_Table2_T2.Text = "T2";
+            // 
+            // comboBox_f16cHarm7
+            // 
+            this.comboBox_f16cHarm7.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_f16cHarm7.FormattingEnabled = true;
+            this.comboBox_f16cHarm7.Location = new System.Drawing.Point(63, 59);
+            this.comboBox_f16cHarm7.Name = "comboBox_f16cHarm7";
+            this.comboBox_f16cHarm7.Size = new System.Drawing.Size(286, 21);
+            this.comboBox_f16cHarm7.TabIndex = 9;
+            this.comboBox_f16cHarm7.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm7_SelectedIndexChanged);
+            // 
+            // label_F16CHarm_selectedID_Table2_T5
+            // 
+            this.label_F16CHarm_selectedID_Table2_T5.AutoSize = true;
+            this.label_F16CHarm_selectedID_Table2_T5.Location = new System.Drawing.Point(32, 143);
+            this.label_F16CHarm_selectedID_Table2_T5.Name = "label_F16CHarm_selectedID_Table2_T5";
+            this.label_F16CHarm_selectedID_Table2_T5.Size = new System.Drawing.Size(25, 13);
+            this.label_F16CHarm_selectedID_Table2_T5.TabIndex = 4;
+            this.label_F16CHarm_selectedID_Table2_T5.Text = "000";
+            // 
+            // comboBox_f16cHarm6
+            // 
+            this.comboBox_f16cHarm6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_f16cHarm6.FormattingEnabled = true;
+            this.comboBox_f16cHarm6.Location = new System.Drawing.Point(63, 32);
+            this.comboBox_f16cHarm6.Name = "comboBox_f16cHarm6";
+            this.comboBox_f16cHarm6.Size = new System.Drawing.Size(286, 21);
+            this.comboBox_f16cHarm6.TabIndex = 8;
+            this.comboBox_f16cHarm6.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm6_SelectedIndexChanged);
+            // 
+            // label_F16CHarm_selectedID_Table2_T4
+            // 
+            this.label_F16CHarm_selectedID_Table2_T4.AutoSize = true;
+            this.label_F16CHarm_selectedID_Table2_T4.Location = new System.Drawing.Point(32, 116);
+            this.label_F16CHarm_selectedID_Table2_T4.Name = "label_F16CHarm_selectedID_Table2_T4";
+            this.label_F16CHarm_selectedID_Table2_T4.Size = new System.Drawing.Size(25, 13);
+            this.label_F16CHarm_selectedID_Table2_T4.TabIndex = 4;
+            this.label_F16CHarm_selectedID_Table2_T4.Text = "000";
+            // 
+            // label_F16CHarm_selectedID_Table2_T1
+            // 
+            this.label_F16CHarm_selectedID_Table2_T1.AutoSize = true;
+            this.label_F16CHarm_selectedID_Table2_T1.Location = new System.Drawing.Point(32, 35);
+            this.label_F16CHarm_selectedID_Table2_T1.Name = "label_F16CHarm_selectedID_Table2_T1";
+            this.label_F16CHarm_selectedID_Table2_T1.Size = new System.Drawing.Size(25, 13);
+            this.label_F16CHarm_selectedID_Table2_T1.TabIndex = 4;
+            this.label_F16CHarm_selectedID_Table2_T1.Text = "000";
+            // 
+            // label_F16CHarm_selectedID_Table2_T3
+            // 
+            this.label_F16CHarm_selectedID_Table2_T3.AutoSize = true;
+            this.label_F16CHarm_selectedID_Table2_T3.Location = new System.Drawing.Point(32, 89);
+            this.label_F16CHarm_selectedID_Table2_T3.Name = "label_F16CHarm_selectedID_Table2_T3";
+            this.label_F16CHarm_selectedID_Table2_T3.Size = new System.Drawing.Size(25, 13);
+            this.label_F16CHarm_selectedID_Table2_T3.TabIndex = 4;
+            this.label_F16CHarm_selectedID_Table2_T3.Text = "000";
+            // 
+            // label_F16CHarm_Table2_T1
+            // 
+            this.label_F16CHarm_Table2_T1.AutoSize = true;
+            this.label_F16CHarm_Table2_T1.Location = new System.Drawing.Point(6, 35);
+            this.label_F16CHarm_Table2_T1.Name = "label_F16CHarm_Table2_T1";
+            this.label_F16CHarm_Table2_T1.Size = new System.Drawing.Size(20, 13);
+            this.label_F16CHarm_Table2_T1.TabIndex = 3;
+            this.label_F16CHarm_Table2_T1.Text = "T1";
+            // 
+            // label_F16CHarm_selectedID_Table2_T2
+            // 
+            this.label_F16CHarm_selectedID_Table2_T2.AutoSize = true;
+            this.label_F16CHarm_selectedID_Table2_T2.Location = new System.Drawing.Point(32, 62);
+            this.label_F16CHarm_selectedID_Table2_T2.Name = "label_F16CHarm_selectedID_Table2_T2";
+            this.label_F16CHarm_selectedID_Table2_T2.Size = new System.Drawing.Size(25, 13);
+            this.label_F16CHarm_selectedID_Table2_T2.TabIndex = 4;
+            this.label_F16CHarm_selectedID_Table2_T2.Text = "000";
+            // 
+            // groupBox_F16C_harm_table1
+            // 
+            this.groupBox_F16C_harm_table1.Controls.Add(this.label_F16CHarm_Table1_T1);
+            this.groupBox_F16C_harm_table1.Controls.Add(this.label_F16CHarm_Table1_T5);
+            this.groupBox_F16C_harm_table1.Controls.Add(this.label_F16CHarm_Table1_T3);
+            this.groupBox_F16C_harm_table1.Controls.Add(this.label_F16CHarm_Table1_T4);
+            this.groupBox_F16C_harm_table1.Controls.Add(this.label_F16CHarm_selectedID_Table1_Title);
+            this.groupBox_F16C_harm_table1.Controls.Add(this.label_F16CHarm_selectedID_Table1_T1);
+            this.groupBox_F16C_harm_table1.Controls.Add(this.label_F16CHarm_Table1_T2);
+            this.groupBox_F16C_harm_table1.Controls.Add(this.label_F16CHarm_selectedID_Table1_T5);
+            this.groupBox_F16C_harm_table1.Controls.Add(this.label_F16CHarm_selectedID_Table1_T4);
+            this.groupBox_F16C_harm_table1.Controls.Add(this.label_F16CHarm_selectedID_Table1_T3);
+            this.groupBox_F16C_harm_table1.Controls.Add(this.label_F16CHarm_selectedID_Table1_T2);
+            this.groupBox_F16C_harm_table1.Controls.Add(this.comboBox_f16cHarm5);
+            this.groupBox_F16C_harm_table1.Controls.Add(this.label_F16CHarm_samName_table1);
+            this.groupBox_F16C_harm_table1.Controls.Add(this.comboBox_f16cHarm4);
+            this.groupBox_F16C_harm_table1.Controls.Add(this.comboBox_f16cHarm3);
+            this.groupBox_F16C_harm_table1.Controls.Add(this.comboBox_f16cHarm2);
+            this.groupBox_F16C_harm_table1.Controls.Add(this.comboBox_f16cHarm1);
+            this.groupBox_F16C_harm_table1.Location = new System.Drawing.Point(6, 20);
+            this.groupBox_F16C_harm_table1.Name = "groupBox_F16C_harm_table1";
+            this.groupBox_F16C_harm_table1.Size = new System.Drawing.Size(355, 170);
+            this.groupBox_F16C_harm_table1.TabIndex = 0;
+            this.groupBox_F16C_harm_table1.TabStop = false;
+            this.groupBox_F16C_harm_table1.Text = "Table 1";
+            // 
+            // label_F16CHarm_Table1_T1
+            // 
+            this.label_F16CHarm_Table1_T1.AutoSize = true;
+            this.label_F16CHarm_Table1_T1.Location = new System.Drawing.Point(6, 35);
+            this.label_F16CHarm_Table1_T1.Name = "label_F16CHarm_Table1_T1";
+            this.label_F16CHarm_Table1_T1.Size = new System.Drawing.Size(20, 13);
+            this.label_F16CHarm_Table1_T1.TabIndex = 8;
+            this.label_F16CHarm_Table1_T1.Text = "T1";
+            // 
+            // label_F16CHarm_Table1_T5
+            // 
+            this.label_F16CHarm_Table1_T5.AutoSize = true;
+            this.label_F16CHarm_Table1_T5.Location = new System.Drawing.Point(6, 143);
+            this.label_F16CHarm_Table1_T5.Name = "label_F16CHarm_Table1_T5";
+            this.label_F16CHarm_Table1_T5.Size = new System.Drawing.Size(20, 13);
+            this.label_F16CHarm_Table1_T5.TabIndex = 3;
+            this.label_F16CHarm_Table1_T5.Text = "T5";
+            this.label_F16CHarm_Table1_T5.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // label_F16CHarm_Table1_T3
+            // 
+            this.label_F16CHarm_Table1_T3.AutoSize = true;
+            this.label_F16CHarm_Table1_T3.Location = new System.Drawing.Point(6, 89);
+            this.label_F16CHarm_Table1_T3.Name = "label_F16CHarm_Table1_T3";
+            this.label_F16CHarm_Table1_T3.Size = new System.Drawing.Size(20, 13);
+            this.label_F16CHarm_Table1_T3.TabIndex = 3;
+            this.label_F16CHarm_Table1_T3.Text = "T3";
+            // 
+            // label_F16CHarm_Table1_T4
+            // 
+            this.label_F16CHarm_Table1_T4.AutoSize = true;
+            this.label_F16CHarm_Table1_T4.Location = new System.Drawing.Point(6, 116);
+            this.label_F16CHarm_Table1_T4.Name = "label_F16CHarm_Table1_T4";
+            this.label_F16CHarm_Table1_T4.Size = new System.Drawing.Size(20, 13);
+            this.label_F16CHarm_Table1_T4.TabIndex = 3;
+            this.label_F16CHarm_Table1_T4.Text = "T4";
+            this.label_F16CHarm_Table1_T4.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // label_F16CHarm_selectedID_Table1_Title
+            // 
+            this.label_F16CHarm_selectedID_Table1_Title.AutoSize = true;
+            this.label_F16CHarm_selectedID_Table1_Title.Location = new System.Drawing.Point(32, 16);
+            this.label_F16CHarm_selectedID_Table1_Title.Name = "label_F16CHarm_selectedID_Table1_Title";
+            this.label_F16CHarm_selectedID_Table1_Title.Size = new System.Drawing.Size(18, 13);
+            this.label_F16CHarm_selectedID_Table1_Title.TabIndex = 4;
+            this.label_F16CHarm_selectedID_Table1_Title.Text = "ID";
+            // 
+            // label_F16CHarm_selectedID_Table1_T1
+            // 
+            this.label_F16CHarm_selectedID_Table1_T1.AutoSize = true;
+            this.label_F16CHarm_selectedID_Table1_T1.Location = new System.Drawing.Point(32, 35);
+            this.label_F16CHarm_selectedID_Table1_T1.Name = "label_F16CHarm_selectedID_Table1_T1";
+            this.label_F16CHarm_selectedID_Table1_T1.Size = new System.Drawing.Size(25, 13);
+            this.label_F16CHarm_selectedID_Table1_T1.TabIndex = 4;
+            this.label_F16CHarm_selectedID_Table1_T1.Text = "000";
+            // 
+            // label_F16CHarm_Table1_T2
+            // 
+            this.label_F16CHarm_Table1_T2.AutoSize = true;
+            this.label_F16CHarm_Table1_T2.Location = new System.Drawing.Point(6, 62);
+            this.label_F16CHarm_Table1_T2.Name = "label_F16CHarm_Table1_T2";
+            this.label_F16CHarm_Table1_T2.Size = new System.Drawing.Size(20, 13);
+            this.label_F16CHarm_Table1_T2.TabIndex = 3;
+            this.label_F16CHarm_Table1_T2.Text = "T2";
+            // 
+            // label_F16CHarm_selectedID_Table1_T5
+            // 
+            this.label_F16CHarm_selectedID_Table1_T5.AutoSize = true;
+            this.label_F16CHarm_selectedID_Table1_T5.Location = new System.Drawing.Point(32, 143);
+            this.label_F16CHarm_selectedID_Table1_T5.Name = "label_F16CHarm_selectedID_Table1_T5";
+            this.label_F16CHarm_selectedID_Table1_T5.Size = new System.Drawing.Size(25, 13);
+            this.label_F16CHarm_selectedID_Table1_T5.TabIndex = 4;
+            this.label_F16CHarm_selectedID_Table1_T5.Text = "000";
+            // 
+            // label_F16CHarm_selectedID_Table1_T4
+            // 
+            this.label_F16CHarm_selectedID_Table1_T4.AutoSize = true;
+            this.label_F16CHarm_selectedID_Table1_T4.Location = new System.Drawing.Point(32, 116);
+            this.label_F16CHarm_selectedID_Table1_T4.Name = "label_F16CHarm_selectedID_Table1_T4";
+            this.label_F16CHarm_selectedID_Table1_T4.Size = new System.Drawing.Size(25, 13);
+            this.label_F16CHarm_selectedID_Table1_T4.TabIndex = 4;
+            this.label_F16CHarm_selectedID_Table1_T4.Text = "000";
+            // 
+            // label_F16CHarm_selectedID_Table1_T3
+            // 
+            this.label_F16CHarm_selectedID_Table1_T3.AutoSize = true;
+            this.label_F16CHarm_selectedID_Table1_T3.Location = new System.Drawing.Point(32, 89);
+            this.label_F16CHarm_selectedID_Table1_T3.Name = "label_F16CHarm_selectedID_Table1_T3";
+            this.label_F16CHarm_selectedID_Table1_T3.Size = new System.Drawing.Size(25, 13);
+            this.label_F16CHarm_selectedID_Table1_T3.TabIndex = 4;
+            this.label_F16CHarm_selectedID_Table1_T3.Text = "000";
+            // 
+            // label_F16CHarm_selectedID_Table1_T2
+            // 
+            this.label_F16CHarm_selectedID_Table1_T2.AutoSize = true;
+            this.label_F16CHarm_selectedID_Table1_T2.Location = new System.Drawing.Point(32, 62);
+            this.label_F16CHarm_selectedID_Table1_T2.Name = "label_F16CHarm_selectedID_Table1_T2";
+            this.label_F16CHarm_selectedID_Table1_T2.Size = new System.Drawing.Size(25, 13);
+            this.label_F16CHarm_selectedID_Table1_T2.TabIndex = 4;
+            this.label_F16CHarm_selectedID_Table1_T2.Text = "000";
+            // 
+            // comboBox_f16cHarm5
+            // 
+            this.comboBox_f16cHarm5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_f16cHarm5.FormattingEnabled = true;
+            this.comboBox_f16cHarm5.Location = new System.Drawing.Point(63, 140);
+            this.comboBox_f16cHarm5.Name = "comboBox_f16cHarm5";
+            this.comboBox_f16cHarm5.Size = new System.Drawing.Size(286, 21);
+            this.comboBox_f16cHarm5.TabIndex = 7;
+            this.comboBox_f16cHarm5.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm5_SelectedIndexChanged);
+            // 
+            // label_F16CHarm_samName_table1
+            // 
+            this.label_F16CHarm_samName_table1.AutoSize = true;
+            this.label_F16CHarm_samName_table1.Location = new System.Drawing.Point(60, 16);
+            this.label_F16CHarm_samName_table1.Name = "label_F16CHarm_samName_table1";
+            this.label_F16CHarm_samName_table1.Size = new System.Drawing.Size(191, 13);
+            this.label_F16CHarm_samName_table1.TabIndex = 3;
+            this.label_F16CHarm_samName_table1.Text = "Display Name - RWR Symbol - DED ID";
+            this.label_F16CHarm_samName_table1.Click += new System.EventHandler(this.label_F16CHarm_samName_table1_Click);
+            // 
+            // comboBox_f16cHarm4
+            // 
+            this.comboBox_f16cHarm4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_f16cHarm4.FormattingEnabled = true;
+            this.comboBox_f16cHarm4.Location = new System.Drawing.Point(63, 113);
+            this.comboBox_f16cHarm4.Name = "comboBox_f16cHarm4";
+            this.comboBox_f16cHarm4.Size = new System.Drawing.Size(286, 21);
+            this.comboBox_f16cHarm4.TabIndex = 6;
+            this.comboBox_f16cHarm4.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm4_SelectedIndexChanged);
+            // 
+            // comboBox_f16cHarm3
+            // 
+            this.comboBox_f16cHarm3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_f16cHarm3.FormattingEnabled = true;
+            this.comboBox_f16cHarm3.Location = new System.Drawing.Point(63, 86);
+            this.comboBox_f16cHarm3.Name = "comboBox_f16cHarm3";
+            this.comboBox_f16cHarm3.Size = new System.Drawing.Size(286, 21);
+            this.comboBox_f16cHarm3.TabIndex = 5;
+            this.comboBox_f16cHarm3.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm3_SelectedIndexChanged);
+            // 
+            // comboBox_f16cHarm2
+            // 
+            this.comboBox_f16cHarm2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_f16cHarm2.FormattingEnabled = true;
+            this.comboBox_f16cHarm2.Location = new System.Drawing.Point(63, 59);
+            this.comboBox_f16cHarm2.Name = "comboBox_f16cHarm2";
+            this.comboBox_f16cHarm2.Size = new System.Drawing.Size(286, 21);
+            this.comboBox_f16cHarm2.TabIndex = 4;
+            this.comboBox_f16cHarm2.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm2_SelectedIndexChanged);
+            // 
+            // comboBox_f16cHarm1
+            // 
+            this.comboBox_f16cHarm1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_f16cHarm1.FormattingEnabled = true;
+            this.comboBox_f16cHarm1.Location = new System.Drawing.Point(63, 32);
+            this.comboBox_f16cHarm1.Name = "comboBox_f16cHarm1";
+            this.comboBox_f16cHarm1.Size = new System.Drawing.Size(286, 21);
+            this.comboBox_f16cHarm1.TabIndex = 3;
+            this.comboBox_f16cHarm1.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm1_SelectedIndexChanged);
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage4.Controls.Add(this.tabControl_A10C);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(445, 550);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "DCS A-10C CMS";
+            // 
+            // tabControl_A10C
+            // 
+            this.tabControl_A10C.Controls.Add(this.tabPage5);
+            this.tabControl_A10C.Controls.Add(this.tabPage6);
+            this.tabControl_A10C.Location = new System.Drawing.Point(6, 6);
+            this.tabControl_A10C.Name = "tabControl_A10C";
+            this.tabControl_A10C.SelectedIndex = 0;
+            this.tabControl_A10C.Size = new System.Drawing.Size(433, 538);
+            this.tabControl_A10C.TabIndex = 34;
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage5.Controls.Add(this.label5);
+            this.tabPage5.Controls.Add(this.groupBox1);
+            this.tabPage5.Controls.Add(this.label12);
+            this.tabPage5.Controls.Add(this.label14);
+            this.tabPage5.Controls.Add(this.label13);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(425, 512);
+            this.tabPage5.TabIndex = 0;
+            this.tabPage5.Text = "A-10C CMS Programs A - N";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(190, 10);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(32, 13);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Chaff";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label26);
+            this.groupBox1.Controls.Add(this.label34);
+            this.groupBox1.Controls.Add(this.label_programsContinueOnNextTab);
+            this.groupBox1.Controls.Add(this.textBox_programN);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programN_chaff);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programN_flare);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programN_cycle);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programN_interval);
+            this.groupBox1.Controls.Add(this.label_programN);
+            this.groupBox1.Controls.Add(this.label36);
+            this.groupBox1.Controls.Add(this.label37);
+            this.groupBox1.Controls.Add(this.label17);
+            this.groupBox1.Controls.Add(this.label35);
+            this.groupBox1.Controls.Add(this.label32);
+            this.groupBox1.Controls.Add(this.label31);
+            this.groupBox1.Controls.Add(this.label30);
+            this.groupBox1.Controls.Add(this.label29);
+            this.groupBox1.Controls.Add(this.label28);
+            this.groupBox1.Controls.Add(this.label_programA_description);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programM_chaff);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programM_flare);
+            this.groupBox1.Controls.Add(this.label41);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programM_cycle);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programM_interval);
+            this.groupBox1.Controls.Add(this.label_programM);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programL_chaff);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programL_flare);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programK_chaff);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programK_flare);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programJ_chaff);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programJ_flare);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programI_chaff);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programI_flare);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programH_chaff);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programH_flare);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programG_chaff);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programG_flare);
+            this.groupBox1.Controls.Add(this.label33);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programL_cycle);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programL_interval);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programK_cycle);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programK_interval);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programJ_cycle);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programJ_interval);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programI_cycle);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programI_interval);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programH_cycle);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programH_interval);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programG_cycle);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programG_interval);
+            this.groupBox1.Controls.Add(this.label_programG);
+            this.groupBox1.Controls.Add(this.label_programH);
+            this.groupBox1.Controls.Add(this.label_programI);
+            this.groupBox1.Controls.Add(this.label_programJ);
+            this.groupBox1.Controls.Add(this.label_programK);
+            this.groupBox1.Controls.Add(this.label_programL);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programF_chaff);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programF_flare);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programE_chaff);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programE_flare);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programD_chaff);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programD_flare);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programC_chaff);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programC_flare);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programB_chaff);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programB_flare);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programA_chaff);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programA_flare);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programF_cycle);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programF_interval);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programE_cycle);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programE_interval);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programD_cycle);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programD_interval);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programC_cycle);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programC_interval);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programB_cycle);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programB_interval);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programA_cycle);
+            this.groupBox1.Controls.Add(this.numericUpDown_A10C_programA_interval);
+            this.groupBox1.Controls.Add(this.label_programA);
+            this.groupBox1.Controls.Add(this.label_programB);
+            this.groupBox1.Controls.Add(this.label_programC);
+            this.groupBox1.Controls.Add(this.label_programD);
+            this.groupBox1.Controls.Add(this.label_programE);
+            this.groupBox1.Controls.Add(this.label_programF);
+            this.groupBox1.Location = new System.Drawing.Point(6, 23);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(413, 483);
+            this.groupBox1.TabIndex = 18;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Program A - Program N";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(17, 244);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(64, 13);
+            this.label26.TabIndex = 108;
+            this.label26.Text = "Chaff Single";
+            this.label26.Click += new System.EventHandler(this.label26_Click);
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(29, 459);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(152, 13);
+            this.label34.TabIndex = 118;
+            this.label34.Text = "^ Enter Custom Program Name";
+            // 
+            // label_programsContinueOnNextTab
+            // 
+            this.label_programsContinueOnNextTab.AutoSize = true;
+            this.label_programsContinueOnNextTab.Location = new System.Drawing.Point(243, 466);
+            this.label_programsContinueOnNextTab.Name = "label_programsContinueOnNextTab";
+            this.label_programsContinueOnNextTab.Size = new System.Drawing.Size(166, 13);
+            this.label_programsContinueOnNextTab.TabIndex = 117;
+            this.label_programsContinueOnNextTab.Text = "Programs continue on next tab -->";
+            // 
+            // textBox_programN
+            // 
+            this.textBox_programN.Location = new System.Drawing.Point(20, 433);
+            this.textBox_programN.Name = "textBox_programN";
+            this.textBox_programN.Size = new System.Drawing.Size(130, 20);
+            this.textBox_programN.TabIndex = 116;
+            this.textBox_programN.Text = "Program N";
+            this.textBox_programN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_programN_KeyPress);
+            // 
+            // numericUpDown_A10C_programN_chaff
+            // 
+            this.numericUpDown_A10C_programN_chaff.Location = new System.Drawing.Point(180, 434);
+            this.numericUpDown_A10C_programN_chaff.Maximum = new decimal(new int[] {
+            480,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programN_chaff.Name = "numericUpDown_A10C_programN_chaff";
+            this.numericUpDown_A10C_programN_chaff.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programN_chaff.TabIndex = 115;
+            // 
+            // numericUpDown_A10C_programN_flare
+            // 
+            this.numericUpDown_A10C_programN_flare.Location = new System.Drawing.Point(244, 434);
+            this.numericUpDown_A10C_programN_flare.Maximum = new decimal(new int[] {
+            240,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programN_flare.Name = "numericUpDown_A10C_programN_flare";
+            this.numericUpDown_A10C_programN_flare.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programN_flare.TabIndex = 114;
+            this.numericUpDown_A10C_programN_flare.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programN_cycle
+            // 
+            this.numericUpDown_A10C_programN_cycle.Location = new System.Drawing.Point(370, 434);
+            this.numericUpDown_A10C_programN_cycle.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programN_cycle.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programN_cycle.Name = "numericUpDown_A10C_programN_cycle";
+            this.numericUpDown_A10C_programN_cycle.Size = new System.Drawing.Size(35, 20);
+            this.numericUpDown_A10C_programN_cycle.TabIndex = 113;
+            this.numericUpDown_A10C_programN_cycle.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programN_interval
+            // 
+            this.numericUpDown_A10C_programN_interval.DecimalPlaces = 2;
+            this.numericUpDown_A10C_programN_interval.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programN_interval.Location = new System.Drawing.Point(306, 434);
+            this.numericUpDown_A10C_programN_interval.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programN_interval.Name = "numericUpDown_A10C_programN_interval";
+            this.numericUpDown_A10C_programN_interval.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programN_interval.TabIndex = 112;
+            this.numericUpDown_A10C_programN_interval.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            65536});
+            // 
+            // label_programN
+            // 
+            this.label_programN.AutoSize = true;
+            this.label_programN.Location = new System.Drawing.Point(3, 436);
+            this.label_programN.Name = "label_programN";
+            this.label_programN.Size = new System.Drawing.Size(18, 13);
+            this.label_programN.TabIndex = 111;
+            this.label_programN.Text = "N:";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(17, 340);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(51, 13);
+            this.label36.TabIndex = 110;
+            this.label36.Text = "Flare Pair";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(17, 308);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(62, 13);
+            this.label37.TabIndex = 109;
+            this.label37.Text = "Flare Single";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(17, 276);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(53, 13);
+            this.label17.TabIndex = 108;
+            this.label17.Text = "Chaff Pair";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(17, 212);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(32, 13);
+            this.label35.TabIndex = 107;
+            this.label35.Text = "Mix 4";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(17, 180);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(32, 13);
+            this.label32.TabIndex = 106;
+            this.label32.Text = "Mix 3";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(17, 148);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(32, 13);
+            this.label31.TabIndex = 105;
+            this.label31.Text = "Mix 2";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(17, 52);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(154, 13);
+            this.label30.TabIndex = 104;
+            this.label30.Text = "Current Generation Radar SAM";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(17, 116);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(32, 13);
+            this.label29.TabIndex = 103;
+            this.label29.Text = "Mix 1";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(17, 84);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(44, 13);
+            this.label28.TabIndex = 102;
+            this.label28.Text = "IR SAM";
+            // 
+            // label_programA_description
+            // 
+            this.label_programA_description.AutoSize = true;
+            this.label_programA_description.Location = new System.Drawing.Point(17, 20);
+            this.label_programA_description.Name = "label_programA_description";
+            this.label_programA_description.Size = new System.Drawing.Size(136, 13);
+            this.label_programA_description.TabIndex = 101;
+            this.label_programA_description.Text = "Old Generation Radar SAM";
+            // 
+            // numericUpDown_A10C_programM_chaff
+            // 
+            this.numericUpDown_A10C_programM_chaff.Location = new System.Drawing.Point(179, 403);
+            this.numericUpDown_A10C_programM_chaff.Maximum = new decimal(new int[] {
+            480,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programM_chaff.Name = "numericUpDown_A10C_programM_chaff";
+            this.numericUpDown_A10C_programM_chaff.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programM_chaff.TabIndex = 100;
+            // 
+            // numericUpDown_A10C_programM_flare
+            // 
+            this.numericUpDown_A10C_programM_flare.Location = new System.Drawing.Point(243, 403);
+            this.numericUpDown_A10C_programM_flare.Maximum = new decimal(new int[] {
+            240,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programM_flare.Name = "numericUpDown_A10C_programM_flare";
+            this.numericUpDown_A10C_programM_flare.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programM_flare.TabIndex = 99;
+            this.numericUpDown_A10C_programM_flare.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(17, 405);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(76, 13);
+            this.label41.TabIndex = 98;
+            this.label41.Text = "Chaff pre-empt";
+            // 
+            // numericUpDown_A10C_programM_cycle
+            // 
+            this.numericUpDown_A10C_programM_cycle.Location = new System.Drawing.Point(369, 403);
+            this.numericUpDown_A10C_programM_cycle.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programM_cycle.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programM_cycle.Name = "numericUpDown_A10C_programM_cycle";
+            this.numericUpDown_A10C_programM_cycle.Size = new System.Drawing.Size(35, 20);
+            this.numericUpDown_A10C_programM_cycle.TabIndex = 97;
+            this.numericUpDown_A10C_programM_cycle.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programM_interval
+            // 
+            this.numericUpDown_A10C_programM_interval.DecimalPlaces = 2;
+            this.numericUpDown_A10C_programM_interval.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programM_interval.Location = new System.Drawing.Point(305, 403);
+            this.numericUpDown_A10C_programM_interval.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programM_interval.Name = "numericUpDown_A10C_programM_interval";
+            this.numericUpDown_A10C_programM_interval.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programM_interval.TabIndex = 96;
+            this.numericUpDown_A10C_programM_interval.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label_programM
+            // 
+            this.label_programM.AutoSize = true;
+            this.label_programM.Location = new System.Drawing.Point(3, 405);
+            this.label_programM.Name = "label_programM";
+            this.label_programM.Size = new System.Drawing.Size(19, 13);
+            this.label_programM.TabIndex = 95;
+            this.label_programM.Text = "M:";
+            // 
+            // numericUpDown_A10C_programL_chaff
+            // 
+            this.numericUpDown_A10C_programL_chaff.Location = new System.Drawing.Point(179, 371);
+            this.numericUpDown_A10C_programL_chaff.Maximum = new decimal(new int[] {
+            480,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programL_chaff.Name = "numericUpDown_A10C_programL_chaff";
+            this.numericUpDown_A10C_programL_chaff.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programL_chaff.TabIndex = 94;
+            this.numericUpDown_A10C_programL_chaff.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programL_flare
+            // 
+            this.numericUpDown_A10C_programL_flare.Location = new System.Drawing.Point(243, 371);
+            this.numericUpDown_A10C_programL_flare.Maximum = new decimal(new int[] {
+            240,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programL_flare.Name = "numericUpDown_A10C_programL_flare";
+            this.numericUpDown_A10C_programL_flare.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programL_flare.TabIndex = 93;
+            // 
+            // numericUpDown_A10C_programK_chaff
+            // 
+            this.numericUpDown_A10C_programK_chaff.Location = new System.Drawing.Point(179, 338);
+            this.numericUpDown_A10C_programK_chaff.Maximum = new decimal(new int[] {
+            480,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programK_chaff.Name = "numericUpDown_A10C_programK_chaff";
+            this.numericUpDown_A10C_programK_chaff.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programK_chaff.TabIndex = 92;
+            // 
+            // numericUpDown_A10C_programK_flare
+            // 
+            this.numericUpDown_A10C_programK_flare.Location = new System.Drawing.Point(243, 338);
+            this.numericUpDown_A10C_programK_flare.Maximum = new decimal(new int[] {
+            240,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programK_flare.Name = "numericUpDown_A10C_programK_flare";
+            this.numericUpDown_A10C_programK_flare.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programK_flare.TabIndex = 91;
+            this.numericUpDown_A10C_programK_flare.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programJ_chaff
+            // 
+            this.numericUpDown_A10C_programJ_chaff.Location = new System.Drawing.Point(179, 306);
+            this.numericUpDown_A10C_programJ_chaff.Maximum = new decimal(new int[] {
+            480,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programJ_chaff.Name = "numericUpDown_A10C_programJ_chaff";
+            this.numericUpDown_A10C_programJ_chaff.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programJ_chaff.TabIndex = 90;
+            // 
+            // numericUpDown_A10C_programJ_flare
+            // 
+            this.numericUpDown_A10C_programJ_flare.Location = new System.Drawing.Point(243, 306);
+            this.numericUpDown_A10C_programJ_flare.Maximum = new decimal(new int[] {
+            240,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programJ_flare.Name = "numericUpDown_A10C_programJ_flare";
+            this.numericUpDown_A10C_programJ_flare.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programJ_flare.TabIndex = 89;
+            this.numericUpDown_A10C_programJ_flare.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programI_chaff
+            // 
+            this.numericUpDown_A10C_programI_chaff.Location = new System.Drawing.Point(179, 274);
+            this.numericUpDown_A10C_programI_chaff.Maximum = new decimal(new int[] {
+            480,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programI_chaff.Name = "numericUpDown_A10C_programI_chaff";
+            this.numericUpDown_A10C_programI_chaff.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programI_chaff.TabIndex = 88;
+            this.numericUpDown_A10C_programI_chaff.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programI_flare
+            // 
+            this.numericUpDown_A10C_programI_flare.Location = new System.Drawing.Point(243, 274);
+            this.numericUpDown_A10C_programI_flare.Maximum = new decimal(new int[] {
+            240,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programI_flare.Name = "numericUpDown_A10C_programI_flare";
+            this.numericUpDown_A10C_programI_flare.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programI_flare.TabIndex = 87;
+            // 
+            // numericUpDown_A10C_programH_chaff
+            // 
+            this.numericUpDown_A10C_programH_chaff.Location = new System.Drawing.Point(179, 242);
+            this.numericUpDown_A10C_programH_chaff.Maximum = new decimal(new int[] {
+            480,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programH_chaff.Name = "numericUpDown_A10C_programH_chaff";
+            this.numericUpDown_A10C_programH_chaff.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programH_chaff.TabIndex = 86;
+            this.numericUpDown_A10C_programH_chaff.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programH_flare
+            // 
+            this.numericUpDown_A10C_programH_flare.Location = new System.Drawing.Point(243, 242);
+            this.numericUpDown_A10C_programH_flare.Maximum = new decimal(new int[] {
+            240,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programH_flare.Name = "numericUpDown_A10C_programH_flare";
+            this.numericUpDown_A10C_programH_flare.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programH_flare.TabIndex = 85;
+            // 
+            // numericUpDown_A10C_programG_chaff
+            // 
+            this.numericUpDown_A10C_programG_chaff.Location = new System.Drawing.Point(179, 210);
+            this.numericUpDown_A10C_programG_chaff.Maximum = new decimal(new int[] {
+            480,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programG_chaff.Name = "numericUpDown_A10C_programG_chaff";
+            this.numericUpDown_A10C_programG_chaff.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programG_chaff.TabIndex = 84;
+            this.numericUpDown_A10C_programG_chaff.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programG_flare
+            // 
+            this.numericUpDown_A10C_programG_flare.Location = new System.Drawing.Point(243, 210);
+            this.numericUpDown_A10C_programG_flare.Maximum = new decimal(new int[] {
+            240,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programG_flare.Name = "numericUpDown_A10C_programG_flare";
+            this.numericUpDown_A10C_programG_flare.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programG_flare.TabIndex = 83;
+            this.numericUpDown_A10C_programG_flare.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(17, 373);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(76, 13);
+            this.label33.TabIndex = 82;
+            this.label33.Text = "Chaff pre-empt";
+            // 
+            // numericUpDown_A10C_programL_cycle
+            // 
+            this.numericUpDown_A10C_programL_cycle.Location = new System.Drawing.Point(369, 371);
+            this.numericUpDown_A10C_programL_cycle.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programL_cycle.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programL_cycle.Name = "numericUpDown_A10C_programL_cycle";
+            this.numericUpDown_A10C_programL_cycle.Size = new System.Drawing.Size(35, 20);
+            this.numericUpDown_A10C_programL_cycle.TabIndex = 80;
+            this.numericUpDown_A10C_programL_cycle.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programL_interval
+            // 
+            this.numericUpDown_A10C_programL_interval.DecimalPlaces = 2;
+            this.numericUpDown_A10C_programL_interval.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programL_interval.Location = new System.Drawing.Point(305, 371);
+            this.numericUpDown_A10C_programL_interval.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programL_interval.Name = "numericUpDown_A10C_programL_interval";
+            this.numericUpDown_A10C_programL_interval.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programL_interval.TabIndex = 79;
+            this.numericUpDown_A10C_programL_interval.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programK_cycle
+            // 
+            this.numericUpDown_A10C_programK_cycle.Location = new System.Drawing.Point(369, 338);
+            this.numericUpDown_A10C_programK_cycle.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programK_cycle.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programK_cycle.Name = "numericUpDown_A10C_programK_cycle";
+            this.numericUpDown_A10C_programK_cycle.Size = new System.Drawing.Size(35, 20);
+            this.numericUpDown_A10C_programK_cycle.TabIndex = 78;
+            this.numericUpDown_A10C_programK_cycle.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programK_interval
+            // 
+            this.numericUpDown_A10C_programK_interval.DecimalPlaces = 2;
+            this.numericUpDown_A10C_programK_interval.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programK_interval.Location = new System.Drawing.Point(305, 338);
+            this.numericUpDown_A10C_programK_interval.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programK_interval.Name = "numericUpDown_A10C_programK_interval";
+            this.numericUpDown_A10C_programK_interval.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programK_interval.TabIndex = 77;
+            this.numericUpDown_A10C_programK_interval.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            65536});
+            // 
+            // numericUpDown_A10C_programJ_cycle
+            // 
+            this.numericUpDown_A10C_programJ_cycle.Location = new System.Drawing.Point(369, 306);
+            this.numericUpDown_A10C_programJ_cycle.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programJ_cycle.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programJ_cycle.Name = "numericUpDown_A10C_programJ_cycle";
+            this.numericUpDown_A10C_programJ_cycle.Size = new System.Drawing.Size(35, 20);
+            this.numericUpDown_A10C_programJ_cycle.TabIndex = 76;
+            this.numericUpDown_A10C_programJ_cycle.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programJ_interval
+            // 
+            this.numericUpDown_A10C_programJ_interval.DecimalPlaces = 2;
+            this.numericUpDown_A10C_programJ_interval.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programJ_interval.Location = new System.Drawing.Point(305, 306);
+            this.numericUpDown_A10C_programJ_interval.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programJ_interval.Name = "numericUpDown_A10C_programJ_interval";
+            this.numericUpDown_A10C_programJ_interval.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programJ_interval.TabIndex = 75;
+            this.numericUpDown_A10C_programJ_interval.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programI_cycle
+            // 
+            this.numericUpDown_A10C_programI_cycle.Location = new System.Drawing.Point(369, 274);
+            this.numericUpDown_A10C_programI_cycle.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programI_cycle.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programI_cycle.Name = "numericUpDown_A10C_programI_cycle";
+            this.numericUpDown_A10C_programI_cycle.Size = new System.Drawing.Size(35, 20);
+            this.numericUpDown_A10C_programI_cycle.TabIndex = 74;
+            this.numericUpDown_A10C_programI_cycle.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programI_interval
+            // 
+            this.numericUpDown_A10C_programI_interval.DecimalPlaces = 2;
+            this.numericUpDown_A10C_programI_interval.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programI_interval.Location = new System.Drawing.Point(305, 274);
+            this.numericUpDown_A10C_programI_interval.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programI_interval.Name = "numericUpDown_A10C_programI_interval";
+            this.numericUpDown_A10C_programI_interval.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programI_interval.TabIndex = 73;
+            this.numericUpDown_A10C_programI_interval.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            65536});
+            // 
+            // numericUpDown_A10C_programH_cycle
+            // 
+            this.numericUpDown_A10C_programH_cycle.Location = new System.Drawing.Point(369, 242);
+            this.numericUpDown_A10C_programH_cycle.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programH_cycle.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programH_cycle.Name = "numericUpDown_A10C_programH_cycle";
+            this.numericUpDown_A10C_programH_cycle.Size = new System.Drawing.Size(35, 20);
+            this.numericUpDown_A10C_programH_cycle.TabIndex = 72;
+            this.numericUpDown_A10C_programH_cycle.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programH_interval
+            // 
+            this.numericUpDown_A10C_programH_interval.DecimalPlaces = 2;
+            this.numericUpDown_A10C_programH_interval.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programH_interval.Location = new System.Drawing.Point(305, 242);
+            this.numericUpDown_A10C_programH_interval.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programH_interval.Name = "numericUpDown_A10C_programH_interval";
+            this.numericUpDown_A10C_programH_interval.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programH_interval.TabIndex = 71;
+            this.numericUpDown_A10C_programH_interval.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programG_cycle
+            // 
+            this.numericUpDown_A10C_programG_cycle.Location = new System.Drawing.Point(369, 210);
+            this.numericUpDown_A10C_programG_cycle.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programG_cycle.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programG_cycle.Name = "numericUpDown_A10C_programG_cycle";
+            this.numericUpDown_A10C_programG_cycle.Size = new System.Drawing.Size(35, 20);
+            this.numericUpDown_A10C_programG_cycle.TabIndex = 70;
+            this.numericUpDown_A10C_programG_cycle.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programG_interval
+            // 
+            this.numericUpDown_A10C_programG_interval.DecimalPlaces = 2;
+            this.numericUpDown_A10C_programG_interval.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programG_interval.Location = new System.Drawing.Point(305, 210);
+            this.numericUpDown_A10C_programG_interval.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programG_interval.Name = "numericUpDown_A10C_programG_interval";
+            this.numericUpDown_A10C_programG_interval.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programG_interval.TabIndex = 69;
+            this.numericUpDown_A10C_programG_interval.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            // 
+            // label_programG
+            // 
+            this.label_programG.AutoSize = true;
+            this.label_programG.Location = new System.Drawing.Point(3, 212);
+            this.label_programG.Name = "label_programG";
+            this.label_programG.Size = new System.Drawing.Size(18, 13);
+            this.label_programG.TabIndex = 63;
+            this.label_programG.Text = "G:";
+            // 
+            // label_programH
+            // 
+            this.label_programH.AutoSize = true;
+            this.label_programH.Location = new System.Drawing.Point(3, 244);
+            this.label_programH.Name = "label_programH";
+            this.label_programH.Size = new System.Drawing.Size(18, 13);
+            this.label_programH.TabIndex = 64;
+            this.label_programH.Text = "H:";
+            // 
+            // label_programI
+            // 
+            this.label_programI.AutoSize = true;
+            this.label_programI.Location = new System.Drawing.Point(3, 276);
+            this.label_programI.Name = "label_programI";
+            this.label_programI.Size = new System.Drawing.Size(13, 13);
+            this.label_programI.TabIndex = 65;
+            this.label_programI.Text = "I:";
+            // 
+            // label_programJ
+            // 
+            this.label_programJ.AutoSize = true;
+            this.label_programJ.Location = new System.Drawing.Point(3, 308);
+            this.label_programJ.Name = "label_programJ";
+            this.label_programJ.Size = new System.Drawing.Size(15, 13);
+            this.label_programJ.TabIndex = 66;
+            this.label_programJ.Text = "J:";
+            // 
+            // label_programK
+            // 
+            this.label_programK.AutoSize = true;
+            this.label_programK.Location = new System.Drawing.Point(3, 340);
+            this.label_programK.Name = "label_programK";
+            this.label_programK.Size = new System.Drawing.Size(17, 13);
+            this.label_programK.TabIndex = 67;
+            this.label_programK.Text = "K:";
+            // 
+            // label_programL
+            // 
+            this.label_programL.AutoSize = true;
+            this.label_programL.Location = new System.Drawing.Point(3, 373);
+            this.label_programL.Name = "label_programL";
+            this.label_programL.Size = new System.Drawing.Size(16, 13);
+            this.label_programL.TabIndex = 68;
+            this.label_programL.Text = "L:";
+            // 
+            // numericUpDown_A10C_programF_chaff
+            // 
+            this.numericUpDown_A10C_programF_chaff.Location = new System.Drawing.Point(179, 178);
+            this.numericUpDown_A10C_programF_chaff.Maximum = new decimal(new int[] {
+            480,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programF_chaff.Name = "numericUpDown_A10C_programF_chaff";
+            this.numericUpDown_A10C_programF_chaff.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programF_chaff.TabIndex = 62;
+            this.numericUpDown_A10C_programF_chaff.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programF_flare
+            // 
+            this.numericUpDown_A10C_programF_flare.Location = new System.Drawing.Point(243, 178);
+            this.numericUpDown_A10C_programF_flare.Maximum = new decimal(new int[] {
+            240,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programF_flare.Name = "numericUpDown_A10C_programF_flare";
+            this.numericUpDown_A10C_programF_flare.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programF_flare.TabIndex = 61;
+            this.numericUpDown_A10C_programF_flare.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programE_chaff
+            // 
+            this.numericUpDown_A10C_programE_chaff.Location = new System.Drawing.Point(179, 146);
+            this.numericUpDown_A10C_programE_chaff.Maximum = new decimal(new int[] {
+            480,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programE_chaff.Name = "numericUpDown_A10C_programE_chaff";
+            this.numericUpDown_A10C_programE_chaff.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programE_chaff.TabIndex = 60;
+            this.numericUpDown_A10C_programE_chaff.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programE_flare
+            // 
+            this.numericUpDown_A10C_programE_flare.Location = new System.Drawing.Point(243, 146);
+            this.numericUpDown_A10C_programE_flare.Maximum = new decimal(new int[] {
+            240,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programE_flare.Name = "numericUpDown_A10C_programE_flare";
+            this.numericUpDown_A10C_programE_flare.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programE_flare.TabIndex = 59;
+            this.numericUpDown_A10C_programE_flare.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programD_chaff
+            // 
+            this.numericUpDown_A10C_programD_chaff.Location = new System.Drawing.Point(179, 114);
+            this.numericUpDown_A10C_programD_chaff.Maximum = new decimal(new int[] {
+            480,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programD_chaff.Name = "numericUpDown_A10C_programD_chaff";
+            this.numericUpDown_A10C_programD_chaff.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programD_chaff.TabIndex = 58;
+            this.numericUpDown_A10C_programD_chaff.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programD_flare
+            // 
+            this.numericUpDown_A10C_programD_flare.Location = new System.Drawing.Point(243, 114);
+            this.numericUpDown_A10C_programD_flare.Maximum = new decimal(new int[] {
+            240,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programD_flare.Name = "numericUpDown_A10C_programD_flare";
+            this.numericUpDown_A10C_programD_flare.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programD_flare.TabIndex = 57;
+            this.numericUpDown_A10C_programD_flare.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programC_chaff
+            // 
+            this.numericUpDown_A10C_programC_chaff.Location = new System.Drawing.Point(179, 82);
+            this.numericUpDown_A10C_programC_chaff.Maximum = new decimal(new int[] {
+            480,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programC_chaff.Name = "numericUpDown_A10C_programC_chaff";
+            this.numericUpDown_A10C_programC_chaff.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programC_chaff.TabIndex = 56;
+            // 
+            // numericUpDown_A10C_programC_flare
+            // 
+            this.numericUpDown_A10C_programC_flare.Location = new System.Drawing.Point(243, 82);
+            this.numericUpDown_A10C_programC_flare.Maximum = new decimal(new int[] {
+            240,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programC_flare.Name = "numericUpDown_A10C_programC_flare";
+            this.numericUpDown_A10C_programC_flare.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programC_flare.TabIndex = 55;
+            this.numericUpDown_A10C_programC_flare.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programB_chaff
+            // 
+            this.numericUpDown_A10C_programB_chaff.Location = new System.Drawing.Point(179, 50);
+            this.numericUpDown_A10C_programB_chaff.Maximum = new decimal(new int[] {
+            480,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programB_chaff.Name = "numericUpDown_A10C_programB_chaff";
+            this.numericUpDown_A10C_programB_chaff.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programB_chaff.TabIndex = 54;
+            this.numericUpDown_A10C_programB_chaff.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programB_flare
+            // 
+            this.numericUpDown_A10C_programB_flare.Location = new System.Drawing.Point(243, 50);
+            this.numericUpDown_A10C_programB_flare.Maximum = new decimal(new int[] {
+            240,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programB_flare.Name = "numericUpDown_A10C_programB_flare";
+            this.numericUpDown_A10C_programB_flare.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programB_flare.TabIndex = 53;
+            // 
+            // numericUpDown_A10C_programA_chaff
+            // 
+            this.numericUpDown_A10C_programA_chaff.Location = new System.Drawing.Point(179, 18);
+            this.numericUpDown_A10C_programA_chaff.Maximum = new decimal(new int[] {
+            480,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programA_chaff.Name = "numericUpDown_A10C_programA_chaff";
+            this.numericUpDown_A10C_programA_chaff.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programA_chaff.TabIndex = 52;
+            this.numericUpDown_A10C_programA_chaff.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programA_chaff.Enter += new System.EventHandler(this.numericUpDown_A10C_programA_chaff_Enter);
+            this.numericUpDown_A10C_programA_chaff.Leave += new System.EventHandler(this.numericUpDown_A10C_programA_chaff_Leave);
+            // 
+            // numericUpDown_A10C_programA_flare
+            // 
+            this.numericUpDown_A10C_programA_flare.Location = new System.Drawing.Point(243, 18);
+            this.numericUpDown_A10C_programA_flare.Maximum = new decimal(new int[] {
+            240,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programA_flare.Name = "numericUpDown_A10C_programA_flare";
+            this.numericUpDown_A10C_programA_flare.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programA_flare.TabIndex = 51;
+            // 
+            // numericUpDown_A10C_programF_cycle
+            // 
+            this.numericUpDown_A10C_programF_cycle.Location = new System.Drawing.Point(369, 178);
+            this.numericUpDown_A10C_programF_cycle.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programF_cycle.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programF_cycle.Name = "numericUpDown_A10C_programF_cycle";
+            this.numericUpDown_A10C_programF_cycle.Size = new System.Drawing.Size(35, 20);
+            this.numericUpDown_A10C_programF_cycle.TabIndex = 48;
+            this.numericUpDown_A10C_programF_cycle.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programF_interval
+            // 
+            this.numericUpDown_A10C_programF_interval.DecimalPlaces = 2;
+            this.numericUpDown_A10C_programF_interval.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programF_interval.Location = new System.Drawing.Point(305, 178);
+            this.numericUpDown_A10C_programF_interval.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programF_interval.Name = "numericUpDown_A10C_programF_interval";
+            this.numericUpDown_A10C_programF_interval.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programF_interval.TabIndex = 47;
+            this.numericUpDown_A10C_programF_interval.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            65536});
+            // 
+            // numericUpDown_A10C_programE_cycle
+            // 
+            this.numericUpDown_A10C_programE_cycle.Location = new System.Drawing.Point(369, 146);
+            this.numericUpDown_A10C_programE_cycle.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programE_cycle.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programE_cycle.Name = "numericUpDown_A10C_programE_cycle";
+            this.numericUpDown_A10C_programE_cycle.Size = new System.Drawing.Size(35, 20);
+            this.numericUpDown_A10C_programE_cycle.TabIndex = 42;
+            this.numericUpDown_A10C_programE_cycle.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programE_interval
+            // 
+            this.numericUpDown_A10C_programE_interval.DecimalPlaces = 2;
+            this.numericUpDown_A10C_programE_interval.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programE_interval.Location = new System.Drawing.Point(305, 146);
+            this.numericUpDown_A10C_programE_interval.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programE_interval.Name = "numericUpDown_A10C_programE_interval";
+            this.numericUpDown_A10C_programE_interval.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programE_interval.TabIndex = 41;
+            this.numericUpDown_A10C_programE_interval.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            // 
+            // numericUpDown_A10C_programD_cycle
+            // 
+            this.numericUpDown_A10C_programD_cycle.Location = new System.Drawing.Point(369, 114);
+            this.numericUpDown_A10C_programD_cycle.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programD_cycle.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programD_cycle.Name = "numericUpDown_A10C_programD_cycle";
+            this.numericUpDown_A10C_programD_cycle.Size = new System.Drawing.Size(35, 20);
+            this.numericUpDown_A10C_programD_cycle.TabIndex = 35;
+            this.numericUpDown_A10C_programD_cycle.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programD_interval
+            // 
+            this.numericUpDown_A10C_programD_interval.DecimalPlaces = 2;
+            this.numericUpDown_A10C_programD_interval.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programD_interval.Location = new System.Drawing.Point(305, 114);
+            this.numericUpDown_A10C_programD_interval.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programD_interval.Name = "numericUpDown_A10C_programD_interval";
+            this.numericUpDown_A10C_programD_interval.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programD_interval.TabIndex = 35;
+            this.numericUpDown_A10C_programD_interval.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            65536});
+            // 
+            // numericUpDown_A10C_programC_cycle
+            // 
+            this.numericUpDown_A10C_programC_cycle.Location = new System.Drawing.Point(369, 82);
+            this.numericUpDown_A10C_programC_cycle.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programC_cycle.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programC_cycle.Name = "numericUpDown_A10C_programC_cycle";
+            this.numericUpDown_A10C_programC_cycle.Size = new System.Drawing.Size(35, 20);
+            this.numericUpDown_A10C_programC_cycle.TabIndex = 30;
+            this.numericUpDown_A10C_programC_cycle.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programC_interval
+            // 
+            this.numericUpDown_A10C_programC_interval.DecimalPlaces = 2;
+            this.numericUpDown_A10C_programC_interval.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programC_interval.Location = new System.Drawing.Point(305, 82);
+            this.numericUpDown_A10C_programC_interval.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programC_interval.Name = "numericUpDown_A10C_programC_interval";
+            this.numericUpDown_A10C_programC_interval.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programC_interval.TabIndex = 29;
+            this.numericUpDown_A10C_programC_interval.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            131072});
+            // 
+            // numericUpDown_A10C_programB_cycle
+            // 
+            this.numericUpDown_A10C_programB_cycle.Location = new System.Drawing.Point(369, 50);
+            this.numericUpDown_A10C_programB_cycle.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programB_cycle.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programB_cycle.Name = "numericUpDown_A10C_programB_cycle";
+            this.numericUpDown_A10C_programB_cycle.Size = new System.Drawing.Size(35, 20);
+            this.numericUpDown_A10C_programB_cycle.TabIndex = 24;
+            this.numericUpDown_A10C_programB_cycle.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programB_interval
+            // 
+            this.numericUpDown_A10C_programB_interval.DecimalPlaces = 2;
+            this.numericUpDown_A10C_programB_interval.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programB_interval.Location = new System.Drawing.Point(305, 50);
+            this.numericUpDown_A10C_programB_interval.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programB_interval.Name = "numericUpDown_A10C_programB_interval";
+            this.numericUpDown_A10C_programB_interval.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programB_interval.TabIndex = 23;
+            this.numericUpDown_A10C_programB_interval.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            // 
+            // numericUpDown_A10C_programA_cycle
+            // 
+            this.numericUpDown_A10C_programA_cycle.Location = new System.Drawing.Point(369, 18);
+            this.numericUpDown_A10C_programA_cycle.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programA_cycle.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programA_cycle.Name = "numericUpDown_A10C_programA_cycle";
+            this.numericUpDown_A10C_programA_cycle.Size = new System.Drawing.Size(35, 20);
+            this.numericUpDown_A10C_programA_cycle.TabIndex = 18;
+            this.numericUpDown_A10C_programA_cycle.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programA_interval
+            // 
+            this.numericUpDown_A10C_programA_interval.DecimalPlaces = 2;
+            this.numericUpDown_A10C_programA_interval.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programA_interval.Location = new System.Drawing.Point(305, 18);
+            this.numericUpDown_A10C_programA_interval.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programA_interval.Name = "numericUpDown_A10C_programA_interval";
+            this.numericUpDown_A10C_programA_interval.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programA_interval.TabIndex = 17;
+            this.numericUpDown_A10C_programA_interval.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            65536});
+            // 
+            // label_programA
+            // 
+            this.label_programA.AutoSize = true;
+            this.label_programA.Location = new System.Drawing.Point(3, 20);
+            this.label_programA.Name = "label_programA";
+            this.label_programA.Size = new System.Drawing.Size(17, 13);
+            this.label_programA.TabIndex = 0;
+            this.label_programA.Text = "A:";
+            // 
+            // label_programB
+            // 
+            this.label_programB.AutoSize = true;
+            this.label_programB.Location = new System.Drawing.Point(3, 52);
+            this.label_programB.Name = "label_programB";
+            this.label_programB.Size = new System.Drawing.Size(17, 13);
+            this.label_programB.TabIndex = 5;
+            this.label_programB.Text = "B:";
+            // 
+            // label_programC
+            // 
+            this.label_programC.AutoSize = true;
+            this.label_programC.Location = new System.Drawing.Point(3, 84);
+            this.label_programC.Name = "label_programC";
+            this.label_programC.Size = new System.Drawing.Size(17, 13);
+            this.label_programC.TabIndex = 6;
+            this.label_programC.Text = "C:";
+            // 
+            // label_programD
+            // 
+            this.label_programD.AutoSize = true;
+            this.label_programD.Location = new System.Drawing.Point(3, 116);
+            this.label_programD.Name = "label_programD";
+            this.label_programD.Size = new System.Drawing.Size(18, 13);
+            this.label_programD.TabIndex = 7;
+            this.label_programD.Text = "D:";
+            // 
+            // label_programE
+            // 
+            this.label_programE.AutoSize = true;
+            this.label_programE.Location = new System.Drawing.Point(3, 148);
+            this.label_programE.Name = "label_programE";
+            this.label_programE.Size = new System.Drawing.Size(17, 13);
+            this.label_programE.TabIndex = 8;
+            this.label_programE.Text = "E:";
+            // 
+            // label_programF
+            // 
+            this.label_programF.AutoSize = true;
+            this.label_programF.Location = new System.Drawing.Point(3, 180);
+            this.label_programF.Name = "label_programF";
+            this.label_programF.Size = new System.Drawing.Size(16, 13);
+            this.label_programF.TabIndex = 9;
+            this.label_programF.Text = "F:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(256, 10);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(30, 13);
+            this.label12.TabIndex = 15;
+            this.label12.Text = "Flare";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(377, 10);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(33, 13);
+            this.label14.TabIndex = 17;
+            this.label14.Text = "Cycle";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(314, 10);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(42, 13);
+            this.label13.TabIndex = 16;
+            this.label13.Text = "Interval";
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage6.Controls.Add(this.label27);
+            this.tabPage6.Controls.Add(this.groupBox2);
+            this.tabPage6.Controls.Add(this.label64);
+            this.tabPage6.Controls.Add(this.label65);
+            this.tabPage6.Controls.Add(this.label66);
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(425, 512);
+            this.tabPage6.TabIndex = 1;
+            this.tabPage6.Text = "A-10C CMS Programs O - Z";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(190, 10);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(32, 13);
+            this.label27.TabIndex = 19;
+            this.label27.Text = "Chaff";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.textBox_programO);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programO_chaff);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programO_flare);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programO_cycle);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programO_interval);
+            this.groupBox2.Controls.Add(this.label_programO);
+            this.groupBox2.Controls.Add(this.textBox_programZ);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programZ_chaff);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programZ_flare);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programZ_cycle);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programZ_interval);
+            this.groupBox2.Controls.Add(this.label_programZ);
+            this.groupBox2.Controls.Add(this.textBox_programY);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programY_chaff);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programY_flare);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programY_cycle);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programY_interval);
+            this.groupBox2.Controls.Add(this.label_programY);
+            this.groupBox2.Controls.Add(this.textBox_programX);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programX_chaff);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programX_flare);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programX_cycle);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programX_interval);
+            this.groupBox2.Controls.Add(this.label_programX);
+            this.groupBox2.Controls.Add(this.textBox_programW);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programW_chaff);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programW_flare);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programW_cycle);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programW_interval);
+            this.groupBox2.Controls.Add(this.label_programW);
+            this.groupBox2.Controls.Add(this.textBox_programV);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programV_chaff);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programV_flare);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programV_cycle);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programV_interval);
+            this.groupBox2.Controls.Add(this.label_programV);
+            this.groupBox2.Controls.Add(this.textBox_programU);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programU_chaff);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programU_flare);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programU_cycle);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programU_interval);
+            this.groupBox2.Controls.Add(this.U);
+            this.groupBox2.Controls.Add(this.textBox_programT);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programT_chaff);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programT_flare);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programT_cycle);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programT_interval);
+            this.groupBox2.Controls.Add(this.label_programT);
+            this.groupBox2.Controls.Add(this.textBox_programS);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programS_chaff);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programS_flare);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programS_cycle);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programS_interval);
+            this.groupBox2.Controls.Add(this.label_programS);
+            this.groupBox2.Controls.Add(this.textBox_programR);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programR_chaff);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programR_flare);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programR_cycle);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programR_interval);
+            this.groupBox2.Controls.Add(this.label_programR);
+            this.groupBox2.Controls.Add(this.textBox_programQ);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programQ_chaff);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programQ_flare);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programQ_cycle);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programQ_interval);
+            this.groupBox2.Controls.Add(this.label_programQ);
+            this.groupBox2.Controls.Add(this.textBox_programP);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programP_chaff);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programP_flare);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programP_cycle);
+            this.groupBox2.Controls.Add(this.numericUpDown_A10C_programP_interval);
+            this.groupBox2.Controls.Add(this.label_programP);
+            this.groupBox2.Location = new System.Drawing.Point(6, 23);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(413, 483);
+            this.groupBox2.TabIndex = 23;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Program P - Program Z";
+            // 
+            // textBox_programO
+            // 
+            this.textBox_programO.Location = new System.Drawing.Point(20, 17);
+            this.textBox_programO.Name = "textBox_programO";
+            this.textBox_programO.Size = new System.Drawing.Size(130, 20);
+            this.textBox_programO.TabIndex = 168;
+            this.textBox_programO.Text = "Program O";
+            this.textBox_programO.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_programO_KeyPress);
+            // 
+            // numericUpDown_A10C_programO_chaff
+            // 
+            this.numericUpDown_A10C_programO_chaff.Location = new System.Drawing.Point(180, 17);
+            this.numericUpDown_A10C_programO_chaff.Maximum = new decimal(new int[] {
+            480,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programO_chaff.Name = "numericUpDown_A10C_programO_chaff";
+            this.numericUpDown_A10C_programO_chaff.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programO_chaff.TabIndex = 167;
+            // 
+            // numericUpDown_A10C_programO_flare
+            // 
+            this.numericUpDown_A10C_programO_flare.Location = new System.Drawing.Point(244, 17);
+            this.numericUpDown_A10C_programO_flare.Maximum = new decimal(new int[] {
+            240,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programO_flare.Name = "numericUpDown_A10C_programO_flare";
+            this.numericUpDown_A10C_programO_flare.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programO_flare.TabIndex = 166;
+            this.numericUpDown_A10C_programO_flare.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programO_cycle
+            // 
+            this.numericUpDown_A10C_programO_cycle.Location = new System.Drawing.Point(370, 17);
+            this.numericUpDown_A10C_programO_cycle.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programO_cycle.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programO_cycle.Name = "numericUpDown_A10C_programO_cycle";
+            this.numericUpDown_A10C_programO_cycle.Size = new System.Drawing.Size(35, 20);
+            this.numericUpDown_A10C_programO_cycle.TabIndex = 165;
+            this.numericUpDown_A10C_programO_cycle.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programO_interval
+            // 
+            this.numericUpDown_A10C_programO_interval.DecimalPlaces = 2;
+            this.numericUpDown_A10C_programO_interval.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programO_interval.Location = new System.Drawing.Point(306, 17);
+            this.numericUpDown_A10C_programO_interval.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programO_interval.Name = "numericUpDown_A10C_programO_interval";
+            this.numericUpDown_A10C_programO_interval.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programO_interval.TabIndex = 164;
+            this.numericUpDown_A10C_programO_interval.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            65536});
+            // 
+            // label_programO
+            // 
+            this.label_programO.AutoSize = true;
+            this.label_programO.Location = new System.Drawing.Point(3, 20);
+            this.label_programO.Name = "label_programO";
+            this.label_programO.Size = new System.Drawing.Size(18, 13);
+            this.label_programO.TabIndex = 163;
+            this.label_programO.Text = "O:";
+            // 
+            // textBox_programZ
+            // 
+            this.textBox_programZ.Location = new System.Drawing.Point(20, 457);
+            this.textBox_programZ.Name = "textBox_programZ";
+            this.textBox_programZ.Size = new System.Drawing.Size(130, 20);
+            this.textBox_programZ.TabIndex = 162;
+            this.textBox_programZ.Text = "Program Z";
+            this.textBox_programZ.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_programZ_KeyPress);
+            // 
+            // numericUpDown_A10C_programZ_chaff
+            // 
+            this.numericUpDown_A10C_programZ_chaff.Location = new System.Drawing.Point(180, 457);
+            this.numericUpDown_A10C_programZ_chaff.Maximum = new decimal(new int[] {
+            480,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programZ_chaff.Name = "numericUpDown_A10C_programZ_chaff";
+            this.numericUpDown_A10C_programZ_chaff.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programZ_chaff.TabIndex = 161;
+            // 
+            // numericUpDown_A10C_programZ_flare
+            // 
+            this.numericUpDown_A10C_programZ_flare.Location = new System.Drawing.Point(244, 457);
+            this.numericUpDown_A10C_programZ_flare.Maximum = new decimal(new int[] {
+            240,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programZ_flare.Name = "numericUpDown_A10C_programZ_flare";
+            this.numericUpDown_A10C_programZ_flare.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programZ_flare.TabIndex = 160;
+            this.numericUpDown_A10C_programZ_flare.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programZ_cycle
+            // 
+            this.numericUpDown_A10C_programZ_cycle.Location = new System.Drawing.Point(370, 457);
+            this.numericUpDown_A10C_programZ_cycle.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programZ_cycle.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programZ_cycle.Name = "numericUpDown_A10C_programZ_cycle";
+            this.numericUpDown_A10C_programZ_cycle.Size = new System.Drawing.Size(35, 20);
+            this.numericUpDown_A10C_programZ_cycle.TabIndex = 159;
+            this.numericUpDown_A10C_programZ_cycle.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programZ_interval
+            // 
+            this.numericUpDown_A10C_programZ_interval.DecimalPlaces = 2;
+            this.numericUpDown_A10C_programZ_interval.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programZ_interval.Location = new System.Drawing.Point(306, 457);
+            this.numericUpDown_A10C_programZ_interval.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programZ_interval.Name = "numericUpDown_A10C_programZ_interval";
+            this.numericUpDown_A10C_programZ_interval.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programZ_interval.TabIndex = 158;
+            this.numericUpDown_A10C_programZ_interval.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            65536});
+            // 
+            // label_programZ
+            // 
+            this.label_programZ.AutoSize = true;
+            this.label_programZ.Location = new System.Drawing.Point(3, 460);
+            this.label_programZ.Name = "label_programZ";
+            this.label_programZ.Size = new System.Drawing.Size(17, 13);
+            this.label_programZ.TabIndex = 157;
+            this.label_programZ.Text = "Z:";
+            // 
+            // textBox_programY
+            // 
+            this.textBox_programY.Location = new System.Drawing.Point(20, 417);
+            this.textBox_programY.Name = "textBox_programY";
+            this.textBox_programY.Size = new System.Drawing.Size(130, 20);
+            this.textBox_programY.TabIndex = 156;
+            this.textBox_programY.Text = "Program Y";
+            this.textBox_programY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_programY_KeyPress);
+            // 
+            // numericUpDown_A10C_programY_chaff
+            // 
+            this.numericUpDown_A10C_programY_chaff.Location = new System.Drawing.Point(180, 417);
+            this.numericUpDown_A10C_programY_chaff.Maximum = new decimal(new int[] {
+            480,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programY_chaff.Name = "numericUpDown_A10C_programY_chaff";
+            this.numericUpDown_A10C_programY_chaff.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programY_chaff.TabIndex = 155;
+            // 
+            // numericUpDown_A10C_programY_flare
+            // 
+            this.numericUpDown_A10C_programY_flare.Location = new System.Drawing.Point(244, 417);
+            this.numericUpDown_A10C_programY_flare.Maximum = new decimal(new int[] {
+            240,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programY_flare.Name = "numericUpDown_A10C_programY_flare";
+            this.numericUpDown_A10C_programY_flare.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programY_flare.TabIndex = 154;
+            this.numericUpDown_A10C_programY_flare.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programY_cycle
+            // 
+            this.numericUpDown_A10C_programY_cycle.Location = new System.Drawing.Point(370, 417);
+            this.numericUpDown_A10C_programY_cycle.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programY_cycle.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programY_cycle.Name = "numericUpDown_A10C_programY_cycle";
+            this.numericUpDown_A10C_programY_cycle.Size = new System.Drawing.Size(35, 20);
+            this.numericUpDown_A10C_programY_cycle.TabIndex = 153;
+            this.numericUpDown_A10C_programY_cycle.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programY_interval
+            // 
+            this.numericUpDown_A10C_programY_interval.DecimalPlaces = 2;
+            this.numericUpDown_A10C_programY_interval.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programY_interval.Location = new System.Drawing.Point(306, 417);
+            this.numericUpDown_A10C_programY_interval.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programY_interval.Name = "numericUpDown_A10C_programY_interval";
+            this.numericUpDown_A10C_programY_interval.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programY_interval.TabIndex = 152;
+            this.numericUpDown_A10C_programY_interval.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            65536});
+            // 
+            // label_programY
+            // 
+            this.label_programY.AutoSize = true;
+            this.label_programY.Location = new System.Drawing.Point(3, 420);
+            this.label_programY.Name = "label_programY";
+            this.label_programY.Size = new System.Drawing.Size(17, 13);
+            this.label_programY.TabIndex = 151;
+            this.label_programY.Text = "Y:";
+            // 
+            // textBox_programX
+            // 
+            this.textBox_programX.Location = new System.Drawing.Point(20, 377);
+            this.textBox_programX.Name = "textBox_programX";
+            this.textBox_programX.Size = new System.Drawing.Size(130, 20);
+            this.textBox_programX.TabIndex = 150;
+            this.textBox_programX.Text = "Program X";
+            this.textBox_programX.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_programX_KeyPress);
+            // 
+            // numericUpDown_A10C_programX_chaff
+            // 
+            this.numericUpDown_A10C_programX_chaff.Location = new System.Drawing.Point(180, 377);
+            this.numericUpDown_A10C_programX_chaff.Maximum = new decimal(new int[] {
+            480,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programX_chaff.Name = "numericUpDown_A10C_programX_chaff";
+            this.numericUpDown_A10C_programX_chaff.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programX_chaff.TabIndex = 149;
+            // 
+            // numericUpDown_A10C_programX_flare
+            // 
+            this.numericUpDown_A10C_programX_flare.Location = new System.Drawing.Point(244, 377);
+            this.numericUpDown_A10C_programX_flare.Maximum = new decimal(new int[] {
+            240,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programX_flare.Name = "numericUpDown_A10C_programX_flare";
+            this.numericUpDown_A10C_programX_flare.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programX_flare.TabIndex = 148;
+            this.numericUpDown_A10C_programX_flare.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programX_cycle
+            // 
+            this.numericUpDown_A10C_programX_cycle.Location = new System.Drawing.Point(370, 377);
+            this.numericUpDown_A10C_programX_cycle.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programX_cycle.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programX_cycle.Name = "numericUpDown_A10C_programX_cycle";
+            this.numericUpDown_A10C_programX_cycle.Size = new System.Drawing.Size(35, 20);
+            this.numericUpDown_A10C_programX_cycle.TabIndex = 147;
+            this.numericUpDown_A10C_programX_cycle.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programX_interval
+            // 
+            this.numericUpDown_A10C_programX_interval.DecimalPlaces = 2;
+            this.numericUpDown_A10C_programX_interval.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programX_interval.Location = new System.Drawing.Point(306, 377);
+            this.numericUpDown_A10C_programX_interval.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programX_interval.Name = "numericUpDown_A10C_programX_interval";
+            this.numericUpDown_A10C_programX_interval.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programX_interval.TabIndex = 146;
+            this.numericUpDown_A10C_programX_interval.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            65536});
+            // 
+            // label_programX
+            // 
+            this.label_programX.AutoSize = true;
+            this.label_programX.Location = new System.Drawing.Point(3, 380);
+            this.label_programX.Name = "label_programX";
+            this.label_programX.Size = new System.Drawing.Size(17, 13);
+            this.label_programX.TabIndex = 145;
+            this.label_programX.Text = "X:";
+            // 
+            // textBox_programW
+            // 
+            this.textBox_programW.Location = new System.Drawing.Point(20, 337);
+            this.textBox_programW.Name = "textBox_programW";
+            this.textBox_programW.Size = new System.Drawing.Size(130, 20);
+            this.textBox_programW.TabIndex = 144;
+            this.textBox_programW.Text = "Program W";
+            this.textBox_programW.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_programW_KeyPress);
+            // 
+            // numericUpDown_A10C_programW_chaff
+            // 
+            this.numericUpDown_A10C_programW_chaff.Location = new System.Drawing.Point(180, 337);
+            this.numericUpDown_A10C_programW_chaff.Maximum = new decimal(new int[] {
+            480,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programW_chaff.Name = "numericUpDown_A10C_programW_chaff";
+            this.numericUpDown_A10C_programW_chaff.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programW_chaff.TabIndex = 143;
+            // 
+            // numericUpDown_A10C_programW_flare
+            // 
+            this.numericUpDown_A10C_programW_flare.Location = new System.Drawing.Point(244, 337);
+            this.numericUpDown_A10C_programW_flare.Maximum = new decimal(new int[] {
+            240,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programW_flare.Name = "numericUpDown_A10C_programW_flare";
+            this.numericUpDown_A10C_programW_flare.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programW_flare.TabIndex = 142;
+            this.numericUpDown_A10C_programW_flare.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programW_cycle
+            // 
+            this.numericUpDown_A10C_programW_cycle.Location = new System.Drawing.Point(370, 337);
+            this.numericUpDown_A10C_programW_cycle.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programW_cycle.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programW_cycle.Name = "numericUpDown_A10C_programW_cycle";
+            this.numericUpDown_A10C_programW_cycle.Size = new System.Drawing.Size(35, 20);
+            this.numericUpDown_A10C_programW_cycle.TabIndex = 141;
+            this.numericUpDown_A10C_programW_cycle.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programW_interval
+            // 
+            this.numericUpDown_A10C_programW_interval.DecimalPlaces = 2;
+            this.numericUpDown_A10C_programW_interval.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programW_interval.Location = new System.Drawing.Point(306, 337);
+            this.numericUpDown_A10C_programW_interval.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programW_interval.Name = "numericUpDown_A10C_programW_interval";
+            this.numericUpDown_A10C_programW_interval.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programW_interval.TabIndex = 140;
+            this.numericUpDown_A10C_programW_interval.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            65536});
+            // 
+            // label_programW
+            // 
+            this.label_programW.AutoSize = true;
+            this.label_programW.Location = new System.Drawing.Point(3, 340);
+            this.label_programW.Name = "label_programW";
+            this.label_programW.Size = new System.Drawing.Size(21, 13);
+            this.label_programW.TabIndex = 139;
+            this.label_programW.Text = "W:";
+            // 
+            // textBox_programV
+            // 
+            this.textBox_programV.Location = new System.Drawing.Point(20, 297);
+            this.textBox_programV.Name = "textBox_programV";
+            this.textBox_programV.Size = new System.Drawing.Size(130, 20);
+            this.textBox_programV.TabIndex = 138;
+            this.textBox_programV.Text = "Program V";
+            this.textBox_programV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_programV_KeyPress);
+            // 
+            // numericUpDown_A10C_programV_chaff
+            // 
+            this.numericUpDown_A10C_programV_chaff.Location = new System.Drawing.Point(180, 297);
+            this.numericUpDown_A10C_programV_chaff.Maximum = new decimal(new int[] {
+            480,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programV_chaff.Name = "numericUpDown_A10C_programV_chaff";
+            this.numericUpDown_A10C_programV_chaff.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programV_chaff.TabIndex = 137;
+            // 
+            // numericUpDown_A10C_programV_flare
+            // 
+            this.numericUpDown_A10C_programV_flare.Location = new System.Drawing.Point(244, 297);
+            this.numericUpDown_A10C_programV_flare.Maximum = new decimal(new int[] {
+            240,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programV_flare.Name = "numericUpDown_A10C_programV_flare";
+            this.numericUpDown_A10C_programV_flare.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programV_flare.TabIndex = 136;
+            this.numericUpDown_A10C_programV_flare.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programV_cycle
+            // 
+            this.numericUpDown_A10C_programV_cycle.Location = new System.Drawing.Point(370, 297);
+            this.numericUpDown_A10C_programV_cycle.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programV_cycle.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programV_cycle.Name = "numericUpDown_A10C_programV_cycle";
+            this.numericUpDown_A10C_programV_cycle.Size = new System.Drawing.Size(35, 20);
+            this.numericUpDown_A10C_programV_cycle.TabIndex = 135;
+            this.numericUpDown_A10C_programV_cycle.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programV_interval
+            // 
+            this.numericUpDown_A10C_programV_interval.DecimalPlaces = 2;
+            this.numericUpDown_A10C_programV_interval.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programV_interval.Location = new System.Drawing.Point(306, 297);
+            this.numericUpDown_A10C_programV_interval.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programV_interval.Name = "numericUpDown_A10C_programV_interval";
+            this.numericUpDown_A10C_programV_interval.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programV_interval.TabIndex = 134;
+            this.numericUpDown_A10C_programV_interval.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            65536});
+            // 
+            // label_programV
+            // 
+            this.label_programV.AutoSize = true;
+            this.label_programV.Location = new System.Drawing.Point(3, 300);
+            this.label_programV.Name = "label_programV";
+            this.label_programV.Size = new System.Drawing.Size(17, 13);
+            this.label_programV.TabIndex = 133;
+            this.label_programV.Text = "V:";
+            // 
+            // textBox_programU
+            // 
+            this.textBox_programU.Location = new System.Drawing.Point(20, 257);
+            this.textBox_programU.Name = "textBox_programU";
+            this.textBox_programU.Size = new System.Drawing.Size(130, 20);
+            this.textBox_programU.TabIndex = 132;
+            this.textBox_programU.Text = "Program U";
+            this.textBox_programU.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_programU_KeyPress);
+            // 
+            // numericUpDown_A10C_programU_chaff
+            // 
+            this.numericUpDown_A10C_programU_chaff.Location = new System.Drawing.Point(180, 257);
+            this.numericUpDown_A10C_programU_chaff.Maximum = new decimal(new int[] {
+            480,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programU_chaff.Name = "numericUpDown_A10C_programU_chaff";
+            this.numericUpDown_A10C_programU_chaff.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programU_chaff.TabIndex = 131;
+            // 
+            // numericUpDown_A10C_programU_flare
+            // 
+            this.numericUpDown_A10C_programU_flare.Location = new System.Drawing.Point(244, 257);
+            this.numericUpDown_A10C_programU_flare.Maximum = new decimal(new int[] {
+            240,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programU_flare.Name = "numericUpDown_A10C_programU_flare";
+            this.numericUpDown_A10C_programU_flare.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programU_flare.TabIndex = 130;
+            this.numericUpDown_A10C_programU_flare.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programU_cycle
+            // 
+            this.numericUpDown_A10C_programU_cycle.Location = new System.Drawing.Point(370, 257);
+            this.numericUpDown_A10C_programU_cycle.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programU_cycle.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programU_cycle.Name = "numericUpDown_A10C_programU_cycle";
+            this.numericUpDown_A10C_programU_cycle.Size = new System.Drawing.Size(35, 20);
+            this.numericUpDown_A10C_programU_cycle.TabIndex = 129;
+            this.numericUpDown_A10C_programU_cycle.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programU_interval
+            // 
+            this.numericUpDown_A10C_programU_interval.DecimalPlaces = 2;
+            this.numericUpDown_A10C_programU_interval.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programU_interval.Location = new System.Drawing.Point(306, 257);
+            this.numericUpDown_A10C_programU_interval.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programU_interval.Name = "numericUpDown_A10C_programU_interval";
+            this.numericUpDown_A10C_programU_interval.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programU_interval.TabIndex = 128;
+            this.numericUpDown_A10C_programU_interval.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            65536});
+            // 
+            // U
+            // 
+            this.U.AutoSize = true;
+            this.U.Location = new System.Drawing.Point(3, 260);
+            this.U.Name = "U";
+            this.U.Size = new System.Drawing.Size(18, 13);
+            this.U.TabIndex = 127;
+            this.U.Text = "U:";
+            // 
+            // textBox_programT
+            // 
+            this.textBox_programT.Location = new System.Drawing.Point(20, 217);
+            this.textBox_programT.Name = "textBox_programT";
+            this.textBox_programT.Size = new System.Drawing.Size(130, 20);
+            this.textBox_programT.TabIndex = 126;
+            this.textBox_programT.Text = "Program T";
+            this.textBox_programT.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_programT_KeyDown);
+            this.textBox_programT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_programT_KeyPress);
+            // 
+            // numericUpDown_A10C_programT_chaff
+            // 
+            this.numericUpDown_A10C_programT_chaff.Location = new System.Drawing.Point(180, 217);
+            this.numericUpDown_A10C_programT_chaff.Maximum = new decimal(new int[] {
+            480,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programT_chaff.Name = "numericUpDown_A10C_programT_chaff";
+            this.numericUpDown_A10C_programT_chaff.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programT_chaff.TabIndex = 125;
+            // 
+            // numericUpDown_A10C_programT_flare
+            // 
+            this.numericUpDown_A10C_programT_flare.Location = new System.Drawing.Point(244, 217);
+            this.numericUpDown_A10C_programT_flare.Maximum = new decimal(new int[] {
+            240,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programT_flare.Name = "numericUpDown_A10C_programT_flare";
+            this.numericUpDown_A10C_programT_flare.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programT_flare.TabIndex = 124;
+            this.numericUpDown_A10C_programT_flare.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programT_cycle
+            // 
+            this.numericUpDown_A10C_programT_cycle.Location = new System.Drawing.Point(370, 217);
+            this.numericUpDown_A10C_programT_cycle.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programT_cycle.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programT_cycle.Name = "numericUpDown_A10C_programT_cycle";
+            this.numericUpDown_A10C_programT_cycle.Size = new System.Drawing.Size(35, 20);
+            this.numericUpDown_A10C_programT_cycle.TabIndex = 123;
+            this.numericUpDown_A10C_programT_cycle.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programT_interval
+            // 
+            this.numericUpDown_A10C_programT_interval.DecimalPlaces = 2;
+            this.numericUpDown_A10C_programT_interval.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programT_interval.Location = new System.Drawing.Point(306, 217);
+            this.numericUpDown_A10C_programT_interval.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programT_interval.Name = "numericUpDown_A10C_programT_interval";
+            this.numericUpDown_A10C_programT_interval.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programT_interval.TabIndex = 122;
+            this.numericUpDown_A10C_programT_interval.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            65536});
+            // 
+            // label_programT
+            // 
+            this.label_programT.AutoSize = true;
+            this.label_programT.Location = new System.Drawing.Point(3, 220);
+            this.label_programT.Name = "label_programT";
+            this.label_programT.Size = new System.Drawing.Size(17, 13);
+            this.label_programT.TabIndex = 121;
+            this.label_programT.Text = "T:";
+            // 
+            // textBox_programS
+            // 
+            this.textBox_programS.Location = new System.Drawing.Point(20, 177);
+            this.textBox_programS.Name = "textBox_programS";
+            this.textBox_programS.Size = new System.Drawing.Size(130, 20);
+            this.textBox_programS.TabIndex = 120;
+            this.textBox_programS.Text = "Program S";
+            this.textBox_programS.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_programS_KeyPress);
+            // 
+            // numericUpDown_A10C_programS_chaff
+            // 
+            this.numericUpDown_A10C_programS_chaff.Location = new System.Drawing.Point(180, 177);
+            this.numericUpDown_A10C_programS_chaff.Maximum = new decimal(new int[] {
+            480,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programS_chaff.Name = "numericUpDown_A10C_programS_chaff";
+            this.numericUpDown_A10C_programS_chaff.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programS_chaff.TabIndex = 119;
+            // 
+            // numericUpDown_A10C_programS_flare
+            // 
+            this.numericUpDown_A10C_programS_flare.Location = new System.Drawing.Point(244, 177);
+            this.numericUpDown_A10C_programS_flare.Maximum = new decimal(new int[] {
+            240,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programS_flare.Name = "numericUpDown_A10C_programS_flare";
+            this.numericUpDown_A10C_programS_flare.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programS_flare.TabIndex = 118;
+            this.numericUpDown_A10C_programS_flare.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programS_cycle
+            // 
+            this.numericUpDown_A10C_programS_cycle.Location = new System.Drawing.Point(370, 177);
+            this.numericUpDown_A10C_programS_cycle.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programS_cycle.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programS_cycle.Name = "numericUpDown_A10C_programS_cycle";
+            this.numericUpDown_A10C_programS_cycle.Size = new System.Drawing.Size(35, 20);
+            this.numericUpDown_A10C_programS_cycle.TabIndex = 117;
+            this.numericUpDown_A10C_programS_cycle.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programS_cycle.ValueChanged += new System.EventHandler(this.numericUpDown_A10C_programS_cycle_ValueChanged);
+            // 
+            // numericUpDown_A10C_programS_interval
+            // 
+            this.numericUpDown_A10C_programS_interval.DecimalPlaces = 2;
+            this.numericUpDown_A10C_programS_interval.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programS_interval.Location = new System.Drawing.Point(306, 177);
+            this.numericUpDown_A10C_programS_interval.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programS_interval.Name = "numericUpDown_A10C_programS_interval";
+            this.numericUpDown_A10C_programS_interval.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programS_interval.TabIndex = 116;
+            this.numericUpDown_A10C_programS_interval.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            65536});
+            // 
+            // label_programS
+            // 
+            this.label_programS.AutoSize = true;
+            this.label_programS.Location = new System.Drawing.Point(3, 180);
+            this.label_programS.Name = "label_programS";
+            this.label_programS.Size = new System.Drawing.Size(17, 13);
+            this.label_programS.TabIndex = 115;
+            this.label_programS.Text = "S:";
+            // 
+            // textBox_programR
+            // 
+            this.textBox_programR.Location = new System.Drawing.Point(20, 137);
+            this.textBox_programR.Name = "textBox_programR";
+            this.textBox_programR.Size = new System.Drawing.Size(130, 20);
+            this.textBox_programR.TabIndex = 114;
+            this.textBox_programR.Text = "Program R";
+            this.textBox_programR.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_programR_KeyPress);
+            // 
+            // numericUpDown_A10C_programR_chaff
+            // 
+            this.numericUpDown_A10C_programR_chaff.Location = new System.Drawing.Point(180, 137);
+            this.numericUpDown_A10C_programR_chaff.Maximum = new decimal(new int[] {
+            480,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programR_chaff.Name = "numericUpDown_A10C_programR_chaff";
+            this.numericUpDown_A10C_programR_chaff.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programR_chaff.TabIndex = 113;
+            // 
+            // numericUpDown_A10C_programR_flare
+            // 
+            this.numericUpDown_A10C_programR_flare.Location = new System.Drawing.Point(244, 137);
+            this.numericUpDown_A10C_programR_flare.Maximum = new decimal(new int[] {
+            240,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programR_flare.Name = "numericUpDown_A10C_programR_flare";
+            this.numericUpDown_A10C_programR_flare.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programR_flare.TabIndex = 112;
+            this.numericUpDown_A10C_programR_flare.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programR_cycle
+            // 
+            this.numericUpDown_A10C_programR_cycle.Location = new System.Drawing.Point(370, 137);
+            this.numericUpDown_A10C_programR_cycle.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programR_cycle.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programR_cycle.Name = "numericUpDown_A10C_programR_cycle";
+            this.numericUpDown_A10C_programR_cycle.Size = new System.Drawing.Size(35, 20);
+            this.numericUpDown_A10C_programR_cycle.TabIndex = 111;
+            this.numericUpDown_A10C_programR_cycle.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programR_interval
+            // 
+            this.numericUpDown_A10C_programR_interval.DecimalPlaces = 2;
+            this.numericUpDown_A10C_programR_interval.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programR_interval.Location = new System.Drawing.Point(306, 137);
+            this.numericUpDown_A10C_programR_interval.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programR_interval.Name = "numericUpDown_A10C_programR_interval";
+            this.numericUpDown_A10C_programR_interval.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programR_interval.TabIndex = 110;
+            this.numericUpDown_A10C_programR_interval.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            65536});
+            // 
+            // label_programR
+            // 
+            this.label_programR.AutoSize = true;
+            this.label_programR.Location = new System.Drawing.Point(3, 140);
+            this.label_programR.Name = "label_programR";
+            this.label_programR.Size = new System.Drawing.Size(18, 13);
+            this.label_programR.TabIndex = 109;
+            this.label_programR.Text = "R:";
+            // 
+            // textBox_programQ
+            // 
+            this.textBox_programQ.Location = new System.Drawing.Point(20, 97);
+            this.textBox_programQ.Name = "textBox_programQ";
+            this.textBox_programQ.Size = new System.Drawing.Size(130, 20);
+            this.textBox_programQ.TabIndex = 108;
+            this.textBox_programQ.Text = "Program Q";
+            this.textBox_programQ.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_programQ_KeyPress);
+            // 
+            // numericUpDown_A10C_programQ_chaff
+            // 
+            this.numericUpDown_A10C_programQ_chaff.Location = new System.Drawing.Point(180, 97);
+            this.numericUpDown_A10C_programQ_chaff.Maximum = new decimal(new int[] {
+            480,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programQ_chaff.Name = "numericUpDown_A10C_programQ_chaff";
+            this.numericUpDown_A10C_programQ_chaff.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programQ_chaff.TabIndex = 107;
+            // 
+            // numericUpDown_A10C_programQ_flare
+            // 
+            this.numericUpDown_A10C_programQ_flare.Location = new System.Drawing.Point(244, 97);
+            this.numericUpDown_A10C_programQ_flare.Maximum = new decimal(new int[] {
+            240,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programQ_flare.Name = "numericUpDown_A10C_programQ_flare";
+            this.numericUpDown_A10C_programQ_flare.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programQ_flare.TabIndex = 106;
+            this.numericUpDown_A10C_programQ_flare.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programQ_cycle
+            // 
+            this.numericUpDown_A10C_programQ_cycle.Location = new System.Drawing.Point(370, 97);
+            this.numericUpDown_A10C_programQ_cycle.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programQ_cycle.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programQ_cycle.Name = "numericUpDown_A10C_programQ_cycle";
+            this.numericUpDown_A10C_programQ_cycle.Size = new System.Drawing.Size(35, 20);
+            this.numericUpDown_A10C_programQ_cycle.TabIndex = 105;
+            this.numericUpDown_A10C_programQ_cycle.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programQ_interval
+            // 
+            this.numericUpDown_A10C_programQ_interval.DecimalPlaces = 2;
+            this.numericUpDown_A10C_programQ_interval.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programQ_interval.Location = new System.Drawing.Point(306, 97);
+            this.numericUpDown_A10C_programQ_interval.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programQ_interval.Name = "numericUpDown_A10C_programQ_interval";
+            this.numericUpDown_A10C_programQ_interval.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programQ_interval.TabIndex = 104;
+            this.numericUpDown_A10C_programQ_interval.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            65536});
+            // 
+            // label_programQ
+            // 
+            this.label_programQ.AutoSize = true;
+            this.label_programQ.Location = new System.Drawing.Point(3, 100);
+            this.label_programQ.Name = "label_programQ";
+            this.label_programQ.Size = new System.Drawing.Size(18, 13);
+            this.label_programQ.TabIndex = 103;
+            this.label_programQ.Text = "Q:";
+            // 
+            // textBox_programP
+            // 
+            this.textBox_programP.Location = new System.Drawing.Point(20, 57);
+            this.textBox_programP.Name = "textBox_programP";
+            this.textBox_programP.Size = new System.Drawing.Size(130, 20);
+            this.textBox_programP.TabIndex = 102;
+            this.textBox_programP.Text = "Program P";
+            this.textBox_programP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_programP_KeyPress);
+            // 
+            // numericUpDown_A10C_programP_chaff
+            // 
+            this.numericUpDown_A10C_programP_chaff.Location = new System.Drawing.Point(180, 57);
+            this.numericUpDown_A10C_programP_chaff.Maximum = new decimal(new int[] {
+            480,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programP_chaff.Name = "numericUpDown_A10C_programP_chaff";
+            this.numericUpDown_A10C_programP_chaff.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programP_chaff.TabIndex = 52;
+            // 
+            // numericUpDown_A10C_programP_flare
+            // 
+            this.numericUpDown_A10C_programP_flare.Location = new System.Drawing.Point(244, 57);
+            this.numericUpDown_A10C_programP_flare.Maximum = new decimal(new int[] {
+            240,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programP_flare.Name = "numericUpDown_A10C_programP_flare";
+            this.numericUpDown_A10C_programP_flare.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programP_flare.TabIndex = 51;
+            this.numericUpDown_A10C_programP_flare.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programP_cycle
+            // 
+            this.numericUpDown_A10C_programP_cycle.Location = new System.Drawing.Point(370, 57);
+            this.numericUpDown_A10C_programP_cycle.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programP_cycle.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown_A10C_programP_cycle.Name = "numericUpDown_A10C_programP_cycle";
+            this.numericUpDown_A10C_programP_cycle.Size = new System.Drawing.Size(35, 20);
+            this.numericUpDown_A10C_programP_cycle.TabIndex = 18;
+            this.numericUpDown_A10C_programP_cycle.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown_A10C_programP_interval
+            // 
+            this.numericUpDown_A10C_programP_interval.DecimalPlaces = 2;
+            this.numericUpDown_A10C_programP_interval.Increment = new decimal(new int[] {
+            25,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programP_interval.Location = new System.Drawing.Point(306, 57);
+            this.numericUpDown_A10C_programP_interval.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            131072});
+            this.numericUpDown_A10C_programP_interval.Name = "numericUpDown_A10C_programP_interval";
+            this.numericUpDown_A10C_programP_interval.Size = new System.Drawing.Size(45, 20);
+            this.numericUpDown_A10C_programP_interval.TabIndex = 17;
+            this.numericUpDown_A10C_programP_interval.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            65536});
+            // 
+            // label_programP
+            // 
+            this.label_programP.AutoSize = true;
+            this.label_programP.Location = new System.Drawing.Point(3, 60);
+            this.label_programP.Name = "label_programP";
+            this.label_programP.Size = new System.Drawing.Size(17, 13);
+            this.label_programP.TabIndex = 0;
+            this.label_programP.Text = "P:";
+            // 
+            // label64
+            // 
+            this.label64.AutoSize = true;
+            this.label64.Location = new System.Drawing.Point(256, 10);
+            this.label64.Name = "label64";
+            this.label64.Size = new System.Drawing.Size(30, 13);
+            this.label64.TabIndex = 20;
+            this.label64.Text = "Flare";
+            // 
+            // label65
+            // 
+            this.label65.AutoSize = true;
+            this.label65.Location = new System.Drawing.Point(377, 10);
+            this.label65.Name = "label65";
+            this.label65.Size = new System.Drawing.Size(33, 13);
+            this.label65.TabIndex = 22;
+            this.label65.Text = "Cycle";
+            // 
+            // label66
+            // 
+            this.label66.AutoSize = true;
+            this.label66.Location = new System.Drawing.Point(314, 10);
+            this.label66.Name = "label66";
+            this.label66.Size = new System.Drawing.Size(42, 13);
+            this.label66.TabIndex = 21;
+            this.label66.Text = "Interval";
+            // 
             // button_loadCM_Backup
             // 
             this.button_loadCM_Backup.Location = new System.Drawing.Point(287, 629);
@@ -3093,7 +6682,7 @@
             // 
             this.button_openDcsPath.Location = new System.Drawing.Point(287, 656);
             this.button_openDcsPath.Name = "button_openDcsPath";
-            this.button_openDcsPath.Size = new System.Drawing.Size(98, 23);
+            this.button_openDcsPath.Size = new System.Drawing.Size(88, 23);
             this.button_openDcsPath.TabIndex = 31;
             this.button_openDcsPath.Text = "Open Folder";
             this.button_openDcsPath.UseVisualStyleBackColor = true;
@@ -3103,7 +6692,7 @@
             // 
             this.button_openBackupPath.Location = new System.Drawing.Point(287, 681);
             this.button_openBackupPath.Name = "button_openBackupPath";
-            this.button_openBackupPath.Size = new System.Drawing.Size(98, 23);
+            this.button_openBackupPath.Size = new System.Drawing.Size(88, 23);
             this.button_openBackupPath.TabIndex = 32;
             this.button_openBackupPath.Text = "Open Folder";
             this.button_openBackupPath.UseVisualStyleBackColor = true;
@@ -3111,591 +6700,19 @@
             // 
             // button_recreateOrginalLua
             // 
-            this.button_recreateOrginalLua.Location = new System.Drawing.Point(391, 656);
+            this.button_recreateOrginalLua.Location = new System.Drawing.Point(381, 656);
             this.button_recreateOrginalLua.Name = "button_recreateOrginalLua";
-            this.button_recreateOrginalLua.Size = new System.Drawing.Size(72, 47);
+            this.button_recreateOrginalLua.Size = new System.Drawing.Size(82, 47);
             this.button_recreateOrginalLua.TabIndex = 33;
-            this.button_recreateOrginalLua.Text = "Re-Create Original Lua";
+            this.button_recreateOrginalLua.Text = "Create Baseline Lua";
             this.button_recreateOrginalLua.UseVisualStyleBackColor = true;
             this.button_recreateOrginalLua.Click += new System.EventHandler(this.button_recreateOrginalLua_Click);
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage3.Controls.Add(this.groupBox_F16C_harm_table3);
-            this.tabPage3.Controls.Add(this.groupBox_F16C_harm_table2);
-            this.tabPage3.Controls.Add(this.groupBox_F16C_harm_table1);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(445, 550);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "DCS F-16C HARM";
-            // 
-            // groupBox_F16C_harm_table1
-            // 
-            this.groupBox_F16C_harm_table1.Controls.Add(this.label_F16CHarm_Table1_T1);
-            this.groupBox_F16C_harm_table1.Controls.Add(this.label_F16CHarm_Table1_T5);
-            this.groupBox_F16C_harm_table1.Controls.Add(this.label_F16CHarm_Table1_T3);
-            this.groupBox_F16C_harm_table1.Controls.Add(this.label_F16CHarm_Table1_T4);
-            this.groupBox_F16C_harm_table1.Controls.Add(this.label_F16CHarm_selectedID_Table1_Title);
-            this.groupBox_F16C_harm_table1.Controls.Add(this.label_F16CHarm_selectedID_Table1_T1);
-            this.groupBox_F16C_harm_table1.Controls.Add(this.label_F16CHarm_Table1_T2);
-            this.groupBox_F16C_harm_table1.Controls.Add(this.label_F16CHarm_selectedID_Table1_T5);
-            this.groupBox_F16C_harm_table1.Controls.Add(this.label_F16CHarm_selectedID_Table1_T4);
-            this.groupBox_F16C_harm_table1.Controls.Add(this.label_F16CHarm_selectedID_Table1_T3);
-            this.groupBox_F16C_harm_table1.Controls.Add(this.label_F16CHarm_selectedID_Table1_T2);
-            this.groupBox_F16C_harm_table1.Controls.Add(this.comboBox_f16cHarm5);
-            this.groupBox_F16C_harm_table1.Controls.Add(this.label_F16CHarm_samName_table1);
-            this.groupBox_F16C_harm_table1.Controls.Add(this.comboBox_f16cHarm4);
-            this.groupBox_F16C_harm_table1.Controls.Add(this.comboBox_f16cHarm3);
-            this.groupBox_F16C_harm_table1.Controls.Add(this.comboBox_f16cHarm2);
-            this.groupBox_F16C_harm_table1.Controls.Add(this.comboBox_f16cHarm1);
-            this.groupBox_F16C_harm_table1.Location = new System.Drawing.Point(6, 20);
-            this.groupBox_F16C_harm_table1.Name = "groupBox_F16C_harm_table1";
-            this.groupBox_F16C_harm_table1.Size = new System.Drawing.Size(315, 170);
-            this.groupBox_F16C_harm_table1.TabIndex = 0;
-            this.groupBox_F16C_harm_table1.TabStop = false;
-            this.groupBox_F16C_harm_table1.Text = "Table 1";
-            // 
-            // groupBox_F16C_harm_table2
-            // 
-            this.groupBox_F16C_harm_table2.Controls.Add(this.label1);
-            this.groupBox_F16C_harm_table2.Controls.Add(this.label_F16CHarm_Table2_T5);
-            this.groupBox_F16C_harm_table2.Controls.Add(this.label2);
-            this.groupBox_F16C_harm_table2.Controls.Add(this.comboBox_f16cHarm10);
-            this.groupBox_F16C_harm_table2.Controls.Add(this.label_F16CHarm_Table2_T3);
-            this.groupBox_F16C_harm_table2.Controls.Add(this.comboBox_f16cHarm9);
-            this.groupBox_F16C_harm_table2.Controls.Add(this.label_F16CHarm_Table2_T4);
-            this.groupBox_F16C_harm_table2.Controls.Add(this.comboBox_f16cHarm8);
-            this.groupBox_F16C_harm_table2.Controls.Add(this.label_F16CHarm_Table2_T2);
-            this.groupBox_F16C_harm_table2.Controls.Add(this.comboBox_f16cHarm7);
-            this.groupBox_F16C_harm_table2.Controls.Add(this.label_F16CHarm_selectedID_Table2_T5);
-            this.groupBox_F16C_harm_table2.Controls.Add(this.comboBox_f16cHarm6);
-            this.groupBox_F16C_harm_table2.Controls.Add(this.label_F16CHarm_selectedID_Table2_T4);
-            this.groupBox_F16C_harm_table2.Controls.Add(this.label_F16CHarm_selectedID_Table2_T1);
-            this.groupBox_F16C_harm_table2.Controls.Add(this.label_F16CHarm_selectedID_Table2_T3);
-            this.groupBox_F16C_harm_table2.Controls.Add(this.label_F16CHarm_Table2_T1);
-            this.groupBox_F16C_harm_table2.Controls.Add(this.label_F16CHarm_selectedID_Table2_T2);
-            this.groupBox_F16C_harm_table2.Location = new System.Drawing.Point(6, 196);
-            this.groupBox_F16C_harm_table2.Name = "groupBox_F16C_harm_table2";
-            this.groupBox_F16C_harm_table2.Size = new System.Drawing.Size(315, 170);
-            this.groupBox_F16C_harm_table2.TabIndex = 1;
-            this.groupBox_F16C_harm_table2.TabStop = false;
-            this.groupBox_F16C_harm_table2.Text = "Table 2";
-            // 
-            // groupBox_F16C_harm_table3
-            // 
-            this.groupBox_F16C_harm_table3.Controls.Add(this.label3);
-            this.groupBox_F16C_harm_table3.Controls.Add(this.label_F16CHarm_Table3_T5);
-            this.groupBox_F16C_harm_table3.Controls.Add(this.label4);
-            this.groupBox_F16C_harm_table3.Controls.Add(this.comboBox_f16cHarm15);
-            this.groupBox_F16C_harm_table3.Controls.Add(this.comboBox_f16cHarm14);
-            this.groupBox_F16C_harm_table3.Controls.Add(this.label_F16CHarm_Table3_T3);
-            this.groupBox_F16C_harm_table3.Controls.Add(this.comboBox_f16cHarm13);
-            this.groupBox_F16C_harm_table3.Controls.Add(this.comboBox_f16cHarm12);
-            this.groupBox_F16C_harm_table3.Controls.Add(this.label_F16CHarm_Table3_T4);
-            this.groupBox_F16C_harm_table3.Controls.Add(this.comboBox_f16cHarm11);
-            this.groupBox_F16C_harm_table3.Controls.Add(this.label_F16CHarm_selectedID_Table3_T1);
-            this.groupBox_F16C_harm_table3.Controls.Add(this.label_F16CHarm_Table3_T2);
-            this.groupBox_F16C_harm_table3.Controls.Add(this.label_F16CHarm_selectedID_Table3_T2);
-            this.groupBox_F16C_harm_table3.Controls.Add(this.label_F16CHarm_Table3_T1);
-            this.groupBox_F16C_harm_table3.Controls.Add(this.label_F16CHarm_selectedID_Table3_T5);
-            this.groupBox_F16C_harm_table3.Controls.Add(this.label_F16CHarm_selectedID_Table3_T3);
-            this.groupBox_F16C_harm_table3.Controls.Add(this.label_F16CHarm_selectedID_Table3_T4);
-            this.groupBox_F16C_harm_table3.Location = new System.Drawing.Point(6, 372);
-            this.groupBox_F16C_harm_table3.Name = "groupBox_F16C_harm_table3";
-            this.groupBox_F16C_harm_table3.Size = new System.Drawing.Size(315, 170);
-            this.groupBox_F16C_harm_table3.TabIndex = 2;
-            this.groupBox_F16C_harm_table3.TabStop = false;
-            this.groupBox_F16C_harm_table3.Text = "Table 3";
-            // 
-            // comboBox_f16cHarm1
-            // 
-            this.comboBox_f16cHarm1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_f16cHarm1.FormattingEnabled = true;
-            this.comboBox_f16cHarm1.Location = new System.Drawing.Point(63, 32);
-            this.comboBox_f16cHarm1.Name = "comboBox_f16cHarm1";
-            this.comboBox_f16cHarm1.Size = new System.Drawing.Size(243, 21);
-            this.comboBox_f16cHarm1.TabIndex = 3;
-            this.comboBox_f16cHarm1.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm1_SelectedIndexChanged);
-            // 
-            // comboBox_f16cHarm2
-            // 
-            this.comboBox_f16cHarm2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_f16cHarm2.FormattingEnabled = true;
-            this.comboBox_f16cHarm2.Location = new System.Drawing.Point(63, 59);
-            this.comboBox_f16cHarm2.Name = "comboBox_f16cHarm2";
-            this.comboBox_f16cHarm2.Size = new System.Drawing.Size(243, 21);
-            this.comboBox_f16cHarm2.TabIndex = 4;
-            this.comboBox_f16cHarm2.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm2_SelectedIndexChanged);
-            // 
-            // comboBox_f16cHarm3
-            // 
-            this.comboBox_f16cHarm3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_f16cHarm3.FormattingEnabled = true;
-            this.comboBox_f16cHarm3.Location = new System.Drawing.Point(63, 86);
-            this.comboBox_f16cHarm3.Name = "comboBox_f16cHarm3";
-            this.comboBox_f16cHarm3.Size = new System.Drawing.Size(243, 21);
-            this.comboBox_f16cHarm3.TabIndex = 5;
-            this.comboBox_f16cHarm3.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm3_SelectedIndexChanged);
-            // 
-            // comboBox_f16cHarm4
-            // 
-            this.comboBox_f16cHarm4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_f16cHarm4.FormattingEnabled = true;
-            this.comboBox_f16cHarm4.Location = new System.Drawing.Point(63, 113);
-            this.comboBox_f16cHarm4.Name = "comboBox_f16cHarm4";
-            this.comboBox_f16cHarm4.Size = new System.Drawing.Size(243, 21);
-            this.comboBox_f16cHarm4.TabIndex = 6;
-            this.comboBox_f16cHarm4.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm4_SelectedIndexChanged);
-            // 
-            // comboBox_f16cHarm5
-            // 
-            this.comboBox_f16cHarm5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_f16cHarm5.FormattingEnabled = true;
-            this.comboBox_f16cHarm5.Location = new System.Drawing.Point(63, 140);
-            this.comboBox_f16cHarm5.Name = "comboBox_f16cHarm5";
-            this.comboBox_f16cHarm5.Size = new System.Drawing.Size(243, 21);
-            this.comboBox_f16cHarm5.TabIndex = 7;
-            this.comboBox_f16cHarm5.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm5_SelectedIndexChanged);
-            // 
-            // comboBox_f16cHarm10
-            // 
-            this.comboBox_f16cHarm10.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_f16cHarm10.FormattingEnabled = true;
-            this.comboBox_f16cHarm10.Location = new System.Drawing.Point(63, 140);
-            this.comboBox_f16cHarm10.Name = "comboBox_f16cHarm10";
-            this.comboBox_f16cHarm10.Size = new System.Drawing.Size(243, 21);
-            this.comboBox_f16cHarm10.TabIndex = 12;
-            this.comboBox_f16cHarm10.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm10_SelectedIndexChanged);
-            // 
-            // comboBox_f16cHarm9
-            // 
-            this.comboBox_f16cHarm9.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_f16cHarm9.FormattingEnabled = true;
-            this.comboBox_f16cHarm9.Location = new System.Drawing.Point(63, 113);
-            this.comboBox_f16cHarm9.Name = "comboBox_f16cHarm9";
-            this.comboBox_f16cHarm9.Size = new System.Drawing.Size(243, 21);
-            this.comboBox_f16cHarm9.TabIndex = 11;
-            this.comboBox_f16cHarm9.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm9_SelectedIndexChanged);
-            // 
-            // comboBox_f16cHarm8
-            // 
-            this.comboBox_f16cHarm8.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_f16cHarm8.FormattingEnabled = true;
-            this.comboBox_f16cHarm8.Location = new System.Drawing.Point(63, 86);
-            this.comboBox_f16cHarm8.Name = "comboBox_f16cHarm8";
-            this.comboBox_f16cHarm8.Size = new System.Drawing.Size(243, 21);
-            this.comboBox_f16cHarm8.TabIndex = 10;
-            this.comboBox_f16cHarm8.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm8_SelectedIndexChanged);
-            // 
-            // comboBox_f16cHarm7
-            // 
-            this.comboBox_f16cHarm7.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_f16cHarm7.FormattingEnabled = true;
-            this.comboBox_f16cHarm7.Location = new System.Drawing.Point(63, 59);
-            this.comboBox_f16cHarm7.Name = "comboBox_f16cHarm7";
-            this.comboBox_f16cHarm7.Size = new System.Drawing.Size(243, 21);
-            this.comboBox_f16cHarm7.TabIndex = 9;
-            this.comboBox_f16cHarm7.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm7_SelectedIndexChanged);
-            // 
-            // comboBox_f16cHarm6
-            // 
-            this.comboBox_f16cHarm6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_f16cHarm6.FormattingEnabled = true;
-            this.comboBox_f16cHarm6.Location = new System.Drawing.Point(63, 32);
-            this.comboBox_f16cHarm6.Name = "comboBox_f16cHarm6";
-            this.comboBox_f16cHarm6.Size = new System.Drawing.Size(243, 21);
-            this.comboBox_f16cHarm6.TabIndex = 8;
-            this.comboBox_f16cHarm6.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm6_SelectedIndexChanged);
-            // 
-            // comboBox_f16cHarm15
-            // 
-            this.comboBox_f16cHarm15.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_f16cHarm15.FormattingEnabled = true;
-            this.comboBox_f16cHarm15.Location = new System.Drawing.Point(63, 140);
-            this.comboBox_f16cHarm15.Name = "comboBox_f16cHarm15";
-            this.comboBox_f16cHarm15.Size = new System.Drawing.Size(243, 21);
-            this.comboBox_f16cHarm15.TabIndex = 17;
-            this.comboBox_f16cHarm15.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm15_SelectedIndexChanged);
-            // 
-            // comboBox_f16cHarm14
-            // 
-            this.comboBox_f16cHarm14.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_f16cHarm14.FormattingEnabled = true;
-            this.comboBox_f16cHarm14.Location = new System.Drawing.Point(63, 113);
-            this.comboBox_f16cHarm14.Name = "comboBox_f16cHarm14";
-            this.comboBox_f16cHarm14.Size = new System.Drawing.Size(243, 21);
-            this.comboBox_f16cHarm14.TabIndex = 16;
-            this.comboBox_f16cHarm14.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm14_SelectedIndexChanged);
-            // 
-            // comboBox_f16cHarm13
-            // 
-            this.comboBox_f16cHarm13.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_f16cHarm13.FormattingEnabled = true;
-            this.comboBox_f16cHarm13.Location = new System.Drawing.Point(63, 86);
-            this.comboBox_f16cHarm13.Name = "comboBox_f16cHarm13";
-            this.comboBox_f16cHarm13.Size = new System.Drawing.Size(243, 21);
-            this.comboBox_f16cHarm13.TabIndex = 15;
-            this.comboBox_f16cHarm13.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm13_SelectedIndexChanged);
-            // 
-            // comboBox_f16cHarm12
-            // 
-            this.comboBox_f16cHarm12.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_f16cHarm12.FormattingEnabled = true;
-            this.comboBox_f16cHarm12.Location = new System.Drawing.Point(63, 59);
-            this.comboBox_f16cHarm12.Name = "comboBox_f16cHarm12";
-            this.comboBox_f16cHarm12.Size = new System.Drawing.Size(243, 21);
-            this.comboBox_f16cHarm12.TabIndex = 14;
-            this.comboBox_f16cHarm12.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm12_SelectedIndexChanged);
-            // 
-            // comboBox_f16cHarm11
-            // 
-            this.comboBox_f16cHarm11.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_f16cHarm11.FormattingEnabled = true;
-            this.comboBox_f16cHarm11.Location = new System.Drawing.Point(63, 32);
-            this.comboBox_f16cHarm11.Name = "comboBox_f16cHarm11";
-            this.comboBox_f16cHarm11.Size = new System.Drawing.Size(243, 21);
-            this.comboBox_f16cHarm11.TabIndex = 13;
-            this.comboBox_f16cHarm11.SelectedIndexChanged += new System.EventHandler(this.comboBox_f16cHarm11_SelectedIndexChanged);
-            // 
-            // label_F16CHarm_samName_table1
-            // 
-            this.label_F16CHarm_samName_table1.AutoSize = true;
-            this.label_F16CHarm_samName_table1.Location = new System.Drawing.Point(60, 16);
-            this.label_F16CHarm_samName_table1.Name = "label_F16CHarm_samName_table1";
-            this.label_F16CHarm_samName_table1.Size = new System.Drawing.Size(138, 13);
-            this.label_F16CHarm_samName_table1.TabIndex = 3;
-            this.label_F16CHarm_samName_table1.Text = "Surface-To-Air (SAM) Name";
-            this.label_F16CHarm_samName_table1.Click += new System.EventHandler(this.label_F16CHarm_samName_table1_Click);
-            // 
-            // label_F16CHarm_Table1_T2
-            // 
-            this.label_F16CHarm_Table1_T2.AutoSize = true;
-            this.label_F16CHarm_Table1_T2.Location = new System.Drawing.Point(6, 62);
-            this.label_F16CHarm_Table1_T2.Name = "label_F16CHarm_Table1_T2";
-            this.label_F16CHarm_Table1_T2.Size = new System.Drawing.Size(20, 13);
-            this.label_F16CHarm_Table1_T2.TabIndex = 3;
-            this.label_F16CHarm_Table1_T2.Text = "T2";
-            // 
-            // label_F16CHarm_selectedID_Table1_T1
-            // 
-            this.label_F16CHarm_selectedID_Table1_T1.AutoSize = true;
-            this.label_F16CHarm_selectedID_Table1_T1.Location = new System.Drawing.Point(32, 35);
-            this.label_F16CHarm_selectedID_Table1_T1.Name = "label_F16CHarm_selectedID_Table1_T1";
-            this.label_F16CHarm_selectedID_Table1_T1.Size = new System.Drawing.Size(25, 13);
-            this.label_F16CHarm_selectedID_Table1_T1.TabIndex = 4;
-            this.label_F16CHarm_selectedID_Table1_T1.Text = "000";
-            // 
-            // label_F16CHarm_Table1_T3
-            // 
-            this.label_F16CHarm_Table1_T3.AutoSize = true;
-            this.label_F16CHarm_Table1_T3.Location = new System.Drawing.Point(6, 89);
-            this.label_F16CHarm_Table1_T3.Name = "label_F16CHarm_Table1_T3";
-            this.label_F16CHarm_Table1_T3.Size = new System.Drawing.Size(20, 13);
-            this.label_F16CHarm_Table1_T3.TabIndex = 3;
-            this.label_F16CHarm_Table1_T3.Text = "T3";
-            // 
-            // label_F16CHarm_Table1_T4
-            // 
-            this.label_F16CHarm_Table1_T4.AutoSize = true;
-            this.label_F16CHarm_Table1_T4.Location = new System.Drawing.Point(6, 116);
-            this.label_F16CHarm_Table1_T4.Name = "label_F16CHarm_Table1_T4";
-            this.label_F16CHarm_Table1_T4.Size = new System.Drawing.Size(20, 13);
-            this.label_F16CHarm_Table1_T4.TabIndex = 3;
-            this.label_F16CHarm_Table1_T4.Text = "T4";
-            this.label_F16CHarm_Table1_T4.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // label_F16CHarm_Table1_T5
-            // 
-            this.label_F16CHarm_Table1_T5.AutoSize = true;
-            this.label_F16CHarm_Table1_T5.Location = new System.Drawing.Point(6, 143);
-            this.label_F16CHarm_Table1_T5.Name = "label_F16CHarm_Table1_T5";
-            this.label_F16CHarm_Table1_T5.Size = new System.Drawing.Size(20, 13);
-            this.label_F16CHarm_Table1_T5.TabIndex = 3;
-            this.label_F16CHarm_Table1_T5.Text = "T5";
-            this.label_F16CHarm_Table1_T5.Click += new System.EventHandler(this.label4_Click);
-            // 
-            // label_F16CHarm_selectedID_Table1_T2
-            // 
-            this.label_F16CHarm_selectedID_Table1_T2.AutoSize = true;
-            this.label_F16CHarm_selectedID_Table1_T2.Location = new System.Drawing.Point(32, 62);
-            this.label_F16CHarm_selectedID_Table1_T2.Name = "label_F16CHarm_selectedID_Table1_T2";
-            this.label_F16CHarm_selectedID_Table1_T2.Size = new System.Drawing.Size(25, 13);
-            this.label_F16CHarm_selectedID_Table1_T2.TabIndex = 4;
-            this.label_F16CHarm_selectedID_Table1_T2.Text = "000";
-            // 
-            // label_F16CHarm_selectedID_Table1_T3
-            // 
-            this.label_F16CHarm_selectedID_Table1_T3.AutoSize = true;
-            this.label_F16CHarm_selectedID_Table1_T3.Location = new System.Drawing.Point(32, 89);
-            this.label_F16CHarm_selectedID_Table1_T3.Name = "label_F16CHarm_selectedID_Table1_T3";
-            this.label_F16CHarm_selectedID_Table1_T3.Size = new System.Drawing.Size(25, 13);
-            this.label_F16CHarm_selectedID_Table1_T3.TabIndex = 4;
-            this.label_F16CHarm_selectedID_Table1_T3.Text = "000";
-            // 
-            // label_F16CHarm_selectedID_Table1_T4
-            // 
-            this.label_F16CHarm_selectedID_Table1_T4.AutoSize = true;
-            this.label_F16CHarm_selectedID_Table1_T4.Location = new System.Drawing.Point(32, 116);
-            this.label_F16CHarm_selectedID_Table1_T4.Name = "label_F16CHarm_selectedID_Table1_T4";
-            this.label_F16CHarm_selectedID_Table1_T4.Size = new System.Drawing.Size(25, 13);
-            this.label_F16CHarm_selectedID_Table1_T4.TabIndex = 4;
-            this.label_F16CHarm_selectedID_Table1_T4.Text = "000";
-            // 
-            // label_F16CHarm_selectedID_Table1_T5
-            // 
-            this.label_F16CHarm_selectedID_Table1_T5.AutoSize = true;
-            this.label_F16CHarm_selectedID_Table1_T5.Location = new System.Drawing.Point(32, 143);
-            this.label_F16CHarm_selectedID_Table1_T5.Name = "label_F16CHarm_selectedID_Table1_T5";
-            this.label_F16CHarm_selectedID_Table1_T5.Size = new System.Drawing.Size(25, 13);
-            this.label_F16CHarm_selectedID_Table1_T5.TabIndex = 4;
-            this.label_F16CHarm_selectedID_Table1_T5.Text = "000";
-            // 
-            // label_F16CHarm_Table2_T1
-            // 
-            this.label_F16CHarm_Table2_T1.AutoSize = true;
-            this.label_F16CHarm_Table2_T1.Location = new System.Drawing.Point(6, 35);
-            this.label_F16CHarm_Table2_T1.Name = "label_F16CHarm_Table2_T1";
-            this.label_F16CHarm_Table2_T1.Size = new System.Drawing.Size(20, 13);
-            this.label_F16CHarm_Table2_T1.TabIndex = 3;
-            this.label_F16CHarm_Table2_T1.Text = "T1";
-            // 
-            // label_F16CHarm_selectedID_Table2_T1
-            // 
-            this.label_F16CHarm_selectedID_Table2_T1.AutoSize = true;
-            this.label_F16CHarm_selectedID_Table2_T1.Location = new System.Drawing.Point(32, 35);
-            this.label_F16CHarm_selectedID_Table2_T1.Name = "label_F16CHarm_selectedID_Table2_T1";
-            this.label_F16CHarm_selectedID_Table2_T1.Size = new System.Drawing.Size(25, 13);
-            this.label_F16CHarm_selectedID_Table2_T1.TabIndex = 4;
-            this.label_F16CHarm_selectedID_Table2_T1.Text = "000";
-            // 
-            // label_F16CHarm_selectedID_Table2_T2
-            // 
-            this.label_F16CHarm_selectedID_Table2_T2.AutoSize = true;
-            this.label_F16CHarm_selectedID_Table2_T2.Location = new System.Drawing.Point(32, 62);
-            this.label_F16CHarm_selectedID_Table2_T2.Name = "label_F16CHarm_selectedID_Table2_T2";
-            this.label_F16CHarm_selectedID_Table2_T2.Size = new System.Drawing.Size(25, 13);
-            this.label_F16CHarm_selectedID_Table2_T2.TabIndex = 4;
-            this.label_F16CHarm_selectedID_Table2_T2.Text = "000";
-            // 
-            // label_F16CHarm_selectedID_Table2_T3
-            // 
-            this.label_F16CHarm_selectedID_Table2_T3.AutoSize = true;
-            this.label_F16CHarm_selectedID_Table2_T3.Location = new System.Drawing.Point(32, 89);
-            this.label_F16CHarm_selectedID_Table2_T3.Name = "label_F16CHarm_selectedID_Table2_T3";
-            this.label_F16CHarm_selectedID_Table2_T3.Size = new System.Drawing.Size(25, 13);
-            this.label_F16CHarm_selectedID_Table2_T3.TabIndex = 4;
-            this.label_F16CHarm_selectedID_Table2_T3.Text = "000";
-            // 
-            // label_F16CHarm_selectedID_Table2_T4
-            // 
-            this.label_F16CHarm_selectedID_Table2_T4.AutoSize = true;
-            this.label_F16CHarm_selectedID_Table2_T4.Location = new System.Drawing.Point(32, 116);
-            this.label_F16CHarm_selectedID_Table2_T4.Name = "label_F16CHarm_selectedID_Table2_T4";
-            this.label_F16CHarm_selectedID_Table2_T4.Size = new System.Drawing.Size(25, 13);
-            this.label_F16CHarm_selectedID_Table2_T4.TabIndex = 4;
-            this.label_F16CHarm_selectedID_Table2_T4.Text = "000";
-            // 
-            // label_F16CHarm_selectedID_Table2_T5
-            // 
-            this.label_F16CHarm_selectedID_Table2_T5.AutoSize = true;
-            this.label_F16CHarm_selectedID_Table2_T5.Location = new System.Drawing.Point(32, 143);
-            this.label_F16CHarm_selectedID_Table2_T5.Name = "label_F16CHarm_selectedID_Table2_T5";
-            this.label_F16CHarm_selectedID_Table2_T5.Size = new System.Drawing.Size(25, 13);
-            this.label_F16CHarm_selectedID_Table2_T5.TabIndex = 4;
-            this.label_F16CHarm_selectedID_Table2_T5.Text = "000";
-            // 
-            // label_F16CHarm_Table2_T2
-            // 
-            this.label_F16CHarm_Table2_T2.AutoSize = true;
-            this.label_F16CHarm_Table2_T2.Location = new System.Drawing.Point(6, 62);
-            this.label_F16CHarm_Table2_T2.Name = "label_F16CHarm_Table2_T2";
-            this.label_F16CHarm_Table2_T2.Size = new System.Drawing.Size(20, 13);
-            this.label_F16CHarm_Table2_T2.TabIndex = 3;
-            this.label_F16CHarm_Table2_T2.Text = "T2";
-            // 
-            // label_F16CHarm_Table2_T4
-            // 
-            this.label_F16CHarm_Table2_T4.AutoSize = true;
-            this.label_F16CHarm_Table2_T4.Location = new System.Drawing.Point(6, 116);
-            this.label_F16CHarm_Table2_T4.Name = "label_F16CHarm_Table2_T4";
-            this.label_F16CHarm_Table2_T4.Size = new System.Drawing.Size(20, 13);
-            this.label_F16CHarm_Table2_T4.TabIndex = 3;
-            this.label_F16CHarm_Table2_T4.Text = "T4";
-            this.label_F16CHarm_Table2_T4.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // label_F16CHarm_Table2_T3
-            // 
-            this.label_F16CHarm_Table2_T3.AutoSize = true;
-            this.label_F16CHarm_Table2_T3.Location = new System.Drawing.Point(6, 89);
-            this.label_F16CHarm_Table2_T3.Name = "label_F16CHarm_Table2_T3";
-            this.label_F16CHarm_Table2_T3.Size = new System.Drawing.Size(20, 13);
-            this.label_F16CHarm_Table2_T3.TabIndex = 3;
-            this.label_F16CHarm_Table2_T3.Text = "T3";
-            // 
-            // label_F16CHarm_Table2_T5
-            // 
-            this.label_F16CHarm_Table2_T5.AutoSize = true;
-            this.label_F16CHarm_Table2_T5.Location = new System.Drawing.Point(6, 143);
-            this.label_F16CHarm_Table2_T5.Name = "label_F16CHarm_Table2_T5";
-            this.label_F16CHarm_Table2_T5.Size = new System.Drawing.Size(20, 13);
-            this.label_F16CHarm_Table2_T5.TabIndex = 3;
-            this.label_F16CHarm_Table2_T5.Text = "T5";
-            this.label_F16CHarm_Table2_T5.Click += new System.EventHandler(this.label4_Click);
-            // 
-            // label_F16CHarm_selectedID_Table3_T2
-            // 
-            this.label_F16CHarm_selectedID_Table3_T2.AutoSize = true;
-            this.label_F16CHarm_selectedID_Table3_T2.Location = new System.Drawing.Point(32, 62);
-            this.label_F16CHarm_selectedID_Table3_T2.Name = "label_F16CHarm_selectedID_Table3_T2";
-            this.label_F16CHarm_selectedID_Table3_T2.Size = new System.Drawing.Size(25, 13);
-            this.label_F16CHarm_selectedID_Table3_T2.TabIndex = 4;
-            this.label_F16CHarm_selectedID_Table3_T2.Text = "000";
-            // 
-            // label_F16CHarm_Table3_T1
-            // 
-            this.label_F16CHarm_Table3_T1.AutoSize = true;
-            this.label_F16CHarm_Table3_T1.Location = new System.Drawing.Point(6, 35);
-            this.label_F16CHarm_Table3_T1.Name = "label_F16CHarm_Table3_T1";
-            this.label_F16CHarm_Table3_T1.Size = new System.Drawing.Size(20, 13);
-            this.label_F16CHarm_Table3_T1.TabIndex = 3;
-            this.label_F16CHarm_Table3_T1.Text = "T1";
-            // 
-            // label_F16CHarm_selectedID_Table3_T3
-            // 
-            this.label_F16CHarm_selectedID_Table3_T3.AutoSize = true;
-            this.label_F16CHarm_selectedID_Table3_T3.Location = new System.Drawing.Point(32, 89);
-            this.label_F16CHarm_selectedID_Table3_T3.Name = "label_F16CHarm_selectedID_Table3_T3";
-            this.label_F16CHarm_selectedID_Table3_T3.Size = new System.Drawing.Size(25, 13);
-            this.label_F16CHarm_selectedID_Table3_T3.TabIndex = 4;
-            this.label_F16CHarm_selectedID_Table3_T3.Text = "000";
-            // 
-            // label_F16CHarm_selectedID_Table3_T1
-            // 
-            this.label_F16CHarm_selectedID_Table3_T1.AutoSize = true;
-            this.label_F16CHarm_selectedID_Table3_T1.Location = new System.Drawing.Point(32, 35);
-            this.label_F16CHarm_selectedID_Table3_T1.Name = "label_F16CHarm_selectedID_Table3_T1";
-            this.label_F16CHarm_selectedID_Table3_T1.Size = new System.Drawing.Size(25, 13);
-            this.label_F16CHarm_selectedID_Table3_T1.TabIndex = 4;
-            this.label_F16CHarm_selectedID_Table3_T1.Text = "000";
-            // 
-            // label_F16CHarm_selectedID_Table3_T4
-            // 
-            this.label_F16CHarm_selectedID_Table3_T4.AutoSize = true;
-            this.label_F16CHarm_selectedID_Table3_T4.Location = new System.Drawing.Point(32, 116);
-            this.label_F16CHarm_selectedID_Table3_T4.Name = "label_F16CHarm_selectedID_Table3_T4";
-            this.label_F16CHarm_selectedID_Table3_T4.Size = new System.Drawing.Size(25, 13);
-            this.label_F16CHarm_selectedID_Table3_T4.TabIndex = 4;
-            this.label_F16CHarm_selectedID_Table3_T4.Text = "000";
-            // 
-            // label_F16CHarm_selectedID_Table3_T5
-            // 
-            this.label_F16CHarm_selectedID_Table3_T5.AutoSize = true;
-            this.label_F16CHarm_selectedID_Table3_T5.Location = new System.Drawing.Point(32, 143);
-            this.label_F16CHarm_selectedID_Table3_T5.Name = "label_F16CHarm_selectedID_Table3_T5";
-            this.label_F16CHarm_selectedID_Table3_T5.Size = new System.Drawing.Size(25, 13);
-            this.label_F16CHarm_selectedID_Table3_T5.TabIndex = 4;
-            this.label_F16CHarm_selectedID_Table3_T5.Text = "000";
-            // 
-            // label_F16CHarm_Table3_T2
-            // 
-            this.label_F16CHarm_Table3_T2.AutoSize = true;
-            this.label_F16CHarm_Table3_T2.Location = new System.Drawing.Point(6, 62);
-            this.label_F16CHarm_Table3_T2.Name = "label_F16CHarm_Table3_T2";
-            this.label_F16CHarm_Table3_T2.Size = new System.Drawing.Size(20, 13);
-            this.label_F16CHarm_Table3_T2.TabIndex = 3;
-            this.label_F16CHarm_Table3_T2.Text = "T2";
-            // 
-            // label_F16CHarm_Table3_T4
-            // 
-            this.label_F16CHarm_Table3_T4.AutoSize = true;
-            this.label_F16CHarm_Table3_T4.Location = new System.Drawing.Point(6, 116);
-            this.label_F16CHarm_Table3_T4.Name = "label_F16CHarm_Table3_T4";
-            this.label_F16CHarm_Table3_T4.Size = new System.Drawing.Size(20, 13);
-            this.label_F16CHarm_Table3_T4.TabIndex = 3;
-            this.label_F16CHarm_Table3_T4.Text = "T4";
-            this.label_F16CHarm_Table3_T4.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // label_F16CHarm_Table3_T3
-            // 
-            this.label_F16CHarm_Table3_T3.AutoSize = true;
-            this.label_F16CHarm_Table3_T3.Location = new System.Drawing.Point(6, 89);
-            this.label_F16CHarm_Table3_T3.Name = "label_F16CHarm_Table3_T3";
-            this.label_F16CHarm_Table3_T3.Size = new System.Drawing.Size(20, 13);
-            this.label_F16CHarm_Table3_T3.TabIndex = 3;
-            this.label_F16CHarm_Table3_T3.Text = "T3";
-            // 
-            // label_F16CHarm_Table3_T5
-            // 
-            this.label_F16CHarm_Table3_T5.AutoSize = true;
-            this.label_F16CHarm_Table3_T5.Location = new System.Drawing.Point(6, 143);
-            this.label_F16CHarm_Table3_T5.Name = "label_F16CHarm_Table3_T5";
-            this.label_F16CHarm_Table3_T5.Size = new System.Drawing.Size(20, 13);
-            this.label_F16CHarm_Table3_T5.TabIndex = 3;
-            this.label_F16CHarm_Table3_T5.Text = "T5";
-            this.label_F16CHarm_Table3_T5.Click += new System.EventHandler(this.label4_Click);
-            // 
-            // label_F16CHarm_selectedID_Table1_Title
-            // 
-            this.label_F16CHarm_selectedID_Table1_Title.AutoSize = true;
-            this.label_F16CHarm_selectedID_Table1_Title.Location = new System.Drawing.Point(32, 16);
-            this.label_F16CHarm_selectedID_Table1_Title.Name = "label_F16CHarm_selectedID_Table1_Title";
-            this.label_F16CHarm_selectedID_Table1_Title.Size = new System.Drawing.Size(18, 13);
-            this.label_F16CHarm_selectedID_Table1_Title.TabIndex = 4;
-            this.label_F16CHarm_selectedID_Table1_Title.Text = "ID";
-            // 
-            // label_F16CHarm_Table1_T1
-            // 
-            this.label_F16CHarm_Table1_T1.AutoSize = true;
-            this.label_F16CHarm_Table1_T1.Location = new System.Drawing.Point(6, 35);
-            this.label_F16CHarm_Table1_T1.Name = "label_F16CHarm_Table1_T1";
-            this.label_F16CHarm_Table1_T1.Size = new System.Drawing.Size(20, 13);
-            this.label_F16CHarm_Table1_T1.TabIndex = 8;
-            this.label_F16CHarm_Table1_T1.Text = "T1";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(32, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(18, 13);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "ID";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(60, 16);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(138, 13);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Surface-To-Air (SAM) Name";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(32, 16);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(18, 13);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "ID";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(60, 16);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(138, 13);
-            this.label4.TabIndex = 13;
-            this.label4.Text = "Surface-To-Air (SAM) Name";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(469, 708);
+            this.ClientSize = new System.Drawing.Size(472, 708);
             this.Controls.Add(this.button_recreateOrginalLua);
             this.Controls.Add(this.button_openBackupPath);
             this.Controls.Add(this.button_openDcsPath);
@@ -3837,12 +6854,126 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_F16C_manual1Chaff_BI)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_F16C_manual1Chaff_BQ)).EndInit();
             this.tabPage3.ResumeLayout(false);
-            this.groupBox_F16C_harm_table1.ResumeLayout(false);
-            this.groupBox_F16C_harm_table1.PerformLayout();
-            this.groupBox_F16C_harm_table2.ResumeLayout(false);
-            this.groupBox_F16C_harm_table2.PerformLayout();
             this.groupBox_F16C_harm_table3.ResumeLayout(false);
             this.groupBox_F16C_harm_table3.PerformLayout();
+            this.groupBox_F16C_harm_table2.ResumeLayout(false);
+            this.groupBox_F16C_harm_table2.PerformLayout();
+            this.groupBox_F16C_harm_table1.ResumeLayout(false);
+            this.groupBox_F16C_harm_table1.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.tabControl_A10C.ResumeLayout(false);
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programN_chaff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programN_flare)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programN_cycle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programN_interval)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programM_chaff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programM_flare)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programM_cycle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programM_interval)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programL_chaff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programL_flare)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programK_chaff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programK_flare)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programJ_chaff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programJ_flare)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programI_chaff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programI_flare)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programH_chaff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programH_flare)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programG_chaff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programG_flare)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programL_cycle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programL_interval)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programK_cycle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programK_interval)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programJ_cycle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programJ_interval)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programI_cycle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programI_interval)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programH_cycle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programH_interval)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programG_cycle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programG_interval)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programF_chaff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programF_flare)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programE_chaff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programE_flare)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programD_chaff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programD_flare)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programC_chaff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programC_flare)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programB_chaff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programB_flare)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programA_chaff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programA_flare)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programF_cycle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programF_interval)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programE_cycle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programE_interval)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programD_cycle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programD_interval)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programC_cycle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programC_interval)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programB_cycle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programB_interval)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programA_cycle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programA_interval)).EndInit();
+            this.tabPage6.ResumeLayout(false);
+            this.tabPage6.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programO_chaff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programO_flare)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programO_cycle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programO_interval)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programZ_chaff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programZ_flare)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programZ_cycle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programZ_interval)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programY_chaff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programY_flare)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programY_cycle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programY_interval)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programX_chaff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programX_flare)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programX_cycle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programX_interval)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programW_chaff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programW_flare)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programW_cycle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programW_interval)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programV_chaff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programV_flare)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programV_cycle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programV_interval)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programU_chaff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programU_flare)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programU_cycle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programU_interval)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programT_chaff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programT_flare)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programT_cycle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programT_interval)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programS_chaff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programS_flare)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programS_cycle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programS_interval)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programR_chaff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programR_flare)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programR_cycle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programR_interval)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programQ_chaff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programQ_flare)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programQ_cycle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programQ_interval)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programP_chaff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programP_flare)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programP_cycle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_A10C_programP_interval)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4072,6 +7203,178 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programM_chaff;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programM_flare;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programM_cycle;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programM_interval;
+        private System.Windows.Forms.Label label_programM;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programL_chaff;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programL_flare;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programK_chaff;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programK_flare;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programJ_chaff;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programJ_flare;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programI_chaff;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programI_flare;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programH_chaff;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programH_flare;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programG_chaff;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programG_flare;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programL_cycle;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programL_interval;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programK_cycle;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programK_interval;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programJ_cycle;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programJ_interval;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programI_cycle;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programI_interval;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programH_cycle;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programH_interval;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programG_cycle;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programG_interval;
+        private System.Windows.Forms.Label label_programG;
+        private System.Windows.Forms.Label label_programH;
+        private System.Windows.Forms.Label label_programI;
+        private System.Windows.Forms.Label label_programJ;
+        private System.Windows.Forms.Label label_programK;
+        private System.Windows.Forms.Label label_programL;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programF_chaff;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programF_flare;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programE_chaff;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programE_flare;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programD_chaff;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programD_flare;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programC_chaff;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programC_flare;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programB_chaff;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programB_flare;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programA_chaff;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programA_flare;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programF_cycle;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programF_interval;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programE_cycle;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programE_interval;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programD_cycle;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programD_interval;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programC_cycle;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programC_interval;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programB_cycle;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programB_interval;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programA_cycle;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programA_interval;
+        private System.Windows.Forms.Label label_programA;
+        private System.Windows.Forms.Label label_programB;
+        private System.Windows.Forms.Label label_programC;
+        private System.Windows.Forms.Label label_programD;
+        private System.Windows.Forms.Label label_programE;
+        private System.Windows.Forms.Label label_programF;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label_programA_description;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.TabControl tabControl_A10C;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox textBox_programP;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programP_chaff;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programP_flare;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programP_cycle;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programP_interval;
+        private System.Windows.Forms.Label label_programP;
+        private System.Windows.Forms.Label label64;
+        private System.Windows.Forms.Label label65;
+        private System.Windows.Forms.Label label66;
+        private System.Windows.Forms.TextBox textBox_programN;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programN_chaff;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programN_flare;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programN_cycle;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programN_interval;
+        private System.Windows.Forms.Label label_programN;
+        private System.Windows.Forms.TextBox textBox_programZ;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programZ_chaff;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programZ_flare;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programZ_cycle;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programZ_interval;
+        private System.Windows.Forms.Label label_programZ;
+        private System.Windows.Forms.TextBox textBox_programY;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programY_chaff;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programY_flare;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programY_cycle;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programY_interval;
+        private System.Windows.Forms.Label label_programY;
+        private System.Windows.Forms.TextBox textBox_programX;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programX_chaff;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programX_flare;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programX_cycle;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programX_interval;
+        private System.Windows.Forms.Label label_programX;
+        private System.Windows.Forms.TextBox textBox_programW;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programW_chaff;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programW_flare;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programW_cycle;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programW_interval;
+        private System.Windows.Forms.Label label_programW;
+        private System.Windows.Forms.TextBox textBox_programV;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programV_chaff;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programV_flare;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programV_cycle;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programV_interval;
+        private System.Windows.Forms.Label label_programV;
+        private System.Windows.Forms.TextBox textBox_programU;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programU_chaff;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programU_flare;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programU_cycle;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programU_interval;
+        private System.Windows.Forms.Label U;
+        private System.Windows.Forms.TextBox textBox_programT;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programT_chaff;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programT_flare;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programT_cycle;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programT_interval;
+        private System.Windows.Forms.Label label_programT;
+        private System.Windows.Forms.TextBox textBox_programS;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programS_chaff;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programS_flare;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programS_cycle;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programS_interval;
+        private System.Windows.Forms.Label label_programS;
+        private System.Windows.Forms.TextBox textBox_programR;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programR_chaff;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programR_flare;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programR_cycle;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programR_interval;
+        private System.Windows.Forms.Label label_programR;
+        private System.Windows.Forms.TextBox textBox_programQ;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programQ_chaff;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programQ_flare;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programQ_cycle;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programQ_interval;
+        private System.Windows.Forms.Label label_programQ;
+        private System.Windows.Forms.Label label_programsContinueOnNextTab;
+        private System.Windows.Forms.TextBox textBox_programO;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programO_chaff;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programO_flare;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programO_cycle;
+        private System.Windows.Forms.NumericUpDown numericUpDown_A10C_programO_interval;
+        private System.Windows.Forms.Label label_programO;
+        private System.Windows.Forms.Label label34;
     }
 }
 
