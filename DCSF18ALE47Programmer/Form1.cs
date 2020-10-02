@@ -38,40 +38,55 @@ using DCSF18ALE47Programmer.Properties;
  * Countermeasure Lua locations for DCS aircraft and other helpful paths
  * -\DCS World OpenBeta\Mods\aircraft\F-16C\Cockpit\Scripts\EWS\CMDS\device\CMDS_ALE47.lua
  * -\DCS World OpenBeta\Mods\aircraft\FA-18C\Cockpit\Scripts\TEWS\device\CMDS_ALE47.lua
- * -\DCS World OpenBeta\Mods\aircraft\F-5E\Cockpit\Scripts\Systems\AN_ALE40V.lua
- * -\DCS World OpenBeta\Mods\aircraft\M-2000C\Cockpit\Scripts\SPIRALE.lua
  * -\DCS World OpenBeta\Mods\aircraft\A-10C\Cockpit\Scripts\AN_ALE40V\device\AN_ALE40V_params.lua
+ * 
+ * -\DCS World OpenBeta\Mods\aircraft\F-5E\Cockpit\Scripts\Systems\AN_ALE40V.lua //it looks like the cmds can only be programed on-game when the engine is off
+ * -\DCS World OpenBeta\Mods\aircraft\M-2000C\Cockpit\Scripts\SPIRALE.lua
  * -\DCS World OpenBeta\Mods\aircraft\AV8BNA\Cockpit\Scripts\EWS\EW_Dispensers_init.lua
  * -\DCS World OpenBeta\bin\DCS.exe
  * 
  * 
  * Version Notes:
  * v1
- * -Added DCS F-18C
+ * -Added F-18C CMS editing
  * -Release
- * -About 1000 lines of code 
+ * -About 1000 lines of code total
  * 
  * v2
- * -Added DCS F-16C
+ * -Added F-16C CMS editing
  * -CMS export is enabled even if default aircraft directory is not detected
  * -Added option to re-create orginal DCS CMS lua
  * -Adjusted numerical box max, min, and adjustment values to match aircraft
  * -Replaced sliders with numerical boxes
  * -Adjusted GUI
- * -About 2700 lines of code
+ * -About 2700 lines of code total
+ * 
+ * v2.1
+ * -Uses en-US culture in C# to ensure periods are used for decimals instead of commas
  * 
  * v3
- * -Added DCS A-10C
+ * -Added A-10C CMS editing
  * -Added Preliminary F-16C HARM Table Export support. Please visit the 'Enable Editing Of Default DED HARM Tables Via A Lua File' thread on the ED forums to ask ED's help to implement the feature. https://forums.eagle.ru/showthread.php?t=286963
- * -About 5408 lines of code
+ * -About 5481 lines of code total
  * 
  * v4
- * Add F16c HARM maker. Have to wait for the release of the feature
- * Add A-10C II Tank Killer support. Have to wait for the release of the feature
+ * -Added M2000 CMS editing
+ * -Added A-10C2 Tank Killer CMS editing (inherited? see Bugs)
+ * -Added AV8B CMS editing
+ * -Fixed a bug with the export of an aircraft failing
+ * -Fixed a bug were the program would crash if you tried to load a CMS profile from DCS, but the file was not there
+ * -About 7202 lines of code total
+ *  
+ * 
+ * vFuture
+ * -Add F16c HARM maker. Have to wait for the release of the feature
+ * -Add F5 (looks not possible)
  * 
  * 
  * Bugs:
- * None, at the moment...
+ * -Due to the way ED has coded the A-10C and A-10C2, both aircraft may or may not share the same CMS file (feature?)
+ * 
+ * 
  * Research:
  * https://stackoverflow.com/questions/17483563/c-sharp-reset-textbox-to-default-value
  */
@@ -127,7 +142,10 @@ namespace DCSF18ALE47Programmer
                 cmdsLua_F16C_FolderPath = dcs_topFolderPath + @"\Mods\aircraft\F-16C\Cockpit\Scripts\EWS\CMDS\device";
                 cmdsLua_A10C_fullPath = dcs_topFolderPath + @"\Mods\aircraft\A-10C\Cockpit\Scripts\AN_ALE40V\device\AN_ALE40V_params.lua";
                 cmdsLua_A10C_FolderPath = dcs_topFolderPath + @"\Mods\aircraft\A-10C\Cockpit\Scripts\AN_ALE40V\device";
-
+                cmdsLua_M2000C_fullPath = dcs_topFolderPath + @"\Mods\aircraft\M-2000C\Cockpit\Scripts\SPIRALE.lua";
+                cmdsLua_M2000C_FolderPath = dcs_topFolderPath + @"\Mods\aircraft\M-2000C\Cockpit\Scripts";
+                cmdsLua_AV8B_fullPath = dcs_topFolderPath + @"\Mods\aircraft\AV8BNA\Cockpit\Scripts\EWS\EW_Dispensers_init.lua";
+                cmdsLua_AV8B_FolderPath = dcs_topFolderPath + @"\Mods\aircraft\AV8BNA\Cockpit\Scripts\EWS\";
 
                 textBox_DcsPath.Text = dcs_topFolderPath;
                 textBox_backupPath.Text = appPath + "\\DCS-CMS-Editor-Backup";
@@ -136,6 +154,8 @@ namespace DCSF18ALE47Programmer
                 exportPathBackup_F18C = (exportPathBackup + "\\F18C Backup");
                 exportPathBackup_F16C = (exportPathBackup + "\\F16C Backup");
                 exportPathBackup_A10C = (exportPathBackup + "\\A10C Backup");
+                exportPathBackup_AV8B = (exportPathBackup + "\\AV8B Backup");
+                exportPathBackup_M2000C = (exportPathBackup + "\\M2000C Backup");
 
                 //also, load the dcs CMS settings as default
                 //loadCM_DCS_Click();
@@ -150,6 +170,8 @@ namespace DCSF18ALE47Programmer
         string exportPathBackup_F18C;
         string exportPathBackup_F16C;
         string exportPathBackup_A10C;
+        string exportPathBackup_AV8B;
+        string exportPathBackup_M2000C;
         bool isExportEnabled;
         bool isExportPathSelected;
         string selectedPath_dcsExe;
@@ -159,8 +181,11 @@ namespace DCSF18ALE47Programmer
         string cmdsLua_F18C_FolderPath;
         string cmdsLua_F16C_FolderPath;
         string cmdsLua_A10C_fullPath;
-        
         string cmdsLua_A10C_FolderPath;
+        string cmdsLua_M2000C_fullPath;
+        string cmdsLua_M2000C_FolderPath;
+        string cmdsLua_AV8B_fullPath;
+        string cmdsLua_AV8B_FolderPath;
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -191,6 +216,10 @@ namespace DCSF18ALE47Programmer
                     cmdsLua_F16C_FolderPath = dcs_topFolderPath + @"\Mods\aircraft\F-16C\Cockpit\Scripts\EWS\CMDS\device";
                     cmdsLua_A10C_fullPath = dcs_topFolderPath + @"\Mods\aircraft\A-10C\Cockpit\Scripts\AN_ALE40V\device\AN_ALE40V_params.lua";
                     cmdsLua_A10C_FolderPath = dcs_topFolderPath + @"\Mods\aircraft\A-10C\Cockpit\Scripts\AN_ALE40V\device";
+                    cmdsLua_M2000C_fullPath = dcs_topFolderPath + @"\Mods\aircraft\M-2000C\Cockpit\Scripts\SPIRALE.lua";
+                    cmdsLua_M2000C_FolderPath = dcs_topFolderPath + @"\Mods\aircraft\M-2000C\Cockpit\Scripts";
+                    cmdsLua_AV8B_fullPath = dcs_topFolderPath + @"\Mods\aircraft\AV8BNA\Cockpit\Scripts\EWS\EW_Dispensers_init.lua";
+                    cmdsLua_AV8B_FolderPath = dcs_topFolderPath + @"\Mods\aircraft\AV8BNA\Cockpit\Scripts\EWS\";
 
                     textBox_DcsPath.Text = dcs_topFolderPath;
                     textBox_backupPath.Text = appPath + "\\DCS-CMS-Editor-Backup";
@@ -198,7 +227,10 @@ namespace DCSF18ALE47Programmer
                     exportPathBackup = (appPath + "\\DCS-CMS-Editor-Backup");
                     exportPathBackup_F18C = (exportPathBackup + "\\F18C Backup");
                     exportPathBackup_F16C = (exportPathBackup + "\\F16C Backup");
-                    exportPathBackup_A10C = (exportPathBackup + "\\F16C Backup");
+                    exportPathBackup_A10C = (exportPathBackup + "\\A10C Backup");
+                    exportPathBackup_AV8B = (exportPathBackup + "\\AV8B Backup");
+                    exportPathBackup_M2000C = (exportPathBackup + "\\M2000C Backup");
+
 
                     MessageBox.Show("You selected " + selectedPath_dcsExe + "\r\n"
                        + "\r\n"
@@ -207,6 +239,10 @@ namespace DCSF18ALE47Programmer
                        + "F-16C lua should be located here: " + cmdsLua_F16C_fullPath + "\r\n"
                        + "\r\n"
                        + "A-10C lua should be located here: " + cmdsLua_A10C_fullPath + "\r\n"
+                       + "\r\n"
+                       + "AV-8B lua should be located here: " + cmdsLua_AV8B_fullPath + "\r\n"
+                       + "\r\n"
+                       + "M2000C lua should be located here: " + cmdsLua_M2000C_fullPath + "\r\n"
                        + "\r\n"
                        + "Export is enabled. Backup folder has been created.");
 
@@ -260,13 +296,12 @@ namespace DCSF18ALE47Programmer
         }
 
 
-        private void button4_Click(object sender, EventArgs e)//load from backup
+        private void button4_Click(object sender, EventArgs e)//load from backup button
         {
             //MessageBox.Show(tabControl_mainTab.SelectedTab.Name.ToString());
-            //LoadCountermeasure file button TODO: fix this to accomidate multiple aircraft luas.
             if(File.Exists(appPath + "\\DCS-CMS-Editor-Backup\\DCS-CMS-Editor-UserSettings.txt"))//if the user settings have been set continue
             {
-                if (tabControl_mainTab.SelectedTab == tabPage1)//this is the f18 tab
+                if (tabControl_mainTab.SelectedTab == tabPage1)//this is the f18c tab
                 {
                     if (File.Exists(appPath + "\\DCS-CMS-Editor-Backup\\F18C Backup\\CMDS_ALE47.lua"))
                     {
@@ -279,7 +314,7 @@ namespace DCSF18ALE47Programmer
                     }
                     
                 }
-                else if (tabControl_mainTab.SelectedTab == tabPage2)
+                else if (tabControl_mainTab.SelectedTab == tabPage2)//f16c cms page
                 {
                     if (File.Exists(appPath + "\\DCS-CMS-Editor-Backup\\F16C Backup\\CMDS_ALE47.lua"))
                     {
@@ -306,12 +341,36 @@ namespace DCSF18ALE47Programmer
                     }
                     */
                 }
-                else if (tabControl_mainTab.SelectedTab == tabPage4)//a10 cms page
+                else if (tabControl_mainTab.SelectedTab == tabPage4)//a10c cms page
                 {
                     if (File.Exists(appPath + "\\DCS-CMS-Editor-Backup\\A10C Backup\\AN_ALE40V_params.lua"))
                     {
                         loadLocation = (appPath + "\\DCS-CMS-Editor-Backup\\A10C Backup\\AN_ALE40V_params.lua");
                         loadLua_A10C_CMS();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Backup file not found. Please select your DCS.exe and export to generate a backup file.");
+                    }
+                }
+                else if (tabControl_mainTab.SelectedTab == tabPage7)//av8b cms page
+                {
+                    if (File.Exists(appPath + "\\DCS-CMS-Editor-Backup\\AV8B Backup\\EW_Dispensers_init.lua"))
+                    {
+                        loadLocation = (appPath + "\\DCS-CMS-Editor-Backup\\AV8B Backup\\EW_Dispensers_init.lua");
+                        loadLua_AV8B_CMS();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Backup file not found. Please select your DCS.exe and export to generate a backup file.");
+                    }
+                }
+                else if (tabControl_mainTab.SelectedTab == tabPage8)//m2000c cms page
+                {
+                    if (File.Exists(appPath + "\\DCS-CMS-Editor-Backup\\M2000C Backup\\SPIRALE.lua"))
+                    {
+                        loadLocation = (appPath + "\\DCS-CMS-Editor-Backup\\M2000C Backup\\SPIRALE.lua");
+                        loadLua_M2000C_CMS();
                     }
                     else
                     {
@@ -890,7 +949,7 @@ namespace DCSF18ALE47Programmer
 
 
 
-        private void loadLua_F16C()//TODO: do this like the loadLua_F18 method============================================
+        private void loadLua_F16C()//do this like the loadLua_F18 method============================================
         {
             //find the lua file
            
@@ -2902,6 +2961,686 @@ namespace DCSF18ALE47Programmer
 
         }
 
+
+        private void loadLua_AV8B_CMS()
+        {
+            //TODO: Code this like the others
+
+            //find the lua file
+            string CountermeasureFileString_AV8B = loadLocation;
+            //load the text into a string
+            string CountermeasureFileStringText_AV8B = File.ReadAllText(CountermeasureFileString_AV8B);
+
+            //Get all of the values
+            
+            int AV8B_ALL_CHAFF_BQTY_getIndexStart = CountermeasureFileStringText_AV8B.IndexOf("EW_ALL_CHAFF_BQTY =") + 19;//'19' because that is actually when the start of the number we want is located compared to the start of the index
+            int AV8B_ALL_CHAFF_BQTY_getIndexEnd = CountermeasureFileStringText_AV8B.IndexOf(";", AV8B_ALL_CHAFF_BQTY_getIndexStart);
+            string AV8B_ALL_CHAFF_BQTY_amount = CountermeasureFileStringText_AV8B.Substring(AV8B_ALL_CHAFF_BQTY_getIndexStart, AV8B_ALL_CHAFF_BQTY_getIndexEnd - AV8B_ALL_CHAFF_BQTY_getIndexStart);
+
+            //MessageBox.Show("|" + AV8B_ALL_CHAFF_BQTY_amount + "|");
+            
+            int AV8B_ALL_CHAFF_BINT_getIndexStart = CountermeasureFileStringText_AV8B.IndexOf("EW_ALL_CHAFF_BINT =") + 19;//'19' because that is actually when the start of the number we want is located compared to the start of the index
+            int AV8B_ALL_CHAFF_BINT_getIndexEnd = CountermeasureFileStringText_AV8B.IndexOf(";", AV8B_ALL_CHAFF_BINT_getIndexStart);
+            string AV8B_ALL_CHAFF_BINT_amount = CountermeasureFileStringText_AV8B.Substring(AV8B_ALL_CHAFF_BINT_getIndexStart, AV8B_ALL_CHAFF_BINT_getIndexEnd - AV8B_ALL_CHAFF_BINT_getIndexStart);
+
+            int AV8B_ALL_CHAFF_SQTY_getIndexStart = CountermeasureFileStringText_AV8B.IndexOf("EW_ALL_CHAFF_SQTY =") + 19;//'19' because that is actually when the start of the number we want is located compared to the start of the index
+            int AV8B_ALL_CHAFF_SQTY_getIndexEnd = CountermeasureFileStringText_AV8B.IndexOf(";", AV8B_ALL_CHAFF_SQTY_getIndexStart);
+            string AV8B_ALL_CHAFF_SQTY_amount = CountermeasureFileStringText_AV8B.Substring(AV8B_ALL_CHAFF_SQTY_getIndexStart, AV8B_ALL_CHAFF_SQTY_getIndexEnd - AV8B_ALL_CHAFF_SQTY_getIndexStart);
+
+
+            int AV8B_ALL_CHAFF_SINT_getIndexStart = CountermeasureFileStringText_AV8B.IndexOf("EW_ALL_CHAFF_SINT =") + 19;//'19' because that is actually when the start of the number we want is located compared to the start of the index
+            int AV8B_ALL_CHAFF_SINT_getIndexEnd = CountermeasureFileStringText_AV8B.IndexOf(";", AV8B_ALL_CHAFF_SINT_getIndexStart);
+            string AV8B_ALL_CHAFF_SINT_amount = CountermeasureFileStringText_AV8B.Substring(AV8B_ALL_CHAFF_SINT_getIndexStart, AV8B_ALL_CHAFF_SINT_getIndexEnd - AV8B_ALL_CHAFF_SINT_getIndexStart);
+
+
+            int AV8B_ALL_FLARES_SQTY_getIndexStart = CountermeasureFileStringText_AV8B.IndexOf("EW_ALL_FLARES_SQTY =") + 20;//'19' because that is actually when the start of the number we want is located compared to the start of the index
+            int AV8B_ALL_FLARES_SQTY_getIndexEnd = CountermeasureFileStringText_AV8B.IndexOf(";", AV8B_ALL_FLARES_SQTY_getIndexStart);
+            string AV8B_ALL_FLARES_SQTY_amount = CountermeasureFileStringText_AV8B.Substring(AV8B_ALL_FLARES_SQTY_getIndexStart, AV8B_ALL_FLARES_SQTY_getIndexEnd - AV8B_ALL_FLARES_SQTY_getIndexStart);
+
+
+            int AV8B_ALL_FLARES_SINT_getIndexStart = CountermeasureFileStringText_AV8B.IndexOf("EW_ALL_FLARES_SINT =") + 20;//'19' because that is actually when the start of the number we want is located compared to the start of the index
+            int AV8B_ALL_FLARES_SINT_getIndexEnd = CountermeasureFileStringText_AV8B.IndexOf(";", AV8B_ALL_FLARES_SINT_getIndexStart);
+            string AV8B_ALL_FLARES_SINT_amount = CountermeasureFileStringText_AV8B.Substring(AV8B_ALL_FLARES_SINT_getIndexStart, AV8B_ALL_FLARES_SINT_getIndexEnd - AV8B_ALL_FLARES_SINT_getIndexStart);
+
+
+            int AV8B_CHAFF_BQTY_getIndexStart = CountermeasureFileStringText_AV8B.IndexOf("EW_CHAFF_BQTY =") + 15;//'19' because that is actually when the start of the number we want is located compared to the start of the index
+            int AV8B_CHAFF_BQTY_getIndexEnd = CountermeasureFileStringText_AV8B.IndexOf(";", AV8B_CHAFF_BQTY_getIndexStart);
+            string AV8B_CHAFF_BQTY_amount = CountermeasureFileStringText_AV8B.Substring(AV8B_CHAFF_BQTY_getIndexStart, AV8B_CHAFF_BQTY_getIndexEnd - AV8B_CHAFF_BQTY_getIndexStart);
+
+
+            int AV8B_CHAFF_BINT_getIndexStart = CountermeasureFileStringText_AV8B.IndexOf("EW_CHAFF_BINT =") + 15;//'19' because that is actually when the start of the number we want is located compared to the start of the index
+            int AV8B_CHAFF_BINT_getIndexEnd = CountermeasureFileStringText_AV8B.IndexOf(";", AV8B_CHAFF_BINT_getIndexStart);
+            string AV8B_CHAFF_BINT_amount = CountermeasureFileStringText_AV8B.Substring(AV8B_CHAFF_BINT_getIndexStart, AV8B_CHAFF_BINT_getIndexEnd - AV8B_CHAFF_BINT_getIndexStart);
+
+
+            int AV8B_CHAFF_SQTY_getIndexStart = CountermeasureFileStringText_AV8B.IndexOf("EW_CHAFF_SQTY =") + 15;//'19' because that is actually when the start of the number we want is located compared to the start of the index
+            int AV8B_CHAFF_SQTY_getIndexEnd = CountermeasureFileStringText_AV8B.IndexOf(";", AV8B_CHAFF_SQTY_getIndexStart);
+            string AV8B_CHAFF_SQTY_amount = CountermeasureFileStringText_AV8B.Substring(AV8B_CHAFF_SQTY_getIndexStart, AV8B_CHAFF_SQTY_getIndexEnd - AV8B_CHAFF_SQTY_getIndexStart);
+
+
+            int AV8B_CHAFF_SINT_getIndexStart = CountermeasureFileStringText_AV8B.IndexOf("EW_CHAFF_SINT =") + 15;//'19' because that is actually when the start of the number we want is located compared to the start of the index
+            int AV8B_CHAFF_SINT_getIndexEnd = CountermeasureFileStringText_AV8B.IndexOf(";", AV8B_CHAFF_SINT_getIndexStart);
+            string AV8B_CHAFF_SINT_amount = CountermeasureFileStringText_AV8B.Substring(AV8B_CHAFF_SINT_getIndexStart, AV8B_CHAFF_SINT_getIndexEnd - AV8B_CHAFF_SINT_getIndexStart);
+
+
+            int AV8B_FLARES_SQTY_getIndexStart = CountermeasureFileStringText_AV8B.IndexOf("EW_FLARES_SQTY =") + 16;//'19' because that is actually when the start of the number we want is located compared to the start of the index
+            int AV8B_FLARES_SQTY_getIndexEnd = CountermeasureFileStringText_AV8B.IndexOf(";", AV8B_FLARES_SQTY_getIndexStart);
+            string AV8B_FLARES_SQTY_amount = CountermeasureFileStringText_AV8B.Substring(AV8B_FLARES_SQTY_getIndexStart, AV8B_FLARES_SQTY_getIndexEnd - AV8B_FLARES_SQTY_getIndexStart);
+
+            int AV8B_FLARES_SINT_getIndexStart = CountermeasureFileStringText_AV8B.IndexOf("EW_FLARES_SINT =") + 16;//'19' because that is actually when the start of the number we want is located compared to the start of the index
+            int AV8B_FLARES_SINT_getIndexEnd = CountermeasureFileStringText_AV8B.IndexOf(";", AV8B_FLARES_SINT_getIndexStart);
+            string AV8B_FLARES_SINT_amount = CountermeasureFileStringText_AV8B.Substring(AV8B_FLARES_SINT_getIndexStart, AV8B_FLARES_SINT_getIndexEnd - AV8B_FLARES_SINT_getIndexStart);
+            
+            
+            //entering the information into the winForm
+            //first intry
+            if (AV8B_ALL_CHAFF_BQTY_amount.Contains("-1"))//if the value in the file is -1
+            {
+                //numericUpDown_AV8B_ALL_CHAFF_BQTY.Value = numericUpDown_AV8B_ALL_CHAFF_BQTY.Minimum;//make the number the lowest it can go
+                numericUpDown_AV8B_ALL_CHAFF_BQTY.Enabled = false;//disable the use of the numbers
+                checkBox_AV8B_ALL_chaffBquantity_continuous.Checked = true;//check the box
+                checkBox_AV8B_ALL_chaffBquantity_random.Checked = false;//uncheck this box
+                //MessageBox.Show("Value detected as -1");
+            }
+            else if (AV8B_ALL_CHAFF_BQTY_amount.Contains("-2"))
+            {
+                //numericUpDown_AV8B_ALL_CHAFF_BQTY.Value = numericUpDown_AV8B_ALL_CHAFF_BQTY.Minimum;
+                numericUpDown_AV8B_ALL_CHAFF_BQTY.Enabled = false;
+                checkBox_AV8B_ALL_chaffBquantity_continuous.Checked = false;
+                checkBox_AV8B_ALL_chaffBquantity_random.Checked = true;
+                //MessageBox.Show("Value detected as -2");
+            }
+            else
+            {
+                checkBox_AV8B_ALL_chaffBquantity_continuous.Checked = false;
+                checkBox_AV8B_ALL_chaffBquantity_random.Checked = false;
+                numericUpDown_AV8B_ALL_CHAFF_BQTY.Enabled = true;
+                try { numericUpDown_AV8B_ALL_CHAFF_BQTY.Value = int.Parse(AV8B_ALL_CHAFF_BQTY_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_AV8B_ALL_CHAFF_BQTY.Value = numericUpDown_AV8B_ALL_CHAFF_BQTY.Minimum; }
+                //MessageBox.Show("Value detected as an actual number");
+            }
+
+
+
+            //second entry
+            if (AV8B_ALL_CHAFF_BINT_amount.Contains("-2"))
+            {
+                //numericUpDown_AV8B_ALL_CHAFF_BINT.Value = numericUpDown_AV8B_ALL_CHAFF_BINT.Minimum;
+                numericUpDown_AV8B_ALL_CHAFF_BINT.Enabled = false;
+                checkBox_AV8B_ALL_chaffBinterval_random.Checked = true;
+            }
+            else
+            {
+                numericUpDown_AV8B_ALL_CHAFF_BINT.Enabled = true;
+                checkBox_AV8B_ALL_chaffBinterval_random.Checked = false;
+                try { numericUpDown_AV8B_ALL_CHAFF_BINT.Value = Decimal.Parse(AV8B_ALL_CHAFF_BINT_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_AV8B_ALL_CHAFF_BINT.Value = numericUpDown_AV8B_ALL_CHAFF_BINT.Minimum; }
+            }
+
+            try { numericUpDown_AV8B_ALL_CHAFF_SQTY.Value = int.Parse(AV8B_ALL_CHAFF_SQTY_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_AV8B_ALL_CHAFF_SQTY.Value = numericUpDown_AV8B_ALL_CHAFF_SQTY.Minimum; }
+
+            try { numericUpDown_AV8B_ALL_CHAFF_SINT.Value = int.Parse(AV8B_ALL_CHAFF_SINT_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_AV8B_ALL_CHAFF_SINT.Value = numericUpDown_AV8B_ALL_CHAFF_SINT.Minimum; }
+
+            try { numericUpDown_AV8B_ALL_FLARES_SQTY.Value = int.Parse(AV8B_ALL_FLARES_SQTY_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_AV8B_ALL_FLARES_SQTY.Value = numericUpDown_AV8B_ALL_FLARES_SQTY.Minimum; }
+
+            try { numericUpDown_AV8B_ALL_FLARES_SINT.Value = int.Parse(AV8B_ALL_FLARES_SINT_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_AV8B_ALL_FLARES_SINT.Value = numericUpDown_AV8B_ALL_FLARES_SINT.Minimum; }
+
+            //chaff only
+
+            if (AV8B_CHAFF_BQTY_amount.Contains("-1"))//if the value in the file is -1
+            {
+                //numericUpDown_AV8B_CHAFF_BQTY.Value = numericUpDown_AV8B_CHAFF_BQTY.Minimum;//make the number the lowest it can go
+                numericUpDown_AV8B_CHAFF_BQTY.Enabled = false;//disable the use of the numbers
+                checkBox_AV8B_chaffBquantity_continuous.Checked = true;//check the box
+                checkBox_AV8B_chaffBquantity_random.Checked = false;//uncheck this box
+
+            }
+            else if (AV8B_CHAFF_BQTY_amount.Contains("-2"))
+            {
+                //numericUpDown_AV8B_CHAFF_BQTY.Value = numericUpDown_AV8B_CHAFF_BQTY.Minimum;
+                numericUpDown_AV8B_CHAFF_BQTY.Enabled = false;
+                checkBox_AV8B_chaffBquantity_continuous.Checked = false;
+                checkBox_AV8B_chaffBquantity_random.Checked = true;
+
+            }
+            else
+            {
+                checkBox_AV8B_chaffBquantity_continuous.Checked = false;
+                checkBox_AV8B_chaffBquantity_random.Checked = false;
+                numericUpDown_AV8B_CHAFF_BQTY.Enabled = true;
+                try { numericUpDown_AV8B_CHAFF_BQTY.Value = int.Parse(AV8B_CHAFF_BQTY_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_AV8B_CHAFF_BQTY.Value = numericUpDown_AV8B_CHAFF_BQTY.Minimum; }
+            }
+
+
+
+            //second entry
+            if (AV8B_CHAFF_BQTY_amount.Contains("-2"))
+            {
+                //numericUpDown_AV8B_CHAFF_BINT.Value = numericUpDown_AV8B_CHAFF_BINT.Minimum;
+                numericUpDown_AV8B_CHAFF_BINT.Enabled = false;
+                checkBox_AV8B_chaffBinterval_random.Checked = true;
+            }
+            else
+            {
+                numericUpDown_AV8B_CHAFF_BINT.Enabled = true;
+              
+                checkBox_AV8B_chaffBinterval_random.Checked = false;
+                try { numericUpDown_AV8B_CHAFF_BINT.Value = Decimal.Parse(AV8B_CHAFF_BINT_amount); }
+                catch (ArgumentOutOfRangeException) { numericUpDown_AV8B_CHAFF_BINT.Value = numericUpDown_AV8B_CHAFF_BINT.Minimum; }
+            }
+
+
+            try { numericUpDown_AV8B_CHAFF_SQTY.Value = int.Parse(AV8B_CHAFF_SQTY_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_AV8B_CHAFF_SQTY.Value = numericUpDown_AV8B_CHAFF_SQTY.Minimum; }
+
+            try { numericUpDown_AV8B_CHAFF_SINT.Value = int.Parse(AV8B_CHAFF_SINT_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_AV8B_CHAFF_SINT.Value = numericUpDown_AV8B_CHAFF_SINT.Minimum; }
+
+
+            //flares only
+            try { numericUpDown_AV8B_FLARES_SQTY.Value = int.Parse(AV8B_FLARES_SQTY_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_AV8B_FLARES_SQTY.Value = numericUpDown_AV8B_FLARES_SQTY.Minimum; }
+
+            try { numericUpDown_AV8B_FLARES_SINT.Value = int.Parse(AV8B_FLARES_SINT_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_AV8B_FLARES_SINT.Value = numericUpDown_AV8B_FLARES_SINT.Minimum; }
+        }
+
+        private void loadLua_M2000C_CMS()
+        {
+        
+
+            //find the lua file
+            string CountermeasureFileString_M2000C = loadLocation;
+            //load the text into a string
+            string CountermeasureFileStringText_M2000C = File.ReadAllText(CountermeasureFileString_M2000C);
+
+
+            //program1
+            int M2000C_program1_chaff_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[1][\"chaff\"]  =") + 23;
+            int M2000C_program1_chaff_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program1_chaff_getIndexStart);
+            string M2000C_program1_chaff_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program1_chaff_getIndexStart, M2000C_program1_chaff_getIndexEnd - M2000C_program1_chaff_getIndexStart);
+            try { numericUpDown_M2000C_program1_chaff.Value = int.Parse(M2000C_program1_chaff_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program1_chaff.Value = numericUpDown_M2000C_program1_chaff.Minimum; }
+
+            int M2000C_program1_flare_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[1][\"flare\"]  =") + 23;
+            int M2000C_program1_flare_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program1_flare_getIndexStart);
+            string M2000C_program1_flare_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program1_flare_getIndexStart, M2000C_program1_flare_getIndexEnd - M2000C_program1_flare_getIndexStart);
+            try { numericUpDown_M2000C_program1_flare.Value = int.Parse(M2000C_program1_flare_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program1_flare.Value = numericUpDown_M2000C_program1_flare.Minimum; }
+
+            //this needs parcing to show the correct data
+            //https://docs.microsoft.com/en-us/dotnet/api/system.string.insert?view=netcore-3.1
+            int M2000C_program1_interval_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[1][\"intv\"]   =") + 23;
+            int M2000C_program1_interval_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program1_interval_getIndexStart);//there is an error that inserts an extra return line in the result of the string
+            string M2000C_program1_interval_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program1_interval_getIndexStart, M2000C_program1_interval_getIndexEnd - M2000C_program1_interval_getIndexStart);
+            M2000C_program1_interval_amount = Decimal.Parse(M2000C_program1_interval_amount).ToString();//takes out some junk
+            M2000C_program1_interval_amount = M2000C_program1_interval_amount.Insert(0, "00");//puts two zeros in the front to prevent an error when we try to add the decimal in the next step
+            M2000C_program1_interval_amount = M2000C_program1_interval_amount.Insert(M2000C_program1_interval_amount.Length - 2, ".");//this converts the number from Razbam format to proper decimal format
+            M2000C_program1_interval_amount = Decimal.Parse(M2000C_program1_interval_amount).ToString();//takes away any more extra stuff
+            //MessageBox.Show("|" + M2000C_program1_interval_amount + "|");//debugging
+            //MessageBox.Show(M2000C_program1_interval_amount);//debugging
+            try { numericUpDown_M2000C_program1_interval.Value = Decimal.Parse(M2000C_program1_interval_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program1_interval.Value = numericUpDown_M2000C_program1_interval.Minimum; }
+
+            int M2000C_program1_cycle_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[1][\"cycle\"]  =") + 23;
+            int M2000C_program1_cycle_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program1_cycle_getIndexStart);
+            string M2000C_program1_cycle_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program1_cycle_getIndexStart, M2000C_program1_cycle_getIndexEnd - M2000C_program1_cycle_getIndexStart);
+            try { numericUpDown_M2000C_program1_cycle.Value = int.Parse(M2000C_program1_cycle_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program1_cycle.Value = numericUpDown_M2000C_program1_cycle.Minimum; }
+
+            //this needs parcing to show the correct data
+            int M2000C_program1_cycleInterval_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[1][\"c_intv\"] =") + 23;
+            int M2000C_program1_cycleInterval_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program1_cycleInterval_getIndexStart);
+            string M2000C_program1_cycleInterval_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program1_cycleInterval_getIndexStart, M2000C_program1_cycleInterval_getIndexEnd - M2000C_program1_cycleInterval_getIndexStart);
+            //M2000C_program1_cycleInterval_amount = M2000C_program1_cycleInterval_amount.Insert(M2000C_program1_cycleInterval_amount.Length - 3, ".");
+            //MessageBox.Show(M2000C_program1_cycleInterval_amount);//debugging
+            M2000C_program1_cycleInterval_amount = Decimal.Parse(M2000C_program1_cycleInterval_amount).ToString();//takes out some junk
+            M2000C_program1_cycleInterval_amount = M2000C_program1_cycleInterval_amount.Insert(0, "00");//puts two zeros in the front to prevent an error when we try to add the decimal in the next step
+            M2000C_program1_cycleInterval_amount = M2000C_program1_cycleInterval_amount.Insert(M2000C_program1_cycleInterval_amount.Length - 2, ".");//this converts the number from Razbam format to proper decimal format
+            M2000C_program1_cycleInterval_amount = Decimal.Parse(M2000C_program1_cycleInterval_amount).ToString();//takes away any more extra stuff
+            //MessageBox.Show(M2000C_program1_cycleInterval_amount);//debugging
+            try { numericUpDown_M2000C_program1_cycleInterval.Value = Decimal.Parse(M2000C_program1_cycleInterval_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program1_cycleInterval.Value = numericUpDown_M2000C_program1_cycleInterval.Minimum; }
+
+
+
+            //program2
+            int M2000C_program2_chaff_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[2][\"chaff\"]  =") + 23;
+            int M2000C_program2_chaff_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program2_chaff_getIndexStart);
+            string M2000C_program2_chaff_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program2_chaff_getIndexStart, M2000C_program2_chaff_getIndexEnd - M2000C_program2_chaff_getIndexStart);
+            try { numericUpDown_M2000C_program2_chaff.Value = int.Parse(M2000C_program2_chaff_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program2_chaff.Value = numericUpDown_M2000C_program2_chaff.Minimum; }
+
+            int M2000C_program2_flare_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[2][\"flare\"]  =") + 23;
+            int M2000C_program2_flare_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program2_flare_getIndexStart);
+            string M2000C_program2_flare_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program2_flare_getIndexStart, M2000C_program2_flare_getIndexEnd - M2000C_program2_flare_getIndexStart);
+            try { numericUpDown_M2000C_program2_flare.Value = int.Parse(M2000C_program2_flare_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program2_flare.Value = numericUpDown_M2000C_program2_flare.Minimum; }
+
+            //this needs parcing to show the correct data
+            int M2000C_program2_interval_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[2][\"intv\"]   =") + 23;
+            int M2000C_program2_interval_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program2_interval_getIndexStart);//there is an error that inserts an extra return line in the result of the string
+            string M2000C_program2_interval_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program2_interval_getIndexStart, M2000C_program2_interval_getIndexEnd - M2000C_program2_interval_getIndexStart);
+            M2000C_program2_interval_amount = Decimal.Parse(M2000C_program2_interval_amount).ToString();//takes out some junk
+            M2000C_program2_interval_amount = M2000C_program2_interval_amount.Insert(0, "00");//puts two zeros in the front to prevent an error when we try to add the decimal in the next step
+            M2000C_program2_interval_amount = M2000C_program2_interval_amount.Insert(M2000C_program2_interval_amount.Length - 2, ".");//this converts the number from Razbam format to proper decimal format
+            M2000C_program2_interval_amount = Decimal.Parse(M2000C_program2_interval_amount).ToString();//takes away any more extra stuff
+            //MessageBox.Show("|" + M2000C_program2_interval_amount + "|");//debugging
+            //MessageBox.Show(M2000C_program2_interval_amount);//debugging
+            try { numericUpDown_M2000C_program2_interval.Value = Decimal.Parse(M2000C_program2_interval_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program2_interval.Value = numericUpDown_M2000C_program2_interval.Minimum; }
+
+            int M2000C_program2_cycle_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[2][\"cycle\"]  =") + 23;
+            int M2000C_program2_cycle_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program2_cycle_getIndexStart);
+            string M2000C_program2_cycle_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program2_cycle_getIndexStart, M2000C_program2_cycle_getIndexEnd - M2000C_program2_cycle_getIndexStart);
+            try { numericUpDown_M2000C_program2_cycle.Value = int.Parse(M2000C_program2_cycle_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program2_cycle.Value = numericUpDown_M2000C_program2_cycle.Minimum; }
+
+            //this needs parcing to show the correct data
+            int M2000C_program2_cycleInterval_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[2][\"c_intv\"] =") + 23;
+            int M2000C_program2_cycleInterval_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program2_cycleInterval_getIndexStart);
+            string M2000C_program2_cycleInterval_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program2_cycleInterval_getIndexStart, M2000C_program2_cycleInterval_getIndexEnd - M2000C_program2_cycleInterval_getIndexStart);
+            //M2000C_program2_cycleInterval_amount = M2000C_program2_cycleInterval_amount.Insert(M2000C_program2_cycleInterval_amount.Length - 3, ".");
+            //MessageBox.Show(M2000C_program2_cycleInterval_amount);//debugging
+            M2000C_program2_cycleInterval_amount = Decimal.Parse(M2000C_program2_cycleInterval_amount).ToString();//takes out some junk
+            M2000C_program2_cycleInterval_amount = M2000C_program2_cycleInterval_amount.Insert(0, "00");//puts two zeros in the front to prevent an error when we try to add the decimal in the next step
+            M2000C_program2_cycleInterval_amount = M2000C_program2_cycleInterval_amount.Insert(M2000C_program2_cycleInterval_amount.Length - 2, ".");//this converts the number from Razbam format to proper decimal format
+            M2000C_program2_cycleInterval_amount = Decimal.Parse(M2000C_program2_cycleInterval_amount).ToString();//takes away any more extra stuff
+            //MessageBox.Show(M2000C_program2_cycleInterval_amount);//debugging
+            try { numericUpDown_M2000C_program2_cycleInterval.Value = Decimal.Parse(M2000C_program2_cycleInterval_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program2_cycleInterval.Value = numericUpDown_M2000C_program2_cycleInterval.Minimum; }
+
+
+            //program3
+            int M2000C_program3_chaff_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[3][\"chaff\"]  =") + 23;
+            int M2000C_program3_chaff_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program3_chaff_getIndexStart);
+            string M2000C_program3_chaff_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program3_chaff_getIndexStart, M2000C_program3_chaff_getIndexEnd - M2000C_program3_chaff_getIndexStart);
+            try { numericUpDown_M2000C_program3_chaff.Value = int.Parse(M2000C_program3_chaff_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program3_chaff.Value = numericUpDown_M2000C_program3_chaff.Minimum; }
+
+            int M2000C_program3_flare_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[3][\"flare\"]  =") + 23;
+            int M2000C_program3_flare_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program3_flare_getIndexStart);
+            string M2000C_program3_flare_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program3_flare_getIndexStart, M2000C_program3_flare_getIndexEnd - M2000C_program3_flare_getIndexStart);
+            try { numericUpDown_M2000C_program3_flare.Value = int.Parse(M2000C_program3_flare_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program3_flare.Value = numericUpDown_M2000C_program3_flare.Minimum; }
+
+            //this needs parcing to show the correct data
+            int M2000C_program3_interval_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[3][\"intv\"]   =") + 23;
+            int M2000C_program3_interval_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program3_interval_getIndexStart);//there is an error that inserts an extra return line in the result of the string
+            string M2000C_program3_interval_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program3_interval_getIndexStart, M2000C_program3_interval_getIndexEnd - M2000C_program3_interval_getIndexStart);
+            M2000C_program3_interval_amount = Decimal.Parse(M2000C_program3_interval_amount).ToString();//takes out some junk
+            M2000C_program3_interval_amount = M2000C_program3_interval_amount.Insert(0, "00");//puts two zeros in the front to prevent an error when we try to add the decimal in the next step
+            M2000C_program3_interval_amount = M2000C_program3_interval_amount.Insert(M2000C_program3_interval_amount.Length - 2, ".");//this converts the number from Razbam format to proper decimal format
+            M2000C_program3_interval_amount = Decimal.Parse(M2000C_program3_interval_amount).ToString();//takes away any more extra stuff
+            //MessageBox.Show("|" + M2000C_program3_interval_amount + "|");//debugging
+            //MessageBox.Show(M2000C_program3_interval_amount);//debugging
+            try { numericUpDown_M2000C_program3_interval.Value = Decimal.Parse(M2000C_program3_interval_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program3_interval.Value = numericUpDown_M2000C_program3_interval.Minimum; }
+
+            int M2000C_program3_cycle_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[3][\"cycle\"]  =") + 23;
+            int M2000C_program3_cycle_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program3_cycle_getIndexStart);
+            string M2000C_program3_cycle_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program3_cycle_getIndexStart, M2000C_program3_cycle_getIndexEnd - M2000C_program3_cycle_getIndexStart);
+            try { numericUpDown_M2000C_program3_cycle.Value = int.Parse(M2000C_program3_cycle_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program3_cycle.Value = numericUpDown_M2000C_program3_cycle.Minimum; }
+
+            //this needs parcing to show the correct data
+            int M2000C_program3_cycleInterval_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[3][\"c_intv\"] =") + 23;
+            int M2000C_program3_cycleInterval_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program3_cycleInterval_getIndexStart);
+            string M2000C_program3_cycleInterval_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program3_cycleInterval_getIndexStart, M2000C_program3_cycleInterval_getIndexEnd - M2000C_program3_cycleInterval_getIndexStart);
+            //M2000C_program3_cycleInterval_amount = M2000C_program3_cycleInterval_amount.Insert(M2000C_program3_cycleInterval_amount.Length - 3, ".");
+            //MessageBox.Show(M2000C_program3_cycleInterval_amount);//debugging
+            M2000C_program3_cycleInterval_amount = Decimal.Parse(M2000C_program3_cycleInterval_amount).ToString();//takes out some junk
+            M2000C_program3_cycleInterval_amount = M2000C_program3_cycleInterval_amount.Insert(0, "00");//puts two zeros in the front to prevent an error when we try to add the decimal in the next step
+            M2000C_program3_cycleInterval_amount = M2000C_program3_cycleInterval_amount.Insert(M2000C_program3_cycleInterval_amount.Length - 2, ".");//this converts the number from Razbam format to proper decimal format
+            M2000C_program3_cycleInterval_amount = Decimal.Parse(M2000C_program3_cycleInterval_amount).ToString();//takes away any more extra stuff
+            //MessageBox.Show(M2000C_program3_cycleInterval_amount);//debugging
+            try { numericUpDown_M2000C_program3_cycleInterval.Value = Decimal.Parse(M2000C_program3_cycleInterval_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program3_cycleInterval.Value = numericUpDown_M2000C_program3_cycleInterval.Minimum; }
+
+
+            //program4
+            int M2000C_program4_chaff_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[4][\"chaff\"]  =") + 23;
+            int M2000C_program4_chaff_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program4_chaff_getIndexStart);
+            string M2000C_program4_chaff_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program4_chaff_getIndexStart, M2000C_program4_chaff_getIndexEnd - M2000C_program4_chaff_getIndexStart);
+            try { numericUpDown_M2000C_program4_chaff.Value = int.Parse(M2000C_program4_chaff_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program4_chaff.Value = numericUpDown_M2000C_program4_chaff.Minimum; }
+
+            int M2000C_program4_flare_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[4][\"flare\"]  =") + 23;
+            int M2000C_program4_flare_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program4_flare_getIndexStart);
+            string M2000C_program4_flare_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program4_flare_getIndexStart, M2000C_program4_flare_getIndexEnd - M2000C_program4_flare_getIndexStart);
+            try { numericUpDown_M2000C_program4_flare.Value = int.Parse(M2000C_program4_flare_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program4_flare.Value = numericUpDown_M2000C_program4_flare.Minimum; }
+
+            //this needs parcing to show the correct data
+            int M2000C_program4_interval_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[4][\"intv\"]   =") + 23;
+            int M2000C_program4_interval_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program4_interval_getIndexStart);//there is an error that inserts an extra return line in the result of the string
+            string M2000C_program4_interval_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program4_interval_getIndexStart, M2000C_program4_interval_getIndexEnd - M2000C_program4_interval_getIndexStart);
+            M2000C_program4_interval_amount = Decimal.Parse(M2000C_program4_interval_amount).ToString();//takes out some junk
+            M2000C_program4_interval_amount = M2000C_program4_interval_amount.Insert(0, "00");//puts two zeros in the front to prevent an error when we try to add the decimal in the next step
+            M2000C_program4_interval_amount = M2000C_program4_interval_amount.Insert(M2000C_program4_interval_amount.Length - 2, ".");//this converts the number from Razbam format to proper decimal format
+            M2000C_program4_interval_amount = Decimal.Parse(M2000C_program4_interval_amount).ToString();//takes away any more extra stuff
+            //MessageBox.Show("|" + M2000C_program4_interval_amount + "|");//debugging
+            //MessageBox.Show(M2000C_program4_interval_amount);//debugging
+            try { numericUpDown_M2000C_program4_interval.Value = Decimal.Parse(M2000C_program4_interval_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program4_interval.Value = numericUpDown_M2000C_program4_interval.Minimum; }
+
+            int M2000C_program4_cycle_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[4][\"cycle\"]  =") + 23;
+            int M2000C_program4_cycle_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program4_cycle_getIndexStart);
+            string M2000C_program4_cycle_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program4_cycle_getIndexStart, M2000C_program4_cycle_getIndexEnd - M2000C_program4_cycle_getIndexStart);
+            try { numericUpDown_M2000C_program4_cycle.Value = int.Parse(M2000C_program4_cycle_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program4_cycle.Value = numericUpDown_M2000C_program4_cycle.Minimum; }
+
+            //this needs parcing to show the correct data
+            int M2000C_program4_cycleInterval_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[4][\"c_intv\"] =") + 23;
+            int M2000C_program4_cycleInterval_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program4_cycleInterval_getIndexStart);
+            string M2000C_program4_cycleInterval_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program4_cycleInterval_getIndexStart, M2000C_program4_cycleInterval_getIndexEnd - M2000C_program4_cycleInterval_getIndexStart);
+            //M2000C_program4_cycleInterval_amount = M2000C_program4_cycleInterval_amount.Insert(M2000C_program4_cycleInterval_amount.Length - 3, ".");
+            //MessageBox.Show(M2000C_program4_cycleInterval_amount);//debugging
+            M2000C_program4_cycleInterval_amount = Decimal.Parse(M2000C_program4_cycleInterval_amount).ToString();//takes out some junk
+            M2000C_program4_cycleInterval_amount = M2000C_program4_cycleInterval_amount.Insert(0, "00");//puts two zeros in the front to prevent an error when we try to add the decimal in the next step
+            M2000C_program4_cycleInterval_amount = M2000C_program4_cycleInterval_amount.Insert(M2000C_program4_cycleInterval_amount.Length - 2, ".");//this converts the number from Razbam format to proper decimal format
+            M2000C_program4_cycleInterval_amount = Decimal.Parse(M2000C_program4_cycleInterval_amount).ToString();//takes away any more extra stuff
+            //MessageBox.Show(M2000C_program4_cycleInterval_amount);//debugging
+            try { numericUpDown_M2000C_program4_cycleInterval.Value = Decimal.Parse(M2000C_program4_cycleInterval_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program4_cycleInterval.Value = numericUpDown_M2000C_program4_cycleInterval.Minimum; }
+
+
+            //program5
+            int M2000C_program5_chaff_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[5][\"chaff\"]  =") + 23;
+            int M2000C_program5_chaff_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program5_chaff_getIndexStart);
+            string M2000C_program5_chaff_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program5_chaff_getIndexStart, M2000C_program5_chaff_getIndexEnd - M2000C_program5_chaff_getIndexStart);
+            try { numericUpDown_M2000C_program5_chaff.Value = int.Parse(M2000C_program5_chaff_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program5_chaff.Value = numericUpDown_M2000C_program5_chaff.Minimum; }
+
+            int M2000C_program5_flare_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[5][\"flare\"]  =") + 23;
+            int M2000C_program5_flare_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program5_flare_getIndexStart);
+            string M2000C_program5_flare_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program5_flare_getIndexStart, M2000C_program5_flare_getIndexEnd - M2000C_program5_flare_getIndexStart);
+            try { numericUpDown_M2000C_program5_flare.Value = int.Parse(M2000C_program5_flare_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program5_flare.Value = numericUpDown_M2000C_program5_flare.Minimum; }
+
+            //this needs parcing to show the correct data
+            int M2000C_program5_interval_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[5][\"intv\"]   =") + 23;
+            int M2000C_program5_interval_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program5_interval_getIndexStart);//there is an error that inserts an extra return line in the result of the string
+            string M2000C_program5_interval_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program5_interval_getIndexStart, M2000C_program5_interval_getIndexEnd - M2000C_program5_interval_getIndexStart);
+            M2000C_program5_interval_amount = Decimal.Parse(M2000C_program5_interval_amount).ToString();//takes out some junk
+            M2000C_program5_interval_amount = M2000C_program5_interval_amount.Insert(0, "00");//puts two zeros in the front to prevent an error when we try to add the decimal in the next step
+            M2000C_program5_interval_amount = M2000C_program5_interval_amount.Insert(M2000C_program5_interval_amount.Length - 2, ".");//this converts the number from Razbam format to proper decimal format
+            M2000C_program5_interval_amount = Decimal.Parse(M2000C_program5_interval_amount).ToString();//takes away any more extra stuff
+            //MessageBox.Show("|" + M2000C_program5_interval_amount + "|");//debugging
+            //MessageBox.Show(M2000C_program5_interval_amount);//debugging
+            try { numericUpDown_M2000C_program5_interval.Value = Decimal.Parse(M2000C_program5_interval_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program5_interval.Value = numericUpDown_M2000C_program5_interval.Minimum; }
+
+            int M2000C_program5_cycle_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[5][\"cycle\"]  =") + 23;
+            int M2000C_program5_cycle_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program5_cycle_getIndexStart);
+            string M2000C_program5_cycle_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program5_cycle_getIndexStart, M2000C_program5_cycle_getIndexEnd - M2000C_program5_cycle_getIndexStart);
+            try { numericUpDown_M2000C_program5_cycle.Value = int.Parse(M2000C_program5_cycle_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program5_cycle.Value = numericUpDown_M2000C_program5_cycle.Minimum; }
+
+            //this needs parcing to show the correct data
+            int M2000C_program5_cycleInterval_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[5][\"c_intv\"] =") + 23;
+            int M2000C_program5_cycleInterval_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program5_cycleInterval_getIndexStart);
+            string M2000C_program5_cycleInterval_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program5_cycleInterval_getIndexStart, M2000C_program5_cycleInterval_getIndexEnd - M2000C_program5_cycleInterval_getIndexStart);
+            //M2000C_program5_cycleInterval_amount = M2000C_program5_cycleInterval_amount.Insert(M2000C_program5_cycleInterval_amount.Length - 3, ".");
+            //MessageBox.Show(M2000C_program5_cycleInterval_amount);//debugging
+            M2000C_program5_cycleInterval_amount = Decimal.Parse(M2000C_program5_cycleInterval_amount).ToString();//takes out some junk
+            M2000C_program5_cycleInterval_amount = M2000C_program5_cycleInterval_amount.Insert(0, "00");//puts two zeros in the front to prevent an error when we try to add the decimal in the next step
+            M2000C_program5_cycleInterval_amount = M2000C_program5_cycleInterval_amount.Insert(M2000C_program5_cycleInterval_amount.Length - 2, ".");//this converts the number from Razbam format to proper decimal format
+            M2000C_program5_cycleInterval_amount = Decimal.Parse(M2000C_program5_cycleInterval_amount).ToString();//takes away any more extra stuff
+            //MessageBox.Show(M2000C_program5_cycleInterval_amount);//debugging
+            try { numericUpDown_M2000C_program5_cycleInterval.Value = Decimal.Parse(M2000C_program5_cycleInterval_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program5_cycleInterval.Value = numericUpDown_M2000C_program5_cycleInterval.Minimum; }
+
+
+
+
+            //program6
+            int M2000C_program6_chaff_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[6][\"chaff\"]  =") + 23;
+            int M2000C_program6_chaff_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program6_chaff_getIndexStart);
+            string M2000C_program6_chaff_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program6_chaff_getIndexStart, M2000C_program6_chaff_getIndexEnd - M2000C_program6_chaff_getIndexStart);
+            try { numericUpDown_M2000C_program6_chaff.Value = int.Parse(M2000C_program6_chaff_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program6_chaff.Value = numericUpDown_M2000C_program6_chaff.Minimum; }
+
+            int M2000C_program6_flare_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[6][\"flare\"]  =") + 23;
+            int M2000C_program6_flare_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program6_flare_getIndexStart);
+            string M2000C_program6_flare_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program6_flare_getIndexStart, M2000C_program6_flare_getIndexEnd - M2000C_program6_flare_getIndexStart);
+            try { numericUpDown_M2000C_program6_flare.Value = int.Parse(M2000C_program6_flare_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program6_flare.Value = numericUpDown_M2000C_program6_flare.Minimum; }
+
+            //this needs parcing to show the correct data
+            int M2000C_program6_interval_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[6][\"intv\"]   =") + 23;
+            int M2000C_program6_interval_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program6_interval_getIndexStart);//there is an error that inserts an extra return line in the result of the string
+            string M2000C_program6_interval_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program6_interval_getIndexStart, M2000C_program6_interval_getIndexEnd - M2000C_program6_interval_getIndexStart);
+            M2000C_program6_interval_amount = Decimal.Parse(M2000C_program6_interval_amount).ToString();//takes out some junk
+            M2000C_program6_interval_amount = M2000C_program6_interval_amount.Insert(0, "00");//puts two zeros in the front to prevent an error when we try to add the decimal in the next step
+            M2000C_program6_interval_amount = M2000C_program6_interval_amount.Insert(M2000C_program6_interval_amount.Length - 2, ".");//this converts the number from Razbam format to proper decimal format
+            M2000C_program6_interval_amount = Decimal.Parse(M2000C_program6_interval_amount).ToString();//takes away any more extra stuff
+            //MessageBox.Show("|" + M2000C_program6_interval_amount + "|");//debugging
+            //MessageBox.Show(M2000C_program6_interval_amount);//debugging
+            try { numericUpDown_M2000C_program6_interval.Value = Decimal.Parse(M2000C_program6_interval_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program6_interval.Value = numericUpDown_M2000C_program6_interval.Minimum; }
+
+            int M2000C_program6_cycle_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[6][\"cycle\"]  =") + 23;
+            int M2000C_program6_cycle_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program6_cycle_getIndexStart);
+            string M2000C_program6_cycle_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program6_cycle_getIndexStart, M2000C_program6_cycle_getIndexEnd - M2000C_program6_cycle_getIndexStart);
+            try { numericUpDown_M2000C_program6_cycle.Value = int.Parse(M2000C_program6_cycle_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program6_cycle.Value = numericUpDown_M2000C_program6_cycle.Minimum; }
+
+            //this needs parcing to show the correct data
+            int M2000C_program6_cycleInterval_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[6][\"c_intv\"] =") + 23;
+            int M2000C_program6_cycleInterval_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program6_cycleInterval_getIndexStart);
+            string M2000C_program6_cycleInterval_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program6_cycleInterval_getIndexStart, M2000C_program6_cycleInterval_getIndexEnd - M2000C_program6_cycleInterval_getIndexStart);
+            //M2000C_program6_cycleInterval_amount = M2000C_program6_cycleInterval_amount.Insert(M2000C_program6_cycleInterval_amount.Length - 3, ".");
+            //MessageBox.Show(M2000C_program6_cycleInterval_amount);//debugging
+            M2000C_program6_cycleInterval_amount = Decimal.Parse(M2000C_program6_cycleInterval_amount).ToString();//takes out some junk
+            M2000C_program6_cycleInterval_amount = M2000C_program6_cycleInterval_amount.Insert(0, "00");//puts two zeros in the front to prevent an error when we try to add the decimal in the next step
+            M2000C_program6_cycleInterval_amount = M2000C_program6_cycleInterval_amount.Insert(M2000C_program6_cycleInterval_amount.Length - 2, ".");//this converts the number from Razbam format to proper decimal format
+            M2000C_program6_cycleInterval_amount = Decimal.Parse(M2000C_program6_cycleInterval_amount).ToString();//takes away any more extra stuff
+            //MessageBox.Show(M2000C_program6_cycleInterval_amount);//debugging
+            try { numericUpDown_M2000C_program6_cycleInterval.Value = Decimal.Parse(M2000C_program6_cycleInterval_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program6_cycleInterval.Value = numericUpDown_M2000C_program6_cycleInterval.Minimum; }
+
+
+
+
+            //program7
+            int M2000C_program7_chaff_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[7][\"chaff\"]  =") + 23;
+            int M2000C_program7_chaff_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program7_chaff_getIndexStart);
+            string M2000C_program7_chaff_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program7_chaff_getIndexStart, M2000C_program7_chaff_getIndexEnd - M2000C_program7_chaff_getIndexStart);
+            try { numericUpDown_M2000C_program7_chaff.Value = int.Parse(M2000C_program7_chaff_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program7_chaff.Value = numericUpDown_M2000C_program7_chaff.Minimum; }
+
+            int M2000C_program7_flare_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[7][\"flare\"]  =") + 23;
+            int M2000C_program7_flare_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program7_flare_getIndexStart);
+            string M2000C_program7_flare_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program7_flare_getIndexStart, M2000C_program7_flare_getIndexEnd - M2000C_program7_flare_getIndexStart);
+            try { numericUpDown_M2000C_program7_flare.Value = int.Parse(M2000C_program7_flare_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program7_flare.Value = numericUpDown_M2000C_program7_flare.Minimum; }
+
+            //this needs parcing to show the correct data
+            int M2000C_program7_interval_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[7][\"intv\"]   =") + 23;
+            int M2000C_program7_interval_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program7_interval_getIndexStart);//there is an error that inserts an extra return line in the result of the string
+            string M2000C_program7_interval_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program7_interval_getIndexStart, M2000C_program7_interval_getIndexEnd - M2000C_program7_interval_getIndexStart);
+            M2000C_program7_interval_amount = Decimal.Parse(M2000C_program7_interval_amount).ToString();//takes out some junk
+            M2000C_program7_interval_amount = M2000C_program7_interval_amount.Insert(0, "00");//puts two zeros in the front to prevent an error when we try to add the decimal in the next step
+            M2000C_program7_interval_amount = M2000C_program7_interval_amount.Insert(M2000C_program7_interval_amount.Length - 2, ".");//this converts the number from Razbam format to proper decimal format
+            M2000C_program7_interval_amount = Decimal.Parse(M2000C_program7_interval_amount).ToString();//takes away any more extra stuff
+            //MessageBox.Show("|" + M2000C_program7_interval_amount + "|");//debugging
+            //MessageBox.Show(M2000C_program7_interval_amount);//debugging
+            try { numericUpDown_M2000C_program7_interval.Value = Decimal.Parse(M2000C_program7_interval_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program7_interval.Value = numericUpDown_M2000C_program7_interval.Minimum; }
+
+            int M2000C_program7_cycle_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[7][\"cycle\"]  =") + 23;
+            int M2000C_program7_cycle_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program7_cycle_getIndexStart);
+            string M2000C_program7_cycle_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program7_cycle_getIndexStart, M2000C_program7_cycle_getIndexEnd - M2000C_program7_cycle_getIndexStart);
+            try { numericUpDown_M2000C_program7_cycle.Value = int.Parse(M2000C_program7_cycle_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program7_cycle.Value = numericUpDown_M2000C_program7_cycle.Minimum; }
+
+            //this needs parcing to show the correct data
+            int M2000C_program7_cycleInterval_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[7][\"c_intv\"] =") + 23;
+            int M2000C_program7_cycleInterval_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program7_cycleInterval_getIndexStart);
+            string M2000C_program7_cycleInterval_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program7_cycleInterval_getIndexStart, M2000C_program7_cycleInterval_getIndexEnd - M2000C_program7_cycleInterval_getIndexStart);
+            //M2000C_program7_cycleInterval_amount = M2000C_program7_cycleInterval_amount.Insert(M2000C_program7_cycleInterval_amount.Length - 3, ".");
+            //MessageBox.Show(M2000C_program7_cycleInterval_amount);//debugging
+            M2000C_program7_cycleInterval_amount = Decimal.Parse(M2000C_program7_cycleInterval_amount).ToString();//takes out some junk
+            M2000C_program7_cycleInterval_amount = M2000C_program7_cycleInterval_amount.Insert(0, "00");//puts two zeros in the front to prevent an error when we try to add the decimal in the next step
+            M2000C_program7_cycleInterval_amount = M2000C_program7_cycleInterval_amount.Insert(M2000C_program7_cycleInterval_amount.Length - 2, ".");//this converts the number from Razbam format to proper decimal format
+            M2000C_program7_cycleInterval_amount = Decimal.Parse(M2000C_program7_cycleInterval_amount).ToString();//takes away any more extra stuff
+            //MessageBox.Show(M2000C_program7_cycleInterval_amount);//debugging
+            try { numericUpDown_M2000C_program7_cycleInterval.Value = Decimal.Parse(M2000C_program7_cycleInterval_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program7_cycleInterval.Value = numericUpDown_M2000C_program7_cycleInterval.Minimum; }
+
+
+
+            //program8
+            int M2000C_program8_chaff_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[8][\"chaff\"]  =") + 23;
+            int M2000C_program8_chaff_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program8_chaff_getIndexStart);
+            string M2000C_program8_chaff_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program8_chaff_getIndexStart, M2000C_program8_chaff_getIndexEnd - M2000C_program8_chaff_getIndexStart);
+            try { numericUpDown_M2000C_program8_chaff.Value = int.Parse(M2000C_program8_chaff_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program8_chaff.Value = numericUpDown_M2000C_program8_chaff.Minimum; }
+
+            int M2000C_program8_flare_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[8][\"flare\"]  =") + 23;
+            int M2000C_program8_flare_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program8_flare_getIndexStart);
+            string M2000C_program8_flare_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program8_flare_getIndexStart, M2000C_program8_flare_getIndexEnd - M2000C_program8_flare_getIndexStart);
+            try { numericUpDown_M2000C_program8_flare.Value = int.Parse(M2000C_program8_flare_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program8_flare.Value = numericUpDown_M2000C_program8_flare.Minimum; }
+
+            //this needs parcing to show the correct data
+            int M2000C_program8_interval_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[8][\"intv\"]   =") + 23;
+            int M2000C_program8_interval_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program8_interval_getIndexStart);//there is an error that inserts an extra return line in the result of the string
+            string M2000C_program8_interval_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program8_interval_getIndexStart, M2000C_program8_interval_getIndexEnd - M2000C_program8_interval_getIndexStart);
+            M2000C_program8_interval_amount = Decimal.Parse(M2000C_program8_interval_amount).ToString();//takes out some junk
+            M2000C_program8_interval_amount = M2000C_program8_interval_amount.Insert(0, "00");//puts two zeros in the front to prevent an error when we try to add the decimal in the next step
+            M2000C_program8_interval_amount = M2000C_program8_interval_amount.Insert(M2000C_program8_interval_amount.Length - 2, ".");//this converts the number from Razbam format to proper decimal format
+            M2000C_program8_interval_amount = Decimal.Parse(M2000C_program8_interval_amount).ToString();//takes away any more extra stuff
+            //MessageBox.Show("|" + M2000C_program8_interval_amount + "|");//debugging
+            //MessageBox.Show(M2000C_program8_interval_amount);//debugging
+            try { numericUpDown_M2000C_program8_interval.Value = Decimal.Parse(M2000C_program8_interval_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program8_interval.Value = numericUpDown_M2000C_program8_interval.Minimum; }
+
+            int M2000C_program8_cycle_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[8][\"cycle\"]  =") + 23;
+            int M2000C_program8_cycle_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program8_cycle_getIndexStart);
+            string M2000C_program8_cycle_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program8_cycle_getIndexStart, M2000C_program8_cycle_getIndexEnd - M2000C_program8_cycle_getIndexStart);
+            try { numericUpDown_M2000C_program8_cycle.Value = int.Parse(M2000C_program8_cycle_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program8_cycle.Value = numericUpDown_M2000C_program8_cycle.Minimum; }
+
+            //this needs parcing to show the correct data
+            int M2000C_program8_cycleInterval_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[8][\"c_intv\"] =") + 23;
+            int M2000C_program8_cycleInterval_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program8_cycleInterval_getIndexStart);
+            string M2000C_program8_cycleInterval_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program8_cycleInterval_getIndexStart, M2000C_program8_cycleInterval_getIndexEnd - M2000C_program8_cycleInterval_getIndexStart);
+            //M2000C_program8_cycleInterval_amount = M2000C_program8_cycleInterval_amount.Insert(M2000C_program8_cycleInterval_amount.Length - 3, ".");
+            //MessageBox.Show(M2000C_program8_cycleInterval_amount);//debugging
+            M2000C_program8_cycleInterval_amount = Decimal.Parse(M2000C_program8_cycleInterval_amount).ToString();//takes out some junk
+            M2000C_program8_cycleInterval_amount = M2000C_program8_cycleInterval_amount.Insert(0, "00");//puts two zeros in the front to prevent an error when we try to add the decimal in the next step
+            M2000C_program8_cycleInterval_amount = M2000C_program8_cycleInterval_amount.Insert(M2000C_program8_cycleInterval_amount.Length - 2, ".");//this converts the number from Razbam format to proper decimal format
+            M2000C_program8_cycleInterval_amount = Decimal.Parse(M2000C_program8_cycleInterval_amount).ToString();//takes away any more extra stuff
+            //MessageBox.Show(M2000C_program8_cycleInterval_amount);//debugging
+            try { numericUpDown_M2000C_program8_cycleInterval.Value = Decimal.Parse(M2000C_program8_cycleInterval_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program8_cycleInterval.Value = numericUpDown_M2000C_program8_cycleInterval.Minimum; }
+
+
+
+            //program9
+            int M2000C_program9_chaff_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[9][\"chaff\"]  =") + 23;
+            int M2000C_program9_chaff_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program9_chaff_getIndexStart);
+            string M2000C_program9_chaff_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program9_chaff_getIndexStart, M2000C_program9_chaff_getIndexEnd - M2000C_program9_chaff_getIndexStart);
+            try { numericUpDown_M2000C_program9_chaff.Value = int.Parse(M2000C_program9_chaff_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program9_chaff.Value = numericUpDown_M2000C_program9_chaff.Minimum; }
+
+            int M2000C_program9_flare_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[9][\"flare\"]  =") + 23;
+            int M2000C_program9_flare_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program9_flare_getIndexStart);
+            string M2000C_program9_flare_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program9_flare_getIndexStart, M2000C_program9_flare_getIndexEnd - M2000C_program9_flare_getIndexStart);
+            try { numericUpDown_M2000C_program9_flare.Value = int.Parse(M2000C_program9_flare_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program9_flare.Value = numericUpDown_M2000C_program9_flare.Minimum; }
+
+            //this needs parcing to show the correct data
+            int M2000C_program9_interval_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[9][\"intv\"]   =") + 23;
+            int M2000C_program9_interval_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program9_interval_getIndexStart);//there is an error that inserts an extra return line in the result of the string
+            string M2000C_program9_interval_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program9_interval_getIndexStart, M2000C_program9_interval_getIndexEnd - M2000C_program9_interval_getIndexStart);
+            M2000C_program9_interval_amount = Decimal.Parse(M2000C_program9_interval_amount).ToString();//takes out some junk
+            M2000C_program9_interval_amount = M2000C_program9_interval_amount.Insert(0, "00");//puts two zeros in the front to prevent an error when we try to add the decimal in the next step
+            M2000C_program9_interval_amount = M2000C_program9_interval_amount.Insert(M2000C_program9_interval_amount.Length - 2, ".");//this converts the number from Razbam format to proper decimal format
+            M2000C_program9_interval_amount = Decimal.Parse(M2000C_program9_interval_amount).ToString();//takes away any more extra stuff
+            //MessageBox.Show("|" + M2000C_program9_interval_amount + "|");//debugging
+            //MessageBox.Show(M2000C_program9_interval_amount);//debugging
+            try { numericUpDown_M2000C_program9_interval.Value = Decimal.Parse(M2000C_program9_interval_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program9_interval.Value = numericUpDown_M2000C_program9_interval.Minimum; }
+
+            int M2000C_program9_cycle_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[9][\"cycle\"]  =") + 23;
+            int M2000C_program9_cycle_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program9_cycle_getIndexStart);
+            string M2000C_program9_cycle_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program9_cycle_getIndexStart, M2000C_program9_cycle_getIndexEnd - M2000C_program9_cycle_getIndexStart);
+            try { numericUpDown_M2000C_program9_cycle.Value = int.Parse(M2000C_program9_cycle_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program9_cycle.Value = numericUpDown_M2000C_program9_cycle.Minimum; }
+
+            //this needs parcing to show the correct data
+            int M2000C_program9_cycleInterval_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[9][\"c_intv\"] =") + 23;
+            int M2000C_program9_cycleInterval_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program9_cycleInterval_getIndexStart);
+            string M2000C_program9_cycleInterval_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program9_cycleInterval_getIndexStart, M2000C_program9_cycleInterval_getIndexEnd - M2000C_program9_cycleInterval_getIndexStart);
+            //M2000C_program9_cycleInterval_amount = M2000C_program9_cycleInterval_amount.Insert(M2000C_program9_cycleInterval_amount.Length - 3, ".");
+            //MessageBox.Show(M2000C_program9_cycleInterval_amount);//debugging
+            M2000C_program9_cycleInterval_amount = Decimal.Parse(M2000C_program9_cycleInterval_amount).ToString();//takes out some junk
+            M2000C_program9_cycleInterval_amount = M2000C_program9_cycleInterval_amount.Insert(0, "00");//puts two zeros in the front to prevent an error when we try to add the decimal in the next step
+            M2000C_program9_cycleInterval_amount = M2000C_program9_cycleInterval_amount.Insert(M2000C_program9_cycleInterval_amount.Length - 2, ".");//this converts the number from Razbam format to proper decimal format
+            M2000C_program9_cycleInterval_amount = Decimal.Parse(M2000C_program9_cycleInterval_amount).ToString();//takes away any more extra stuff
+            //MessageBox.Show(M2000C_program9_cycleInterval_amount);//debugging
+            try { numericUpDown_M2000C_program9_cycleInterval.Value = Decimal.Parse(M2000C_program9_cycleInterval_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program9_cycleInterval.Value = numericUpDown_M2000C_program9_cycleInterval.Minimum; }
+
+
+
+            //program10
+            int M2000C_program10_chaff_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[10][\"chaff\"]  =") + 24;//added 1 digit because the number '10' has 1 more digit than the number '9'
+            int M2000C_program10_chaff_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program10_chaff_getIndexStart);
+            string M2000C_program10_chaff_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program10_chaff_getIndexStart, M2000C_program10_chaff_getIndexEnd - M2000C_program10_chaff_getIndexStart);
+            try { numericUpDown_M2000C_program10_chaff.Value = int.Parse(M2000C_program10_chaff_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program10_chaff.Value = numericUpDown_M2000C_program10_chaff.Minimum; }
+
+            int M2000C_program10_flare_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[10][\"flare\"]  =") + 24;
+            int M2000C_program10_flare_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program10_flare_getIndexStart);
+            string M2000C_program10_flare_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program10_flare_getIndexStart, M2000C_program10_flare_getIndexEnd - M2000C_program10_flare_getIndexStart);
+            try { numericUpDown_M2000C_program10_flare.Value = int.Parse(M2000C_program10_flare_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program10_flare.Value = numericUpDown_M2000C_program10_flare.Minimum; }
+
+            //this needs parcing to show the correct data
+            int M2000C_program10_interval_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[10][\"intv\"]   =") + 24;
+            int M2000C_program10_interval_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program10_interval_getIndexStart);//there is an error that inserts an extra return line in the result of the string
+            string M2000C_program10_interval_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program10_interval_getIndexStart, M2000C_program10_interval_getIndexEnd - M2000C_program10_interval_getIndexStart);
+            M2000C_program10_interval_amount = Decimal.Parse(M2000C_program10_interval_amount).ToString();//takes out some junk
+            M2000C_program10_interval_amount = M2000C_program10_interval_amount.Insert(0, "00");//puts two zeros in the front to prevent an error when we try to add the decimal in the next step
+            M2000C_program10_interval_amount = M2000C_program10_interval_amount.Insert(M2000C_program10_interval_amount.Length - 2, ".");//this converts the number from Razbam format to proper decimal format
+            M2000C_program10_interval_amount = Decimal.Parse(M2000C_program10_interval_amount).ToString();//takes away any more extra stuff
+            //MessageBox.Show("|" + M2000C_program10_interval_amount + "|");//debugging
+            //MessageBox.Show(M2000C_program10_interval_amount);//debugging
+            try { numericUpDown_M2000C_program10_interval.Value = Decimal.Parse(M2000C_program10_interval_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program10_interval.Value = numericUpDown_M2000C_program10_interval.Minimum; }
+
+            int M2000C_program10_cycle_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[10][\"cycle\"]  =") + 24;
+            int M2000C_program10_cycle_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program10_cycle_getIndexStart);
+            string M2000C_program10_cycle_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program10_cycle_getIndexStart, M2000C_program10_cycle_getIndexEnd - M2000C_program10_cycle_getIndexStart);
+            try { numericUpDown_M2000C_program10_cycle.Value = int.Parse(M2000C_program10_cycle_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program10_cycle.Value = numericUpDown_M2000C_program10_cycle.Minimum; }
+
+            //this needs parcing to show the correct data
+            int M2000C_program10_cycleInterval_getIndexStart = CountermeasureFileStringText_M2000C.IndexOf("programs[10][\"c_intv\"] =") + 24;
+            int M2000C_program10_cycleInterval_getIndexEnd = CountermeasureFileStringText_M2000C.IndexOf("\n", M2000C_program10_cycleInterval_getIndexStart);
+            string M2000C_program10_cycleInterval_amount = CountermeasureFileStringText_M2000C.Substring(M2000C_program10_cycleInterval_getIndexStart, M2000C_program10_cycleInterval_getIndexEnd - M2000C_program10_cycleInterval_getIndexStart);
+            //M2000C_program10_cycleInterval_amount = M2000C_program10_cycleInterval_amount.Insert(M2000C_program10_cycleInterval_amount.Length - 3, ".");
+            //MessageBox.Show(M2000C_program10_cycleInterval_amount);//debugging
+            M2000C_program10_cycleInterval_amount = Decimal.Parse(M2000C_program10_cycleInterval_amount).ToString();//takes out some junk
+            M2000C_program10_cycleInterval_amount = M2000C_program10_cycleInterval_amount.Insert(0, "00");//puts two zeros in the front to prevent an error when we try to add the decimal in the next step
+            M2000C_program10_cycleInterval_amount = M2000C_program10_cycleInterval_amount.Insert(M2000C_program10_cycleInterval_amount.Length - 2, ".");//this converts the number from Razbam format to proper decimal format
+            M2000C_program10_cycleInterval_amount = Decimal.Parse(M2000C_program10_cycleInterval_amount).ToString();//takes away any more extra stuff
+            //MessageBox.Show(M2000C_program10_cycleInterval_amount);//debugging
+            try { numericUpDown_M2000C_program10_cycleInterval.Value = Decimal.Parse(M2000C_program10_cycleInterval_amount); }
+            catch (ArgumentOutOfRangeException) { numericUpDown_M2000C_program10_cycleInterval.Value = numericUpDown_M2000C_program10_cycleInterval.Minimum; }
+
+        }
+
+
         private void printLua()
         {
 
@@ -2916,6 +3655,8 @@ namespace DCSF18ALE47Programmer
 
             private void button_export_Click(object sender, EventArgs e)
         {
+      
+
             //determine which tab the user is on to export the correct .lua
             if (tabControl_mainTab.SelectedTab == tabPage1)
             {
@@ -3464,17 +4205,741 @@ namespace DCSF18ALE47Programmer
                 }
                 */
             }
-            else if (tabControl_mainTab.SelectedTab == tabPage4)
+            else if (tabControl_mainTab.SelectedTab == tabPage4)//a10c page
             {
                 button_export_Click_A10C();
-
-                
             }
+            else if (tabControl_mainTab.SelectedTab == tabPage7)//m2kpage
+            {
+                button_export_Click_AV8B();
+            }
+            else if (tabControl_mainTab.SelectedTab == tabPage8)//m2kpage
+            {
+                button_export_Click_M2000C();
+            }
+        }
+
+        private void button_export_Click_AV8B()
+        {
+            //TODO: Write export code here
+            //make sure that the special values are accounted for
+
+            string AV8B_ALL_chaffBquantity_exportValue;//have to do this because of the special conditions it can be exported as
+            if (checkBox_AV8B_ALL_chaffBquantity_continuous.Checked == true)
+            {
+                AV8B_ALL_chaffBquantity_exportValue = "-1";
+            }
+            else if (checkBox_AV8B_ALL_chaffBquantity_random.Checked == true)
+            {
+                AV8B_ALL_chaffBquantity_exportValue = "-2";
+            }
+            else
+            {
+                AV8B_ALL_chaffBquantity_exportValue = numericUpDown_AV8B_ALL_CHAFF_BQTY.Value.ToString();
+            }
+
+            string AV8B_ALL_chaffBinterval_exportValue;//have to do this because of the special conditions it can be exported as
+            if (checkBox_AV8B_ALL_chaffBinterval_random.Checked == true)
+            {
+                AV8B_ALL_chaffBinterval_exportValue = "-2";
+            }
+            else
+            {
+                AV8B_ALL_chaffBinterval_exportValue = numericUpDown_AV8B_ALL_CHAFF_BINT.Value.ToString();
+            }
+
+            string AV8B_chaffBquantity_exportValue;//have to do this because of the special conditions it can be exported as
+            if (checkBox_AV8B_chaffBquantity_continuous.Checked == true)
+            {
+                AV8B_chaffBquantity_exportValue = "-1";
+            }
+            else if (checkBox_AV8B_chaffBquantity_random.Checked == true)
+            {
+                AV8B_chaffBquantity_exportValue = "-2";
+            }
+            else
+            {
+                AV8B_chaffBquantity_exportValue = numericUpDown_AV8B_CHAFF_BQTY.Value.ToString();
+            }
+
+            string AV8B_chaffBinterval_exportValue;//have to do this because of the special conditions it can be exported as
+            if (checkBox_AV8B_chaffBinterval_random.Checked == true)
+            {
+                AV8B_chaffBinterval_exportValue = "-2";
+            }
+            else
+            {
+                AV8B_chaffBinterval_exportValue = numericUpDown_AV8B_CHAFF_BINT.Value.ToString();
+            }
+
+
+            string[] luaExportString = {
+                "local gettext = require(\"i_18n\")",
+                "_ = gettext.translate",
+                "",
+                "-- Chaff Burst Values",
+                "-- BQTY: 1 to 15. Special values: -1 = Continuous (will use ALL chaff); -2 = Random (will dispense between 1 to 6 chaff)",
+                "-- BINT: 0.1 to 1.5 seconds. Special values: -2 = Random (will set an interval between 0.1 and 0.4 seconds)",
+                "",
+                "-- Chaff Salvo Values",
+                "-- SQTY: 1 to 15.",
+                "-- SINT: 1 to 15 seconds.",
+                "",
+                "-- Flare Salvo Values",
+                "-- SQTY: 1 to 15.",
+                "-- SINT: 1 to 15 seconds.",
+                "",
+                "--All Expendables",
+                "EW_ALL_CHAFF_BQTY = " + AV8B_ALL_chaffBquantity_exportValue + ";",
+                "EW_ALL_CHAFF_BINT = " + AV8B_ALL_chaffBinterval_exportValue + ";",
+                "EW_ALL_CHAFF_SQTY = " + numericUpDown_AV8B_ALL_CHAFF_SQTY.Value + ";",
+                "EW_ALL_CHAFF_SINT = " + numericUpDown_AV8B_ALL_CHAFF_SINT.Value + ";",
+                "EW_ALL_FLARES_SQTY = " + numericUpDown_AV8B_ALL_FLARES_SQTY.Value + ";",
+                "EW_ALL_FLARES_SINT = " + numericUpDown_AV8B_ALL_FLARES_SINT.Value + ";",
+                "",
+                "--Chaff Only",
+                "EW_CHAFF_BQTY = " + AV8B_chaffBquantity_exportValue + ";",
+                "EW_CHAFF_BINT = " + AV8B_chaffBinterval_exportValue + ";",
+                "EW_CHAFF_SQTY = " + numericUpDown_AV8B_CHAFF_SQTY.Value + ";",
+                "EW_CHAFF_SINT = " + numericUpDown_AV8B_CHAFF_SINT.Value + ";",
+                "",
+                "--Flares Only",
+                "EW_FLARES_SQTY = " + numericUpDown_AV8B_FLARES_SQTY.Value + ";",
+                "EW_FLARES_SINT = " + numericUpDown_AV8B_FLARES_SINT.Value + ";",
+                "",
+                "need_to_be_closed = true",
+                "",
+
+                 "--Exported via Bailey's CMS Editor on " + System.DateTime.Now};
+
+            if (isExportEnabled == true)
+            {
+                System.IO.Directory.CreateDirectory(cmdsLua_AV8B_FolderPath);
+                System.IO.File.WriteAllLines(cmdsLua_AV8B_fullPath, luaExportString);
+
+                //https://stackoverflow.com/questions/5920882/file-move-does-not-work-file-already-exists
+                System.IO.Directory.CreateDirectory(exportPathBackup_AV8B);
+                if (File.Exists(exportPathBackup_AV8B + "\\EW_Dispensers_init.lua"))
+                {
+                    File.Delete(exportPathBackup_AV8B + "\\EW_Dispensers_init.lua");
+                }
+                System.IO.File.WriteAllLines(exportPathBackup_AV8B + "\\EW_Dispensers_init.lua", luaExportString);
+                File.Move(exportPathBackup_AV8B + "\\EW_Dispensers_init.lua", Path.ChangeExtension(exportPathBackup_AV8B + "\\EW_Dispensers_init.lua", ".lua"));
+
+
+                MessageBox.Show("Your AV8B CMDS file was exported to \r\n" + cmdsLua_AV8B_fullPath + "\r\n\r\n"
+                    + "Your AV8B CMDS backup file was exported to \r\n" + exportPathBackup_AV8B + "\\SPIRALE.lua");
+            }
+            else
+            {
+                MessageBox.Show("Please select your DCS.exe Location");
+            }
+        }
+
+        private void button_export_Click_M2000C()
+        {
+            //https://www.geeksforgeeks.org/c-sharp-how-to-use-strings-in-switch-statement/
+            //https://stackoverflow.com/questions/848472/how-add-or-in-switch-statements
+            //switch statements are necessarry because what the user sees on the GUI is not what we can put into the .lua export
+            /*
+            string M2000C_program1_interval = numericUpDown_M2000C_program1_interval.Value.ToString();
+            switch (M2000C_program1_interval)
+            {
+                case "0.00":
+                    M2000C_program1_interval = "0";
+                    break;
+                case "0.25":
+                    M2000C_program1_interval = "25";
+                    break;
+                case "0.50":
+                    M2000C_program1_interval = "50";
+                    break;
+                case "0.75":
+                    M2000C_program1_interval = "75";
+                    break;
+                default:
+                    M2000C_program1_interval = "0";
+                    break;
+            }
+
+            string M2000C_program1_cycleInterval = numericUpDown_M2000C_program1_cycleInterval.Value.ToString();
+            switch (M2000C_program1_cycleInterval)
+            {
+                case "0.00":
+                    M2000C_program1_cycleInterval = "0";
+                    break;
+                case "1.00":
+                case "1":
+                    M2000C_program1_cycleInterval = "100";
+                    break;
+                case "2.00":
+                case "2":
+                    M2000C_program1_cycleInterval = "200";
+                    break;
+                default:
+                    M2000C_program1_cycleInterval = "0";
+                    break;
+            }
+
+
+            string M2000C_program2_interval = numericUpDown_M2000C_program2_interval.Value.ToString();
+            switch (M2000C_program2_interval)
+            {
+                case "0.00":
+                    M2000C_program2_interval = "0";
+                    break;
+                case "0.25":
+                    M2000C_program2_interval = "25";
+                    break;
+                case "0.50":
+                    M2000C_program2_interval = "50";
+                    break;
+                case "0.75":
+                    M2000C_program2_interval = "75";
+                    break;
+                default:
+                    M2000C_program2_interval = "0";
+                    break;
+            }
+
+            string M2000C_program2_cycleInterval = numericUpDown_M2000C_program2_cycleInterval.Value.ToString();
+            switch (M2000C_program2_cycleInterval)
+            {
+                case "0.00":
+                    M2000C_program2_cycleInterval = "0";
+                    break;
+                case "1.00":
+                case "1":
+                    M2000C_program2_cycleInterval = "100";
+                    break;
+                case "2.00":
+                case "2":
+                    M2000C_program2_cycleInterval = "200";
+                    break;               
+                default:
+                    M2000C_program2_cycleInterval = "0";
+                    break;
+            }
+            string M2000C_program3_interval = numericUpDown_M2000C_program3_interval.Value.ToString();
+            switch (M2000C_program3_interval)
+            {
+                case "0.00":
+                    M2000C_program3_interval = "0";
+                    break;
+                case "0.25":
+                    M2000C_program3_interval = "25";
+                    break;
+                case "0.50":
+                    M2000C_program3_interval = "50";
+                    break;
+                case "0.75":
+                    M2000C_program3_interval = "75";
+                    break;
+                default:
+                    M2000C_program3_interval = "0";
+                    break;
+            }
+
+            string M2000C_program3_cycleInterval = numericUpDown_M2000C_program3_cycleInterval.Value.ToString();
+            switch (M2000C_program3_cycleInterval)
+            {
+                case "0.00":
+                    M2000C_program3_cycleInterval = "0";
+                    break;
+                case "1.00":
+                case "1":
+                    M2000C_program3_cycleInterval = "100";
+                    break;
+                case "2.00":
+                case "2":
+                    M2000C_program3_cycleInterval = "200";
+                    break;
+                default:
+                    M2000C_program3_cycleInterval = "0";
+                    break;
+            }
+
+
+
+            string M2000C_program4_interval = numericUpDown_M2000C_program4_interval.Value.ToString();
+            switch (M2000C_program4_interval)
+            {
+                case "0.00":
+                    M2000C_program4_interval = "0";
+                    break;
+                case "0.25":
+                    M2000C_program4_interval = "25";
+                    break;
+                case "0.50":
+                    M2000C_program4_interval = "50";
+                    break;
+                case "0.75":
+                    M2000C_program4_interval = "75";
+                    break;
+                default:
+                    M2000C_program4_interval = "0";
+                    break;
+            }
+
+            string M2000C_program4_cycleInterval = numericUpDown_M2000C_program4_cycleInterval.Value.ToString();
+            switch (M2000C_program4_cycleInterval)
+            {
+                case "0.00":
+                    M2000C_program4_cycleInterval = "0";
+                    break;
+                case "1.00":
+                case "1":
+                    M2000C_program4_cycleInterval = "100";
+                    break;
+                case "2.00":
+                case "2":
+                    M2000C_program4_cycleInterval = "200";
+                    break;
+                default:
+                    M2000C_program4_cycleInterval = "0";
+                    break;
+            }
+
+
+
+            string M2000C_program5_interval = numericUpDown_M2000C_program5_interval.Value.ToString();
+            switch (M2000C_program5_interval)
+            {
+                case "0.00":
+                    M2000C_program5_interval = "0";
+                    break;
+                case "0.25":
+                    M2000C_program5_interval = "25";
+                    break;
+                case "0.50":
+                    M2000C_program5_interval = "50";
+                    break;
+                case "0.75":
+                    M2000C_program5_interval = "75";
+                    break;
+                default:
+                    M2000C_program5_interval = "0";
+                    break;
+            }
+
+            string M2000C_program5_cycleInterval = numericUpDown_M2000C_program5_cycleInterval.Value.ToString();
+            switch (M2000C_program5_cycleInterval)
+            {
+                case "0.00":
+                    M2000C_program5_cycleInterval = "0";
+                    break;
+                case "1.00":
+                case "1":
+                    M2000C_program5_cycleInterval = "100";
+                    break;
+                case "2.00":
+                case "2":
+                    M2000C_program5_cycleInterval = "200";
+                    break;
+                default:
+                    M2000C_program5_cycleInterval = "0";
+                    break;
+            }
+
+
+
+            string M2000C_program6_interval = numericUpDown_M2000C_program6_interval.Value.ToString();
+            switch (M2000C_program6_interval)
+            {
+                case "0.00":
+                    M2000C_program6_interval = "0";
+                    break;
+                case "0.25":
+                    M2000C_program6_interval = "25";
+                    break;
+                case "0.50":
+                    M2000C_program6_interval = "50";
+                    break;
+                case "0.75":
+                    M2000C_program6_interval = "75";
+                    break;
+                default:
+                    M2000C_program6_interval = "0";
+                    break;
+            }
+
+            string M2000C_program6_cycleInterval = numericUpDown_M2000C_program6_cycleInterval.Value.ToString();
+            switch (M2000C_program6_cycleInterval)
+            {
+                case "0.00":
+                    M2000C_program6_cycleInterval = "0";
+                    break;
+                case "1.00":
+                case "1":
+                    M2000C_program6_cycleInterval = "100";
+                    break;
+                case "2.00":
+                case "2":
+                    M2000C_program6_cycleInterval = "200";
+                    break;
+                default:
+                    M2000C_program6_cycleInterval = "0";
+                    break;
+            }
+            string M2000C_program7_interval = numericUpDown_M2000C_program7_interval.Value.ToString();
+            switch (M2000C_program7_interval)
+            {
+                case "0.00":
+                    M2000C_program7_interval = "0";
+                    break;
+                case "0.25":
+                    M2000C_program7_interval = "25";
+                    break;
+                case "0.50":
+                    M2000C_program7_interval = "50";
+                    break;
+                case "0.75":
+                    M2000C_program7_interval = "75";
+                    break;
+                default:
+                    M2000C_program7_interval = "0";
+                    break;
+            }
+
+            string M2000C_program7_cycleInterval = numericUpDown_M2000C_program7_cycleInterval.Value.ToString();
+            switch (M2000C_program7_cycleInterval)
+            {
+                case "0.00":
+                    M2000C_program7_cycleInterval = "0";
+                    break;
+                case "1.00":
+                case "1":
+                    M2000C_program7_cycleInterval = "100";
+                    break;
+                case "2.00":
+                case "2":
+                    M2000C_program7_cycleInterval = "200";
+                    break;
+                default:
+                    M2000C_program7_cycleInterval = "0";
+                    break;
+            }
+
+
+
+            string M2000C_program8_interval = numericUpDown_M2000C_program8_interval.Value.ToString();
+            switch (M2000C_program8_interval)
+            {
+                case "0.00":
+                    M2000C_program8_interval = "0";
+                    break;
+                case "0.25":
+                    M2000C_program8_interval = "25";
+                    break;
+                case "0.50":
+                    M2000C_program8_interval = "50";
+                    break;
+                case "0.75":
+                    M2000C_program8_interval = "75";
+                    break;
+                default:
+                    M2000C_program8_interval = "0";
+                    break;
+            }
+
+            string M2000C_program8_cycleInterval = numericUpDown_M2000C_program8_cycleInterval.Value.ToString();
+            switch (M2000C_program8_cycleInterval)
+            {
+                case "0.00":
+                    M2000C_program8_cycleInterval = "0";
+                    break;
+                case "1.00":
+                case "1":
+                    M2000C_program8_cycleInterval = "100";
+                    break;
+                case "2.00":
+                case "2":
+                    M2000C_program8_cycleInterval = "200";
+                    break;
+                default:
+                    M2000C_program8_cycleInterval = "0";
+                    break;
+            }
+
+
+
+            string M2000C_program9_interval = numericUpDown_M2000C_program9_interval.Value.ToString();
+            switch (M2000C_program9_interval)
+            {
+                case "0.00":
+                    M2000C_program9_interval = "0";
+                    break;
+                case "0.25":
+                    M2000C_program9_interval = "25";
+                    break;
+                case "0.50":
+                    M2000C_program9_interval = "50";
+                    break;
+                case "0.75":
+                    M2000C_program9_interval = "75";
+                    break;
+                default:
+                    M2000C_program9_interval = "0";
+                    break;
+            }
+
+            string M2000C_program9_cycleInterval = numericUpDown_M2000C_program9_cycleInterval.Value.ToString();
+            switch (M2000C_program9_cycleInterval)
+            {
+                case "0.00":
+                    M2000C_program9_cycleInterval = "0";
+                    break;
+                case "1.00":
+                case "1":
+                    M2000C_program9_cycleInterval = "100";
+                    break;
+                case "2.00":
+                case "2":
+                    M2000C_program9_cycleInterval = "200";
+                    break;
+                default:
+                    M2000C_program9_cycleInterval = "0";
+                    break;
+            }
+
+
+            string M2000C_program10_interval = numericUpDown_M2000C_program10_interval.Value.ToString();
+            switch (M2000C_program10_interval)
+            {
+                case "0.00":
+                    M2000C_program10_interval = "0";
+                    break;
+                case "0.25":
+                    M2000C_program10_interval = "25";
+                    break;
+                case "0.50":
+                    M2000C_program10_interval = "50";
+                    break;
+                case "0.75":
+                    M2000C_program10_interval = "75";
+                    break;
+                default:
+                    M2000C_program10_interval = "0";
+                    break;
+            }
+
+            string M2000C_program10_cycleInterval = numericUpDown_M2000C_program10_cycleInterval.Value.ToString();
+            switch (M2000C_program10_cycleInterval)
+            {
+                case "0.00":
+                    M2000C_program10_cycleInterval = "0";
+                    break;
+                case "1.00":
+                case "1":
+                    M2000C_program10_cycleInterval = "100";
+                    break;
+                case "2.00":
+                case "2":
+                    M2000C_program10_cycleInterval = "200";
+                    break;
+                default:
+                    M2000C_program10_cycleInterval = "0";
+                    break;
+            }
+            */
+            //https://stackoverflow.com/questions/13769938/decimal-data-type-is-stripping-trailing-zeros-when-they-are-needed-to-display
+            //https://stackoverflow.com/questions/10298940/remove-dot-character-from-a-string-c-sharp
+            //BUG: trivial. exports 0.00 as '00' in the countermeasure .lua. still works though
+            string M2000C_program1_interval = numericUpDown_M2000C_program1_interval.Value.ToString(".00");
+            M2000C_program1_interval = M2000C_program1_interval.Replace(".", string.Empty);
+            string M2000C_program1_cycleInterval = numericUpDown_M2000C_program1_cycleInterval.Value.ToString("0.00");
+            M2000C_program1_cycleInterval = M2000C_program1_cycleInterval.Replace(".", string.Empty);
+            //MessageBox.Show(M2000C_program1_cycleInterval);
+
+            //decimal M2000C_program1_interval_dec = numericUpDown_M2000C_program1_interval.Value;
+            //decimal M2000C_program1_cycleInterval_dec = numericUpDown_M2000C_program1_cycleInterval.Value;
+            //MessageBox.Show(M2000C_program1_cycleInterval_dec.ToString());
+
+            
+           
+            //M2000C_program1_interval = M2000C_program1_interval.Substring(2);
+            //M2000C_program1_cycleInterval = M2000C_program1_cycleInterval.Substring(2);
+            //MessageBox.Show(M2000C_program1_cycleInterval);
+
+            //TODO: this is broken
+            //MessageBox.Show(M2000C_program1_cycleInterval);
+
+
+
+
+
+            string M2000C_program2_interval = numericUpDown_M2000C_program2_interval.Value.ToString(".00");
+            M2000C_program2_interval = M2000C_program2_interval.Replace(".", string.Empty);
+            string M2000C_program2_cycleInterval = numericUpDown_M2000C_program2_cycleInterval.Value.ToString("0.00");
+            M2000C_program2_cycleInterval = M2000C_program2_cycleInterval.Replace(".", string.Empty);
+
+
+
+            string M2000C_program3_interval = numericUpDown_M2000C_program3_interval.Value.ToString(".00");
+            M2000C_program3_interval = M2000C_program3_interval.Replace(".", string.Empty);
+            string M2000C_program3_cycleInterval = numericUpDown_M2000C_program3_cycleInterval.Value.ToString("0.00");
+            M2000C_program3_cycleInterval = M2000C_program3_cycleInterval.Replace(".", string.Empty);
+
+
+
+            string M2000C_program4_interval = numericUpDown_M2000C_program4_interval.Value.ToString(".00");
+            M2000C_program4_interval = M2000C_program4_interval.Replace(".", string.Empty);
+            string M2000C_program4_cycleInterval = numericUpDown_M2000C_program4_cycleInterval.Value.ToString("0.00");
+            M2000C_program4_cycleInterval = M2000C_program4_cycleInterval.Replace(".", string.Empty);
+
+            string M2000C_program5_interval = numericUpDown_M2000C_program5_interval.Value.ToString(".00");
+            M2000C_program5_interval = M2000C_program5_interval.Replace(".", string.Empty);
+            string M2000C_program5_cycleInterval = numericUpDown_M2000C_program5_cycleInterval.Value.ToString("0.00");
+            M2000C_program5_cycleInterval = M2000C_program5_cycleInterval.Replace(".", string.Empty);
+
+            string M2000C_program6_interval = numericUpDown_M2000C_program6_interval.Value.ToString(".00");
+            M2000C_program6_interval = M2000C_program6_interval.Replace(".", string.Empty);
+            string M2000C_program6_cycleInterval = numericUpDown_M2000C_program6_cycleInterval.Value.ToString("0.00");
+            M2000C_program6_cycleInterval = M2000C_program6_cycleInterval.Replace(".", string.Empty);
+
+            string M2000C_program7_interval = numericUpDown_M2000C_program7_interval.Value.ToString(".00");
+            M2000C_program7_interval = M2000C_program7_interval.Replace(".", string.Empty);
+            string M2000C_program7_cycleInterval = numericUpDown_M2000C_program7_cycleInterval.Value.ToString("0.00");
+            M2000C_program7_cycleInterval = M2000C_program7_cycleInterval.Replace(".", string.Empty);
+
+            string M2000C_program8_interval = numericUpDown_M2000C_program8_interval.Value.ToString(".00");
+            M2000C_program8_interval = M2000C_program8_interval.Replace(".", string.Empty);
+            string M2000C_program8_cycleInterval = numericUpDown_M2000C_program8_cycleInterval.Value.ToString("0.00");
+            M2000C_program8_cycleInterval = M2000C_program8_cycleInterval.Replace(".", string.Empty);
+
+            string M2000C_program9_interval = numericUpDown_M2000C_program9_interval.Value.ToString(".00");
+            M2000C_program9_interval = M2000C_program9_interval.Replace(".", string.Empty);
+            string M2000C_program9_cycleInterval = numericUpDown_M2000C_program9_cycleInterval.Value.ToString("0.00");
+            M2000C_program9_cycleInterval = M2000C_program9_cycleInterval.Replace(".", string.Empty);
+
+            string M2000C_program10_interval = numericUpDown_M2000C_program10_interval.Value.ToString(".00");
+            M2000C_program10_interval = M2000C_program10_interval.Replace(".", string.Empty);
+            string M2000C_program10_cycleInterval = numericUpDown_M2000C_program10_cycleInterval.Value.ToString("0.00");
+            M2000C_program10_cycleInterval = M2000C_program10_cycleInterval.Replace(".", string.Empty);
+
+         
+
+
+            string[] luaExportString = {
+                "local gettext = require(\"i_18n\")",
+                "_ = gettext.translate",
+                "",
+                "programs = {}",
+                "",
+                "-- User Modifiable program",
+                "programs[1] = {}",
+                "programs[1][\"chaff\"]  = " + numericUpDown_M2000C_program1_chaff.Value,
+                "programs[1][\"flare\"]  = " + numericUpDown_M2000C_program1_flare.Value,
+                "programs[1][\"intv\"]   = " + M2000C_program1_interval,
+                "programs[1][\"cycle\"]  = " + numericUpDown_M2000C_program1_cycle.Value,
+                "programs[1][\"c_intv\"] = " + M2000C_program1_cycleInterval,
+                "programs[1][\"panic\"]  = 0",//dont change panic bc idk what it actually does yet
+                "",
+                "programs[2] = {}",
+                "programs[2][\"chaff\"]  = " + numericUpDown_M2000C_program2_chaff.Value,
+                "programs[2][\"flare\"]  = " + numericUpDown_M2000C_program2_flare.Value,
+                "programs[2][\"intv\"]   = " + M2000C_program2_interval,
+                "programs[2][\"cycle\"]  = " + numericUpDown_M2000C_program2_cycle.Value,
+                "programs[2][\"c_intv\"] = " + M2000C_program2_cycleInterval,
+                "programs[2][\"panic\"]  = 0",
+                "",
+                "programs[3] = {}",
+                "programs[3][\"chaff\"]  = " + numericUpDown_M2000C_program3_chaff.Value,
+                "programs[3][\"flare\"]  = " + numericUpDown_M2000C_program3_flare.Value,
+                "programs[3][\"intv\"]   = " + M2000C_program3_interval,
+                "programs[3][\"cycle\"]  = " + numericUpDown_M2000C_program3_cycle.Value,
+                "programs[3][\"c_intv\"] = " + M2000C_program3_cycleInterval,
+                "programs[3][\"panic\"]  = 0",
+                "",
+                "programs[4] = {}",
+                "programs[4][\"chaff\"]  = " + numericUpDown_M2000C_program4_chaff.Value,
+                "programs[4][\"flare\"]  = " + numericUpDown_M2000C_program4_flare.Value,
+                "programs[4][\"intv\"]   = " + M2000C_program4_interval,
+                "programs[4][\"cycle\"]  = " + numericUpDown_M2000C_program4_cycle.Value,
+                "programs[4][\"c_intv\"] = " + M2000C_program4_cycleInterval,
+                "programs[4][\"panic\"]  = 0",
+                "",
+                "programs[5] = {}",
+                "programs[5][\"chaff\"]  = " + numericUpDown_M2000C_program5_chaff.Value,
+                "programs[5][\"flare\"]  = " + numericUpDown_M2000C_program5_flare.Value,
+                "programs[5][\"intv\"]   = " + M2000C_program5_interval,
+                "programs[5][\"cycle\"]  = " + numericUpDown_M2000C_program5_cycle.Value,
+                "programs[5][\"c_intv\"] = " + M2000C_program5_cycleInterval,
+                "programs[5][\"panic\"]  = 0",
+                "",
+                "programs[6] = {}",
+                "programs[6][\"chaff\"]  = " + numericUpDown_M2000C_program6_chaff.Value,
+                "programs[6][\"flare\"]  = " + numericUpDown_M2000C_program6_flare.Value,
+                "programs[6][\"intv\"]   = " + M2000C_program6_interval,
+                "programs[6][\"cycle\"]  = " + numericUpDown_M2000C_program6_cycle.Value,
+                "programs[6][\"c_intv\"] = " + M2000C_program6_cycleInterval,
+                "programs[6][\"panic\"]  = 0",
+                "",
+                "programs[7] = {}",
+                "programs[7][\"chaff\"]  = " + numericUpDown_M2000C_program7_chaff.Value,
+                "programs[7][\"flare\"]  = " + numericUpDown_M2000C_program7_flare.Value,
+                "programs[7][\"intv\"]   = " + M2000C_program7_interval,
+                "programs[7][\"cycle\"]  = " + numericUpDown_M2000C_program7_cycle.Value,
+                "programs[7][\"c_intv\"] = " + M2000C_program7_cycleInterval,
+                "programs[7][\"panic\"]  = 0",
+                "",
+                "programs[8] = {}",
+                "programs[8][\"chaff\"]  = " + numericUpDown_M2000C_program8_chaff.Value,
+                "programs[8][\"flare\"]  = " + numericUpDown_M2000C_program8_flare.Value,
+                "programs[8][\"intv\"]   = " + M2000C_program8_interval,
+                "programs[8][\"cycle\"]  = " + numericUpDown_M2000C_program8_cycle.Value,
+                "programs[8][\"c_intv\"] = " + M2000C_program8_cycleInterval,
+                "programs[8][\"panic\"]  = 0",
+                "",
+                "programs[9] = {}",
+                "programs[9][\"chaff\"]  = " + numericUpDown_M2000C_program9_chaff.Value,
+                "programs[9][\"flare\"]  = " + numericUpDown_M2000C_program9_flare.Value,
+                "programs[9][\"intv\"]   = " + M2000C_program9_interval,
+                "programs[9][\"cycle\"]  = " + numericUpDown_M2000C_program9_cycle.Value,
+                "programs[9][\"c_intv\"] = " + M2000C_program9_cycleInterval,
+                "programs[9][\"panic\"]  = 0",
+                "",
+                "programs[10] = {}",
+                "programs[10][\"chaff\"]  = " + numericUpDown_M2000C_program10_chaff.Value,
+                "programs[10][\"flare\"]  = " + numericUpDown_M2000C_program10_flare.Value,
+                "programs[10][\"intv\"]   = " + M2000C_program10_interval,
+                "programs[10][\"cycle\"]  = " + numericUpDown_M2000C_program10_cycle.Value,
+                "programs[10][\"c_intv\"] = " + M2000C_program10_cycleInterval,
+                "programs[10][\"panic\"]  = 0",
+                "",
+                "need_to_be_closed = true",
+                "",
+                "--Exported via Bailey's CMS Editor on " + System.DateTime.Now};
+
+           
+            if (isExportEnabled == true)
+            {
+                System.IO.Directory.CreateDirectory(cmdsLua_M2000C_FolderPath);
+                System.IO.File.WriteAllLines(cmdsLua_M2000C_fullPath, luaExportString);
+
+                //https://stackoverflow.com/questions/5920882/file-move-does-not-work-file-already-exists
+                System.IO.Directory.CreateDirectory(exportPathBackup_M2000C);
+                if (File.Exists(exportPathBackup_M2000C + "\\SPIRALE.lua"))
+                {
+                    File.Delete(exportPathBackup_M2000C + "\\SPIRALE.lua");
+                }
+                System.IO.File.WriteAllLines(exportPathBackup_M2000C + "\\SPIRALE.lua", luaExportString);
+                File.Move(exportPathBackup_M2000C + "\\SPIRALE.lua", Path.ChangeExtension(exportPathBackup_M2000C + "\\SPIRALE.lua", ".lua"));
+
+
+                MessageBox.Show("Your M2000C CMDS file was exported to \r\n" + cmdsLua_M2000C_fullPath + "\r\n\r\n"
+                    + "Your M2000C CMDS backup file was exported to \r\n" + exportPathBackup_M2000C + "\\SPIRALE.lua");
+            }
+            else
+            {
+                MessageBox.Show("Please select your DCS.exe Location");
+            }
+
         }
 
         private void button_export_Click_A10C()//this contains the code for the formated lua that the program will spit out for DCS
         {
-            //TODO: finish coding this part 
+           
             string[] luaExportString = {
             "local gettext = require(\"i_18n\")",
             "_ = gettext.translate",
@@ -3687,7 +5152,7 @@ namespace DCSF18ALE47Programmer
             "need_to_be_closed = true -- lua_state  will be closed in post_initialize()",
             "--Exported via Bailey's CMS Editor on " + System.DateTime.Now};
 
-            //the below rest of the function has not been coded TODO: Code this for the a10C
+       
             if (isExportEnabled == true)
             {
                 System.IO.Directory.CreateDirectory(cmdsLua_A10C_FolderPath);
@@ -4448,6 +5913,169 @@ namespace DCSF18ALE47Programmer
             }*/
         }
 
+        public void AV8B_makeDefaultLua()
+        {
+            string[] luaExportString = {
+                "local gettext = require(\"i_18n\")",
+                "_ = gettext.translate",
+                "",
+                "-- Chaff Burst Values",
+                "-- BQTY: 1 to 15. Special values: -1 = Continuous (will use ALL chaff); -2 = Random (will dispense between 1 to 6 chaff)",
+                "-- BINT: 0.1 to 1.5 seconds. Special values: -2 = Random (will set an interval between 0.1 and 0.4 seconds)",
+                "",
+                "-- Chaff Salvo Values",
+                "-- SQTY: 1 to 15.",
+                "-- SINT: 1 to 15 seconds.",
+                "",
+                "-- Flare Salvo Values",
+                "-- SQTY: 1 to 15.",
+                "-- SINT: 1 to 15 seconds.",
+                "",
+                "--All Expendables",
+                "EW_ALL_CHAFF_BQTY = 1;",
+                "EW_ALL_CHAFF_BINT = 0.1;",
+                "EW_ALL_CHAFF_SQTY = 1;",
+                "EW_ALL_CHAFF_SINT = 1;",
+                "EW_ALL_FLARES_SQTY = 1;",
+                "EW_ALL_FLARES_SINT = 1;",
+                "",
+                "--Chaff Only",
+                "EW_CHAFF_BQTY = 1;",
+                "EW_CHAFF_BINT = 0.1;",
+                "EW_CHAFF_SQTY = 1;",
+                "EW_CHAFF_SINT = 1;",
+                "",
+                "--Flares Only",
+                "EW_FLARES_SQTY = 1;",
+                "EW_FLARES_SINT = 1;",
+                "",
+                "need_to_be_closed = true",
+                "",
+
+                 "--Exported via Bailey's CMS Editor on " + System.DateTime.Now};
+            if (isExportEnabled == true)
+            {
+                System.IO.Directory.CreateDirectory(cmdsLua_AV8B_FolderPath);
+                System.IO.File.WriteAllLines(cmdsLua_AV8B_fullPath, luaExportString);
+                //https://stackoverflow.com/questions/5920882/file-move-does-not-work-file-already-exists
+
+            }
+            else
+            {
+                MessageBox.Show("Please select your DCS.exe location.");
+            }
+        }
+
+        public void M2000C_makeDefaultLua()
+        {
+            //MessageBox.Show("You were on tab 1");
+            string[] luaExportString = {
+                "local gettext = require(\"i_18n\")",
+                "_ = gettext.translate",
+                "",
+                "programs = {}",
+                "",
+                "-- User Modifiable program",
+                "programs[1] = {}",
+                "programs[1][\"chaff\"]  = 6",
+                "programs[1][\"flare\"]  = 0",
+                "programs[1][\"intv\"]   = 50",
+                "programs[1][\"cycle\"]  = 1",
+                "programs[1][\"c_intv\"] = 0",
+                "programs[1][\"panic\"]  = 0",
+                "",
+                "programs[2] = {}",
+                "programs[2][\"chaff\"]  = 6",
+                "programs[2][\"flare\"]  = 0",
+                "programs[2][\"intv\"]   = 50",
+                "programs[2][\"cycle\"]  = 2",
+                "programs[2][\"c_intv\"] = 200",
+                "programs[2][\"panic\"]  = 0",
+                "",
+                "programs[3] = {}",
+                "programs[3][\"chaff\"]  = 6",
+                "programs[3][\"flare\"]  = 0",
+                "programs[3][\"intv\"]   = 50",
+                "programs[3][\"cycle\"]  = 3",
+                "programs[3][\"c_intv\"] = 200",
+                "programs[3][\"panic\"]  = 0",
+                "",
+                "programs[4] = {}",
+                "programs[4][\"chaff\"]  = 0",
+                "programs[4][\"flare\"]  = 2",
+                "programs[4][\"intv\"]   = 0",
+                "programs[4][\"cycle\"]  = 1",
+                "programs[4][\"c_intv\"] = 0",
+                "programs[4][\"panic\"]  = 0",
+                "",
+                "programs[5] = {}",
+                "programs[5][\"chaff\"]  = 1",
+                "programs[5][\"flare\"]  = 1",
+                "programs[5][\"intv\"]   = 0",
+                "programs[5][\"cycle\"]  = 1",
+                "programs[5][\"c_intv\"] = 0",
+                "programs[5][\"panic\"]  = 0",
+                "",
+                "programs[6] = {}",
+                "programs[6][\"chaff\"]  = 12",
+                "programs[6][\"flare\"]  = 0",
+                "programs[6][\"intv\"]   = 75",
+                "programs[6][\"cycle\"]  = 1",
+                "programs[6][\"c_intv\"] = 0",
+                "programs[6][\"panic\"]  = 0",
+                "",
+                "programs[7] = {}",
+                "programs[7][\"chaff\"]  = 20",
+                "programs[7][\"flare\"]  = 0",
+                "programs[7][\"intv\"]   = 25",
+                "programs[7][\"cycle\"]  = 1",
+                "programs[7][\"c_intv\"] = 0",
+                "programs[7][\"panic\"]  = 0",
+                "",
+                "programs[8] = {}",
+                "programs[8][\"chaff\"]  = 0",
+                "programs[8][\"flare\"]  = 6",
+                "programs[8][\"intv\"]   = 25",
+                "programs[8][\"cycle\"]  = 1",
+                "programs[8][\"c_intv\"] = 0",
+                "programs[8][\"panic\"]  = 0",
+                "",
+                "programs[9] = {}",
+                "programs[9][\"chaff\"]  = 20",
+                "programs[9][\"flare\"]  = 6",
+                "programs[9][\"intv\"]   = 25",
+                "programs[9][\"cycle\"]  = 1",
+                "programs[9][\"c_intv\"] = 0",
+                "programs[9][\"panic\"]  = 0",
+                "",
+                "programs[10] = {}",
+                "programs[10][\"chaff\"]  = 0",
+                "programs[10][\"flare\"]  = 32",
+                "programs[10][\"intv\"]   = 25",
+                "programs[10][\"cycle\"]  = 1",
+                "programs[10][\"c_intv\"] = 0",
+                "programs[10][\"panic\"]  = 0",
+                "",
+                "need_to_be_closed = true",
+                "",
+                "--Exported via Bailey's CMS Editor on " + System.DateTime.Now};
+            // WriteAllLines creates a file, writes a collection of strings to the file,
+            // and then closes the file.  You do NOT need to call Flush() or Close().
+            //System.IO.File.WriteAllLines(@"C:\TestFolder\WriteLines.txt", lines);
+
+            if (isExportEnabled == true)
+            {
+                System.IO.Directory.CreateDirectory(cmdsLua_M2000C_FolderPath);
+                System.IO.File.WriteAllLines(cmdsLua_M2000C_fullPath, luaExportString);
+                //https://stackoverflow.com/questions/5920882/file-move-does-not-work-file-already-exists
+
+            }
+            else
+            {
+                MessageBox.Show("Please select your DCS.exe location.");
+            }
+        }
+
         public void loadAllCmsAfterUserSelectedExe()//loads the countermeasure files that the user has and the program supports
         {
             if (File.Exists(cmdsLua_F18C_fullPath))//this is the f18
@@ -4480,26 +6108,36 @@ namespace DCSF18ALE47Programmer
            
             if (File.Exists(appPath + "\\DCS-CMS-Editor-Backup\\DCS-CMS-Editor-UserSettings.txt"))//if the user settings have been set continue
             {
-                if (tabControl_mainTab.SelectedTab == tabPage1 && File.Exists(cmdsLua_F18C_fullPath))//this is the f18 tab
+                if (tabControl_mainTab.SelectedTab == tabPage1 && File.Exists(cmdsLua_F18C_fullPath))//this is the f18c tab
                 {
                     loadLocation = cmdsLua_F18C_fullPath;
                     loadLua_F18C();
                 }
-                else if (tabControl_mainTab.SelectedTab == tabPage2 && File.Exists(cmdsLua_F16C_fullPath))//this is the f16 tab
+                else if (tabControl_mainTab.SelectedTab == tabPage2 && File.Exists(cmdsLua_F16C_fullPath))//this is the f16c tab
                 {
                     loadLocation = cmdsLua_F16C_fullPath;
                     loadLua_F16C();
                 }
-                else if (tabControl_mainTab.SelectedTab == tabPage3)//this is the f16 tab for harms
+                else if (tabControl_mainTab.SelectedTab == tabPage3 && File.Exists(cmdsLua_F16C_fullPath))//this is the f16c tab for harms
                 {
                     //loadLocation = cmdsLua_F16C_fullPath;
                     //loadLua_F16C();
                     harmForF16cIsNotAvailableMessage();
                 }
-                else if (tabControl_mainTab.SelectedTab == tabPage4)//this is the a10 cms tab
+                else if (tabControl_mainTab.SelectedTab == tabPage4 && File.Exists(cmdsLua_A10C_fullPath))//this is the a10c cms tab
                 {
                     loadLocation = cmdsLua_A10C_fullPath;
                     loadLua_A10C_CMS();
+                }
+                else if (tabControl_mainTab.SelectedTab == tabPage7 && File.Exists(cmdsLua_AV8B_fullPath))//this is the AV8B cms tab
+                {
+                    loadLocation = cmdsLua_AV8B_fullPath;
+                    loadLua_AV8B_CMS();
+                }
+                else if (tabControl_mainTab.SelectedTab == tabPage8 && File.Exists(cmdsLua_M2000C_fullPath))//this is the m2000c cms tab
+                {
+                    loadLocation = cmdsLua_M2000C_fullPath;
+                    loadLua_M2000C_CMS();
                 }
                 else {MessageBox.Show("DCS Countermeasure files not found. Please select your DCS.exe location or try a different aircraft.");}
             }
@@ -4542,8 +6180,8 @@ namespace DCSF18ALE47Programmer
             "Thank you to Arctic Fox for the idea and collaboration. Thank you to multiple people on Discord for sanity checks." +
             "\r\n" + "\r\n" +
             "~Bailey" + "\r\n" +
-            "28 September 2020" + "\r\n" +
-            "v3.0", "DCS CMS Editor by Bailey READMEE");
+            "October 2020" + "\r\n" +
+            "v4", "DCS CMS Editor by Bailey READMEE");
         }
 
        
@@ -4719,6 +6357,50 @@ namespace DCSF18ALE47Programmer
                     {
                         A10C_makeDefaultLua();
                         MessageBox.Show("Your A-10C CMDS file was exported to \r\n" + cmdsLua_A10C_fullPath + ".");
+                        loadCmsFromDcs();
+                    }
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    //do nothing
+                }
+            }
+
+            else if (tabControl_mainTab.SelectedTab == tabPage7)//this is the AV8B tab
+            {
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to clear and reset the AV-8B CMS Lua? This cannot be undone.", "Are you sure?", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    if (cmdsLua_AV8B_FolderPath == null)
+                    {
+                        MessageBox.Show("DCS.exe has not been set. Please select your DCS.exe location or try a different aircraft.");
+                    }
+                    else
+                    {
+                        AV8B_makeDefaultLua();
+                        MessageBox.Show("Your AV-8B CMS file was exported to \r\n" + cmdsLua_AV8B_fullPath + ".");
+                        loadCmsFromDcs();
+                    }
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    //do nothing
+                }
+            }
+
+            else if (tabControl_mainTab.SelectedTab == tabPage8)//this is the m2000c tab
+            {
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to clear and reset the M2000C CMS Lua? This cannot be undone.", "Are you sure?", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    if (cmdsLua_M2000C_FolderPath == null)
+                    {
+                        MessageBox.Show("DCS.exe has not been set. Please select your DCS.exe location or try a different aircraft.");
+                    }
+                    else
+                    {
+                        M2000C_makeDefaultLua();
+                        MessageBox.Show("Your M2000C CMDS file was exported to \r\n" + cmdsLua_M2000C_fullPath + ".");
                         loadCmsFromDcs();
                     }
                 }
@@ -5407,6 +7089,119 @@ namespace DCSF18ALE47Programmer
         private void numericUpDown_A10C_programS_cycle_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void numericUpDown7_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox3_CheckStateChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void checkBox_AV8B_chaffBquantity_continuous_CheckStateChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void checkBox_AV8B_chaffBquantity_random_CheckStateChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void checkBox_AV8B_chaffBinterval_random_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox_AV8B_ALL_chaffBinterval_random.Checked == true)
+            {
+                numericUpDown_AV8B_ALL_CHAFF_BINT.Enabled = false;
+            }
+            else
+            {
+                numericUpDown_AV8B_ALL_CHAFF_BINT.Enabled = true;
+            }
+        }
+
+        private void checkBox_AV8B_chaffBquantity_continuous_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox_AV8B_ALL_chaffBquantity_continuous.Checked == true)
+            {
+                numericUpDown_AV8B_ALL_CHAFF_BQTY.Enabled = false;
+                checkBox_AV8B_ALL_chaffBquantity_random.Checked = false;
+                checkBox_AV8B_ALL_chaffBquantity_random.Enabled = false;
+            }
+            else
+            {
+                numericUpDown_AV8B_ALL_CHAFF_BQTY.Enabled = true;
+                checkBox_AV8B_ALL_chaffBquantity_random.Checked = false;
+                checkBox_AV8B_ALL_chaffBquantity_random.Enabled = true;
+            }
+        }
+
+        private void checkBox_AV8B_chaffBquantity_random_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox_AV8B_ALL_chaffBquantity_random.Checked == true)
+            {
+                numericUpDown_AV8B_ALL_CHAFF_BQTY.Enabled = false;
+                checkBox_AV8B_ALL_chaffBquantity_continuous.Checked = false;
+                checkBox_AV8B_ALL_chaffBquantity_continuous.Enabled = false;
+            }
+            else
+            {
+                numericUpDown_AV8B_ALL_CHAFF_BQTY.Enabled = true;
+                checkBox_AV8B_ALL_chaffBquantity_continuous.Checked = false;
+                checkBox_AV8B_ALL_chaffBquantity_continuous.Enabled = true;
+            }
+        }
+
+        private void numericUpDown_A10C_programA_chaff_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox_AV8B_chaffBquantity_continuous.Checked == true)
+            {
+                numericUpDown_AV8B_CHAFF_BQTY.Enabled = false;
+                checkBox_AV8B_chaffBquantity_random.Checked = false;
+                checkBox_AV8B_chaffBquantity_random.Enabled = false;
+            }
+            else
+            {
+                numericUpDown_AV8B_CHAFF_BQTY.Enabled = true;
+                checkBox_AV8B_chaffBquantity_random.Checked = false;
+                checkBox_AV8B_chaffBquantity_random.Enabled = true;
+            }
+        }
+
+        private void checkBox_AV8B_chaffBquantity_random_CheckedChanged_1(object sender, EventArgs e)
+        {
+            if (checkBox_AV8B_chaffBquantity_random.Checked == true)
+            {
+                numericUpDown_AV8B_CHAFF_BQTY.Enabled = false;
+                checkBox_AV8B_chaffBquantity_continuous.Checked = false;
+                checkBox_AV8B_chaffBquantity_continuous.Enabled = false;
+            }
+            else
+            {
+                numericUpDown_AV8B_CHAFF_BQTY.Enabled = true;
+                checkBox_AV8B_chaffBquantity_continuous.Checked = false;
+                checkBox_AV8B_chaffBquantity_continuous.Enabled = true;
+            }
+        }
+
+        private void checkBox_AV8B_chaffBinterval_random_CheckedChanged_1(object sender, EventArgs e)
+        {
+            if (checkBox_AV8B_chaffBinterval_random.Checked == true)
+            {
+                numericUpDown_AV8B_CHAFF_BINT.Enabled = false;
+            }
+            else
+            {
+                numericUpDown_AV8B_CHAFF_BINT.Enabled = true;
+            }
         }
     }
 }
